@@ -28,14 +28,14 @@ class HeyMehedi_Content_Restriction {
 		if ( has_category( $this->pre_get_posts(), $id ) ) {
 
 			if ( ! is_user_logged_in() ) {
-				return "Continue reading the article with a membership";
+				return '<span class="paid-only">Continue reading the article with a membership</span>';
 			}
 
 			if ( in_array( 'administrator', (array) $user->roles ) || in_array( 'member', (array) $user->roles ) ) {
 				return $title;
 			}
 
-			return "Continue reading the article with a membership";
+			return '<span class="paid-only">Continue reading the article with a membership</span>';
 
 		}
 
