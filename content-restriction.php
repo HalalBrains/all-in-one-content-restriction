@@ -40,7 +40,7 @@ class HeyMehedi_Content_Restriction {
 		return $title;
 	}
 
-	public function filter_the_excerpt( $array, $post ) {
+	public function filter_the_excerpt( $post_excerpt, $post ) {
 
 		$user = wp_get_current_user();
 		$id   = $post->ID;
@@ -57,7 +57,7 @@ class HeyMehedi_Content_Restriction {
 
 		}
 
-		return $array;
+		return $post_excerpt;
 	}
 
 	public function pre_get_posts() {
