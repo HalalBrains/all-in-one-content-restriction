@@ -28,12 +28,14 @@ class HeyMehedi_Content_Restriction {
 		if ( has_category( $this->pre_get_posts(), $id ) ) {
 
 			if ( ! is_user_logged_in() ) {
-				return 'Sorry you can\'t see this post!';
+				return "Continue reading the article with a membership";
 			}
 
-			if ( in_array( 'administrator', (array) $user->roles ) ) {
-				return "The user has the admistrator role";
+			if ( in_array( 'administrator', (array) $user->roles ) || in_array( 'member', (array) $user->roles ) ) {
+				return $title;
 			}
+
+			return "Continue reading the article with a membership";
 
 		}
 
@@ -43,17 +45,18 @@ class HeyMehedi_Content_Restriction {
 	public function filter_the_excerpt( $post_excerpt, $post ) {
 
 		$user = wp_get_current_user();
-		$id   = $post->ID;
 
-		if ( has_category( $this->pre_get_posts(), $id ) ) {
+		if ( has_category( $this->pre_get_posts(), $post->ID ) ) {
 
 			if ( ! is_user_logged_in() ) {
-				return "Sorry you can't see this post!";
+				return;
 			}
 
-			if ( in_array( 'administrator', (array) $user->roles ) ) {
-				return "The user has the admistrator role";
+			if ( in_array( 'administrator', (array) $user->roles ) || in_array( 'member', (array) $user->roles ) ) {
+				return $post_excerpt;
 			}
+
+			return;
 
 		}
 
