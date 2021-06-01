@@ -10,6 +10,8 @@ version: 1.0
 
 class HeyMehedi_Content_Restriction {
 
+	protected static $instance = null;
+
 	public function __construct() {
 		add_action( 'category_add_form_fields', array( $this, 'pt_taxonomy_add_new_meta_field' ), 10, 2 );
 		add_action( 'category_edit_form_fields', array( $this, 'category_edit_form_fields' ), 10, 2 );
@@ -18,7 +20,15 @@ class HeyMehedi_Content_Restriction {
 		add_action( 'pre_get_posts', array( $this, 'pre_get_posts' ), 10 );
 
 		add_filter( 'the_title', array( $this, 'filter_the_title' ), 10, 2 );
-		add_filter( 'get_the_excerpt', array( $this, 'filter_the_excerpt' ), 10, 2 );
+		add_filter( 'get_the_excerpt', array( $this, 'filter_the_excerpt' ), 11, 2 );
+	}
+
+	public static function instance() {
+		if ( null == self::$instance ) {
+			self::$instance = new self;
+		}
+
+		return self::$instance;
 	}
 
 	public function filter_the_title( $title, $id ) {
@@ -28,15 +38,14 @@ class HeyMehedi_Content_Restriction {
 		if ( has_category( $this->pre_get_posts(), $id ) ) {
 
 			if ( ! is_user_logged_in() ) {
-				return '<span class="paid-only">Continue reading the article with a membership</span>';
+				return '<span class="blur">' . $title . '</span>';
 			}
 
 			if ( in_array( 'administrator', (array) $user->roles ) || in_array( 'member', (array) $user->roles ) ) {
 				return $title;
 			}
 
-			return '<span class="paid-only">Continue reading the article with a membership</span>';
-
+			return '<span class="blur">' . $title . '</span>';
 		}
 
 		return $title;
@@ -49,21 +58,21 @@ class HeyMehedi_Content_Restriction {
 		if ( has_category( $this->pre_get_posts(), $post->ID ) ) {
 
 			if ( ! is_user_logged_in() ) {
-				return;
+				return "<div class='blur'>" . $post_excerpt . "</div>";
 			}
 
 			if ( in_array( 'administrator', (array) $user->roles ) || in_array( 'member', (array) $user->roles ) ) {
 				return $post_excerpt;
 			}
 
-			return;
-
+			return " " . $post_excerpt . " ";
 		}
 
 		return $post_excerpt;
 	}
 
 	public function pre_get_posts() {
+
 		$categories           = get_categories();
 		$hide_content_cat_ids = array();
 
@@ -151,4 +160,4 @@ class HeyMehedi_Content_Restriction {
 	}
 }
 
-( new HeyMehedi_Content_Restriction );
+HeyMehedi_Content_Restriction::instance();
