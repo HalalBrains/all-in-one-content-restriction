@@ -7,28 +7,35 @@
 
 namespace HeyMehedi\Content_Restriction;
 
-use HeyMehedi\Content_Restriction;
-
 class Helper {
+	
+	private static function get_file_uri( $path ) {
+		$file = WP_PLUGIN_URL . '/content-restriction' . $path;
 
-	use URI_Trait;
-	use Query_Trait;
+		return $file;
+	}
 
-	public static $plugin_base_dir;
-	public static $plugin_inc_dir;
-	public static $plugin_version;
-	public static $plugin_author_uri;
-	public static $plugin_prefix;
-	public static $plugin_options;
+	public static function get_img( $filename ) {
+		$path = '/assets/img/' . $filename;
 
-	public function __construct() {
-		self::$plugin_base_dir   = Content_Restriction::$plugin_dir;
-		self::$plugin_inc_dir    = self::$plugin_base_dir . 'inc/';
+		return self::get_file_uri( $path );
+	}
 
-		$plugin_data             = get_plugin_data( self::$plugin_base_dir );
-		self::$plugin_version    = $plugin_data['Name'];
-		self::$plugin_author_uri = $plugin_data['AuthorURI'];
-		self::$plugin_prefix     = 'content-restriction';
-		self::$plugin_options    = 'content-restriction';
+	public static function get_css( $filename ) {
+		$path = '/assets/css/' . $filename . '.css';
+
+		return self::get_file_uri( $path );
+	}
+
+	public static function get_js( $filename ) {
+		$path = '/assets/js/' . $filename . '.js';
+
+		return self::get_file_uri( $path );
+	}
+
+	public static function get_vendor_assets( $file ) {
+		$path = '/assets/vendors/' . $file;
+
+		return self::get_file_uri( $path );
 	}
 }

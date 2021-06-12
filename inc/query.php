@@ -7,7 +7,7 @@
 
 namespace HeyMehedi\Content_Restriction;
 
-trait Query_Trait {
+class Query {
 
 	public static function get_registered_post_types() {
 		global $wp_post_types;
