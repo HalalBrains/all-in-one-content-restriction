@@ -12,14 +12,14 @@ class Loader {
 	protected static $instance = null;
 
 	public function __construct() {
-		add_action( 'pre_get_posts', array( $this, 'pre_get_posts' ), 10 );
-		add_filter( 'the_title', array( $this, 'filter_the_title' ), 10, 2 );
-		add_filter( 'get_the_excerpt', array( $this, 'filter_the_excerpt' ), 11, 2 );
+		// add_filter( 'the_title', array( $this, 'filter_the_title' ), 10, 2 );
+		// add_filter( 'get_the_excerpt', array( $this, 'filter_the_excerpt' ), 11, 2 );
 
 		add_action( 'admin_menu', array( $this, 'admin_menu' ) );
 		// add_action( 'admin_init', array( $this, 'settings_init' ) );
 
 		add_action( 'wp_ajax_content_restriction_update_settings', array( $this, 'content_restriction_update_settings' ) );
+		add_action( 'wp_ajax_content_restriction_post_type', array( $this, 'content_restriction_post_type' ) );
 
 	}
 
@@ -49,6 +49,10 @@ class Loader {
 
 	public function content_restriction_update_settings() {
 		Update::settings_data( $_POST );
+	}
+
+	public function content_restriction_post_type(){
+		Query::get_categories();
 	}
 
 }

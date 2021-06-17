@@ -26,7 +26,8 @@ class Update {
 	public static function settings_data($data) {
 
 		$posttype = $data['posttype'];
-		echo strtoupper( $posttype );
+	
+		print_r($data);
 
 		die();
 	}
