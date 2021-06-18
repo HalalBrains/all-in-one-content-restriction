@@ -29,15 +29,15 @@
 						"posttype": posttype,
 					}, function (data) {
 						console.log(data);
-						$('#myTable').html(data);
+						$('#heymehedi-items_table_body').html(data);
 					}
 				);
 
 			});
 
-			$("#myInput").on("keyup", function() {
+			$("#heymehedi-search_bar").on("keyup", function() {
 				var value = $(this).val().toLowerCase();
-				$("#myTable tr").filter(function() {
+				$("#heymehedi-items_table_body tr").filter(function() {
 				  $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
 				});
 			  });

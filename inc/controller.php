@@ -7,7 +7,7 @@
 
 namespace HeyMehedi\Content_Restriction;
 
-class Loader {
+class Controller {
 
 	protected static $instance = null;
 
@@ -51,10 +51,25 @@ class Loader {
 		Update::settings_data( $_POST );
 	}
 
-	public function content_restriction_post_type(){
-		Query::get_categories();
+	public function content_restriction_post_type() {
+
+		$cat_list_html = '';
+
+		$term_query = Query::get_categories();
+
+		if ( ! $term_query ) {
+			esc_html_e( 'Sorry, no items found!' );
+			wp_die();
+		}
+		foreach ( $term_query->terms as $id => $name ) {
+			$cat_list_html .= sprintf( '<tr data-item-id="%s"><td class="text-center"><div class="wp-menu-image dashicons-before dashicons-plus-alt2" aria-hidden="true"></div></td><td class="text-center" id="item-id">%s</td><td>%s</td></tr>', $id, $id, $name );
+		}
+
+		echo $cat_list_html;
+		wp_die();
+
 	}
 
 }
 
-Loader::instance();
+Controller::instance();

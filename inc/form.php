@@ -23,44 +23,51 @@ class Form {
 		?>
 
 		<div class="container">
-			<div class="row">
-				<div class="col-md-6 pt-5">
 
-					<div class="heymehedi_setting_heading pb-2">
-						<h2>Content Restriction</h2>
+			<div class="row">
+
+				<div class="col-md-8">
+
+					<div class="heymehedi_setting_heading">
+						<h2><?php esc_html_e('Content Restriction', 'content-restriction')?></h2>
 					</div>
 
 					<form id="heymehedi-form" method="post">
 
-						<label for="exampleFormControlInput1" class="form-label"><?php esc_attr_e( 'Post Type', 'content-restriction' );?></label>
+						<label for="post-type" class="form-label"><?php esc_attr_e( 'Post Type', 'content-restriction' );?></label>
+						
 						<select class="form-select form-control" id="post-type" name="post-type">
 							<option value="post" selected><?php esc_attr_e( 'Post', 'content-restriction' ); ?></option>
 							<option value="page"><?php esc_attr_e( 'Page', 'content-restriction' ); ?></option>
 						</select>
 
-						<label for="exampleFormControlInput2" class="form-label"><?php esc_attr_e( 'Restriction Wise', 'content-restriction' );?></label>
+						<label for="restriction-wise" class="form-label"><?php esc_attr_e( 'Restriction Wise', 'content-restriction' );?></label>
+						
 						<select class="form-select form-control" id="restriction-wise" name="restriction-wise">
 							<option value="category" selected><?php esc_attr_e( 'Category', 'content-restriction' ); ?></option>
 							<option value="single_post"><?php esc_attr_e( 'Single Post', 'content-restriction' ); ?></option>
 						</select>
 
-						<div id="items-list">
+						<div id="heymehedi-items-wrapper">
 							
-							<label for="exampleFormControlInput1" class="form-label"><?php esc_attr_e( 'Search Here', 'content-restriction' );?></label>
+							<label for="heymehedi-search_bar" class="form-label"><?php esc_attr_e( 'Type the title or ID', 'content-restriction' );?></label>
 							
-							<input id="myInput" type="text" class="form-control" placeholder="Search..">
+							<input id="heymehedi-search_bar" type="text" class="form-control" placeholder="<?php esc_html_e('Search Here...', 'content-restriction')?>">
 
-							<table>
+							<table id="heymehedi-items_table">
+
 								<thead>
 									<tr>
-										<th>Add</th>
-										<th>Id</th>
-										<th>Title</th>
+										<th class="text-center"><?php esc_html_e( 'Add', 'content-restriction'); ?></th>
+										<th class="text-center"><?php esc_html_e( 'ID', 'content-restriction'); ?></th>
+										<th><?php esc_html_e( 'Title', 'content-restriction'); ?></th>
 									</tr>
 								</thead>
 								
-								<tbody id="myTable"></tbody>
-							</table>	
+								<tbody id="heymehedi-items_table_body"></tbody>
+
+							</table>
+
 						</div>
 
 						<label for="exampleFormControlInput1" class="form-label">Email address</label>
@@ -70,6 +77,10 @@ class Form {
 					
 					</form>
 
+				</div>
+
+				<div class="col-md-4">
+					<h1>Hello World</h1>
 				</div>
 			</div>
 		</div>

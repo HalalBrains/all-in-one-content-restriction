@@ -32,8 +32,6 @@ class Query {
 
 	public static function get_categories() {
 
-		$cat_list_html = '';
-
 		$term_query = new \WP_Term_Query(
 			array(
 				'taxonomy'   => 'category', // <-- Custom Taxonomy name..
@@ -48,13 +46,7 @@ class Query {
 			return;
 		}
 
-		foreach ( $term_query->terms as $id => $name ) {
-			$cat_list_html .= sprintf( '<tr data-item-id="%s"><td><div class="wp-menu-image dashicons-before dashicons-plus-alt2" aria-hidden="true"></div></td><td id="item-id">%s</td><td>%s</td></tr>', $id, $id, $name );
-			// $cat_list_html .= sprintf( '<option value="%s"> %s </option>', $id, $name );
-		}
-
-		echo $cat_list_html;
-
+		return $term_query;
 	}
 
 	public static function get_posts() {

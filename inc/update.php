@@ -23,13 +23,13 @@ class Update {
 		return self::$instance;
 	}
 
-	public static function settings_data($data) {
+	public static function settings_data( $data ) {
 
 		$posttype = $data['posttype'];
-	
-		print_r($data);
 
-		die();
+		print_r( $data );
+
+		wp_die();
 	}
 }
 

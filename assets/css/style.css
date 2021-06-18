@@ -11,46 +11,73 @@ CSS INDEX
 ---------------------------------------*/
 
 table {
-	font-family: arial, sans-serif;
-	border-collapse: collapse;
-	width: 100%;
-  }
-  
-  td, th {
-	border: 1px solid #dddddd;
-	text-align: left;
-	padding: 8px;
-  }
-  
-  tr:nth-child(even) {
-	background-color: #dddddd;
-  }
-
-  .container {
-    max-width: 900px;
-    margin: 0 auto;
+  font-family: arial, sans-serif;
+  border-collapse: collapse;
+  width: 100%;
 }
 
+td, th {
+  border: 1px solid #dddddd;
+  text-align: left;
+  padding: 8px;
+}
+
+tr:nth-child(even) {
+  background-color: #dddddd;
+}
+
+/* .container {
+  max-width: 1300px;
+  margin: 0 auto;
+}
+
+.col-md-8 {
+  width: 60%;
+}
+
+.col-md-4{
+  width: 40%;
+} */
 .form-control {
-    display: block !important;
-    width: 100% !important;
-    max-width: inherit !important;
-    padding: 10px 15px !important;
-    font-size: 15px !important;
+  display: block !important;
+  width: 100% !important;
+  max-width: inherit !important;
+  padding: 10px 15px !important;
+  font-size: 15px !important;
 }
 
 .form-label {
-    width: 100%;
-    font-size: 16px;
-    display: block;
-    padding: 10px 0;
+  width: 100%;
+  font-size: 16px;
+  display: block;
+  padding: 10px 0;
+}
+/* .text-center {
+  text-align: center;
+} */
+
+#heymehedi-items-wrapper table tr {
+  display: grid;
+  grid-template-columns: 1fr 1fr 10fr;
 }
 
-#items-list table tr {
-    display: grid;
-    grid-template-columns: 1fr 1fr 10fr;
+#heymehedi-items-wrapper .dashicons-plus-alt2::before {
+  color: red !important;
 }
 
-#items-list .dashicons-plus-alt2::before {
-    color: red !important;
+.wp-menu-image.dashicons-before.dashicons-plus-alt2 {
+  width: 100%;
+  height: 100%;
+  text-align: center;
+  cursor: pointer;
 }
+
+/* #items-list {
+  position: relative;
+  height: 200px;
+  overflow: auto;
+}
+
+.table-wrapper-scroll-y {
+  display: block;
+} */
