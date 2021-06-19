@@ -12,16 +12,7 @@ use HeyMehedi\Content_Restriction;
 class Update {
 
 	public static function save_setting_data( $data ) {
-
-		$posttype = $data['posttype'];
-		$item_ids = $data['itemIds'];
-
-		update_option(Content_Restriction::$options, $data, true );
-
-		// $options = get_option( Content_Restriction::$options, array() );
-		// self::$options = $options;
-
-		// print_r( $data );
+		update_option( Content_Restriction::$options_name, $data, true );
 	}
 
 	protected function sanitize() {

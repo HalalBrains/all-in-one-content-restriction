@@ -18,19 +18,21 @@ class Content_Restriction {
 	public static $author_uri;
 	public static $prefix;
 	public static $options;
+	public static $options_name;
 
 	public function __construct() {
 
 		self::$base_dir = WP_PLUGIN_DIR . '/content-restriction';
 		self::$inc_dir  = self::$base_dir . '/inc/';
 
-		$data             = $this->get_data();
-		self::$version    = $data['Version'];
-		self::$author_uri = $data['AuthorURI'];
-		self::$prefix     = 'content-restriction';
-		self::$options    = 'heymehdi_content_restriction';
+		$data               = $this->get_data();
+		self::$version      = $data['Version'];
+		self::$author_uri   = $data['AuthorURI'];
+		self::$prefix       = 'content-restriction';
+		self::$options_name = 'heymehdi_content_restriction';
 
 		$this->includes();
+		$this->set_option();
 
 	}
 
@@ -47,6 +49,10 @@ class Content_Restriction {
 		$file_path = self::$base_dir . '/content-restriction.php';
 
 		return get_file_data( $file_path, array( 'Version' => 'Version', 'AuthorURI' => 'Author URI' ) );
+	}
+
+	private function set_option() {
+		self::$options = get_option( Content_Restriction::$options_name, array() );
 	}
 }
 

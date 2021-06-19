@@ -17,7 +17,7 @@
 					itemIds.push(itemId)
 				});
 
-				// console.log(itemIds);
+				console.log(itemIds);
 
 				$.post(
 					heymehedi_object.ajaxurl,
@@ -36,24 +36,59 @@
 
 		},
 
-		categoryQuery: function () {
+		itemsQuery: function () {
 
-			var posttype = $('#post-type').val();
+			$(document).on('click', '#restriction-wise', function () {
 
-			$('#post-type').on('click', function () {
+				var restrictionWise = $(this).val();
 
 				$.post(
 					heymehedi_object.ajaxurl,
 					{
-						"action": "content_restriction_post_type",
-						"posttype": posttype,
+						"action": "content_restriction_wise",
+						"restriction-wise": restrictionWise,
 					}, function (data) {
 						$('#heymehedi-items_table_body').html(data);
 					}
 				);
 
+				$.post(
+					heymehedi_object.ajaxurl,
+					{
+						"action": "content_restriction_wise_selected",
+						"restriction-wise": restrictionWise,
+					}, function (data) {
+						$('#heymehedi-selected_items_table_body').html(data);
+					}
+				);
+
 			});
 
+		},
+
+		itemsOnLoad: function () {
+
+			$.post(
+				heymehedi_object.ajaxurl,
+				{
+					"action": "content_restriction_wise",
+					"restriction-wise": 'category',
+					"type": "not-selected",
+				}, function (data) {
+					$('#heymehedi-items_table_body').html(data);
+				}
+			);
+
+			$.post(
+				heymehedi_object.ajaxurl,
+				{
+					"action": "content_restriction_wise_selected",
+					"restriction-wise": "category",
+					"type": "selected",
+				}, function (data) {
+					$('#heymehedi-selected_items_table_body').html(data);
+				}
+			);
 		},
 
 		searchItems: function () {
@@ -100,19 +135,19 @@
 
 		},
 
-
 	}
 
 
 	$(document).ready(function () {
 		heymehedi.formSubmission();
-		heymehedi.categoryQuery();
+		heymehedi.itemsQuery();
 		heymehedi.searchItems();
 		heymehedi.addToSelectedTable();
 		heymehedi.deleteFromSelectedTable();
 	});
 
 	$(window).on('load', function () {
+		heymehedi.itemsOnLoad();
 	});
 
 })(jQuery);

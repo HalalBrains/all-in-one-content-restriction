@@ -30,17 +30,25 @@ class Query {
 		return $wp_roles->get_names();
 	}
 
-	public static function get_categories() {
+	public static function get_categories( $exclude_ids = array(), $include_ids = array() ) {
 
-		$term_query = new \WP_Term_Query(
-			array(
-				'taxonomy'   => 'category', // <-- Custom Taxonomy name..
-				'orderby' => 'name',
-				'order'      => 'ASC',
-				'fields'     => 'id=>name',
-				'hide_empty' => false,
-			),
+		$args = array(
+			'taxonomy'   => 'category',
+			'orderby'    => 'name',
+			'order'      => 'ASC',
+			'fields'     => 'id=>name',
+			'hide_empty' => false,
 		);
+
+		if ( ! empty( $exclude_ids ) ) {
+			$args['exclude'] = $exclude_ids;
+		}
+		
+		if ( ! empty( $include_ids ) ) {
+			$args['include'] = $include_ids;
+		}
+
+		$term_query = new \WP_Term_Query( $args );
 
 		if ( ! $term_query->terms ) {
 			return;
@@ -49,8 +57,18 @@ class Query {
 		return $term_query;
 	}
 
-	public static function get_posts() {
-		$args  = array( 'fields' => 'ids' );
+	public static function get_posts( $exclude_ids = array(), $include_ids = array() ) {
+
+		$args = array( 'fields' => 'ids' );
+
+		if ( ! empty( $exclude_ids ) ) {
+			$args['exclude'] = $exclude_ids;
+		}
+
+		if ( ! empty( $include_ids ) ) {
+			$args['include'] = $include_ids;
+		}
+
 		$posts = get_posts( $args );
 
 		return $posts;

@@ -7,6 +7,8 @@
 
 namespace HeyMehedi\Content_Restriction;
 
+use HeyMehedi\Content_Restriction;
+
 class Controller {
 
 	protected static $instance = null;
@@ -17,7 +19,8 @@ class Controller {
 
 		add_action( 'admin_menu', array( $this, 'admin_menu' ) );
 		add_action( 'wp_ajax_content_restriction_update_settings', array( $this, 'wp_ajax_content_restriction_update_settings' ) );
-		add_action( 'wp_ajax_content_restriction_post_type', array( $this, 'wp_ajax_content_restriction_post_type' ) );
+		add_action( 'wp_ajax_content_restriction_wise', array( $this, 'wp_ajax_content_restriction_wise' ) );
+		add_action( 'wp_ajax_content_restriction_wise_selected', array( $this, 'wp_ajax_content_restriction_wise_selected' ) );
 
 	}
 
@@ -45,29 +48,74 @@ class Controller {
 		Form::instance()->render();
 	}
 
+	// Ajax
 	public function wp_ajax_content_restriction_update_settings() {
 		Update::save_setting_data( $_POST );
 		wp_die();
 	}
 
-	public function wp_ajax_content_restriction_post_type() {
+	public function wp_ajax_content_restriction_wise() {
 
-		$cat_list_html = '';
+		$settings       = Content_Restriction::$options;
+		$selected_items = isset( $settings['itemIds'] ) ? $settings['itemIds'] : array(); // Exlucded items what user selected
 
-		$term_query = Query::get_categories();
+		$restriction_wise = $_POST['restriction-wise'];
+		$icon             = 'dashicons-plus-alt2';
+		$exclude_ids      = $selected_items;
+		$this->display_items( $restriction_wise, $icon, $exclude_ids );
+		wp_die();
 
-		if ( ! $term_query ) {
+	}
+
+	public function wp_ajax_content_restriction_wise_selected() {
+
+		$settings       = Content_Restriction::$options;
+		$selected_items = isset( $settings['itemIds'] ) ? $settings['itemIds'] : array(); // Show Only What user selected
+
+		$restriction_wise = $_POST['restriction-wise'];
+		$icon             = 'dashicons-minus';
+		$this->display_items( $restriction_wise, $icon, array(), $selected_items );
+		wp_die();
+
+	}
+
+	private function display_items( $restriction_wise, $icon, $exclude_ids = array(), $selected_items = array() ) {
+
+		if ( 'category' === $restriction_wise ) {
+			$items_array = Query::get_categories( $exclude_ids, $selected_items );
+			echo $this->get_items_html( $items_array, $icon, 'category' );
+		}
+
+		if ( 'single-post' === $restriction_wise ) {
+			$items_array = Query::get_posts( $exclude_ids, $selected_items );
+			echo $this->get_items_html( $items_array, $icon, 'single-post' );
+			wp_die();
+		}
+
+	}
+
+	private function get_items_html( $items_array, $icon, $wise_type ) {
+
+		$items_list_html = '';
+
+		if ( ! $items_array ) {
 			esc_html_e( 'Sorry, no items found!' );
 			wp_die();
 		}
 
-		foreach ( $term_query->terms as $id => $name ) {
-			$cat_list_html .= sprintf( '<tr data-item-id="%s"><td class="text-center action"><div class="dashicons-before dashicons-plus-alt2" aria-hidden="true"></div></td><td class="text-center">%s</td><td>%s</td></tr>', $id, $id, $name );
+		if ( 'category' === $wise_type ) {
+			foreach ( $items_array->terms as $id => $name ) {
+				$items_list_html .= sprintf( '<tr data-item-id="%s"><td class="text-center action"><div class="dashicons-before %s" aria-hidden="true"></div></td><td class="text-center">%s</td><td>%s</td></tr>', $id, $icon, $id, $name );
+			}
 		}
 
-		echo $cat_list_html;
-		wp_die();
+		if ( 'single-post' === $wise_type ) {
+			foreach ( $items_array as $id ) {
+				$items_list_html .= sprintf( '<tr data-item-id="%s"><td class="text-center action"><div class="dashicons-before %s" aria-hidden="true"></div></td><td class="text-center">%s</td><td>%s</td></tr>', $id, $icon, $id, get_the_title( $id ) );
+			}
+		}
 
+		return $items_list_html;
 	}
 
 }

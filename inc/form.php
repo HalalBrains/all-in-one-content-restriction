@@ -46,8 +46,8 @@ class Form {
 
 								<label for="restriction-wise" class="form-label"><?php esc_attr_e( 'Restriction Wise', 'content-restriction' );?></label>
 								<select class="form-select form-control" id="restriction-wise" name="restriction-wise">
-									<option value="category" selected><?php esc_attr_e( 'Category', 'content-restriction' );?></option>
-									<option value="single_post"><?php esc_attr_e( 'Single Post', 'content-restriction' );?></option>
+									<option value="category"><?php esc_attr_e( 'Category', 'content-restriction' );?></option>
+									<option value="single-post"><?php esc_attr_e( 'Single Post', 'content-restriction' );?></option>
 								</select>
 
 
@@ -80,7 +80,7 @@ class Form {
 
 							<div class="col-md-6">
 
-								<h1>Selected Items</h1>
+								<h2>Selected Items</h2>
 
 								<div id="heymehedi-selected_items-wrapper">
 
