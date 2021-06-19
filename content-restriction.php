@@ -28,7 +28,7 @@ class Content_Restriction {
 		self::$version    = $data['Version'];
 		self::$author_uri = $data['AuthorURI'];
 		self::$prefix     = 'content-restriction';
-		self::$options    = 'content-restriction';
+		self::$options    = 'heymehdi_content_restriction';
 
 		$this->includes();
 

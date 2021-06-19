@@ -16,10 +16,8 @@ class Controller {
 		// add_filter( 'get_the_excerpt', array( $this, 'filter_the_excerpt' ), 11, 2 );
 
 		add_action( 'admin_menu', array( $this, 'admin_menu' ) );
-		// add_action( 'admin_init', array( $this, 'settings_init' ) );
-
-		add_action( 'wp_ajax_content_restriction_update_settings', array( $this, 'content_restriction_update_settings' ) );
-		add_action( 'wp_ajax_content_restriction_post_type', array( $this, 'content_restriction_post_type' ) );
+		add_action( 'wp_ajax_content_restriction_update_settings', array( $this, 'wp_ajax_content_restriction_update_settings' ) );
+		add_action( 'wp_ajax_content_restriction_post_type', array( $this, 'wp_ajax_content_restriction_post_type' ) );
 
 	}
 
@@ -47,11 +45,12 @@ class Controller {
 		Form::instance()->render();
 	}
 
-	public function content_restriction_update_settings() {
-		Update::settings_data( $_POST );
+	public function wp_ajax_content_restriction_update_settings() {
+		Update::save_setting_data( $_POST );
+		wp_die();
 	}
 
-	public function content_restriction_post_type() {
+	public function wp_ajax_content_restriction_post_type() {
 
 		$cat_list_html = '';
 
@@ -61,8 +60,9 @@ class Controller {
 			esc_html_e( 'Sorry, no items found!' );
 			wp_die();
 		}
+
 		foreach ( $term_query->terms as $id => $name ) {
-			$cat_list_html .= sprintf( '<tr data-item-id="%s"><td class="text-center"><div class="wp-menu-image dashicons-before dashicons-plus-alt2" aria-hidden="true"></div></td><td class="text-center" id="item-id">%s</td><td>%s</td></tr>', $id, $id, $name );
+			$cat_list_html .= sprintf( '<tr data-item-id="%s"><td class="text-center action"><div class="dashicons-before dashicons-plus-alt2" aria-hidden="true"></div></td><td class="text-center">%s</td><td>%s</td></tr>', $id, $id, $name );
 		}
 
 		echo $cat_list_html;

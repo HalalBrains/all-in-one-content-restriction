@@ -7,30 +7,26 @@
 
 namespace HeyMehedi\Content_Restriction;
 
+use HeyMehedi\Content_Restriction;
+
 class Update {
 
-	protected static $instance = null;
-
-	public function __construct() {
-
-	}
-
-	public static function instance() {
-		if ( null == self::$instance ) {
-			self::$instance = new self;
-		}
-
-		return self::$instance;
-	}
-
-	public static function settings_data( $data ) {
+	public static function save_setting_data( $data ) {
 
 		$posttype = $data['posttype'];
+		$item_ids = $data['itemIds'];
 
-		print_r( $data );
+		update_option(Content_Restriction::$options, $data, true );
 
-		wp_die();
+		// $options = get_option( Content_Restriction::$options, array() );
+		// self::$options = $options;
+
+		// print_r( $data );
+	}
+
+	protected function sanitize() {
+		//
 	}
 }
 
-Update::instance();
+new Update;
