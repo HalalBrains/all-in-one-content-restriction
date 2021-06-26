@@ -59,7 +59,7 @@ class Query {
 
 	public static function get_posts( $exclude_ids = array(), $include_ids = array() ) {
 
-		$args = array( 'fields' => 'ids' );
+		$args = array( 'fields' => 'ids', 'numberposts' => -1 );
 
 		if ( ! empty( $exclude_ids ) ) {
 			$args['exclude'] = $exclude_ids;

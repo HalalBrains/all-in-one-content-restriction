@@ -5,10 +5,10 @@
 
 		formSubmission: function () {
 
-			var posttype = $('#post-type').val();
-
-
 			$(document).on('click', '#heymehedi-submit', function () {
+
+				var restrictionWise = $('#restriction-wise').val();
+				var posttype = $('#post-type').val();
 
 				var itemIds = [];
 
@@ -17,7 +17,7 @@
 					itemIds.push(itemId)
 				});
 
-				console.log(itemIds);
+				// console.log(itemIds);
 
 				$.post(
 					heymehedi_object.ajaxurl,
@@ -25,6 +25,7 @@
 						"action": "content_restriction_update_settings",
 						"posttype": posttype,
 						"itemIds": itemIds,
+						"restrictionWise": restrictionWise,
 					}, function (data) {
 						console.log(data);
 					}
@@ -71,8 +72,8 @@
 			$.post(
 				heymehedi_object.ajaxurl,
 				{
-					"action": "content_restriction_wise",
-					"restriction-wise": 'category',
+					"action": "content_restriction_wise_on_load",
+					// "restriction-wise": 'category',
 					"type": "not-selected",
 				}, function (data) {
 					$('#heymehedi-items_table_body').html(data);
@@ -83,7 +84,7 @@
 				heymehedi_object.ajaxurl,
 				{
 					"action": "content_restriction_wise_selected",
-					"restriction-wise": "category",
+					// "restriction-wise": "category",
 					"type": "selected",
 				}, function (data) {
 					$('#heymehedi-selected_items_table_body').html(data);
@@ -112,9 +113,6 @@
 				var content = $(this).parent();
 
 				$('#heymehedi-selected_items_table_body').prepend(content);
-
-
-
 				$('#heymehedi-selected_items_table_body .dashicons-before').removeClass('dashicons-plus-alt2');
 				$('#heymehedi-selected_items_table_body .dashicons-before').addClass('dashicons-minus');
 			});
@@ -147,7 +145,7 @@
 	});
 
 	$(window).on('load', function () {
-		heymehedi.itemsOnLoad();
+		// heymehedi.itemsOnLoad();
 	});
 
 })(jQuery);
