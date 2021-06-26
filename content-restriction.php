@@ -37,12 +37,12 @@ class Content_Restriction {
 	}
 
 	public function includes() {
-		require_once self::$base_dir . '/inc/helper.php';
-		require_once self::$base_dir . '/inc/controller.php';
-		require_once self::$base_dir . '/inc/scripts.php';
-		require_once self::$base_dir . '/inc/query.php';
-		require_once self::$base_dir . '/inc/form.php';
-		require_once self::$base_dir . '/inc/update.php';
+		require_once self::$base_dir . '/includes/classes/class-helper.php';
+		require_once self::$base_dir . '/includes/classes/class-controller.php';
+		require_once self::$base_dir . '/includes/classes/class-scripts.php';
+
+		require_once self::$base_dir . '/includes/model/query.php';
+		require_once self::$base_dir . '/includes/model/update.php';
 	}
 
 	public function get_data() {

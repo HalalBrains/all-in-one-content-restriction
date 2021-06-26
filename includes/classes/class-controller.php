@@ -45,7 +45,7 @@ class Controller {
 	}
 
 	public function menu_page() {
-		Form::instance()->render();
+		Helper::get_template_part('menu-page');
 	}
 
 	// Ajax

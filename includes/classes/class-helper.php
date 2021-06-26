@@ -8,9 +8,15 @@
 namespace HeyMehedi\Content_Restriction;
 
 class Helper {
-	
+
 	private static function get_file_uri( $path ) {
 		$file = WP_PLUGIN_URL . '/content-restriction' . $path;
+
+		return $file;
+	}
+
+	private static function get_file_dir() {
+		$file = WP_PLUGIN_DIR . '/content-restriction';
 
 		return $file;
 	}
@@ -38,4 +44,22 @@ class Helper {
 
 		return self::get_file_uri( $path );
 	}
+
+	public static function get_template_part( $template, $args = array() ) {
+
+		if ( is_array( $args ) ) {
+			extract( $args );
+		}
+
+		$template = '/templates/' . $template . '.php';
+
+		$file = self::get_file_dir() . $template;
+
+		// if ( file_exists( self::get_file_dir() . $template ) ) {
+		// 	$file = self::get_file_dir() . $template;
+		// }
+
+		require $file;
+	}
+
 }
