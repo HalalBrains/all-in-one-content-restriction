@@ -9,7 +9,6 @@
 
 				var restrictionWise = $('#restriction-wise').val();
 				var posttype = $('#post-type').val();
-
 				var itemIds = [];
 
 				$('#heymehedi-selected_items_table_body tr').each(function (index, element) {
@@ -47,7 +46,7 @@
 					heymehedi_object.ajaxurl,
 					{
 						"action": "content_restriction_wise",
-						"restriction-wise": restrictionWise,
+						"restrictionWise": restrictionWise,
 					}, function (data) {
 						$('#heymehedi-items_table_body').html(data);
 					}
@@ -57,7 +56,7 @@
 					heymehedi_object.ajaxurl,
 					{
 						"action": "content_restriction_wise_selected",
-						"restriction-wise": restrictionWise,
+						"restrictionWise": restrictionWise,
 					}, function (data) {
 						$('#heymehedi-selected_items_table_body').html(data);
 					}

@@ -7,18 +7,22 @@
 
 namespace HeyMehedi\Content_Restriction;
 
-use HeyMehedi\Content_Restriction;
+use HeyMehedi\Content_Restriction\Settings;
 
 class Controller {
 
 	protected static $instance = null;
+	private $settings;
 
 	public function __construct() {
 		// add_filter( 'the_title', array( $this, 'filter_the_title' ), 10, 2 );
 		// add_filter( 'get_the_excerpt', array( $this, 'filter_the_excerpt' ), 11, 2 );
 
+		$this->settings = Settings::get_settings();
+
 		add_action( 'admin_menu', array( $this, 'admin_menu' ) );
 		add_action( 'wp_ajax_content_restriction_update_settings', array( $this, 'wp_ajax_content_restriction_update_settings' ) );
+
 		add_action( 'wp_ajax_content_restriction_wise', array( $this, 'wp_ajax_content_restriction_wise' ) );
 		add_action( 'wp_ajax_content_restriction_wise_selected', array( $this, 'wp_ajax_content_restriction_wise_selected' ) );
 
@@ -45,18 +49,7 @@ class Controller {
 	}
 
 	public function menu_page() {
-		Helper::get_template_part( 'menu-page' );
-		$settings = Content_Restriction::$options;
-		print_r( $settings );
-	}
-
-	public static function get_settings() {
-		$options                      = Content_Restriction::$options;
-		$settings['post_type']        = isset( $options['posttype'] ) ? $options['posttype'] : 'post';
-		$settings['restriction_wise'] = isset( $options['restrictionWise'] ) ? $options['restrictionWise'] : 'category';
-		$settings['selected_items']   = isset( $options['itemIds'] ) ? $options['itemIds'] : array();
-
-		return $settings;
+		Helper::get_template_part( 'menu-page', $this->settings );
 	}
 
 	// Ajax
@@ -67,35 +60,34 @@ class Controller {
 
 	public function wp_ajax_content_restriction_wise() {
 
-		$settings         = self::get_settings();
-		$exclude_ids      = $settings['selected_items'];
-		$restriction_wise = $_POST['restriction-wise'];
-		$icon             = 'dashicons-plus-alt2';
-		
+		$restriction_wise  = $_POST['restrictionWise'];
+		$exclude_ids_index = $restriction_wise . '_ids';
+		$icon              = 'dashicons-plus-alt2';
+		$settings          = $this->settings;
+		$exclude_ids       = $settings[$exclude_ids_index];
+
 		echo Helper::display_items( $restriction_wise, $icon, $exclude_ids );
-		
 		wp_die();
 
+		return;
 	}
 
 	public function wp_ajax_content_restriction_wise_selected() {
 
-		$settings       = self::get_settings();
-		$selected_items = $settings['selected_items'];
+		$restriction_wise     = $_POST['restrictionWise'];
+		$selected_items_index = $restriction_wise . '_ids';
+		$icon                 = 'dashicons-minus';
+		$settings             = $this->settings;
+		$selected_items       = $settings[$selected_items_index];
 
 		if ( empty( $selected_items ) ) {
+			echo Helper::get_not_found_html();
 			wp_die();
-
-			return;
 		}
 
-		$restriction_wise = $_POST['restriction-wise'];
-		$icon             = 'dashicons-minus';
-		
 		echo Helper::display_items( $restriction_wise, $icon, array(), $selected_items );
-	
-		wp_die();
 
+		wp_die();
 	}
 
 }

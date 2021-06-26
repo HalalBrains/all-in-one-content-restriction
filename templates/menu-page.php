@@ -5,11 +5,8 @@
  * @version 1.0
  */
 
-use HeyMehedi\Content_Restriction\Controller;
 use HeyMehedi\Content_Restriction\Helper;
-
-$settings = Controller::get_settings();
-
+$active_wise_index = $args['active_wise_index'];
 ?>
 <div class="container-fluid">
 
@@ -28,16 +25,16 @@ $settings = Controller::get_settings();
 				<div class="row">
 
 					<div class="col-md-6">
-						
+
 						<label for="post-type" class="form-label"><?php esc_attr_e( 'Post Type', 'content-restriction' );?></label>
 						<select class="form-select form-control" id="post-type" name="post-type">
-							<option value="post" <?php selected( 'post' == $settings['post_type'] ); ?> ><?php esc_attr_e( 'Post', 'content-restriction' );?></option>
+							<option value="post" <?php selected( 'post' == $args['post_type'] );?> ><?php esc_attr_e( 'Post', 'content-restriction' );?></option>
 						</select>
 
 						<label for="restriction-wise" class="form-label"><?php esc_attr_e( 'Restriction Wise', 'content-restriction' );?></label>
 						<select class="form-select form-control" id="restriction-wise" name="restriction-wise">
-							<option value="category" <?php selected( 'category' == $settings['restriction_wise'] ); ?>><?php esc_attr_e( 'Category', 'content-restriction' );?></option>
-							<option value="single-post" <?php selected( 'single-post' == $settings['restriction_wise'] ); ?>><?php esc_attr_e( 'Single Post', 'content-restriction' );?></option>
+							<option value="category" <?php selected( 'category' == $args['restriction_wise'] );?>><?php esc_attr_e( 'Category', 'content-restriction' );?></option>
+							<option value="single_post" <?php selected( 'single_post' == $args['restriction_wise'] );?>><?php esc_attr_e( 'Single Post', 'content-restriction' );?></option>
 						</select>
 
 						<label for="heymehedi-search_bar" class="form-label"><?php esc_attr_e( 'Type the title or ID', 'content-restriction' );?></label>
@@ -59,7 +56,7 @@ $settings = Controller::get_settings();
 
 								<tbody id="heymehedi-items_table_body">
 
-									<?php echo Helper::display_items( $settings['restriction_wise'], 'dashicons-plus-alt2', $settings['selected_items'] ); ?>
+									<?php echo Helper::display_items( $args['restriction_wise'], 'dashicons-plus-alt2',$args[$active_wise_index] ); ?>
 
 								</tbody>
 
@@ -92,7 +89,7 @@ $settings = Controller::get_settings();
 
 								<tbody id="heymehedi-selected_items_table_body">
 
-									<?php echo Helper::display_items( $settings['restriction_wise'], 'dashicons-minus', array(), $settings['selected_items'], true ); ?>
+									<?php echo Helper::display_items( $args['restriction_wise'], 'dashicons-minus', array(), $args[$active_wise_index], true ); ?>
 
 								</tbody>
 
@@ -115,3 +112,4 @@ $settings = Controller::get_settings();
 	</div>
 
 </div>
+

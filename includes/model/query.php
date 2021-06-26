@@ -9,10 +9,6 @@ namespace HeyMehedi\Content_Restriction;
 
 class Query {
 
-	// public function __construct() {
-	// 	add_action( 'pre_get_posts', array( $this, 'pre_get_posts' ), 10 );
-	// }
-
 	public static function get_registered_post_types() {
 		global $wp_post_types;
 
@@ -73,22 +69,5 @@ class Query {
 
 		return $posts;
 	}
-
-	// public static function pre_get_posts() {
-
-	// 	$categories           = get_categories();
-	// 	$hide_content_cat_ids = array();
-
-	// 	foreach ( $categories as $key => $value ) {
-	// 		$cat_id   = $categories[$key]->term_id;
-	// 		$cat_data = get_option( "taxonomy_$cat_id" );
-
-	// 		if ( $cat_data['show_content'] == 'yes' ) {
-	// 			array_push( $hide_content_cat_ids, $cat_id );
-	// 		}
-	// 	}
-
-	// 	return $hide_content_cat_ids;
-	// }
 
 }
