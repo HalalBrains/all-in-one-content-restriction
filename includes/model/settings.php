@@ -32,7 +32,7 @@ class Settings {
 	}
 
 	protected function sanitize() {
-		//
+		// i will sanitize before update data to settings. for testing skipping it....
 	}
 
 }

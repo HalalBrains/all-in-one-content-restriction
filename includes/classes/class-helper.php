@@ -58,14 +58,14 @@ class Helper {
 		require $file;
 	}
 
-	public static function get_not_found_html(){
+	public static function get_not_found_html() {
 		return sprintf( '<tr class="not-found"><td></td> <td></td> <td> %s </td> </tr>', __( 'Sorry, no items found!', 'content-restriction' ) );
 	}
 
 	public static function display_items( $restriction_wise, $icon, $exclude_ids = array(), $selected_items = array(), $no_items = false ) {
 
 		if ( $no_items && empty( $selected_items ) ) {
-			echo self::get_not_found_html();
+			return self::get_not_found_html();
 		}
 
 		if ( 'category' === $restriction_wise ) {
@@ -86,8 +86,8 @@ class Helper {
 
 		$items_list_html = '';
 
-		if ( ! $items_array ) {
-			echo self::get_not_found_html();
+		if ( empty( $items_array ) ) {
+			return self::get_not_found_html();
 		}
 
 		if ( 'category' === $wise_type ) {

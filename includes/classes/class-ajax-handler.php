@@ -9,18 +9,14 @@ namespace HeyMehedi\Content_Restriction;
 
 use HeyMehedi\Content_Restriction\Settings;
 
-class Controller {
+class Ajax_Handler {
 
 	protected static $instance = null;
 	private $settings;
 
 	public function __construct() {
-		// add_filter( 'the_title', array( $this, 'filter_the_title' ), 10, 2 );
-		// add_filter( 'get_the_excerpt', array( $this, 'filter_the_excerpt' ), 11, 2 );
-
 		$this->settings = Settings::get();
 
-		add_action( 'admin_menu', array( $this, 'admin_menu' ) );
 		add_action( 'wp_ajax_content_restriction_update_settings', array( $this, 'wp_ajax_content_restriction_update_settings' ) );
 
 		add_action( 'wp_ajax_content_restriction_wise', array( $this, 'wp_ajax_content_restriction_wise' ) );
@@ -36,23 +32,6 @@ class Controller {
 		return self::$instance;
 	}
 
-	public function admin_menu() {
-		add_menu_page(
-			__( 'Content Restriction', 'content-restriction' ),
-			__( 'Content Restriction', 'content-restriction' ),
-			'manage_options',
-			'content-restriction',
-			array( $this, 'menu_page' ),
-			'dashicons-privacy',
-			6
-		);
-	}
-
-	public function menu_page() {
-		Helper::get_template_part( 'menu-page', $this->settings );
-	}
-
-	// Ajax
 	public function wp_ajax_content_restriction_update_settings() {
 		Settings::set( $_POST );
 		wp_die();
@@ -92,4 +71,4 @@ class Controller {
 
 }
 
-Controller::instance();
+Ajax_Handler::instance();
