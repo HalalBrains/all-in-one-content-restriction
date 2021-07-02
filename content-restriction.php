@@ -40,6 +40,7 @@ class Content_Restriction {
 		require_once self::$base_dir . '/includes/classes/class-general.php';
 		require_once self::$base_dir . '/includes/classes/class-ajax-handler.php';
 		require_once self::$base_dir . '/includes/classes/class-scripts.php';
+		require_once self::$base_dir . '/includes/classes/class-hooks.php';
 	}
 
 	public function get_data() {

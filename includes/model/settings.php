@@ -16,6 +16,7 @@ class Settings {
 		$settings['category_ids']      = isset( $settings['category_ids'] ) ? $settings['category_ids'] : array();
 		$settings['single_post_ids']   = isset( $settings['single_post_ids'] ) ? $settings['single_post_ids'] : array();
 		$settings['active_wise_index'] = $settings['restriction_wise'] . '_ids';
+		$settings['role_names']        = isset( $settings['role_names'] ) ? $settings['role_names'] : array();
 
 		return $settings;
 	}
@@ -26,6 +27,7 @@ class Settings {
 		$ids_by_wise                  = $data['restrictionWise'] . '_ids';
 		$settings['post_type']        = $data['posttype'];
 		$settings['restriction_wise'] = $data['restrictionWise'];
+		$settings['role_names']       = $data['roleNames'];
 		$settings[$ids_by_wise]       = $ids;
 
 		update_option( 'heymehedi_content_restriction_settings', $settings, true );

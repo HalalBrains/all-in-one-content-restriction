@@ -6,6 +6,7 @@
  */
 
 use HeyMehedi\Content_Restriction\Helper;
+
 $active_wise_index = $args['active_wise_index'];
 ?>
 <div class="container-fluid">
@@ -56,7 +57,7 @@ $active_wise_index = $args['active_wise_index'];
 
 								<tbody id="heymehedi-items_table_body">
 
-									<?php echo Helper::display_items( $args['restriction_wise'], 'dashicons-plus-alt2',$args[$active_wise_index] ); ?>
+									<?php echo Helper::display_items( $args['restriction_wise'], 'dashicons-plus-alt2', $args[$active_wise_index] ); ?>
 
 								</tbody>
 
@@ -64,8 +65,12 @@ $active_wise_index = $args['active_wise_index'];
 
 						</div>
 
-						<label for="exampleFormControlInput1" class="form-label">Email address</label>
-						<input class="form-control" type="text" id="hide-content"  name="hide-content" value="<?php echo get_option( 'hide-content' ); ?>">
+
+						<label><?php esc_html_e( 'Who can see restricted content?', 'content-restriction' ); ?></label>
+						<select id="roles" class="form-control" multiple>
+							<?php echo Helper::get_role_names_html($args['role_names']); ?>
+						</select>
+
 
 					</div>
 

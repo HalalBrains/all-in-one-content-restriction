@@ -105,4 +105,18 @@ class Helper {
 		return $items_list_html;
 	}
 
+	public static function get_role_names_html( $selected_role_names ) {
+		$role_names      = Query::get_role_names();
+		$role_names_html = '';
+		foreach ( $role_names as $key => $value ) {
+			if ( in_array( $key, $selected_role_names ) ) {
+				$role_names_html .= sprintf( '<option value="%s" selected>%s</option>', $key, $value );
+			} else {
+				$role_names_html .= sprintf( '<option value="%s">%s</option>', $key, $value );
+			}
+		}
+
+		return $role_names_html;
+	}
+
 }

@@ -9,6 +9,7 @@
 
 				var restrictionWise = $('#restriction-wise').val();
 				var posttype = $('#post-type').val();
+				var roles = $('#roles').val();
 				var itemIds = [];
 
 				$('#heymehedi-selected_items_table_body tr').each(function (index, element) {
@@ -25,6 +26,7 @@
 						"posttype": posttype,
 						"itemIds": itemIds,
 						"restrictionWise": restrictionWise,
+						"roleNames": roles,
 					}, function (data) {
 						console.log(data);
 					}
@@ -132,6 +134,24 @@
 
 		},
 
+		select2js: function () {
+			$("#roles").select2({
+				placeholder: "Select roles",
+				allowClear: true
+			});
+
+			$("#post-type").select2({
+				placeholder: "",
+				allowClear: true
+			});
+
+			$("#restriction-wise").select2({
+				placeholder: "",
+				allowClear: true
+			});
+	
+		},
+
 	}
 
 
@@ -144,7 +164,7 @@
 	});
 
 	$(window).on('load', function () {
-		// heymehedi.itemsOnLoad();
+		heymehedi.select2js();
 	});
 
 })(jQuery);

@@ -15,15 +15,17 @@ class Query {
 		return array_keys( $wp_post_types );
 	}
 
-	public function get_role_names() {
+	public static function get_role_names() {
 
 		global $wp_roles;
 
 		if ( ! isset( $wp_roles ) ) {
 			$wp_roles = new \WP_Roles();
 		}
+		$role_names                  = $wp_roles->get_names();
+		$role_names['not_logged_in'] = __( 'Not logged in', 'content-restriction' );
 
-		return $wp_roles->get_names();
+		return $role_names;
 	}
 
 	public static function get_categories( $exclude_ids = array(), $include_ids = array() ) {
@@ -39,7 +41,7 @@ class Query {
 		if ( ! empty( $exclude_ids ) ) {
 			$args['exclude'] = $exclude_ids;
 		}
-		
+
 		if ( ! empty( $include_ids ) ) {
 			$args['include'] = $include_ids;
 		}
