@@ -12,7 +12,7 @@ use HeyMehedi\Content_Restriction\Settings;
 class Update {
 
 	public static function save_setting_data( $data ) {
-		$settings                     = Settings::get_settings();
+		$settings                     = Settings::get();
 		$ids                          = $data['itemIds'];
 		$ids_by_wise                  = $data['restrictionWise'] . '_ids';
 		$settings['post_type']        = $data['posttype'];

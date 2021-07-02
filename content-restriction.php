@@ -35,7 +35,7 @@ class Content_Restriction {
 	public function includes() {
 		require_once self::$base_dir . '/includes/model/settings.php';
 		require_once self::$base_dir . '/includes/model/query.php';
-		require_once self::$base_dir . '/includes/model/update.php';
+		// require_once self::$base_dir . '/includes/model/update.php';
 
 		require_once self::$base_dir . '/includes/classes/class-helper.php';
 		require_once self::$base_dir . '/includes/classes/class-controller.php';

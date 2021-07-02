@@ -18,7 +18,7 @@ class Controller {
 		// add_filter( 'the_title', array( $this, 'filter_the_title' ), 10, 2 );
 		// add_filter( 'get_the_excerpt', array( $this, 'filter_the_excerpt' ), 11, 2 );
 
-		$this->settings = Settings::get_settings();
+		$this->settings = Settings::get();
 
 		add_action( 'admin_menu', array( $this, 'admin_menu' ) );
 		add_action( 'wp_ajax_content_restriction_update_settings', array( $this, 'wp_ajax_content_restriction_update_settings' ) );
@@ -54,7 +54,7 @@ class Controller {
 
 	// Ajax
 	public function wp_ajax_content_restriction_update_settings() {
-		Update::save_setting_data( $_POST );
+		Settings::set( $_POST );
 		wp_die();
 	}
 

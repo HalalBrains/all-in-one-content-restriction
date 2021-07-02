@@ -9,7 +9,7 @@ namespace HeyMehedi\Content_Restriction;
 
 class Settings {
 
-	public static function get_settings() {
+	public static function get() {
 		$settings                      = get_option( 'heymehedi_content_restriction_settings' );
 		$settings['post_type']         = isset( $settings['post_type'] ) ? $settings['post_type'] : 'post';
 		$settings['restriction_wise']  = isset( $settings['restriction_wise'] ) ? $settings['restriction_wise'] : 'category';
@@ -18,6 +18,21 @@ class Settings {
 		$settings['active_wise_index'] = $settings['restriction_wise'] . '_ids';
 
 		return $settings;
+	}
+
+	public static function set( $data ) {
+		$settings                     = self::get();
+		$ids                          = $data['itemIds'];
+		$ids_by_wise                  = $data['restrictionWise'] . '_ids';
+		$settings['post_type']        = $data['posttype'];
+		$settings['restriction_wise'] = $data['restrictionWise'];
+		$settings[$ids_by_wise]       = $ids;
+
+		update_option( 'heymehedi_content_restriction_settings', $settings, true );
+	}
+
+	protected function sanitize() {
+		//
 	}
 
 }
