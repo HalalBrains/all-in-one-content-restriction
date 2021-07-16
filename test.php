@@ -1,4 +1,4 @@
 <?php
 print_r( unserialize( 
-	'a:4:{s:9:"post_type";s:4:"post";s:16:"restriction_wise";s:11:"single_post";s:15:"single_post_ids";a:10:{i:0;s:3:"202";i:1;s:3:"221";i:2;s:3:"210";i:3;s:3:"191";i:4;s:3:"199";i:5;s:3:"195";i:6;s:3:"207";i:7;s:3:"214";i:8;s:3:"188";i:9;s:3:"218";}s:12:"category_ids";a:15:{i:0;s:2:"29";i:1;s:2:"28";i:2;s:2:"37";i:3;s:2:"44";i:4;s:2:"45";i:5;s:2:"46";i:6;s:2:"47";i:7;s:2:"48";i:8;s:2:"38";i:9;s:2:"39";i:10;s:2:"40";i:11;s:2:"41";i:12;s:2:"42";i:13;s:2:"43";i:14;s:1:"1";}}'
+	'a:6:{s:9:"post_type";s:4:"post";s:16:"restriction_wise";s:8:"category";s:12:"category_ids";a:1:{i:0;s:1:"1";}s:15:"single_post_ids";a:0:{}s:17:"active_wise_index";s:12:"category_ids";s:10:"role_names";a:1:{i:0;s:13:"administrator";}}'
 	) );

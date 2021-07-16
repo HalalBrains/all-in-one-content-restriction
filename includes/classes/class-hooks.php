@@ -31,19 +31,40 @@ class Hooks {
 
 	public function the_title( $title, $id ) {
 
-		$current_user  = wp_get_current_user();
-		$can_see_users = $this->settings['role_names'];
+		if ( $this->users_can_see() ) {
+			return $title;
+		}
 
-		if ( has_category( $this->pre_get_posts(), $id ) ) {
-
-			if ( in_array( 'administrator', (array) $user->roles ) || in_array( 'member', (array) $user->roles ) ) {
-				return $title;
+		if ( 'category' === $this->settings['restriction_wise'] ) {
+			if ( has_category( $this->settings['category_ids'], $id ) ) {
+				return '<span class="blur">' . 'OOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOO' . '</span>';
 			}
+		}
 
-			return '<span class="blur">' . $title . '</span>';
+		if ( 'single_post' === $this->settings['restriction_wise'] ) {
+			if ( in_array( $id, $this->settings['single_post_ids'] ) ) {
+				return '<span class="blur">' . 'OOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOO' . '</span>';
+			}
 		}
 
 		return $title;
+	}
+
+	private function users_can_see() {
+
+		$current_user = wp_get_current_user();
+
+		if ( in_array( 'not_logged_in', $this->settings['role_names'] ) && ! is_user_logged_in() ) {
+			return true;
+		}
+
+		foreach ( $this->settings['role_names'] as $role ) {
+			if ( in_array( $role, $current_user->roles ) ) {
+				return true;
+			}
+		}
+
+		return false;
 	}
 }
 
