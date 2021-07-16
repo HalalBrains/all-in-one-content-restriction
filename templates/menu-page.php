@@ -71,6 +71,7 @@ $active_wise_index = $args['active_wise_index'];
 							<?php echo Helper::get_role_names_html($args['role_names']); ?>
 						</select>
 
+						<?php Helper::get_text_editor( $args['the_content'] ); ?>
 
 					</div>
 

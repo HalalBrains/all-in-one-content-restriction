@@ -10,6 +10,7 @@
 				var restrictionWise = $('#restriction-wise').val();
 				var posttype = $('#post-type').val();
 				var roles = $('#roles').val();
+				var textEditor = $('#heymehedi_custom_editor').val();
 				var itemIds = [];
 
 				$('#heymehedi-selected_items_table_body tr').each(function (index, element) {
@@ -25,6 +26,7 @@
 						"itemIds": itemIds,
 						"restrictionWise": restrictionWise,
 						"roleNames": roles,
+						"theContent": textEditor,
 					}, function (data) {
 						console.log(data);
 					}

@@ -17,6 +17,7 @@ class Settings {
 		$settings['single_post_ids']   = isset( $settings['single_post_ids'] ) ? $settings['single_post_ids'] : array();
 		$settings['active_wise_index'] = $settings['restriction_wise'] . '_ids';
 		$settings['role_names']        = isset( $settings['role_names'] ) ? $settings['role_names'] : array();
+		$settings['the_content']       = isset( $settings['the_content'] ) ? self::get_sanitizer( $settings['the_content'] ) : '';
 
 		return $settings;
 	}
@@ -28,13 +29,18 @@ class Settings {
 		$settings['post_type']        = $data['posttype'];
 		$settings['restriction_wise'] = $data['restrictionWise'];
 		$settings['role_names']       = $data['roleNames'];
+		$settings['the_content']      = self::set_sanitizer( $data['theContent'] );
 		$settings[$ids_by_wise]       = $ids;
 
 		update_option( 'heymehedi_content_restriction_settings', $settings, true );
 	}
 
-	protected function sanitize() {
-		// i will sanitize before update data to settings. for testing skipping it....
+	protected static function set_sanitizer( $data ) {
+		return sanitize_textarea_field( htmlentities( $data ) );
+	}
+
+	protected static function get_sanitizer( $data ) {
+		return stripslashes( wp_specialchars_decode( $data, ENT_QUOTES, 'UTF-8' ) );
 	}
 
 }

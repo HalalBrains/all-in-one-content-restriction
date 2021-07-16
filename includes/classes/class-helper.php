@@ -119,4 +119,15 @@ class Helper {
 		return $role_names_html;
 	}
 
+	public static function get_text_editor( $content = '' ) {
+		$editor_id = 'heymehedi_custom_editor';
+		$settings  = array(
+			'media_buttons' => false,
+			'textarea_rows' => 10,
+
+		);
+
+		return wp_editor( $content, $editor_id, $settings );
+	}
+
 }
