@@ -17,8 +17,6 @@
 					itemIds.push(itemId)
 				});
 
-				// console.log(itemIds);
-
 				$.post(
 					heymehedi_object.ajaxurl,
 					{
@@ -74,7 +72,6 @@
 				heymehedi_object.ajaxurl,
 				{
 					"action": "content_restriction_wise_on_load",
-					// "restriction-wise": 'category',
 					"type": "not-selected",
 				}, function (data) {
 					$('#heymehedi-items_table_body').html(data);
@@ -85,7 +82,6 @@
 				heymehedi_object.ajaxurl,
 				{
 					"action": "content_restriction_wise_selected",
-					// "restriction-wise": "category",
 					"type": "selected",
 				}, function (data) {
 					$('#heymehedi-selected_items_table_body').html(data);
@@ -139,17 +135,6 @@
 				placeholder: "Select roles",
 				allowClear: true
 			});
-
-			$("#post-type").select2({
-				placeholder: "",
-				allowClear: true
-			});
-
-			$("#restriction-wise").select2({
-				placeholder: "",
-				allowClear: true
-			});
-	
 		},
 
 	}
