@@ -19,8 +19,9 @@ class Content_Restriction {
 	public static $prefix;
 
 	public function __construct() {
+		add_action( 'plugins_loaded', array( $this, 'load_textdomain' ), 20 );
 
-		self::$base_dir = WP_PLUGIN_DIR . '/content-restriction';
+		self::$base_dir = plugin_dir_path( __FILE__ );
 		self::$inc_dir  = self::$base_dir . '/inc/';
 
 		$data             = $this->get_data();
