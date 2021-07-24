@@ -98,6 +98,9 @@ $active_wise_index = $args['active_wise_index'];
 							
 							<h4><?php echo esc_html( Strings::get()[109] ); ?></h4>
 
+							<label for="heymehedi-search_bar_selected" class="form-label"><?php echo esc_html( Strings::get()[104] ); ?></label>
+							<input id="heymehedi-search_bar_selected" type="text" class="form-control" placeholder="<?php echo esc_attr( Strings::get()[114] ); ?>">
+
 							<div id="heymehedi-selected_items-wrapper">
 
 								<table id="heymehedi-selected_items_table">

@@ -3,11 +3,6 @@ CSS INDEX
 ===================================
 #. Normalize and Defaults
 #. Header
-#. Footer
-#. Sidebar
-#. Banner
-#. Contents
-#. Comments
 ---------------------------------------*/
 
 #heymehedi-form table {
@@ -86,6 +81,13 @@ CSS INDEX
   overflow: auto;
 }
 
+#heymehedi-selected_items-wrapper {
+  position: relative;
+  height: auto;
+  max-height: 100vh; /* will use js to grab the height  */
+  overflow: auto;
+}
+
 #heymehedi-items_table {
   display: block;
 }
@@ -119,3 +121,16 @@ CSS INDEX
   background-color: #d1e4dd;
 
 }
+
+
+input#heymehedi-submit {
+  width: 100%;
+  font-size: 15px;
+  background: #d1e4dd;
+  color: #070606;
+  transition: .3s;
+  border: 0;
+  padding: 5px;
+}
+
+input#heymehedi-submit:hover {background: #bcdacf;}

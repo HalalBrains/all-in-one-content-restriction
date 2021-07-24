@@ -105,6 +105,16 @@
 
 			});
 
+			$("#heymehedi-search_bar_selected").on("keyup", function () {
+
+				var value = $(this).val().toLowerCase();
+
+				$("#heymehedi-selected_items_table_body tr").filter(function () {
+					$(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
+				});
+
+			});
+
 		},
 
 		addToSelectedTable: function () {
