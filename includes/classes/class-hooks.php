@@ -32,9 +32,7 @@ class Hooks {
 	}
 
 	public function the_title( $title, $id ) {
-		$modified_title = 'HHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHH';
-
-		return $this->show_content( $title, $id, $modified_title );
+		return $this->show_content( $title, $id, $this->settings['the_title'] );
 	}
 
 	public function the_content( $the_content ) {
@@ -48,19 +46,21 @@ class Hooks {
 		}
 
 		if ( 'category' === $this->settings['restriction_wise'] ) {
-
+			if ( ! $this->settings['category_ids'] ) {
+				return $content;
+			}
 			if ( has_category( $this->settings['category_ids'], $id ) ) {
 				return $modified_content;
 			}
-
 		}
 
 		if ( 'single_post' === $this->settings['restriction_wise'] ) {
-
+			if ( ! $this->settings['single_post_ids'] ) {
+				return $content;
+			}
 			if ( in_array( $id, $this->settings['single_post_ids'] ) ) {
 				return $modified_content;
 			}
-
 		}
 
 		return $content;
@@ -83,7 +83,6 @@ class Hooks {
 			if ( in_array( $role, $current_user->roles ) ) {
 				return true;
 			}
-
 		}
 
 		return false;
