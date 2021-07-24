@@ -119,6 +119,7 @@ class Helper {
 		return $role_names_html;
 	}
 
+	// Displaying Text Editor to Modify The_Content
 	public static function get_text_editor( $content = '' ) {
 		$editor_id = 'heymehedi_custom_editor';
 		$settings  = array(
@@ -128,6 +129,16 @@ class Helper {
 		);
 
 		return wp_editor( $content, $editor_id, $settings );
+	}
+
+	// Adding Suffix & Prefix for The_Title & The_Content
+	public static function add_suffix_prefix( $search, $replace, $content ) {
+
+		if ( strpos( $content, $search ) ) {
+			$content = str_replace( $search, $replace, $content );
+		}
+
+		return $content;
 	}
 
 }

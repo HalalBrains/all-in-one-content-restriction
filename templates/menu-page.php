@@ -77,10 +77,16 @@ $active_wise_index = $args['active_wise_index'];
 								<?php echo Helper::get_role_names_html($args['role_names']); ?>
 							</select>
 
-							<label for="heymehedi_custom_editor" class="form-label"><?php echo esc_html( Strings::get()[116] ); ?></label>
-							<input id="heymehedi_the_title" type="text" value="<?php echo $args['the_title'] ;?>" placeholder="Hello World" class="form-control">
+							<label for="heymehedi_custom_editor" class="form-label">
+								<?php echo esc_html( Strings::get()[116] ); ?>
+								<span class="heymehedi_helper_text" data-bs-toggle="tooltip" data-bs-placement="top" title="<?php echo esc_attr( Strings::get()[117] ); ?>"><?php esc_html_e( '?', 'content-restriction'); ?></span>
+							</label>
+							<input id="heymehedi_the_title" type="text" value="<?php echo $args['the_title'] ;?>" placeholder="<?php echo esc_html( Strings::get()[118] ); ?>" class="form-control">
 
-							<label for="heymehedi_custom_editor" class="form-label"><?php echo esc_html( Strings::get()[115] ); ?></label>
+							<label for="heymehedi_custom_editor" class="form-label">
+								<?php echo esc_html( Strings::get()[115] ); ?>
+								<span class="heymehedi_helper_text" data-bs-toggle="tooltip" data-bs-placement="top" title="<?php echo esc_attr( Strings::get()[119] ); ?>"><?php esc_html_e( '?', 'content-restriction'); ?></span>
+								</label>
 							<?php Helper::get_text_editor( $args['the_content'] ); ?>
 						
 						</div>

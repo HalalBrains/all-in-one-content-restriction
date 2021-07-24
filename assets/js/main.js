@@ -151,6 +151,13 @@
 			});
 		},
 
+		tooltip: function () {
+			var tooltipTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="tooltip"]'))
+			var tooltipList = tooltipTriggerList.map(function (tooltipTriggerEl) {
+				return new bootstrap.Tooltip(tooltipTriggerEl)
+			})
+		},
+
 	}
 
 
@@ -160,6 +167,7 @@
 		heymehedi.searchItems();
 		heymehedi.addToSelectedTable();
 		heymehedi.deleteFromSelectedTable();
+		heymehedi.tooltip();
 	});
 
 	$(window).on('load', function () {
@@ -167,3 +175,5 @@
 	});
 
 })(jQuery);
+
+

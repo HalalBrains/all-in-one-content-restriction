@@ -32,11 +32,19 @@ class Hooks {
 	}
 
 	public function the_title( $title, $id ) {
-		return $this->show_content( $title, $id, $this->settings['the_title'] );
+		if ( $this->settings['the_title'] ) {
+			return $this->show_content( $title, $id, Helper::add_suffix_prefix( '%%title%%', $title, $this->settings['the_title'], ) );
+		}
+
+		return $title;
 	}
 
 	public function the_content( $the_content ) {
-		return $this->show_content( $the_content, get_the_ID(), $this->settings['the_content'] );
+		if ( $this->settings['the_content'] ) {
+			return $this->show_content( $the_content, get_the_ID(), Helper::add_suffix_prefix( '%%content%%', $the_content, $this->settings['the_content'] ) );
+		}
+
+		return $the_content;
 	}
 
 	private function show_content( $content, $id, $modified_content ) {

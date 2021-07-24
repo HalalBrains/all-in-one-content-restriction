@@ -11,8 +11,7 @@ CSS INDEX
   width: 100%;
 }
 
-#heymehedi-form td,
-#heymehedi-form th {
+#heymehedi-form td, #heymehedi-form th {
   border: 1px solid #fff;
   text-align: left;
   padding: 8px;
@@ -43,7 +42,7 @@ CSS INDEX
   font-size: 15px !important;
 }
 
- .form-label {
+.form-label {
   width: 100%;
   font-size: 16px;
   display: block;
@@ -84,7 +83,8 @@ CSS INDEX
 #heymehedi-selected_items-wrapper {
   position: relative;
   height: auto;
-  max-height: 100vh; /* will use js to grab the height  */
+  max-height: 100vh;
+  /* will use js to grab the height  */
   overflow: auto;
 }
 
@@ -111,17 +111,13 @@ CSS INDEX
 } */
 
 .part1 {
-  margin-bottom: 50px;
+  margin-bottom: 30px;
 }
 
-.part1,
-.part2,
-.part3 {
+.part1, .part2, .part3 {
   padding: 15px;
   background-color: #d1e4dd;
-
 }
-
 
 input#heymehedi-submit {
   width: 100%;
@@ -133,4 +129,13 @@ input#heymehedi-submit {
   padding: 5px;
 }
 
-input#heymehedi-submit:hover {background: #bcdacf;}
+input#heymehedi-submit:hover {
+  background: #bcdacf;
+}
+
+.heymehedi_helper_text {
+  background: #000;
+  color: #fff;
+  padding: 1px 6px;
+  border-radius: 50%;
+}
