@@ -6,6 +6,7 @@
  */
 
 use HeyMehedi\Content_Restriction\Helper;
+use HeyMehedi\Content_Restriction\Strings;
 
 $active_wise_index = $args['active_wise_index'];
 ?>
@@ -17,7 +18,7 @@ $active_wise_index = $args['active_wise_index'];
 
 			<div class="heymehedi_setting_heading">
 
-				<h2><?php esc_html_e( 'Content Restriction', 'content-restriction' );?></h2>
+				<h2><?php echo esc_html( Strings::get()[100] ) ; ?></h2>
 
 			</div>
 
@@ -27,19 +28,19 @@ $active_wise_index = $args['active_wise_index'];
 
 					<div class="col-md-6">
 
-						<label for="post-type" class="form-label"><?php esc_attr_e( 'Post Type', 'content-restriction' );?></label>
+						<label for="post-type" class="form-label"><?php echo esc_html( Strings::get()[102] ); ?></label>
 						<select class="form-select form-control" id="post-type" name="post-type">
-							<option value="post" <?php selected( 'post' == $args['post_type'] );?> ><?php esc_attr_e( 'Post', 'content-restriction' );?></option>
+							<option value="post" <?php selected( 'post' == $args['post_type'] );?> ><?php echo esc_html( Strings::get()[111] ); ?></option>
 						</select>
 
-						<label for="restriction-wise" class="form-label"><?php esc_attr_e( 'Restriction Wise', 'content-restriction' );?></label>
+						<label for="restriction-wise" class="form-label"><?php echo esc_html( Strings::get()[103] ); ?></label>
 						<select class="form-select form-control" id="restriction-wise" name="restriction-wise">
-							<option value="category" <?php selected( 'category' == $args['restriction_wise'] );?>><?php esc_attr_e( 'Category', 'content-restriction' );?></option>
-							<option value="single_post" <?php selected( 'single_post' == $args['restriction_wise'] );?>><?php esc_attr_e( 'Single Post', 'content-restriction' );?></option>
+							<option value="category" <?php selected( 'category' == $args['restriction_wise'] );?>><?php echo esc_html( Strings::get()[112] ); ?></option>
+							<option value="single_post" <?php selected( 'single_post' == $args['restriction_wise'] );?>><?php echo esc_html( Strings::get()[113] ); ?></option>
 						</select>
 
-						<label for="heymehedi-search_bar" class="form-label"><?php esc_attr_e( 'Type the title or ID', 'content-restriction' );?></label>
-						<input id="heymehedi-search_bar" type="text" class="form-control" placeholder="<?php esc_html_e( 'Search Here...', 'content-restriction' )?>">
+						<label for="heymehedi-search_bar" class="form-label"><?php echo esc_html( Strings::get()[104] ); ?></label>
+						<input id="heymehedi-search_bar" type="text" class="form-control" placeholder="<?php echo esc_attr( Strings::get()[114] ); ?>">
 
 						<div id="heymehedi-items-wrapper">
 
@@ -48,9 +49,9 @@ $active_wise_index = $args['active_wise_index'];
 								<thead>
 
 									<tr>
-										<th class="text-center"><?php esc_html_e( 'Add', 'content-restriction' );?></th>
-										<th class="text-center"><?php esc_html_e( 'ID', 'content-restriction' );?></th>
-										<th><?php esc_html_e( 'Title', 'content-restriction' );?></th>
+										<th class="text-center"><?php echo esc_html( Strings::get()[105] ); ?></th>
+										<th class="text-center"><?php echo esc_html( Strings::get()[106] ); ?></th>
+										<th><?php echo esc_html( Strings::get()[107] ); ?></th>
 									</tr>
 
 								</thead>
@@ -66,7 +67,7 @@ $active_wise_index = $args['active_wise_index'];
 						</div>
 
 
-						<label><?php esc_html_e( 'Who can see restricted content?', 'content-restriction' ); ?></label>
+						<label><?php echo esc_html( Strings::get()[110] ); ?></label>
 						<select id="roles" class="form-control" multiple>
 							<?php echo Helper::get_role_names_html($args['role_names']); ?>
 						</select>
@@ -77,7 +78,7 @@ $active_wise_index = $args['active_wise_index'];
 
 					<div class="col-md-6">
 
-						<h2>Selected Items</h2>
+						<h2><?php echo esc_html( Strings::get()[109] ); ?></h2>
 
 						<div id="heymehedi-selected_items-wrapper">
 
@@ -86,9 +87,9 @@ $active_wise_index = $args['active_wise_index'];
 								<thead>
 
 									<tr>
-										<th class="text-center"><?php esc_html_e( 'Add', 'content-restriction' );?></th>
-										<th class="text-center"><?php esc_html_e( 'ID', 'content-restriction' );?></th>
-										<th><?php esc_html_e( 'Title', 'content-restriction' );?></th>
+										<th class="text-center"><?php echo esc_html( Strings::get()[105] ); ?></th>
+										<th class="text-center"><?php echo esc_html( Strings::get()[106] ); ?></th>
+										<th><?php echo esc_html( Strings::get()[107] ); ?></th>
 									</tr>
 
 								</thead>
@@ -106,7 +107,7 @@ $active_wise_index = $args['active_wise_index'];
 					</div>
 
 					<p class="submit">
-						<input type="submit" name="submit" id="heymehedi-submit" class="button button-primary" value="<?php esc_attr_e( 'Save Changes', 'content-restriction' )?>">
+						<input type="submit" name="submit" id="heymehedi-submit" class="button button-primary" value="<?php echo esc_attr( Strings::get()[108] ); ?>">
 					</p>
 
 				</div>

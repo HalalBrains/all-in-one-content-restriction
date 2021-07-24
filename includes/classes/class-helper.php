@@ -59,7 +59,7 @@ class Helper {
 	}
 
 	public static function get_not_found_html() {
-		return sprintf( '<tr class="not-found"><td></td> <td></td> <td> %s </td> </tr>', __( 'Sorry, no items found!', 'content-restriction' ) );
+		return sprintf( '<tr class="not-found"><td></td> <td></td> <td> %s </td> </tr>', esc_html( Strings::get()[101] ) );
 	}
 
 	public static function display_items( $restriction_wise, $icon, $exclude_ids = array(), $selected_items = array(), $no_items = false ) {
