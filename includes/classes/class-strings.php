@@ -36,6 +36,8 @@ class Strings {
 			112 => __( 'Category', 'content-restriction' ),
 			113 => __( 'Single Post', 'content-restriction' ),
 			114 => __( 'Search Here...', 'content-restriction' ),
+			115 => __( 'Modify The Content', 'content-restriction' ),
+			116 => __( 'Modify The Title', 'content-restriction' ),
 		);
 	}
 }

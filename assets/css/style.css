@@ -10,20 +10,21 @@ CSS INDEX
 #. Comments
 ---------------------------------------*/
 
-table {
+#heymehedi-form table {
   font-family: arial, sans-serif;
   border-collapse: collapse;
   width: 100%;
 }
 
-td, th {
-  border: 1px solid #dddddd;
+#heymehedi-form td,
+#heymehedi-form th {
+  border: 1px solid #fff;
   text-align: left;
   padding: 8px;
 }
 
-tr:nth-child(even) {
-  background-color: #dddddd;
+#heymehedi-form tr:nth-child(even) {
+  background-color: #fff;
 }
 
 /* .container {
@@ -47,7 +48,7 @@ tr:nth-child(even) {
   font-size: 15px !important;
 }
 
-.form-label {
+ .form-label {
   width: 100%;
   font-size: 16px;
   display: block;
@@ -80,7 +81,8 @@ tr:nth-child(even) {
 
 #heymehedi-items-wrapper {
   position: relative;
-  height: 400px;
+  height: auto;
+  max-height: 400px;
   overflow: auto;
 }
 
@@ -105,3 +107,15 @@ tr:nth-child(even) {
 .table-wrapper-scroll-y {
   display: block;
 } */
+
+.part1 {
+  margin-bottom: 50px;
+}
+
+.part1,
+.part2,
+.part3 {
+  padding: 15px;
+  background-color: #d1e4dd;
+
+}

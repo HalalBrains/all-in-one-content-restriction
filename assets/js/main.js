@@ -11,6 +11,7 @@
 				var posttype = $('#post-type').val();
 				var roles = $('#roles').val();
 				var textEditor = $('#heymehedi_custom_editor').val();
+				var theTitle = $('#heymehedi_the_title').val();
 				var itemIds = [];
 
 				$('#heymehedi-selected_items_table_body tr').each(function (index, element) {
@@ -27,6 +28,7 @@
 						"restrictionWise": restrictionWise,
 						"roleNames": roles,
 						"theContent": textEditor,
+						"theTitle": theTitle,
 					}, function (data) {
 						console.log(data);
 					}
