@@ -83,7 +83,7 @@ CSS INDEX
 #heymehedi-selected_items-wrapper {
   position: relative;
   height: auto;
-  max-height: 100vh;
+  /* max-height: 100vh; */
   /* will use js to grab the height  */
   overflow: auto;
 }
@@ -110,11 +110,12 @@ CSS INDEX
   display: block;
 } */
 
-.part1 {
+.part2 {
+  margin-top: 30px;
   margin-bottom: 30px;
 }
 
-.part1, .part2, .part3 {
+.part1, .part2, .part3, .part4 {
   padding: 15px;
   background-color: #d1e4dd;
 }
@@ -138,4 +139,17 @@ input#heymehedi-submit:hover {
   color: #fff;
   padding: 1px 6px;
   border-radius: 50%;
+}
+
+#wp-heymehedi_custom_editor-editor-tools .wp-editor-tabs {
+  float: left;
+}
+
+#heymehedi_custom_editor-tmce {
+  margin: 0;
+}
+
+#heymehedi_custom_editor-html {
+  margin: 0;
+  margin-left: 5px;
 }

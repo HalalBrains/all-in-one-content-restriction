@@ -77,11 +77,21 @@ $active_wise_index = $args['active_wise_index'];
 								<?php echo Helper::get_role_names_html($args['role_names']); ?>
 							</select>
 
+						</div>
+
+						<div class="part3">
+
 							<label for="heymehedi_custom_editor" class="form-label">
 								<?php echo esc_html( Strings::get()[116] ); ?>
 								<span class="heymehedi_helper_text" data-bs-toggle="tooltip" data-bs-placement="top" title="<?php echo esc_attr( Strings::get()[117] ); ?>"><?php esc_html_e( '?', 'content-restriction'); ?></span>
 							</label>
 							<input id="heymehedi_the_title" type="text" value="<?php echo $args['the_title'] ;?>" placeholder="<?php echo esc_html( Strings::get()[118] ); ?>" class="form-control">
+
+							<label for="heymehedi_custom_editor" class="form-label">
+								<?php echo esc_html( Strings::get()[116] ); ?>
+								<span class="heymehedi_helper_text" data-bs-toggle="tooltip" data-bs-placement="top" title="<?php echo esc_attr( Strings::get()[117] ); ?>"><?php esc_html_e( '?', 'content-restriction'); ?></span>
+							</label>
+							<textarea class="form-control" name="heymehedi_the_excerpt" id="heymehedi_the_excerpt" rows="5"></textarea>
 
 							<label for="heymehedi_custom_editor" class="form-label">
 								<?php echo esc_html( Strings::get()[115] ); ?>
@@ -91,7 +101,6 @@ $active_wise_index = $args['active_wise_index'];
 						
 						</div>
 
-
 						<p class="submit">
 							<input type="submit" name="submit" id="heymehedi-submit" class="button button-primary" value="<?php echo esc_attr( Strings::get()[108] ); ?>">
 						</p>
@@ -100,7 +109,7 @@ $active_wise_index = $args['active_wise_index'];
 
 					<div class="col-md-6">
 
-						<div class="part3">
+						<div class="part4">
 							
 							<h4><?php echo esc_html( Strings::get()[109] ); ?></h4>
 
@@ -114,7 +123,7 @@ $active_wise_index = $args['active_wise_index'];
 									<thead>
 
 										<tr>
-											<th class="text-center"><?php echo esc_html( Strings::get()[105] ); ?></th>
+											<th class="text-center"><?php echo esc_html( Strings::get()[120] ); ?></th>
 											<th class="text-center"><?php echo esc_html( Strings::get()[106] ); ?></th>
 											<th><?php echo esc_html( Strings::get()[107] ); ?></th>
 										</tr>

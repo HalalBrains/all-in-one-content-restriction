@@ -41,6 +41,7 @@ class Strings {
 			117 => __( 'Use the_title by %%title%%', 'content-restriction' ),
 			118 => __( 'Prefix %%title%% Suffix', 'content-restriction' ),
 			119 => __( 'Use the_content by %%content%%', 'content-restriction' ),
+			120 => __( 'Drop', 'content-restriction' ),
 		);
 	}
 }

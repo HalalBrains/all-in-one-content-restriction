@@ -158,6 +158,14 @@
 			})
 		},
 
+		setHeight: function () {
+			let part1 = document.querySelector('.part1').clientHeight;
+			let part2 = document.querySelector('.part2').clientHeight;
+			let part3 = document.querySelector('.part3').clientHeight;
+			let height = ( part1 + part2 + part3 ) - 110;
+			$('#heymehedi-selected_items-wrapper').css('max-height', height + 'px' );
+		},
+
 	}
 
 
@@ -172,6 +180,8 @@
 
 	$(window).on('load', function () {
 		heymehedi.select2js();
+		heymehedi.setHeight();
+
 	});
 
 })(jQuery);
