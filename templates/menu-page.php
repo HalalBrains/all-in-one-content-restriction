@@ -10,17 +10,11 @@ use HeyMehedi\Content_Restriction\Strings;
 
 $active_wise_index = $args['active_wise_index'];
 ?>
-<div class="container-fluid">
+<div class="container-fluid mt-5">
 
 	<div class="row">
 
 		<div class="col-md-12">
-
-			<div class="heymehedi_setting_heading">
-
-				<h2><?php echo esc_html( Strings::get()[100] ) ; ?></h2>
-
-			</div>
 
 			<form id="heymehedi-form" method="post">
 
@@ -29,6 +23,12 @@ $active_wise_index = $args['active_wise_index'];
 					<div class="col-md-6">
 
 						<div class="part1">
+
+							<div class="heymehedi_setting_heading">
+
+								<h1><?php echo esc_html( Strings::get()[100] ) ; ?></h1>
+
+							</div>
 
 							<label for="post-type" class="form-label"><?php echo esc_html( Strings::get()[102] ); ?></label>
 							<select class="form-select form-control" id="post-type" name="post-type">
