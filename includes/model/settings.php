@@ -5,12 +5,12 @@
  * @version 1.0
  */
 
-namespace HeyMehedi\Content_Restriction;
+namespace HeyMehedi\Exlac;
 
 class Settings {
 
 	public static function get() {
-		$settings                      = get_option( 'heymehedi_content_restriction_settings' );
+		$settings                      = get_option( 'heymehedi_exlac_settings' );
 		$settings['post_type']         = isset( $settings['post_type'] ) ? $settings['post_type'] : 'post';
 		$settings['restriction_wise']  = isset( $settings['restriction_wise'] ) ? $settings['restriction_wise'] : 'category';
 		$settings['category_ids']      = isset( $settings['category_ids'] ) ? $settings['category_ids'] : array();
@@ -34,7 +34,7 @@ class Settings {
 		$settings['the_content']      = self::before_set( $data['theContent'] );
 		$settings[$ids_by_wise]       = $ids;
 
-		update_option( 'heymehedi_content_restriction_settings', $settings, true );
+		update_option( 'heymehedi_exlac_settings', $settings, true );
 	}
 
 	protected static function before_set( $data ) {

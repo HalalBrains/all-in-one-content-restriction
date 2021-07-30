@@ -5,9 +5,9 @@
  * @version 1.0
  */
 
-namespace HeyMehedi\Content_Restriction;
+namespace HeyMehedi\Exlac;
 
-use HeyMehedi\Content_Restriction;
+use HeyMehedi\Exlac;
 
 class Scripts {
 
@@ -15,7 +15,7 @@ class Scripts {
 	protected static $instance = null;
 
 	public function __construct() {
-		$this->version = Content_Restriction::$version;
+		$this->version = Exlac::$version;
 		add_action( 'admin_enqueue_scripts', array( $this, 'register_scripts' ), 12 );
 		add_action( 'admin_enqueue_scripts', array( $this, 'enqueue_scripts' ), 15 );
 	}
@@ -36,11 +36,11 @@ class Scripts {
 		wp_register_style( 'select2', '//cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css', array(), $this->version );
 		// wp_register_script( 'bootstrap', Helper::get_vendor_assets( 'bootstrap/js/bootstrap.bundle.min.js' ), array( 'jquery' ), $this->version, true );
 		
-		wp_register_style( 'content-restriction-main',  Helper::get_css( 'style' ), array(), $this->version );
+		wp_register_style( 'exlac-main',  Helper::get_css( 'style' ), array(), $this->version );
 		
 		// Main js
 		wp_register_script( 'select2','//cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js', array( 'jquery' ), $this->version, true );
-		wp_register_script( 'content-restriction-main', Helper::get_js( 'main' ), array( 'jquery' ), $this->version, true );
+		wp_register_script( 'exlac-main', Helper::get_js( 'main' ), array( 'jquery' ), $this->version, true );
 	}
 
 	public function enqueue_scripts() {
@@ -51,10 +51,10 @@ class Scripts {
 		wp_enqueue_script( 'select2' );
 
 		// plugin JS
-		wp_enqueue_script( 'content-restriction-main' );
-		wp_localize_script( 'content-restriction-main', 'heymehedi_object', array( 'ajaxurl' => admin_url( 'admin-ajax.php' ) ) );
+		wp_enqueue_script( 'exlac-main' );
+		wp_localize_script( 'exlac-main', 'heymehedi_object', array( 'ajaxurl' => admin_url( 'admin-ajax.php' ) ) );
 		
-		wp_enqueue_style( 'content-restriction-main' );
+		wp_enqueue_style( 'exlac-main' );
 
 
 	}

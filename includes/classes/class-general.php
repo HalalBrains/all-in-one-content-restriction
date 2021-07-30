@@ -5,9 +5,9 @@
  * @version 1.0
  */
 
-namespace HeyMehedi\Content_Restriction;
+namespace HeyMehedi\Exlac;
 
-use HeyMehedi\Content_Restriction\Settings;
+use HeyMehedi\Exlac\Settings;
 
 class General {
 
@@ -30,7 +30,7 @@ class General {
 			esc_html( Strings::get()[100] ),
 			esc_html( Strings::get()[100] ),
 			'manage_options',
-			'content-restriction',
+			'exlac',
 			array( $this, 'menu_page' ),
 			'dashicons-privacy',
 			6

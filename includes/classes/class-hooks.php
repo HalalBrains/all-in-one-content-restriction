@@ -5,9 +5,9 @@
  * @version 1.0
  */
 
-namespace HeyMehedi\Content_Restriction;
+namespace HeyMehedi\Exlac;
 
-use HeyMehedi\Content_Restriction\Settings;
+use HeyMehedi\Exlac\Settings;
 
 class Hooks {
 

@@ -5,18 +5,18 @@
  * @version 1.0
  */
 
-namespace HeyMehedi\Content_Restriction;
+namespace HeyMehedi\Exlac;
 
 class Helper {
 
 	private static function get_file_uri( $path ) {
-		$file = WP_PLUGIN_URL . '/content-restriction' . $path;
+		$file = WP_PLUGIN_URL . '/exlac' . $path;
 
 		return $file;
 	}
 
 	private static function get_file_dir() {
-		$file = WP_PLUGIN_DIR . '/content-restriction';
+		$file = WP_PLUGIN_DIR . '/exlac';
 
 		return $file;
 	}

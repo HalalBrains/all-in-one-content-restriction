@@ -22,7 +22,7 @@
 				$.post(
 					heymehedi_object.ajaxurl,
 					{
-						"action": "content_restriction_update_settings",
+						"action": "exlac_update_settings",
 						"posttype": posttype,
 						"itemIds": itemIds,
 						"restrictionWise": restrictionWise,
@@ -49,7 +49,7 @@
 				$.post(
 					heymehedi_object.ajaxurl,
 					{
-						"action": "content_restriction_wise",
+						"action": "exlac_wise",
 						"restrictionWise": restrictionWise,
 					}, function (data) {
 						$('#heymehedi-items_table_body').html(data);
@@ -59,7 +59,7 @@
 				$.post(
 					heymehedi_object.ajaxurl,
 					{
-						"action": "content_restriction_wise_selected",
+						"action": "exlac_wise_selected",
 						"restrictionWise": restrictionWise,
 					}, function (data) {
 						$('#heymehedi-selected_items_table_body').html(data);
@@ -75,7 +75,7 @@
 			$.post(
 				heymehedi_object.ajaxurl,
 				{
-					"action": "content_restriction_wise_on_load",
+					"action": "exlac_wise_on_load",
 					"type": "not-selected",
 				}, function (data) {
 					$('#heymehedi-items_table_body').html(data);
@@ -85,7 +85,7 @@
 			$.post(
 				heymehedi_object.ajaxurl,
 				{
-					"action": "content_restriction_wise_selected",
+					"action": "exlac_wise_selected",
 					"type": "selected",
 				}, function (data) {
 					$('#heymehedi-selected_items_table_body').html(data);

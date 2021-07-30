@@ -5,7 +5,7 @@
  * @version 1.0
  */
 
-namespace HeyMehedi\Content_Restriction;
+namespace HeyMehedi\Exlac;
 
 trait Actions_Trait {
 

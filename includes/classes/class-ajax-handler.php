@@ -5,9 +5,9 @@
  * @version 1.0
  */
 
-namespace HeyMehedi\Content_Restriction;
+namespace HeyMehedi\Exlac;
 
-use HeyMehedi\Content_Restriction\Settings;
+use HeyMehedi\Exlac\Settings;
 
 class Ajax_Handler {
 
@@ -17,10 +17,10 @@ class Ajax_Handler {
 	public function __construct() {
 		$this->settings = Settings::get();
 
-		add_action( 'wp_ajax_content_restriction_update_settings', array( $this, 'wp_ajax_content_restriction_update_settings' ) );
+		add_action( 'wp_ajax_exlac_update_settings', array( $this, 'wp_ajax_exlac_update_settings' ) );
 
-		add_action( 'wp_ajax_content_restriction_wise', array( $this, 'wp_ajax_content_restriction_wise' ) );
-		add_action( 'wp_ajax_content_restriction_wise_selected', array( $this, 'wp_ajax_content_restriction_wise_selected' ) );
+		add_action( 'wp_ajax_exlac_wise', array( $this, 'wp_ajax_exlac_wise' ) );
+		add_action( 'wp_ajax_exlac_wise_selected', array( $this, 'wp_ajax_exlac_wise_selected' ) );
 
 	}
 
@@ -32,12 +32,12 @@ class Ajax_Handler {
 		return self::$instance;
 	}
 
-	public function wp_ajax_content_restriction_update_settings() {
+	public function wp_ajax_exlac_update_settings() {
 		Settings::set( $_POST );
 		wp_die();
 	}
 
-	public function wp_ajax_content_restriction_wise() {
+	public function wp_ajax_exlac_wise() {
 
 		$restriction_wise  = $_POST['restrictionWise'];
 		$exclude_ids_index = $restriction_wise . '_ids';
@@ -51,7 +51,7 @@ class Ajax_Handler {
 		return;
 	}
 
-	public function wp_ajax_content_restriction_wise_selected() {
+	public function wp_ajax_exlac_wise_selected() {
 
 		$restriction_wise     = $_POST['restrictionWise'];
 		$selected_items_index = $restriction_wise . '_ids';
