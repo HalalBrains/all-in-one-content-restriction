@@ -19,8 +19,8 @@ class Ajax_Handler {
 
 		add_action( 'wp_ajax_exlac_update_settings', array( $this, 'wp_ajax_exlac_update_settings' ) );
 
-		add_action( 'wp_ajax_exlac_wise', array( $this, 'wp_ajax_exlac_wise' ) );
-		add_action( 'wp_ajax_exlac_wise_selected', array( $this, 'wp_ajax_exlac_wise_selected' ) );
+		add_action( 'wp_ajax_exlac_in', array( $this, 'wp_ajax_exlac_in' ) );
+		add_action( 'wp_ajax_exlac_in_selected', array( $this, 'wp_ajax_exlac_in_selected' ) );
 
 	}
 
@@ -37,24 +37,24 @@ class Ajax_Handler {
 		wp_die();
 	}
 
-	public function wp_ajax_exlac_wise() {
+	public function wp_ajax_exlac_in() {
 
-		$restriction_wise  = $_POST['restrictionWise'];
-		$exclude_ids_index = $restriction_wise . '_ids';
+		$restrict_in  = $_POST['restrictionIn'];
+		$exclude_ids_index = $restrict_in . '_ids';
 		$icon              = 'dashicons-plus-alt2';
 		$settings          = $this->settings;
 		$exclude_ids       = $settings[$exclude_ids_index];
 
-		echo Helper::display_items( $restriction_wise, $icon, $exclude_ids );
+		echo Helper::display_items( $restrict_in, $icon, $exclude_ids );
 		wp_die();
 
 		return;
 	}
 
-	public function wp_ajax_exlac_wise_selected() {
+	public function wp_ajax_exlac_in_selected() {
 
-		$restriction_wise     = $_POST['restrictionWise'];
-		$selected_items_index = $restriction_wise . '_ids';
+		$restrict_in     = $_POST['restrictionIn'];
+		$selected_items_index = $restrict_in . '_ids';
 		$icon                 = 'dashicons-minus';
 		$settings             = $this->settings;
 		$selected_items       = $settings[$selected_items_index];
@@ -64,7 +64,7 @@ class Ajax_Handler {
 			wp_die();
 		}
 
-		echo Helper::display_items( $restriction_wise, $icon, array(), $selected_items );
+		echo Helper::display_items( $restrict_in, $icon, array(), $selected_items );
 
 		wp_die();
 	}

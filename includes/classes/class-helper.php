@@ -62,19 +62,19 @@ class Helper {
 		return sprintf( '<tr class="not-found"><td></td> <td></td> <td> %s </td> </tr>', esc_html( Strings::get()[101] ) );
 	}
 
-	public static function display_items( $restriction_wise, $icon, $exclude_ids = array(), $selected_items = array(), $no_items = false ) {
+	public static function display_items( $restrict_in, $icon, $exclude_ids = array(), $selected_items = array(), $no_items = false ) {
 
 		if ( $no_items && empty( $selected_items ) ) {
 			return self::get_not_found_html();
 		}
 
-		if ( 'category' === $restriction_wise ) {
+		if ( 'category' === $restrict_in ) {
 			$items_array = Query::get_categories( $exclude_ids, $selected_items );
 
 			return self::get_items_html( $items_array, $icon, 'category' );
 		}
 
-		if ( 'single_post' === $restriction_wise ) {
+		if ( 'single_post' === $restrict_in ) {
 			$items_array = Query::get_posts( $exclude_ids, $selected_items );
 
 			return self::get_items_html( $items_array, $icon, 'single_post' );
@@ -82,7 +82,7 @@ class Helper {
 
 	}
 
-	public static function get_items_html( $items_array, $icon, $wise_type ) {
+	public static function get_items_html( $items_array, $icon, $in_type ) {
 
 		$items_list_html = '';
 
@@ -90,13 +90,13 @@ class Helper {
 			return self::get_not_found_html();
 		}
 
-		if ( 'category' === $wise_type ) {
+		if ( 'category' === $in_type ) {
 			foreach ( $items_array->terms as $id => $name ) {
 				$items_list_html .= sprintf( '<tr data-item-id="%s"><td class="text-center action"><div class="dashicons-before %s" aria-hidden="true"></div></td><td class="text-center">%s</td><td>%s</td></tr>', $id, $icon, $id, $name );
 			}
 		}
 
-		if ( 'single_post' === $wise_type ) {
+		if ( 'single_post' === $in_type ) {
 			foreach ( $items_array as $id ) {
 				$items_list_html .= sprintf( '<tr data-item-id="%s"><td class="text-center action"><div class="dashicons-before %s" aria-hidden="true"></div></td><td class="text-center">%s</td><td>%s</td></tr>', $id, $icon, $id, get_post( $id )->post_title );
 			}

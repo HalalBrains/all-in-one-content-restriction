@@ -24,7 +24,7 @@ class Strings {
 			100 => __( 'Content Restriction', 'exlac' ),
 			101 => __( 'Sorry, no items found!', 'exlac' ),
 			102 => __( 'Type', 'exlac' ),
-			103 => __( ' Restrict in', 'exlac' ),
+			103 => __( 'Restrict in', 'exlac' ),
 			104 => __( 'Type the title or ID', 'exlac' ),
 			105 => __( 'Add', 'exlac' ),
 			106 => __( 'ID', 'exlac' ),

@@ -8,7 +8,7 @@
 use HeyMehedi\Exlac\Helper;
 use HeyMehedi\Exlac\Strings;
 
-$active_wise_index = $args['active_wise_index'];
+$active_ids = $args['active_ids'];
 ?>
 <div class="container-fluid mt-5">
 
@@ -35,10 +35,10 @@ $active_wise_index = $args['active_wise_index'];
 								<option value="post" <?php selected( 'post' == $args['post_type'] );?> ><?php echo esc_html( Strings::get()[111] ); ?></option>
 							</select>
 
-							<label for="restriction-wise" class="form-label"><?php echo esc_html( Strings::get()[103] ); ?></label>
-							<select class="form-select form-control" id="restriction-wise" name="restriction-wise">
-								<option value="category" <?php selected( 'category' == $args['restriction_wise'] );?>><?php echo esc_html( Strings::get()[112] ); ?></option>
-								<option value="single_post" <?php selected( 'single_post' == $args['restriction_wise'] );?>><?php echo esc_html( Strings::get()[113] ); ?></option>
+							<label for="restriction-in" class="form-label"><?php echo esc_html( Strings::get()[103] ); ?></label>
+							<select class="form-select form-control" id="restriction-in" name="restriction-in">
+								<option value="category" <?php selected( 'category' == $args['restrict_in'] );?>><?php echo esc_html( Strings::get()[112] ); ?></option>
+								<option value="single_post" <?php selected( 'single_post' == $args['restrict_in'] );?>><?php echo esc_html( Strings::get()[113] ); ?></option>
 							</select>
 
 							<label for="heymehedi-search_bar" class="form-label"><?php echo esc_html( Strings::get()[104] ); ?></label>
@@ -60,7 +60,7 @@ $active_wise_index = $args['active_wise_index'];
 
 									<tbody id="heymehedi-items_table_body">
 
-										<?php echo Helper::display_items( $args['restriction_wise'], 'dashicons-plus-alt2', $args[$active_wise_index] ); ?>
+										<?php echo Helper::display_items( $args['restrict_in'], 'dashicons-plus-alt2', $args[$active_ids] ); ?>
 
 									</tbody>
 
@@ -132,7 +132,7 @@ $active_wise_index = $args['active_wise_index'];
 
 									<tbody id="heymehedi-selected_items_table_body">
 
-										<?php echo Helper::display_items( $args['restriction_wise'], 'dashicons-minus', array(), $args[$active_wise_index], true ); ?>
+										<?php echo Helper::display_items( $args['restrict_in'], 'dashicons-minus', array(), $args[$active_ids], true ); ?>
 
 									</tbody>
 

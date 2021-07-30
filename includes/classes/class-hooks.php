@@ -53,7 +53,7 @@ class Hooks {
 			return $content;
 		}
 
-		if ( 'category' === $this->settings['restriction_wise'] ) {
+		if ( 'category' === $this->settings['restrict_in'] ) {
 			if ( ! $this->settings['category_ids'] ) {
 				return $content;
 			}
@@ -62,7 +62,7 @@ class Hooks {
 			}
 		}
 
-		if ( 'single_post' === $this->settings['restriction_wise'] ) {
+		if ( 'single_post' === $this->settings['restrict_in'] ) {
 			if ( ! $this->settings['single_post_ids'] ) {
 				return $content;
 			}

@@ -7,7 +7,7 @@
 
 			$(document).on('click', '#heymehedi-submit', function () {
 
-				var restrictionWise = $('#restriction-wise').val();
+				var restrictionIn = $('#restriction-in').val();
 				var posttype = $('#post-type').val();
 				var roles = $('#roles').val();
 				var textEditor = $('#heymehedi_custom_editor').val();
@@ -25,7 +25,7 @@
 						"action": "exlac_update_settings",
 						"posttype": posttype,
 						"itemIds": itemIds,
-						"restrictionWise": restrictionWise,
+						"restrictionIn": restrictionIn,
 						"roleNames": roles,
 						"theContent": textEditor,
 						"theTitle": theTitle,
@@ -42,15 +42,15 @@
 
 		itemsQuery: function () {
 
-			$(document).on('click', '#restriction-wise', function () {
+			$(document).on('click', '#restriction-in', function () {
 
-				var restrictionWise = $(this).val();
+				var restrictionIn = $(this).val();
 
 				$.post(
 					heymehedi_object.ajaxurl,
 					{
-						"action": "exlac_wise",
-						"restrictionWise": restrictionWise,
+						"action": "exlac_in",
+						"restrictionIn": restrictionIn,
 					}, function (data) {
 						$('#heymehedi-items_table_body').html(data);
 					}
@@ -59,8 +59,8 @@
 				$.post(
 					heymehedi_object.ajaxurl,
 					{
-						"action": "exlac_wise_selected",
-						"restrictionWise": restrictionWise,
+						"action": "exlac_in_selected",
+						"restrictionIn": restrictionIn,
 					}, function (data) {
 						$('#heymehedi-selected_items_table_body').html(data);
 					}
@@ -75,7 +75,7 @@
 			$.post(
 				heymehedi_object.ajaxurl,
 				{
-					"action": "exlac_wise_on_load",
+					"action": "exlac_in_on_load",
 					"type": "not-selected",
 				}, function (data) {
 					$('#heymehedi-items_table_body').html(data);
@@ -85,7 +85,7 @@
 			$.post(
 				heymehedi_object.ajaxurl,
 				{
-					"action": "exlac_wise_selected",
+					"action": "exlac_in_selected",
 					"type": "selected",
 				}, function (data) {
 					$('#heymehedi-selected_items_table_body').html(data);
