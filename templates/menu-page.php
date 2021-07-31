@@ -8,7 +8,7 @@
 use HeyMehedi\Exlac\Helper;
 use HeyMehedi\Exlac\Strings;
 
-$active_ids = $args['active_ids'];
+$active_index = $args['active_index'];
 ?>
 <div class="container-fluid mt-5">
 
@@ -60,7 +60,7 @@ $active_ids = $args['active_ids'];
 
 									<tbody id="heymehedi-items_table_body">
 
-										<?php echo Helper::display_items( $args['restrict_in'], 'dashicons-plus-alt2', $args[$active_ids] ); ?>
+										<?php echo Helper::display_items( $args['restrict_in'], 'dashicons-plus-alt2', $args[$active_index] ); ?>
 
 									</tbody>
 
@@ -132,7 +132,7 @@ $active_ids = $args['active_ids'];
 
 									<tbody id="heymehedi-selected_items_table_body">
 
-										<?php echo Helper::display_items( $args['restrict_in'], 'dashicons-minus', array(), $args[$active_ids], true ); ?>
+										<?php echo Helper::display_items( $args['restrict_in'], 'dashicons-minus', array(), $args[$active_index], true ); ?>
 
 									</tbody>
 

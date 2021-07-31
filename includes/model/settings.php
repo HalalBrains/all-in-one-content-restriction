@@ -10,29 +10,29 @@ namespace HeyMehedi\Exlac;
 class Settings {
 
 	public static function get() {
-		$settings                      = get_option( 'exlac_settings' );
-		$settings['post_type']         = isset( $settings['post_type'] ) ? $settings['post_type'] : 'post';
-		$settings['restrict_in']  = isset( $settings['restrict_in'] ) ? $settings['restrict_in'] : 'category';
-		$settings['category_ids']      = isset( $settings['category_ids'] ) ? $settings['category_ids'] : array();
-		$settings['single_post_ids']   = isset( $settings['single_post_ids'] ) ? $settings['single_post_ids'] : array();
-		$settings['active_ids'] = $settings['restrict_in'] . '_ids';
-		$settings['role_names']        = isset( $settings['role_names'] ) ? $settings['role_names'] : array();
-		$settings['the_content']       = isset( $settings['the_content'] ) ? self::before_get( $settings['the_content'] ) : '';
-		$settings['the_title']         = isset( $settings['the_title'] ) ? $settings['the_title'] : '';
+		$settings                    = get_option( 'exlac_settings' );
+		$settings['post_type']       = isset( $settings['post_type'] ) ? $settings['post_type'] : 'post';
+		$settings['restrict_in']     = isset( $settings['restrict_in'] ) ? $settings['restrict_in'] : 'category';
+		$settings['category_ids']    = isset( $settings['category_ids'] ) ? $settings['category_ids'] : array();
+		$settings['single_post_ids'] = isset( $settings['single_post_ids'] ) ? $settings['single_post_ids'] : array();
+		$settings['active_index']    = $settings['restrict_in'] . '_ids';
+		$settings['role_names']      = isset( $settings['role_names'] ) ? $settings['role_names'] : array();
+		$settings['the_content']     = isset( $settings['the_content'] ) ? self::before_get( $settings['the_content'] ) : '';
+		$settings['the_title']       = isset( $settings['the_title'] ) ? $settings['the_title'] : '';
 
 		return $settings;
 	}
 
 	public static function set( $data ) {
-		$settings                     = self::get();
-		$ids                          = $data['itemIds'];
-		$ids_by_in                  = $data['restrictionIn'] . '_ids';
-		$settings['post_type']        = $data['posttype'];
+		$settings                = self::get();
+		$ids                     = $data['itemIds'];
+		$ids_by_in               = $data['restrictionIn'] . '_ids';
+		$settings['post_type']   = $data['posttype'];
 		$settings['restrict_in'] = $data['restrictionIn'];
-		$settings['role_names']       = $data['roleNames'];
-		$settings['the_title']        = $data['theTitle'];
-		$settings['the_content']      = self::before_set( $data['theContent'] );
-		$settings[$ids_by_in]       = $ids;
+		$settings['role_names']  = $data['roleNames'];
+		$settings['the_title']   = $data['theTitle'];
+		$settings['the_content'] = self::before_set( $data['theContent'] );
+		$settings[$ids_by_in]    = $ids;
 
 		update_option( 'exlac_settings', $settings, true );
 	}

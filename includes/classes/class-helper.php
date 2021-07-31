@@ -7,24 +7,20 @@
 
 namespace HeyMehedi\Exlac;
 
+use HeyMehedi\Exlac;
+
 class Helper {
 
 	private static function get_file_uri( $path ) {
-		$file = WP_PLUGIN_URL . '/exlac' . $path;
+		$file = Exlac::$base_url . $path;
 
 		return $file;
 	}
 
 	private static function get_file_dir() {
-		$file = WP_PLUGIN_DIR . '/exlac';
+		$file = Exlac::$base_dir;
 
 		return $file;
-	}
-
-	public static function get_img( $filename ) {
-		$path = '/assets/img/' . $filename;
-
-		return self::get_file_uri( $path );
 	}
 
 	public static function get_css( $filename ) {
@@ -131,7 +127,7 @@ class Helper {
 		return wp_editor( $content, $editor_id, $settings );
 	}
 
-	// Adding Suffix & Prefix for The_Title & The_Content
+	// Adding Suffix & Prefix for The_Title, The_Excerpt & The_Content
 	public static function add_suffix_prefix( $search, $replace, $content ) {
 
 		if ( strpos( $content, $search ) ) {

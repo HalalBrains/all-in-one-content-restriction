@@ -13,6 +13,7 @@ namespace HeyMehedi;
 class Exlac {
 
 	public static $base_dir;
+	public static $base_url;
 	public static $inc_dir;
 	public static $version;
 	public static $author_uri;
@@ -20,9 +21,11 @@ class Exlac {
 	public $plugin = 'exlac';
 
 	public function __construct() {
+		
 		add_action( 'plugins_loaded', array( $this, 'load_textdomain' ), 20 );
 
 		self::$base_dir   = plugin_dir_path( __FILE__ );
+		self::$base_url   = plugin_dir_url( __FILE__ );
 		self::$inc_dir    = self::$base_dir . '/inc/';
 		$data             = $this->get_data();
 		self::$version    = $data['Version'];

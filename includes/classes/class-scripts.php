@@ -30,32 +30,31 @@ class Scripts {
 	}
 
 	public function register_scripts() {
-		
+
 		// Bootstrap
 		wp_register_style( 'bootstrap', '//cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css', array(), $this->version );
 		wp_register_style( 'select2', '//cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css', array(), $this->version );
 		// wp_register_script( 'bootstrap', Helper::get_vendor_assets( 'bootstrap/js/bootstrap.bundle.min.js' ), array( 'jquery' ), $this->version, true );
-		
-		wp_register_style( 'exlac-main',  Helper::get_css( 'style' ), array(), $this->version );
-		
+
+		wp_register_style( 'exlac-main', Helper::get_css( 'style' ), array(), $this->version );
+
 		// Main js
-		wp_register_script( 'select2','//cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js', array( 'jquery' ), $this->version, true );
+		wp_register_script( 'select2', '//cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js', array( 'jquery' ), $this->version, true );
 		wp_register_script( 'exlac-main', Helper::get_js( 'main' ), array( 'jquery' ), $this->version, true );
 	}
 
 	public function enqueue_scripts() {
 		// Bootstrap
 		wp_enqueue_style( 'bootstrap' );
-		
+
 		wp_enqueue_style( 'select2' );
 		wp_enqueue_script( 'select2' );
 
 		// plugin JS
 		wp_enqueue_script( 'exlac-main' );
 		wp_localize_script( 'exlac-main', 'heymehedi_object', array( 'ajaxurl' => admin_url( 'admin-ajax.php' ) ) );
-		
-		wp_enqueue_style( 'exlac-main' );
 
+		wp_enqueue_style( 'exlac-main' );
 
 	}
 
