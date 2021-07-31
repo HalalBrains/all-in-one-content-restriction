@@ -32,7 +32,7 @@ class Hooks {
 
 	public function the_title( $title, $id ) {
 		if ( $this->settings['the_title'] ) {
-			return $this->show_content( $title, $id, Helper::add_suffix_prefix( '%%title%%', $title, $this->settings['the_title'], ) );
+			return $this->show_content( $title, $id, Helper::add_suffix_prefix( '%%title%%', $title, $this->settings['the_title'] ) );
 		}
 
 		return $title;
@@ -41,7 +41,7 @@ class Hooks {
 	public function the_excerpt( $the_excerpt, $post ) {
 
 		if ( $this->settings['the_excerpt'] ) {
-			return $this->show_content( $the_excerpt, $post->ID, Helper::add_suffix_prefix( '%%excerpt%%', $the_excerpt, $this->settings['the_excerpt'], ) );
+			return $this->show_content( $the_excerpt, $post->ID, Helper::add_suffix_prefix( '%%excerpt%%', $the_excerpt, $this->settings['the_excerpt'] ) );
 		}
 
 		return $the_excerpt;
