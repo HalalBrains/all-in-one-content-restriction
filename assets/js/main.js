@@ -168,13 +168,6 @@
 			});
 		},
 
-		tooltip: function () {
-			var tooltipTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="tooltip"]'))
-			var tooltipList = tooltipTriggerList.map(function (tooltipTriggerEl) {
-				return new bootstrap.Tooltip(tooltipTriggerEl)
-			})
-		},
-
 		setHeight: function () {
 			let part1 = document.querySelector('.part1').clientHeight;
 			let part2 = document.querySelector('.part2').clientHeight;
@@ -192,7 +185,6 @@
 		heymehedi.searchItems();
 		heymehedi.addToSelectedTable();
 		heymehedi.deleteFromSelectedTable();
-		heymehedi.tooltip();
 	});
 
 	$(window).on('load', function () {
