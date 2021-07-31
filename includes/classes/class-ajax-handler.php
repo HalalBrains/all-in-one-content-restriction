@@ -18,10 +18,9 @@ class Ajax_Handler {
 		$this->settings = Settings::get();
 
 		add_action( 'wp_ajax_exlac_update_settings', array( $this, 'wp_ajax_exlac_update_settings' ) );
-
-		add_action( 'wp_ajax_exlac_in', array( $this, 'wp_ajax_exlac_in' ) );
-		add_action( 'wp_ajax_exlac_in_selected', array( $this, 'wp_ajax_exlac_in_selected' ) );
-
+		add_action( 'wp_ajax_exlac_show_not_selected_items', array( $this, 'wp_ajax_exlac_show_not_selected_items' ) );
+		add_action( 'wp_ajax_exlac_show_selected_items', array( $this, 'wp_ajax_exlac_show_selected_items' ) );
+		add_action( 'wp_ajax_exlac_not_found_html', array( $this, 'wp_ajax_exlac_not_found_html' ) );
 	}
 
 	public static function instance() {
@@ -37,9 +36,8 @@ class Ajax_Handler {
 		wp_die();
 	}
 
-	public function wp_ajax_exlac_in() {
-
-		$restrict_in  = $_POST['restrictionIn'];
+	public function wp_ajax_exlac_show_not_selected_items() {
+		$restrict_in       = $_POST['restrictionIn'];
 		$exclude_ids_index = $restrict_in . '_ids';
 		$icon              = 'dashicons-plus-alt2';
 		$settings          = $this->settings;
@@ -51,9 +49,8 @@ class Ajax_Handler {
 		return;
 	}
 
-	public function wp_ajax_exlac_in_selected() {
-
-		$restrict_in     = $_POST['restrictionIn'];
+	public function wp_ajax_exlac_show_selected_items() {
+		$restrict_in          = $_POST['restrictionIn'];
 		$selected_items_index = $restrict_in . '_ids';
 		$icon                 = 'dashicons-minus';
 		$settings             = $this->settings;
@@ -66,6 +63,11 @@ class Ajax_Handler {
 
 		echo Helper::display_items( $restrict_in, $icon, array(), $selected_items );
 
+		wp_die();
+	}
+
+	public function wp_ajax_exlac_not_found_html() {
+		echo Helper::get_not_found_html();
 		wp_die();
 	}
 
