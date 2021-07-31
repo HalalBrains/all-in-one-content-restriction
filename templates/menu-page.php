@@ -105,6 +105,8 @@ $active_index = $args['active_index'];
 							<input type="submit" name="submit" id="heymehedi-submit" class="button button-primary" value="<?php echo esc_attr( Strings::get()[108] ); ?>">
 						</p>
 
+						<p id="heymehedi-msg"></p>
+
 					</div>
 
 					<div class="col-md-6">

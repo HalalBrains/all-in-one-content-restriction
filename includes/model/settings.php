@@ -36,7 +36,13 @@ class Settings {
 		$settings['the_content'] = self::before_set( $data['theContent'] );
 		$settings[$ids_by_in]    = $ids;
 
-		update_option( 'exlac_settings', $settings, true );
+		$is_submitted = update_option( 'exlac_settings', $settings, true );
+
+		if ( $is_submitted ) {
+			echo Strings::get()[123];
+		} else {
+			echo Strings::get()[124];
+		}
 	}
 
 	protected static function before_set( $data ) {

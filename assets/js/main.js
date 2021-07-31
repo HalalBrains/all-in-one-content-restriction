@@ -32,8 +32,17 @@
 						"theExcerpt": theExcerpt,
 						"theContent": textEditor,
 					}, function (data) {
-						console.log(data);
-					}
+						if (data) {
+							$('#heymehedi-msg').html(data);
+							window.setTimeout(function () {
+								$('#heymehedi-msg').html('');
+
+							}, 5000);
+						} else {
+							$('#heymehedi-msg').html('Something went wrong');
+						}
+
+					},
 				);
 
 				return false;
