@@ -17,8 +17,9 @@ class Settings {
 		$settings['single_post_ids'] = isset( $settings['single_post_ids'] ) ? $settings['single_post_ids'] : array();
 		$settings['active_index']    = $settings['restrict_in'] . '_ids';
 		$settings['role_names']      = isset( $settings['role_names'] ) ? $settings['role_names'] : array();
-		$settings['the_content']     = isset( $settings['the_content'] ) ? self::before_get( $settings['the_content'] ) : '';
 		$settings['the_title']       = isset( $settings['the_title'] ) ? $settings['the_title'] : '';
+		$settings['the_excerpt']     = isset( $settings['the_excerpt'] ) ? $settings['the_excerpt'] : '';
+		$settings['the_content']     = isset( $settings['the_content'] ) ? self::before_get( $settings['the_content'] ) : '';
 
 		return $settings;
 	}
@@ -31,6 +32,7 @@ class Settings {
 		$settings['restrict_in'] = $data['restrictionIn'];
 		$settings['role_names']  = $data['roleNames'];
 		$settings['the_title']   = $data['theTitle'];
+		$settings['the_excerpt'] = $data['theExcerpt'];
 		$settings['the_content'] = self::before_set( $data['theContent'] );
 		$settings[$ids_by_in]    = $ids;
 

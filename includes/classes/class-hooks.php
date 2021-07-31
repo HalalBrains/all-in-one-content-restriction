@@ -19,8 +19,7 @@ class Hooks {
 
 		add_filter( 'the_title', array( $this, 'the_title' ), 10, 2 );
 		add_filter( 'the_content', array( $this, 'the_content' ) );
-
-		// add_filter( 'get_the_excerpt', array( $this, 'filter_the_excerpt' ), 11, 2 );
+		add_filter( 'get_the_excerpt', array( $this, 'the_excerpt' ), 11, 2 );
 	}
 
 	public static function instance() {
@@ -37,6 +36,15 @@ class Hooks {
 		}
 
 		return $title;
+	}
+
+	public function the_excerpt( $the_excerpt, $post ) {
+
+		if ( $this->settings['the_excerpt'] ) {
+			return $this->show_content( $the_excerpt, $post->ID, Helper::add_suffix_prefix( '%%excerpt%%', $the_excerpt, $this->settings['the_excerpt'], ) );
+		}
+
+		return $the_excerpt;
 	}
 
 	public function the_content( $the_content ) {

@@ -85,13 +85,13 @@ $active_index = $args['active_index'];
 								<?php echo esc_html( Strings::get()[116] ); ?>
 								<span class="heymehedi_helper_text" data-bs-toggle="tooltip" data-bs-placement="top" title="<?php echo esc_attr( Strings::get()[117] ); ?>"><?php esc_html_e( '?', 'exlac'); ?></span>
 							</label>
-							<input id="heymehedi_the_title" type="text" value="<?php echo $args['the_title'] ;?>" placeholder="<?php echo esc_html( Strings::get()[118] ); ?>" class="form-control">
+							<input id="heymehedi_the_title" type="text" value="<?php echo wp_kses_post( $args['the_title'] ); ?>" placeholder="<?php echo esc_html( Strings::get()[118] ); ?>" class="form-control">
 
 							<label for="heymehedi_custom_editor" class="form-label">
 								<?php echo esc_html( Strings::get()[116] ); ?>
 								<span class="heymehedi_helper_text" data-bs-toggle="tooltip" data-bs-placement="top" title="<?php echo esc_attr( Strings::get()[117] ); ?>"><?php esc_html_e( '?', 'exlac'); ?></span>
 							</label>
-							<textarea class="form-control" name="heymehedi_the_excerpt" id="heymehedi_the_excerpt" rows="5"></textarea>
+							<textarea class="form-control" name="heymehedi_the_excerpt" id="heymehedi_the_excerpt" rows="5"><?php echo wp_kses_post( $args['the_excerpt'] ); ?></textarea>
 
 							<label for="heymehedi_custom_editor" class="form-label">
 								<?php echo esc_html( Strings::get()[115] ); ?>
