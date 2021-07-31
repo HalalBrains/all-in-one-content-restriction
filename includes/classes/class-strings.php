@@ -42,6 +42,9 @@ class Strings {
 			118 => __( 'Prefix %%title%% Suffix', 'exlac' ),
 			119 => __( 'Use the_content by %%content%%', 'exlac' ),
 			120 => __( 'Drop', 'exlac' ),
+			121 => __( 'Replace Default Excerpt', 'exlac' ),
+			122 => __( 'Use the_content by %%excerpt%%', 'exlac' ),
+
 		);
 	}
 }
