@@ -81,29 +81,6 @@
 
 		},
 
-		itemsOnLoad: function () {
-
-			$.post(
-				heymehedi_object.ajaxurl,
-				{
-					"action": "exlac_in_on_load",
-					"type": "not-selected",
-				}, function (data) {
-					$('#heymehedi-items_table_body').html(data);
-				}
-			);
-
-			$.post(
-				heymehedi_object.ajaxurl,
-				{
-					"action": "exlac_in_selected",
-					"type": "selected",
-				}, function (data) {
-					$('#heymehedi-selected_items_table_body').html(data);
-				}
-			);
-		},
-
 		searchItems: function () {
 
 			$("#heymehedi-search_bar").on("keyup", function () {
