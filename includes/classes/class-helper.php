@@ -11,34 +11,16 @@ use HeyMehedi\Exlac;
 
 class Helper {
 
-	private static function get_file_uri( $path ) {
+	public static function get_file_uri( $path ) {
 		$file = Exlac::$base_url . $path;
 
 		return $file;
 	}
 
-	private static function get_file_dir() {
+	public static function get_file_dir() {
 		$file = Exlac::$base_dir;
 
 		return $file;
-	}
-
-	public static function get_css( $filename ) {
-		$path = '/assets/css/' . $filename . '.css';
-
-		return self::get_file_uri( $path );
-	}
-
-	public static function get_js( $filename ) {
-		$path = '/assets/js/' . $filename . '.js';
-
-		return self::get_file_uri( $path );
-	}
-
-	public static function get_vendor_assets( $file ) {
-		$path = '/assets/vendors/' . $file;
-
-		return self::get_file_uri( $path );
 	}
 
 	public static function get_template_part( $template, $args = array() ) {

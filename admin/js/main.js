@@ -190,7 +190,6 @@
 	$(window).on('load', function () {
 		heymehedi.select2js();
 		heymehedi.setHeight();
-
 	});
 
 })(jQuery);

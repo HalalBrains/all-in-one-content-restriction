@@ -26,7 +26,7 @@ $active_index = $args['active_index'];
 
 							<div class="heymehedi_setting_heading">
 
-								<h1><?php echo esc_html( Strings::get()[100] ) ; ?></h1>
+								<h2><?php echo esc_html( Strings::get()[100] ) ; ?></h2>
 
 							</div>
 
@@ -155,4 +155,3 @@ $active_index = $args['active_index'];
 	</div>
 
 </div>
-
