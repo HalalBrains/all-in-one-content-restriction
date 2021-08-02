@@ -21,7 +21,7 @@ class Strings {
 
 	public static function get() {
 		return array(
-			100 => __( 'Content Restriction', 'exlac' ),
+			100 => __( 'Exlac', 'exlac' ),
 			101 => __( 'Sorry, no items found!', 'exlac' ),
 			102 => __( 'Type', 'exlac' ),
 			103 => __( 'Restrict in', 'exlac' ),

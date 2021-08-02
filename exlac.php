@@ -6,7 +6,8 @@ Description: Exlac is a lightweight and powerful plugin that allows you to take 
 Author: HeyMehedi
 Author URI: https://heymehedi.com
 version: 1.0
- */
+Text Domain: exlac
+*/
 
 namespace HeyMehedi;
 
