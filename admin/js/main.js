@@ -7,13 +7,19 @@
 
 			$(document).on('click', '#heymehedi-submit', function () {
 
+				var itemIds = [];
 				var restrictionIn = $('#restriction-in').val();
 				var posttype = $('#post-type').val();
 				var roles = $('#roles').val();
 				var theTitle = $('#heymehedi_the_title').val();
 				var theExcerpt = $('#heymehedi_the_excerpt').val();
-				var textEditor = $('#heymehedi_custom_editor').val();
-				var itemIds = [];
+
+				if ($('#wp-heymehedi_custom_editor-wrap').hasClass('tmce-active')) {
+					var textEditor = tinymce.activeEditor.getContent();
+				} else {
+					var textEditor = $('#heymehedi_custom_editor').val();
+				}
+
 
 				$('#heymehedi-selected_items_table_body tr').each(function (index, element) {
 					var itemId = $(this).data('item-id');
