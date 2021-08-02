@@ -38,7 +38,7 @@ class Scripts {
 
 		// JS
 		wp_register_script( 'select2', '//cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js', array( 'jquery' ), $this->version, true );
-		wp_register_script( 'exlac-main', Helper::get_file_uri( 'admin/css/main.js' ), array( 'jquery' ), $this->version, true );
+		wp_register_script( 'exlac-main', Helper::get_file_uri( 'admin/js/main.js' ), array( 'jquery' ), $this->version, true );
 	}
 
 	public function enqueue_scripts() {
