@@ -22,6 +22,7 @@ class Settings {
 		$settings['the_title']        = isset( $settings['the_title'] ) ? $settings['the_title'] : '';
 		$settings['the_excerpt']      = isset( $settings['the_excerpt'] ) ? $settings['the_excerpt'] : '';
 		$settings['the_content']      = isset( $settings['the_content'] ) ? self::before_get( $settings['the_content'] ) : '';
+		$settings['custom_url']       = isset( $settings['custom_url'] ) ? self::before_get( $settings['custom_url'] ) : '';
 
 		return $settings;
 	}
@@ -38,6 +39,7 @@ class Settings {
 		$settings['the_title']        = $data['theTitle'];
 		$settings['the_excerpt']      = $data['theExcerpt'];
 		$settings['the_content']      = self::before_set( $data['theContent'] );
+		$settings['custom_url']       = self::before_set( $data['customUrl'] );
 		$settings[$ids_by_in]         = $ids;
 
 		$is_submitted = update_option( 'exlac_settings', $settings, true );

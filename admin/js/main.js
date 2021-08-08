@@ -15,6 +15,7 @@
 				var redirectionType = $('#redirection_type').val();
 				var theTitle = $('#heymehedi_the_title').val();
 				var theExcerpt = $('#heymehedi_the_excerpt').val();
+				var customUrl = $('#custom_url').val();
 
 				if ($('#wp-heymehedi_custom_editor-wrap').hasClass('tmce-active')) {
 					var textEditor = tinymce.activeEditor.getContent();
@@ -41,6 +42,7 @@
 						"theTitle": theTitle,
 						"theExcerpt": theExcerpt,
 						"theContent": textEditor,
+						"customUrl": customUrl,
 					}, function (data) {
 						if (data) {
 							$('#heymehedi-msg').html(data);
@@ -193,7 +195,7 @@
 				if ('redirect' === protectionType) {
 					$('#override_contents').hide();
 					$('#redirect').show();
-				} else if('override_contents' === protectionType) {
+				} else if ('override_contents' === protectionType) {
 					$('#redirect').hide();
 					$('#override_contents').show();
 				}

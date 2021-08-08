@@ -116,10 +116,14 @@ $active_index = $args['active_index'];
 
 							<label for="redirection_type"><?php esc_html_e( 'Where will they be taken? ', 'exlac' );?></label>
 							<select id="redirection_type" class="form-select form-control">
-								<option value="login" <?php selected( 'login' == $args['redirection_type'] );?>><?php esc_html_e( 'Login &amp; Back', 'exlac' );?></option>
 								<option value="homepage" <?php selected( 'homepage' == $args['redirection_type'] );?>><?php esc_html_e( 'Home Page', 'exlac' );?></option>
 								<option value="custom_url" <?php selected( 'custom_url' == $args['redirection_type'] );?>><?php esc_html_e( 'Custom URL', 'exlac' );?></option>
 							</select>
+
+							<div class="custom_url_box">
+								<label for="custom_url"><?php esc_html_e( 'Redirect URL', 'exlac' );?></label>
+								<input type="url" placeholder="<?php esc_html_e( 'http://your-url.com', 'exlac' );?>" class="form-control" id="custom_url" value="<?php echo wp_kses_post( $args['custom_url'] ); ?>">
+							</div>
 
 						</div>
 
