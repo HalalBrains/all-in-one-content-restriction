@@ -7,7 +7,7 @@ Author: HeyMehedi
 Author URI: https://heymehedi.com
 version: 1.0
 Text Domain: exlac
-*/
+ */
 
 namespace HeyMehedi;
 
@@ -22,7 +22,7 @@ class Exlac {
 	public $plugin = 'exlac';
 
 	public function __construct() {
-		
+
 		add_action( 'plugins_loaded', array( $this, 'load_textdomain' ), 20 );
 
 		self::$base_dir   = plugin_dir_path( __FILE__ );
@@ -44,10 +44,11 @@ class Exlac {
 		require_once self::$base_dir . '/includes/model/settings.php';
 		require_once self::$base_dir . '/includes/model/query.php';
 		require_once self::$base_dir . '/includes/classes/class-helper.php';
+		require_once self::$base_dir . '/includes/classes/class-protection-base.php';
 		require_once self::$base_dir . '/includes/classes/class-general.php';
 		require_once self::$base_dir . '/includes/classes/class-ajax-handler.php';
 		require_once self::$base_dir . '/includes/classes/class-scripts.php';
-		require_once self::$base_dir . '/includes/classes/class-hooks.php';
+		require_once self::$base_dir . '/includes/classes/class-override-contents.php';
 		require_once self::$base_dir . '/includes/classes/class-strings.php';
 	}
 

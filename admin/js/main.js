@@ -11,6 +11,8 @@
 				var restrictionIn = $('#restriction-in').val();
 				var posttype = $('#post-type').val();
 				var roles = $('#roles').val();
+				var protectionType = $('#protection_type').val();
+				var redirectionType = $('#redirection_type').val();
 				var theTitle = $('#heymehedi_the_title').val();
 				var theExcerpt = $('#heymehedi_the_excerpt').val();
 
@@ -34,6 +36,8 @@
 						"itemIds": itemIds,
 						"restrictionIn": restrictionIn,
 						"roleNames": roles,
+						"protectionType": protectionType,
+						"redirectionType": redirectionType,
 						"theTitle": theTitle,
 						"theExcerpt": theExcerpt,
 						"theContent": textEditor,
@@ -182,6 +186,27 @@
 			$('#heymehedi-selected_items-wrapper').css('max-height', height + 'px');
 		},
 
+		protectionType: function () {
+			let protectionType = $('#protection_type').val();
+
+			var check = function (protectionType) {
+				if ('redirect' === protectionType) {
+					$('#override_contents').hide();
+					$('#redirect').show();
+				} else if('override_contents' === protectionType) {
+					$('#redirect').hide();
+					$('#override_contents').show();
+				}
+			}
+
+			check(protectionType);
+
+			$(document).on('click', '#protection_type', function () {
+				let protectionType = $('#protection_type').val();
+				check(protectionType)
+			});
+		}
+
 	}
 
 
@@ -191,6 +216,7 @@
 		heymehedi.searchItems();
 		heymehedi.addToSelectedTable();
 		heymehedi.deleteFromSelectedTable();
+		heymehedi.protectionType();
 	});
 
 	$(window).on('load', function () {
@@ -199,5 +225,3 @@
 	});
 
 })(jQuery);
-
-
