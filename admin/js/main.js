@@ -190,7 +190,6 @@
 
 		protectionType: function () {
 			let protectionType = $('#protection_type').val();
-
 			var check = function (protectionType) {
 				if ('redirect' === protectionType) {
 					$('#override_contents').hide();
@@ -200,12 +199,26 @@
 					$('#override_contents').show();
 				}
 			}
-
 			check(protectionType);
 
 			$(document).on('click', '#protection_type', function () {
 				let protectionType = $('#protection_type').val();
 				check(protectionType)
+			});
+
+			let redirectionType = $('#redirection_type').val();
+			var check2 = function (redirectionType) {
+				if ('custom_url' === redirectionType) {
+					$('.custom_url_box').show();
+				} else {
+					$('.custom_url_box').hide();
+				}
+			}
+			check2(redirectionType);
+
+			$(document).on('click', '#redirection_type', function () {
+				let redirectionType = $('#redirection_type').val();
+				check2(redirectionType);
 			});
 		}
 
