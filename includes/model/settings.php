@@ -11,7 +11,7 @@ class Settings {
 
 	public static function get() {
 		$settings                     = get_option( 'exlac_settings' );
-		$settings['post_type']        = isset( $settings['post_type'] ) ? $settings['post_type'] : 'post';
+		$settings['post_type']        = isset( $settings['post_type'] ) ? $settings['post_type'] : 'posts';
 		$settings['restrict_in']      = isset( $settings['restrict_in'] ) ? $settings['restrict_in'] : 'category';
 		$settings['category_ids']     = isset( $settings['category_ids'] ) ? $settings['category_ids'] : array();
 		$settings['single_post_ids']  = isset( $settings['single_post_ids'] ) ? $settings['single_post_ids'] : array();

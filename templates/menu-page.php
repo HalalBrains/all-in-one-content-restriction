@@ -6,7 +6,6 @@
  */
 
 use HeyMehedi\Exlac\Helper;
-use HeyMehedi\Exlac\Strings;
 
 $active_index = $args['active_index'];
 ?>
@@ -25,37 +24,33 @@ $active_index = $args['active_index'];
 						<div class="part1 mb-3">
 
 							<div class="heymehedi_setting_heading">
-
-								<h2><?php echo esc_html( Strings::get()[100] ); ?></h2>
-
+								<h2><?php esc_html_e( 'Exlac', 'exlac' );?></h2>
 							</div>
 
-							<label for="post-type" class="form-label"><?php echo esc_html( Strings::get()[102] ); ?></label>
+							<label for="post-type" class="form-label"><?php esc_html_e( 'Post Type', 'exlac' );?></label>
 							<select class="form-select form-control" id="post-type" name="post-type">
-								<option value="post" <?php selected( 'post' == $args['post_type'] );?> ><?php echo esc_html( Strings::get()[111] ); ?></option>
+								<option value="posts" <?php selected( 'posts' == $args['post_type'] );?>><?php esc_html_e( 'Posts', 'exlac' );?></option>
 							</select>
 
-							<label for="restriction-in" class="form-label"><?php echo esc_html( Strings::get()[103] ); ?></label>
+							<label for="restriction-in" class="form-label"><?php esc_html_e( 'Restrict in', 'exlac' );?></label>
 							<select class="form-select form-control" id="restriction-in" name="restriction-in">
-								<option value="category" <?php selected( 'category' == $args['restrict_in'] );?>><?php echo esc_html( Strings::get()[112] ); ?></option>
-								<option value="single_post" <?php selected( 'single_post' == $args['restrict_in'] );?>><?php echo esc_html( Strings::get()[113] ); ?></option>
+								<option value="category" <?php selected( 'category' == $args['restrict_in'] );?>><?php esc_html_e( 'Category', 'exlac' );?></option>
+								<option value="single_post" <?php selected( 'single_post' == $args['restrict_in'] );?>><?php esc_html_e( 'Single Post', 'exlac' );?></option>
 							</select>
 
-							<label for="heymehedi-search_bar" class="form-label"><?php echo esc_html( Strings::get()[104] ); ?></label>
-							<input id="heymehedi-search_bar" type="text" class="form-control" placeholder="<?php echo esc_attr( Strings::get()[114] ); ?>">
+							<label for="heymehedi-search_bar" class="form-label"><?php esc_html_e( 'Type the title or ID', 'exlac' );?></label>
+							<input id="heymehedi-search_bar" type="text" class="form-control" placeholder="<?php esc_attr_e( 'Search Here...', 'exlac' );?>">
 
 							<div id="heymehedi-items-wrapper">
 
 								<table id="heymehedi-items_table">
 
 									<thead>
-
 										<tr>
-											<th class="text-center"><?php echo esc_html( Strings::get()[105] ); ?></th>
-											<th class="text-center"><?php echo esc_html( Strings::get()[106] ); ?></th>
-											<th><?php echo esc_html( Strings::get()[107] ); ?></th>
+											<th class="text-center"><?php esc_html_e( 'Add', 'exlac' );?></th>
+											<th class="text-center"><?php esc_html_e( 'ID', 'exlac' );?></th>
+											<th><?php esc_html_e( 'Title', 'exlac' );?></th>
 										</tr>
-
 									</thead>
 
 									<tbody id="heymehedi-items_table_body">
@@ -92,21 +87,21 @@ $active_index = $args['active_index'];
 						<div class="part4 mb-3" id="override_contents">
 
 							<label for="heymehedi_the_title" class="form-label">
-								<?php echo esc_html( Strings::get()[116] ); ?>
-								<span class="heymehedi_helper_text" data-bs-toggle="tooltip" data-bs-placement="top" title="<?php echo esc_attr( Strings::get()[117] ); ?>"><?php esc_html_e( '?', 'exlac' );?></span>
+								<?php esc_html_e( 'Replace Default Title', 'exlac' );?>
+								<span class="heymehedi_helper_text" data-bs-toggle="tooltip" data-bs-placement="top" title="<?php esc_attr_e( 'Use the_title by %%title%%', 'exlax' );?>"><?php esc_html_e( '?', 'exlac' );?></span>
 							</label>
-							<input id="heymehedi_the_title" type="text" value="<?php echo wp_kses_post( $args['the_title'] ); ?>" placeholder="<?php echo esc_html( Strings::get()[118] ); ?>" class="form-control">
+							<input id="heymehedi_the_title" type="text" value="<?php echo wp_kses_post( $args['the_title'] ); ?>" placeholder="<?php esc_attr_e( 'Prefix %%title%% Suffix', 'exlax' );?>" class="form-control">
 
 							<label for="heymehedi_the_excerpt" class="form-label">
-								<?php echo esc_html( Strings::get()[121] ); ?>
-								<span class="heymehedi_helper_text" data-bs-toggle="tooltip" data-bs-placement="top" title="<?php echo esc_attr( Strings::get()[122] ); ?>"><?php esc_html_e( '?', 'exlac' );?></span>
+								<?php esc_html_e( 'Replace Default Excerpt', 'exlac' );?>
+								<span class="heymehedi_helper_text" data-bs-toggle="tooltip" data-bs-placement="top" title="<?php esc_attr_e( 'Use the_content by %%excerpt%%', 'exlax' );?>"><?php esc_html_e( '?', 'exlac' );?></span>
 							</label>
 							<textarea class="form-control" name="heymehedi_the_excerpt" id="heymehedi_the_excerpt" rows="5"><?php echo wp_kses_post( $args['the_excerpt'] ); ?></textarea>
 
 							<label for="heymehedi_custom_editor" class="form-label">
-								<?php echo esc_html( Strings::get()[115] ); ?>
-								<span class="heymehedi_helper_text" data-bs-toggle="tooltip" data-bs-placement="top" title="<?php echo esc_attr( Strings::get()[119] ); ?>"><?php esc_html_e( '?', 'exlac' );?></span>
-								</label>
+								<?php esc_html_e( 'Replace Default Description', 'exlac' );?>
+								<span class="heymehedi_helper_text" data-bs-toggle="tooltip" data-bs-placement="top" title="<?php esc_attr_e( 'Use the_content by %%content%%', 'exlax' );?>"><?php esc_html_e( '?', 'exlac' );?></span>
+							</label>
 							<?php Helper::get_text_editor( $args['the_content'] );?>
 
 						</div>
@@ -128,7 +123,7 @@ $active_index = $args['active_index'];
 						</div>
 
 						<p class="submit">
-							<input type="submit" name="submit" id="heymehedi-submit" class="button button-primary" value="<?php echo esc_attr( Strings::get()[108] ); ?>">
+							<input type="submit" name="submit" id="heymehedi-submit" class="button button-primary" value="<?php esc_attr_e( 'Save Changes', 'exlac' );?>">
 						</p>
 
 						<p id="heymehedi-msg"></p>
@@ -139,10 +134,10 @@ $active_index = $args['active_index'];
 
 						<div class="part4">
 
-							<h4><?php echo esc_html( Strings::get()[109] ); ?></h4>
+							<h4><?php esc_html_e( 'Selected Items', 'exlac' );?></h4>
 
-							<label for="heymehedi-search_bar_selected" class="form-label"><?php echo esc_html( Strings::get()[104] ); ?></label>
-							<input id="heymehedi-search_bar_selected" type="text" class="form-control" placeholder="<?php echo esc_attr( Strings::get()[114] ); ?>">
+							<label for="heymehedi-search_bar_selected" class="form-label"><?php esc_html_e( 'Type the title or ID', 'exlac' );?></label>
+							<input id="heymehedi-search_bar_selected" type="text" class="form-control" placeholder="<?php esc_attr_e( 'Search Here...', 'exlac' );?>">
 
 							<div id="heymehedi-selected_items-wrapper">
 
@@ -151,9 +146,9 @@ $active_index = $args['active_index'];
 									<thead>
 
 										<tr>
-											<th class="text-center"><?php echo esc_html( Strings::get()[120] ); ?></th>
-											<th class="text-center"><?php echo esc_html( Strings::get()[106] ); ?></th>
-											<th><?php echo esc_html( Strings::get()[107] ); ?></th>
+											<th class="text-center"><?php esc_html_e( 'Drop', 'exlac' );?></th>
+											<th class="text-center"><?php esc_html_e( 'ID', 'exlac' );?></th>
+											<th><?php esc_html_e( 'Title', 'exlac' );?></th>
 										</tr>
 
 									</thead>
