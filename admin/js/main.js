@@ -185,7 +185,7 @@
 			let part2 = document.querySelector('.part2').clientHeight;
 			let part3 = document.querySelector('.part3').clientHeight;
 			let height = (part1 + part2 + part3) - 110;
-			$('#heymehedi-selected_items-wrapper').css('max-height', height + 'px');
+			$('#heymehedi-items-wrapper-selected').css('max-height', height + 'px');
 		},
 
 		protectionType: function () {
