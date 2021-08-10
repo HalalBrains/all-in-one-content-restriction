@@ -17,11 +17,10 @@ $active_index = $args['active_index'];
 
 			<form id="heymehedi-form" method="post">
 
-
 				<div class="part1 mb-3">
 
 					<div class="heymehedi_setting_heading">
-						<h2><?php esc_html_e( 'Exlac', 'exlac' );?></h2>
+						<h1><?php esc_html_e( 'Exlac -  All in One Content Restriction', 'exlac' );?></h1>
 					</div>
 
 					<label for="post-type" class="form-label"><?php esc_html_e( 'Post Type', 'exlac' );?></label>
@@ -64,8 +63,9 @@ $active_index = $args['active_index'];
 
 				<div class="part2 mb-3">
 
-					<label><?php esc_html_e( 'Who can see these contents?(multiple roles allowed)', 'exlac' );?></label>
+					<label class="form-label" for="roles"><?php esc_html_e( 'Who can see these contents?(multiple roles allowed)', 'exlac' );?></label>
 					<select id="roles" class="form-control" multiple>
+						<option></option>
 						<?php echo Helper::get_role_names_html( $args['role_names'] ); ?>
 					</select>
 
@@ -73,7 +73,7 @@ $active_index = $args['active_index'];
 
 				<div class="part3 mb-3">
 
-					<label><?php esc_html_e( 'Choose how to protect your content', 'exlac' );?></label>
+					<label class="form-label" for="protection_type"><?php esc_html_e( 'Choose how to protect your content', 'exlac' );?></label>
 					<select id="protection_type" class="form-select form-control">
 						<option value="override_contents" <?php selected( 'override_contents' == $args['protection_type'] );?>><?php esc_html_e( 'Override Contents', 'exlax' );?></option>
 						<option value="redirect" <?php selected( 'redirect' == $args['protection_type'] );?>><?php esc_html_e( 'Redirect', 'exlax' );?></option>
@@ -106,14 +106,14 @@ $active_index = $args['active_index'];
 
 				<div class="part4 mb-3" id="redirect">
 
-					<label for="redirection_type"><?php esc_html_e( 'Where will they be taken? ', 'exlac' );?></label>
+					<label class="form-label" for="redirection_type"><?php esc_html_e( 'Where will they be taken? ', 'exlac' );?></label>
 					<select id="redirection_type" class="form-select form-control">
 						<option value="homepage" <?php selected( 'homepage' == $args['redirection_type'] );?>><?php esc_html_e( 'Home Page', 'exlac' );?></option>
 						<option value="custom_url" <?php selected( 'custom_url' == $args['redirection_type'] );?>><?php esc_html_e( 'Custom URL', 'exlac' );?></option>
 					</select>
 
 					<div class="custom_url_box">
-						<label for="custom_url"><?php esc_html_e( 'Redirect URL', 'exlac' );?></label>
+						<label class="form-label" for="custom_url"><?php esc_html_e( 'Redirect URL', 'exlac' );?></label>
 						<input type="url" placeholder="<?php esc_html_e( 'http://your-url.com', 'exlac' );?>" class="form-control" id="custom_url" value="<?php echo wp_kses_post( $args['custom_url'] ); ?>">
 					</div>
 
@@ -133,7 +133,7 @@ $active_index = $args['active_index'];
 
 			<div class="part5">
 
-				<h4><?php esc_html_e( 'Selected Items', 'exlac' );?></h4>
+				<h2><?php esc_html_e( 'Selected items', 'exlac' );?></h2>
 
 				<label for="heymehedi-search_bar_selected" class="form-label"><?php esc_html_e( 'Type the title or ID', 'exlac' );?></label>
 				<input id="heymehedi-search_bar_selected" type="text" class="form-control" placeholder="<?php esc_attr_e( 'Search Here...', 'exlac' );?>">

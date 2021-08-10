@@ -175,8 +175,8 @@
 
 		select2js: function () {
 			$("#roles").select2({
-				placeholder: "Select roles",
-				allowClear: true
+				placeholder: "Select Roles",
+				allowClear: true,
 			});
 		},
 
