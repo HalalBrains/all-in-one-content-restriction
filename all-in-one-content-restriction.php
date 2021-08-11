@@ -49,6 +49,7 @@ class AIO_Content_Restriction {
 		require_once self::$base_dir . '/includes/classes/class-ajax-handler.php';
 		require_once self::$base_dir . '/includes/classes/class-scripts.php';
 		require_once self::$base_dir . '/includes/classes/class-override-contents.php';
+		require_once self::$base_dir . '/includes/classes/class-login-and-back.php';
 		require_once self::$base_dir . '/includes/classes/class-redirection.php';
 		require_once self::$base_dir . '/includes/classes/class-strings.php';
 	}
