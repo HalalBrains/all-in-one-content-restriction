@@ -21,11 +21,11 @@ $active_index = $args['active_index'];
 
 				<?php Helper::get_template_part( 'menu-page/protection-type', $args );?>
 
-				<?php Helper::get_template_part( 'menu-page/roles', $args );?>
+				<div id="single-protection-type">
 
-				<?php Helper::get_template_part( 'menu-page/override-contents', $args );?>
+					<?php Helper::get_single_protection_type_html( $args );?>
 
-				<?php Helper::get_template_part( 'menu-page/redirect', $args );?>
+				</div>
 
 				<p class="submit">
 					<input type="submit" name="submit" id="heymehedi-submit" class="button button-primary" value="<?php esc_attr_e( 'Save Changes', 'aio-content-restriction' );?>">

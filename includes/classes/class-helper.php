@@ -119,4 +119,27 @@ class Helper {
 		return $content;
 	}
 
+	// Get Single Protection Type HTML
+	public static function get_single_protection_type_html( $settings, $protection_type = '' ) {
+
+		if ( ! $protection_type ) {
+			$protection_type = isset( $settings['protection_type'] ) ? $settings['protection_type'] : 'override_contents';
+		}
+
+		if ( 'login_and_back' === $protection_type ) {
+			return;
+		}
+
+		Helper::get_template_part( 'menu-page/roles', $settings );
+
+		if ( 'override_contents' === $protection_type ) {
+			return Helper::get_template_part( 'menu-page/override-contents', $settings );
+		}
+
+		if ( 'redirect' === $protection_type ) {
+			return Helper::get_template_part( 'menu-page/redirect', $settings );
+		}
+
+	}
+
 }

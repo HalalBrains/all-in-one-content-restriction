@@ -178,6 +178,14 @@
 				placeholder: "Select Roles",
 				allowClear: true,
 			});
+
+			$(document).on('click', '#protection_type', function () {
+				$("#roles").select2({
+					placeholder: "Select Roles",
+					allowClear: true,
+				});
+			});
+
 		},
 
 		setHeight: function () {
@@ -190,20 +198,18 @@
 
 		protectionType: function () {
 			let protectionType = $('#protection_type').val();
-			var check = function (protectionType) {
-				if ('redirect' === protectionType) {
-					$('#override_contents').hide();
-					$('#redirect').show();
-				} else if ('override_contents' === protectionType) {
-					$('#redirect').hide();
-					$('#override_contents').show();
-				}
-			}
-			check(protectionType);
-
 			$(document).on('click', '#protection_type', function () {
 				let protectionType = $('#protection_type').val();
-				check(protectionType)
+
+				$.post(
+					heymehedi_object.ajaxurl,
+					{
+						"action": "aio_content_restriction_single_protection_type",
+						"protectionType": protectionType,
+					}, function (data) {
+						$('#single-protection-type').html(data);
+					},
+				);
 			});
 
 			let redirectionType = $('#redirection_type').val();
@@ -232,10 +238,11 @@
 		heymehedi.addToSelectedTable();
 		heymehedi.deleteFromSelectedTable();
 		heymehedi.protectionType();
+		heymehedi.select2js();
 	});
 
 	$(window).on('load', function () {
-		heymehedi.select2js();
+		// heymehedi.select2js();
 		heymehedi.setHeight();
 	});
 
