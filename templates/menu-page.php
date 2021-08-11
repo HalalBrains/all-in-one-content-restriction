@@ -63,20 +63,20 @@ $active_index = $args['active_index'];
 
 				<div class="part2 mb-3">
 
-					<label class="form-label" for="roles"><?php esc_html_e( 'Who can see these contents?(multiple roles allowed)', 'aio-content-restriction' );?></label>
-					<select id="roles" class="form-control" multiple>
-						<option></option>
-						<?php echo Helper::get_role_names_html( $args['role_names'] ); ?>
+					<label class="form-label" for="protection_type"><?php esc_html_e( 'Choose how to protect your content', 'aio-content-restriction' );?></label>
+					<select id="protection_type" class="form-select form-control">
+						<option value="override_contents" <?php selected( 'override_contents' == $args['protection_type'] );?>><?php esc_html_e( 'Override Contents', 'exlax' );?></option>
+						<option value="redirect" <?php selected( 'redirect' == $args['protection_type'] );?>><?php esc_html_e( 'Redirect', 'exlax' );?></option>
 					</select>
 
 				</div>
 
 				<div class="part3 mb-3">
 
-					<label class="form-label" for="protection_type"><?php esc_html_e( 'Choose how to protect your content', 'aio-content-restriction' );?></label>
-					<select id="protection_type" class="form-select form-control">
-						<option value="override_contents" <?php selected( 'override_contents' == $args['protection_type'] );?>><?php esc_html_e( 'Override Contents', 'exlax' );?></option>
-						<option value="redirect" <?php selected( 'redirect' == $args['protection_type'] );?>><?php esc_html_e( 'Redirect', 'exlax' );?></option>
+					<label class="form-label" for="roles"><?php esc_html_e( 'Who can see these contents?(multiple roles allowed)', 'aio-content-restriction' );?></label>
+					<select id="roles" class="form-control" multiple>
+						<option></option>
+						<?php echo Helper::get_role_names_html( $args['role_names'] ); ?>
 					</select>
 
 				</div>
