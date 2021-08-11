@@ -41,8 +41,8 @@ class AIO_Content_Restriction {
 	}
 
 	public function includes() {
-		require_once self::$base_dir . '/includes/model/settings.php';
-		require_once self::$base_dir . '/includes/model/query.php';
+		require_once self::$base_dir . '/includes/model/Settings.php';
+		require_once self::$base_dir . '/includes/model/Query.php';
 		require_once self::$base_dir . '/includes/classes/class-helper.php';
 		require_once self::$base_dir . '/includes/classes/class-protection-base.php';
 		require_once self::$base_dir . '/includes/classes/class-general.php';
