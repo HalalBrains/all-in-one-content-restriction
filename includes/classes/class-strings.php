@@ -5,7 +5,7 @@
  * @version 1.0
  */
 
-namespace HeyMehedi\Exlac;
+namespace HeyMehedi\AIO_Content_Restriction;
 
 class Strings {
 
@@ -21,10 +21,10 @@ class Strings {
 
 	public static function get() {
 		return array(
-			100 => __( 'Exlac', 'exlac' ),
-			101 => __( 'Sorry, no items found!', 'exlac' ),
-			123 => __( 'Saved Successfully', 'exlac' ),
-			124 => __( 'No changes made', 'exlac' ),
+			100 => __( 'AIO Content Restriction', 'aio-content-restriction' ),
+			101 => __( 'Sorry, no items found!', 'aio-content-restriction' ),
+			123 => __( 'Saved Successfully', 'aio-content-restriction' ),
+			124 => __( 'No changes made', 'aio-content-restriction' ),
 		);
 	}
 }

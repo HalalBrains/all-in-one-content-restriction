@@ -5,9 +5,9 @@
  * @version 1.0
  */
 
-namespace HeyMehedi\Exlac;
+namespace HeyMehedi\AIO_Content_Restriction;
 
-use HeyMehedi\Exlac\Settings;
+use HeyMehedi\AIO_Content_Restriction\Settings;
 
 class Protection_Base {
 

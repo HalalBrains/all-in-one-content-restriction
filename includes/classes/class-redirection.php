@@ -5,7 +5,7 @@
  * @version 1.0
  */
 
-namespace HeyMehedi\Exlac;
+namespace HeyMehedi\AIO_Content_Restriction;
 
 class Redirection extends Protection_Base {
 

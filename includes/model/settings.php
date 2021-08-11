@@ -5,12 +5,12 @@
  * @version 1.0
  */
 
-namespace HeyMehedi\Exlac;
+namespace HeyMehedi\AIO_Content_Restriction;
 
 class Settings {
 
 	public static function get() {
-		$settings                     = get_option( 'exlac_settings' );
+		$settings                     = get_option( 'aio_content_restriction_settings' );
 		$settings['post_type']        = isset( $settings['post_type'] ) ? $settings['post_type'] : 'posts';
 		$settings['restrict_in']      = isset( $settings['restrict_in'] ) ? $settings['restrict_in'] : 'category';
 		$settings['category_ids']     = isset( $settings['category_ids'] ) ? $settings['category_ids'] : array();
@@ -42,7 +42,7 @@ class Settings {
 		$settings['custom_url']       = self::before_set( $data['customUrl'] );
 		$settings[$ids_by_in]         = $ids;
 
-		$is_submitted = update_option( 'exlac_settings', $settings, true );
+		$is_submitted = update_option( 'aio_content_restriction_settings', $settings, true );
 
 		if ( $is_submitted ) {
 			echo Strings::get()[123];

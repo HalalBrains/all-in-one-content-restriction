@@ -1,17 +1,17 @@
 <?php
 /*
-Plugin Name: Exlac - All in One Content Restriction
-Plugin URI: https://github.com/HeyMehedi/exlac
-Description: Exlac is a lightweight and powerful plugin that allows you to take complete control of your website’s content by restricting access to pages/posts to logged in users, specific user roles or to logged out users.
+Plugin Name: All in One Content Restriction
+Plugin URI: https://github.com/HeyMehedi/aio-content-restriction
+Description: All in One Content Restriction is a lightweight and powerful plugin that allows you to take complete control of your website’s content by restricting access to pages/posts to logged in users, specific user roles or to logged out users.
 Author: HeyMehedi
 Author URI: https://heymehedi.com
 version: 1.0
-Text Domain: exlac
+Text Domain: all-in-one-content-restriction
  */
 
 namespace HeyMehedi;
 
-class Exlac {
+class AIO_Content_Restriction {
 
 	public static $base_dir;
 	public static $base_url;
@@ -19,7 +19,7 @@ class Exlac {
 	public static $version;
 	public static $author_uri;
 	public static $prefix;
-	public $plugin = 'exlac';
+	public $plugin = 'aio-content-restriction';
 
 	public function __construct() {
 
@@ -31,7 +31,7 @@ class Exlac {
 		$data             = $this->get_data();
 		self::$version    = $data['Version'];
 		self::$author_uri = $data['AuthorURI'];
-		self::$prefix     = 'exlac';
+		self::$prefix     = 'aio-content-restriction';
 
 		$this->includes();
 	}
@@ -54,7 +54,7 @@ class Exlac {
 	}
 
 	public function get_data() {
-		$file_path = self::$base_dir . '/exlac.php';
+		$file_path = self::$base_dir . '/all-in-one-content-restriction.php';
 
 		return get_file_data(
 			$file_path,
@@ -66,4 +66,4 @@ class Exlac {
 	}
 }
 
-new Exlac();
+new AIO_Content_Restriction();

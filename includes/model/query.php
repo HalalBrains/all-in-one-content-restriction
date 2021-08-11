@@ -5,7 +5,7 @@
  * @version 1.0
  */
 
-namespace HeyMehedi\Exlac;
+namespace HeyMehedi\AIO_Content_Restriction;
 
 class Query {
 
@@ -23,7 +23,7 @@ class Query {
 			$wp_roles = new \WP_Roles();
 		}
 		$role_names                  = $wp_roles->get_names();
-		$role_names['not_logged_in'] = __( 'Not logged in', 'exlac' );
+		$role_names['not_logged_in'] = __( 'Not logged in', 'aio-content-restriction' );
 
 		return $role_names;
 	}

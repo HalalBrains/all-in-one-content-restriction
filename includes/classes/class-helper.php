@@ -5,20 +5,20 @@
  * @version 1.0
  */
 
-namespace HeyMehedi\Exlac;
+namespace HeyMehedi\AIO_Content_Restriction;
 
-use HeyMehedi\Exlac;
+use HeyMehedi\AIO_Content_Restriction;
 
 class Helper {
 
 	public static function get_file_uri( $path ) {
-		$file = Exlac::$base_url . $path;
+		$file = AIO_Content_Restriction::$base_url . $path;
 
 		return $file;
 	}
 
 	public static function get_file_dir() {
-		$file = Exlac::$base_dir;
+		$file = AIO_Content_Restriction::$base_dir;
 
 		return $file;
 	}

@@ -32,7 +32,7 @@
 				$.post(
 					heymehedi_object.ajaxurl,
 					{
-						"action": "exlac_update_settings",
+						"action": "aio_content_restriction_update_settings",
 						"posttype": posttype,
 						"itemIds": itemIds,
 						"restrictionIn": restrictionIn,
@@ -72,7 +72,7 @@
 				$.post(
 					heymehedi_object.ajaxurl,
 					{
-						"action": "exlac_show_not_selected_items",
+						"action": "aio_content_restriction_show_not_selected_items",
 						"restrictionIn": restrictionIn,
 					}, function (data) {
 						$('#heymehedi-items_table_body').html(data);
@@ -82,7 +82,7 @@
 				$.post(
 					heymehedi_object.ajaxurl,
 					{
-						"action": "exlac_show_selected_items",
+						"action": "aio_content_restriction_show_selected_items",
 						"restrictionIn": restrictionIn,
 					}, function (data) {
 						$('#heymehedi-selected_items_table_body').html(data);
@@ -134,7 +134,7 @@
 					$.post(
 						heymehedi_object.ajaxurl,
 						{
-							"action": "exlac_not_found_html",
+							"action": "aio_content_restriction_not_found_html",
 						}, function (data) {
 							$('#heymehedi-items_table_body').prepend(data);
 						},
@@ -162,7 +162,7 @@
 					$.post(
 						heymehedi_object.ajaxurl,
 						{
-							"action": "exlac_not_found_html",
+							"action": "aio_content_restriction_not_found_html",
 						}, function (data) {
 							$('#heymehedi-selected_items_table_body').prepend(data);
 						},
