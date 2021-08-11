@@ -140,9 +140,13 @@
   margin-bottom: 11px;
 }
 
-#heymehedi-main select {
-  margin-bottom: 15px;
+#heymehedi-main select,
+#heymehedi_the_title, 
+#heymehedi_the_excerpt {
+    margin-bottom: 15px;
 }
+
+
 
 #heymehedi-main #protection_type {
   margin-bottom: 0;
