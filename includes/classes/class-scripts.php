@@ -5,8 +5,7 @@
  * @version 1.0
  */
 
-namespace HeyMehedi\All_In_One_Content_Restriction
-;
+namespace HeyMehedi\All_In_One_Content_Restriction;
 
 use HeyMehedi\All_In_One_Content_Restriction;
 

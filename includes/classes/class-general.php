@@ -27,8 +27,8 @@ class General {
 
 	public function admin_menu() {
 		add_menu_page(
-			esc_html( Strings::get()[100] ),
-			esc_html( Strings::get()[100] ),
+			esc_html( 'All in One Content Restriction', 'all-in-one-content-restriction' ),
+			esc_html( 'AIO Content Restriction', 'all-in-one-content-restriction' ),
 			'manage_options',
 			'all-in-one-content-restriction',
 			array( $this, 'menu_page' ),

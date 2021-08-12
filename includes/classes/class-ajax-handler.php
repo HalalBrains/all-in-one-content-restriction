@@ -21,7 +21,6 @@ class Ajax_Handler {
 		add_action( 'wp_ajax_all_in_one_content_restriction_show_not_selected_items', array( $this, 'wp_ajax_all_in_one_content_restriction_show_not_selected_items' ) );
 		add_action( 'wp_ajax_all_in_one_content_restriction_show_selected_items', array( $this, 'wp_ajax_all_in_one_content_restriction_show_selected_items' ) );
 		add_action( 'wp_ajax_all_in_one_content_restriction_not_found_html', array( $this, 'wp_ajax_all_in_one_content_restriction_not_found_html' ) );
-		add_action( 'wp_ajax_all_in_one_content_restriction_single_protection_type', array( $this, 'all_in_one_content_restriction_single_protection_type' ) );
 	}
 
 	public static function instance() {
@@ -71,13 +70,6 @@ class Ajax_Handler {
 		echo Helper::get_not_found_html();
 		wp_die();
 	}
-
-	public function all_in_one_content_restriction_single_protection_type() {
-		$single_protection_type = $_POST['protectionType'] ? sanitize_text_field( $_POST['protectionType'] ) : '';
-		Helper::get_single_protection_type_html( Settings::get(), $single_protection_type );
-		wp_die();
-	}
-
 }
 
 Ajax_Handler::instance();
