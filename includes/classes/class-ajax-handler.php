@@ -5,9 +5,9 @@
  * @version 1.0
  */
 
-namespace HeyMehedi\AIO_Content_Restriction;
+namespace HeyMehedi\All_In_One_Content_Restriction;
 
-use HeyMehedi\AIO_Content_Restriction\Settings;
+use HeyMehedi\All_In_One_Content_Restriction\Settings;
 
 class Ajax_Handler {
 
@@ -17,11 +17,11 @@ class Ajax_Handler {
 	public function __construct() {
 		$this->settings = Settings::get();
 
-		add_action( 'wp_ajax_aio_content_restriction_update_settings', array( $this, 'wp_ajax_aio_content_restriction_update_settings' ) );
-		add_action( 'wp_ajax_aio_content_restriction_show_not_selected_items', array( $this, 'wp_ajax_aio_content_restriction_show_not_selected_items' ) );
-		add_action( 'wp_ajax_aio_content_restriction_show_selected_items', array( $this, 'wp_ajax_aio_content_restriction_show_selected_items' ) );
-		add_action( 'wp_ajax_aio_content_restriction_not_found_html', array( $this, 'wp_ajax_aio_content_restriction_not_found_html' ) );
-		add_action( 'wp_ajax_aio_content_restriction_single_protection_type', array( $this, 'aio_content_restriction_single_protection_type' ) );
+		add_action( 'wp_ajax_all_in_one_content_restriction_update_settings', array( $this, 'wp_ajax_all_in_one_content_restriction_update_settings' ) );
+		add_action( 'wp_ajax_all_in_one_content_restriction_show_not_selected_items', array( $this, 'wp_ajax_all_in_one_content_restriction_show_not_selected_items' ) );
+		add_action( 'wp_ajax_all_in_one_content_restriction_show_selected_items', array( $this, 'wp_ajax_all_in_one_content_restriction_show_selected_items' ) );
+		add_action( 'wp_ajax_all_in_one_content_restriction_not_found_html', array( $this, 'wp_ajax_all_in_one_content_restriction_not_found_html' ) );
+		add_action( 'wp_ajax_all_in_one_content_restriction_single_protection_type', array( $this, 'all_in_one_content_restriction_single_protection_type' ) );
 	}
 
 	public static function instance() {
@@ -32,12 +32,12 @@ class Ajax_Handler {
 		return self::$instance;
 	}
 
-	public function wp_ajax_aio_content_restriction_update_settings() {
+	public function wp_ajax_all_in_one_content_restriction_update_settings() {
 		Settings::set( $_POST );
 		wp_die();
 	}
 
-	public function wp_ajax_aio_content_restriction_show_not_selected_items() {
+	public function wp_ajax_all_in_one_content_restriction_show_not_selected_items() {
 		$restrict_in       = $_POST['restrictionIn'];
 		$exclude_ids_index = $restrict_in . '_ids';
 		$icon              = 'dashicons-plus-alt2';
@@ -50,7 +50,7 @@ class Ajax_Handler {
 		return;
 	}
 
-	public function wp_ajax_aio_content_restriction_show_selected_items() {
+	public function wp_ajax_all_in_one_content_restriction_show_selected_items() {
 		$restrict_in          = $_POST['restrictionIn'];
 		$selected_items_index = $restrict_in . '_ids';
 		$icon                 = 'dashicons-minus';
@@ -67,12 +67,12 @@ class Ajax_Handler {
 		wp_die();
 	}
 
-	public function wp_ajax_aio_content_restriction_not_found_html() {
+	public function wp_ajax_all_in_one_content_restriction_not_found_html() {
 		echo Helper::get_not_found_html();
 		wp_die();
 	}
 
-	public function aio_content_restriction_single_protection_type() {
+	public function all_in_one_content_restriction_single_protection_type() {
 		$single_protection_type = $_POST['protectionType'] ? sanitize_text_field( $_POST['protectionType'] ) : '';
 		Helper::get_single_protection_type_html( Settings::get(), $single_protection_type );
 		wp_die();

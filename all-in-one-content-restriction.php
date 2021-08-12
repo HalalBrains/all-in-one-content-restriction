@@ -1,7 +1,7 @@
 <?php
 /*
 Plugin Name: All in One Content Restriction
-Plugin URI: https://github.com/HeyMehedi/aio-content-restriction
+Plugin URI: https://github.com/HeyMehedi/all-in-one-content-restriction
 Description: All in One Content Restriction is a lightweight and powerful plugin that allows you to take complete control of your website’s content by restricting access to pages/posts to logged in users, specific user roles or to logged out users.
 Author: HeyMehedi
 Author URI: https://heymehedi.com
@@ -11,7 +11,7 @@ Text Domain: all-in-one-content-restriction
 
 namespace HeyMehedi;
 
-class AIO_Content_Restriction {
+class All_In_One_Content_Restriction {
 
 	public static $base_dir;
 	public static $base_url;
@@ -19,7 +19,7 @@ class AIO_Content_Restriction {
 	public static $version;
 	public static $author_uri;
 	public static $prefix;
-	public $plugin = 'aio-content-restriction';
+	public $plugin = 'all-in-one-content-restriction';
 
 	public function __construct() {
 
@@ -31,7 +31,7 @@ class AIO_Content_Restriction {
 		$data             = $this->get_data();
 		self::$version    = $data['Version'];
 		self::$author_uri = $data['AuthorURI'];
-		self::$prefix     = 'aio-content-restriction';
+		self::$prefix     = 'all-in-one-content-restriction';
 
 		$this->includes();
 	}
@@ -67,4 +67,4 @@ class AIO_Content_Restriction {
 	}
 }
 
-new AIO_Content_Restriction();
+new All_In_One_Content_Restriction();

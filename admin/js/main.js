@@ -32,7 +32,7 @@
 				$.post(
 					heymehedi_object.ajaxurl,
 					{
-						"action": "aio_content_restriction_update_settings",
+						"action": "all_in_one_content_restriction_update_settings",
 						"posttype": posttype,
 						"itemIds": itemIds,
 						"restrictionIn": restrictionIn,
@@ -72,7 +72,7 @@
 				$.post(
 					heymehedi_object.ajaxurl,
 					{
-						"action": "aio_content_restriction_show_not_selected_items",
+						"action": "all_in_one_content_restriction_show_not_selected_items",
 						"restrictionIn": restrictionIn,
 					}, function (data) {
 						$('#heymehedi-items_table_body').html(data);
@@ -82,7 +82,7 @@
 				$.post(
 					heymehedi_object.ajaxurl,
 					{
-						"action": "aio_content_restriction_show_selected_items",
+						"action": "all_in_one_content_restriction_show_selected_items",
 						"restrictionIn": restrictionIn,
 					}, function (data) {
 						$('#heymehedi-selected_items_table_body').html(data);
@@ -134,7 +134,7 @@
 					$.post(
 						heymehedi_object.ajaxurl,
 						{
-							"action": "aio_content_restriction_not_found_html",
+							"action": "all_in_one_content_restriction_not_found_html",
 						}, function (data) {
 							$('#heymehedi-items_table_body').prepend(data);
 						},
@@ -162,7 +162,7 @@
 					$.post(
 						heymehedi_object.ajaxurl,
 						{
-							"action": "aio_content_restriction_not_found_html",
+							"action": "all_in_one_content_restriction_not_found_html",
 						}, function (data) {
 							$('#heymehedi-selected_items_table_body').prepend(data);
 						},
@@ -178,53 +178,59 @@
 				placeholder: "Select Roles",
 				allowClear: true,
 			});
-
-			$(document).on('click', '#protection_type', function () {
-				$("#roles").select2({
-					placeholder: "Select Roles",
-					allowClear: true,
-				});
-			});
-
 		},
 
-		setHeight: function () {
-			let part1 = document.querySelector('.part1').clientHeight;
-			let part2 = document.querySelector('.part2').clientHeight;
-			let part3 = document.querySelector('.part3').clientHeight;
-			let height = (part1 + part2 + part3) - 110;
-			$('#heymehedi-items-wrapper-selected').css('max-height', height + 'px');
-		},
+		// setHeight: function () {
+		// 	let part1 = document.querySelector('.part1').clientHeight;
+		// 	let part2 = document.querySelector('.part2').clientHeight;
+		// 	let part3 = document.querySelector('.part3').clientHeight;
+		// 	let height = (part1 + part2 + part3) - 110;
+		// 	$('#heymehedi-items-wrapper-selected').css('max-height', height + 'px');
+		// },
 
 		protectionType: function () {
 			let protectionType = $('#protection_type').val();
+
+			var showHide = function (protectionType) {
+				if ('login_and_back' === protectionType) {
+					$("#roles_wrapper").hide();
+					$("#override_contents").hide();
+					$("#redirect").hide();
+				}
+				else if ('override_contents' === protectionType) {
+					$("#roles_wrapper").show();
+					$("#override_contents").show();
+					$("#redirect").hide();
+				}
+				else if ('redirect' === protectionType) {
+					$("#roles_wrapper").show();
+					$("#override_contents").hide();
+					$("#redirect").show();
+				}
+			}
+			showHide(protectionType);
+
 			$(document).on('click', '#protection_type', function () {
 				let protectionType = $('#protection_type').val();
-
-				$.post(
-					heymehedi_object.ajaxurl,
-					{
-						"action": "aio_content_restriction_single_protection_type",
-						"protectionType": protectionType,
-					}, function (data) {
-						$('#single-protection-type').html(data);
-					},
-				);
+				showHide(protectionType);
 			});
+		},
 
+		redirectionType: function () {
 			let redirectionType = $('#redirection_type').val();
-			var check2 = function (redirectionType) {
+
+			var showHide = function (redirectionType) {
 				if ('custom_url' === redirectionType) {
 					$('.custom_url_box').show();
 				} else {
 					$('.custom_url_box').hide();
 				}
 			}
-			check2(redirectionType);
+			showHide(redirectionType);
 
 			$(document).on('click', '#redirection_type', function () {
 				let redirectionType = $('#redirection_type').val();
-				check2(redirectionType);
+				showHide(redirectionType);
 			});
 		}
 
@@ -238,12 +244,12 @@
 		heymehedi.addToSelectedTable();
 		heymehedi.deleteFromSelectedTable();
 		heymehedi.protectionType();
-		heymehedi.select2js();
+		heymehedi.redirectionType()
 	});
 
 	$(window).on('load', function () {
-		// heymehedi.select2js();
-		heymehedi.setHeight();
+		heymehedi.select2js();
+		// heymehedi.setHeight();
 	});
 
 })(jQuery);

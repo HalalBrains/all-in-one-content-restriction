@@ -5,20 +5,20 @@
  * @version 1.0
  */
 
-namespace HeyMehedi\AIO_Content_Restriction;
+namespace HeyMehedi\All_In_One_Content_Restriction;
 
-use HeyMehedi\AIO_Content_Restriction;
+use HeyMehedi\All_In_One_Content_Restriction;
 
 class Helper {
 
 	public static function get_file_uri( $path ) {
-		$file = AIO_Content_Restriction::$base_url . $path;
+		$file = All_In_One_Content_Restriction::$base_url . $path;
 
 		return $file;
 	}
 
 	public static function get_file_dir() {
-		$file = AIO_Content_Restriction::$base_dir;
+		$file = All_In_One_Content_Restriction::$base_dir;
 
 		return $file;
 	}

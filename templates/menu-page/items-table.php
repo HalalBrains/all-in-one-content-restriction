@@ -5,7 +5,7 @@
  * @version 1.0
  */
 
-use HeyMehedi\AIO_Content_Restriction\Helper;
+use HeyMehedi\All_In_One_Content_Restriction\Helper;
 ?>
 <div id="heymehedi-items-wrapper">
 
@@ -13,9 +13,9 @@ use HeyMehedi\AIO_Content_Restriction\Helper;
 
 		<thead>
 			<tr>
-				<th class="text-center"><?php esc_html_e( 'Add', 'aio-content-restriction' );?></th>
-				<th class="text-center"><?php esc_html_e( 'ID', 'aio-content-restriction' );?></th>
-				<th><?php esc_html_e( 'Title', 'aio-content-restriction' );?></th>
+				<th class="text-center"><?php esc_html_e( 'Add', 'all-in-one-content-restriction' );?></th>
+				<th class="text-center"><?php esc_html_e( 'ID', 'all-in-one-content-restriction' );?></th>
+				<th><?php esc_html_e( 'Title', 'all-in-one-content-restriction' );?></th>
 			</tr>
 		</thead>
 

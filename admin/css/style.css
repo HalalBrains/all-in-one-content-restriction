@@ -195,3 +195,9 @@
   min-height: 48px;
   padding-top: 6px;
 }
+
+#heymehedi-main .select2.select2-container.select2-container--default, 
+#heymehedi-main .select2.select2-container.select2-container--default.select2-container--above, 
+#heymehedi-main .select2.select2-container.select2-container--default.select2-container--focus {
+  width: 100% !important;
+}

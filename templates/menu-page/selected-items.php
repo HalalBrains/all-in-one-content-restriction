@@ -5,14 +5,14 @@
  * @version 1.0
  */
 
-use HeyMehedi\AIO_Content_Restriction\Helper;
+use HeyMehedi\All_In_One_Content_Restriction\Helper;
 ?>
 <div class="part5">
 
-	<h2><?php esc_html_e( 'Selected items', 'aio-content-restriction' );?></h2>
+	<h2><?php esc_html_e( 'Selected items', 'all-in-one-content-restriction' );?></h2>
 
-	<label for="heymehedi-search_bar_selected" class="form-label"><?php esc_html_e( 'Type the title or ID', 'aio-content-restriction' );?></label>
-	<input id="heymehedi-search_bar_selected" type="text" class="form-control" placeholder="<?php esc_attr_e( 'Search Here...', 'aio-content-restriction' );?>">
+	<label for="heymehedi-search_bar_selected" class="form-label"><?php esc_html_e( 'Type the title or ID', 'all-in-one-content-restriction' );?></label>
+	<input id="heymehedi-search_bar_selected" type="text" class="form-control" placeholder="<?php esc_attr_e( 'Search Here...', 'all-in-one-content-restriction' );?>">
 
 	<div id="heymehedi-items-wrapper-selected">
 
@@ -21,9 +21,9 @@ use HeyMehedi\AIO_Content_Restriction\Helper;
 			<thead>
 
 				<tr>
-					<th class="text-center"><?php esc_html_e( 'Drop', 'aio-content-restriction' );?></th>
-					<th class="text-center"><?php esc_html_e( 'ID', 'aio-content-restriction' );?></th>
-					<th><?php esc_html_e( 'Title', 'aio-content-restriction' );?></th>
+					<th class="text-center"><?php esc_html_e( 'Drop', 'all-in-one-content-restriction' );?></th>
+					<th class="text-center"><?php esc_html_e( 'ID', 'all-in-one-content-restriction' );?></th>
+					<th><?php esc_html_e( 'Title', 'all-in-one-content-restriction' );?></th>
 				</tr>
 
 			</thead>

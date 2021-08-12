@@ -5,7 +5,7 @@
  * @version 1.0
  */
 
-use HeyMehedi\AIO_Content_Restriction\Helper;
+use HeyMehedi\All_In_One_Content_Restriction\Helper;
 
 $active_index = $args['active_index'];
 ?>
@@ -21,14 +21,14 @@ $active_index = $args['active_index'];
 
 				<?php Helper::get_template_part( 'menu-page/protection-type', $args );?>
 
-				<div id="single-protection-type">
+				<?php Helper::get_template_part( 'menu-page/roles', $args );?>
 
-					<?php Helper::get_single_protection_type_html( $args );?>
+				<?php Helper::get_template_part( 'menu-page/override-contents', $args );?>
 
-				</div>
+				<?php Helper::get_template_part( 'menu-page/redirect', $args );?>
 
 				<p class="submit">
-					<input type="submit" name="submit" id="heymehedi-submit" class="button button-primary" value="<?php esc_attr_e( 'Save Changes', 'aio-content-restriction' );?>">
+					<input type="submit" name="submit" id="heymehedi-submit" class="button button-primary" value="<?php esc_attr_e( 'Save Changes', 'all-in-one-content-restriction' );?>">
 				</p>
 
 				<p id="heymehedi-msg"></p>

@@ -1,2 +1,2 @@
-# AIO Content Restriction
+# All In One Content Restriction
 All in One Content Restriction
