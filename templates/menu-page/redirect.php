@@ -15,7 +15,7 @@
 
 	<div class="custom_url_box">
 		<label class="form-label" for="custom_url"><?php esc_html_e( 'Redirect URL', 'all-in-one-content-restriction' );?></label>
-		<input type="url" placeholder="<?php esc_html_e( 'http://your-url.com', 'all-in-one-content-restriction' );?>" class="form-control" id="custom_url" value="<?php echo wp_kses_post( $args['custom_url'] ); ?>">
+		<input type="url" placeholder="<?php esc_html_e( 'https://your-url.com', 'all-in-one-content-restriction' );?>" class="form-control" id="custom_url" value="<?php echo wp_kses_post( $args['custom_url'] ); ?>">
 	</div>
 
 </div>
