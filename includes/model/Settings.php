@@ -42,12 +42,15 @@ class Settings {
 		$settings['custom_url']       = esc_url( $data['customUrl'] );
 		$settings[$ids_by_in]         = $ids;
 
-		$is_submitted = update_option( 'all_in_one_content_restriction_settings', $settings, true );
+		if ( user_can( wp_get_current_user(), 'manage_options' ) ) {
+			$is_submitted = update_option( 'all_in_one_content_restriction_settings', $settings, true );
 
-		if ( $is_submitted ) {
-			echo Strings::get()[123];
-		} else {
-			echo Strings::get()[124];
+			if ( $is_submitted ) {
+				echo Strings::get()[123];
+			} else {
+				echo Strings::get()[124];
+			}
 		}
+
 	}
 }
