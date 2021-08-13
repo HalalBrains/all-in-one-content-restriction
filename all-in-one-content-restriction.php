@@ -2,11 +2,13 @@
 /*
 Plugin Name: All in One Content Restriction
 Plugin URI: https://github.com/HeyMehedi/all-in-one-content-restriction
-Description: All in One Content Restriction is a lightweight and powerful plugin that allows you to take complete control of your website’s content by restricting access to pages/posts to logged in users, specific user roles or to logged out users.
+Description: All in One Content Restriction - A simple and user-friendly plugin to restrict users / visitors from viewing posts by restricting access, as simple as that.
 Author: HeyMehedi
 Author URI: https://heymehedi.com
 version: 1.0
+License: GPLv2 or later
 Text Domain: all-in-one-content-restriction
+Domain Path: /languages
  */
 
 namespace HeyMehedi;
@@ -19,10 +21,8 @@ class All_In_One_Content_Restriction {
 	public static $version;
 	public static $author_uri;
 	public static $prefix;
-	public $plugin = 'all-in-one-content-restriction';
 
 	public function __construct() {
-
 		add_action( 'plugins_loaded', array( $this, 'load_textdomain' ), 20 );
 
 		self::$base_dir   = plugin_dir_path( __FILE__ );
@@ -37,7 +37,7 @@ class All_In_One_Content_Restriction {
 	}
 
 	public function load_textdomain() {
-		load_plugin_textdomain( $this->plugin, false, self::$base_dir . 'languages' );
+		load_plugin_textdomain( 'all-in-one-content-restriction', false, dirname( plugin_basename( __FILE__ ) ) . '/languages' );
 	}
 
 	public function includes() {
