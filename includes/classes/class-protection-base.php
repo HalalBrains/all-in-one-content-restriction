@@ -46,11 +46,15 @@ class Protection_Base {
 			return true;
 		}
 
-		$current_user = wp_get_current_user();
+		if ( ! isset( $this->settings['role_names'] ) || empty( $this->settings['role_names'] ) ) {
+			return false;
+		}
 
 		if ( in_array( 'not_logged_in', $this->settings['role_names'] ) && ! is_user_logged_in() ) {
 			return true;
 		}
+
+		$current_user = wp_get_current_user();
 
 		foreach ( $this->settings['role_names'] as $role ) {
 			if ( in_array( $role, $current_user->roles ) ) {

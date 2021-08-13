@@ -20,9 +20,9 @@ class Settings {
 		$settings['protection_type']  = isset( $settings['protection_type'] ) ? $settings['protection_type'] : 'override_contents';
 		$settings['redirection_type'] = isset( $settings['redirection_type'] ) ? $settings['redirection_type'] : 'login';
 		$settings['the_title']        = isset( $settings['the_title'] ) ? $settings['the_title'] : '';
-		$settings['the_excerpt']      = isset( $settings['the_excerpt'] ) ? $settings['the_excerpt'] : '';
-		$settings['the_content']      = isset( $settings['the_content'] ) ? self::before_get( $settings['the_content'] ) : '';
-		$settings['custom_url']       = isset( $settings['custom_url'] ) ? self::before_get( $settings['custom_url'] ) : '';
+		$settings['the_excerpt']      = isset( $settings['the_excerpt'] ) ? stripslashes( wp_specialchars_decode( $settings['the_excerpt'], ENT_QUOTES, 'UTF-8' ) ) : '';
+		$settings['the_content']      = isset( $settings['the_content'] ) ? stripslashes( wp_specialchars_decode( $settings['the_content'], ENT_QUOTES, 'UTF-8' ) ) : '';
+		$settings['custom_url']       = isset( $settings['custom_url'] ) ? $settings['custom_url'] : '';
 
 		return $settings;
 	}
@@ -31,15 +31,15 @@ class Settings {
 		$settings                     = self::get();
 		$ids                          = $data['itemIds'];
 		$ids_by_in                    = $data['restrictionIn'] . '_ids';
-		$settings['post_type']        = $data['posttype'];
-		$settings['restrict_in']      = $data['restrictionIn'];
+		$settings['post_type']        = sanitize_text_field( $data['posttype'] );
+		$settings['restrict_in']      = sanitize_text_field( $data['restrictionIn'] );
 		$settings['role_names']       = $data['roleNames'];
-		$settings['protection_type']  = $data['protectionType'];
-		$settings['redirection_type'] = $data['redirectionType'];
-		$settings['the_title']        = $data['theTitle'];
-		$settings['the_excerpt']      = $data['theExcerpt'];
-		$settings['the_content']      = self::before_set( $data['theContent'] );
-		$settings['custom_url']       = self::before_set( $data['customUrl'] );
+		$settings['protection_type']  = sanitize_text_field( $data['protectionType'] );
+		$settings['redirection_type'] = sanitize_text_field( $data['redirectionType'] );
+		$settings['the_title']        = sanitize_text_field( $data['theTitle'] );
+		$settings['the_excerpt']      = sanitize_textarea_field( htmlentities( $data['theExcerpt'] ) );
+		$settings['the_content']      = sanitize_textarea_field( htmlentities( $data['theContent'] ) );
+		$settings['custom_url']       = esc_url( $data['customUrl'] );
 		$settings[$ids_by_in]         = $ids;
 
 		$is_submitted = update_option( 'all_in_one_content_restriction_settings', $settings, true );
@@ -49,13 +49,5 @@ class Settings {
 		} else {
 			echo Strings::get()[124];
 		}
-	}
-
-	protected static function before_set( $data ) {
-		return sanitize_textarea_field( htmlentities( $data ) );
-	}
-
-	protected static function before_get( $data ) {
-		return stripslashes( wp_specialchars_decode( $data, ENT_QUOTES, 'UTF-8' ) );
 	}
 }
