@@ -32,7 +32,7 @@ class Settings {
 		$ids                           = self::sanitize_array( $data['itemIds'] );
 		$settings['post_type']         = sanitize_text_field( $data['posttype'] );
 		$settings['restrict_in']       = sanitize_text_field( $data['restrictionIn'] );
-		$ids_by_restrict_in            = $settings['post_type'] . "_" . $settings['restrict_in'] . '_ids';
+		$ids_by_restrict_in            = $settings['restrict_in'] . '_ids';
 		$settings['role_names']        = self::sanitize_array( $data['roleNames'] );
 		$settings['protection_type']   = sanitize_text_field( $data['protectionType'] );
 		$settings['redirection_type']  = sanitize_text_field( $data['redirectionType'] );
