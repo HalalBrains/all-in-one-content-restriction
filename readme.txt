@@ -1,4 +1,5 @@
 === All in One Content Restriction ===
+Contributors: HeyMehedi
 Tags: content restriction, access control, private, permission, restrict access
 Requires at least: 5.6
 Tested up to: 5.8
