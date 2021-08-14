@@ -37,7 +37,7 @@ class Ajax_Handler {
 	}
 
 	public function wp_ajax_all_in_one_content_restriction_show_not_selected_items() {
-		$restrict_in       = $_POST['restrictionIn'];
+		$restrict_in       = sanitize_text_field( $_POST['restrictionIn'] );
 		$exclude_ids_index = $restrict_in . '_ids';
 		$icon              = 'dashicons-plus-alt2';
 		$settings          = $this->settings;
@@ -50,7 +50,7 @@ class Ajax_Handler {
 	}
 
 	public function wp_ajax_all_in_one_content_restriction_show_selected_items() {
-		$restrict_in          = $_POST['restrictionIn'];
+		$restrict_in          = sanitize_text_field( $_POST['restrictionIn'] );
 		$selected_items_index = $restrict_in . '_ids';
 		$icon                 = 'dashicons-minus';
 		$settings             = $this->settings;
