@@ -41,7 +41,12 @@ class Scripts {
 		wp_register_script( 'all-in-one-content-restriction-main', Helper::get_file_uri( 'admin/js/main.js' ), array( 'jquery' ), $this->version, true );
 	}
 
-	public function enqueue_scripts() {
+	public function enqueue_scripts( $hook ) {
+
+		if ( 'toplevel_page_all-in-one-content-restriction' != $hook ) {
+			return;
+		}
+
 		// CSS
 		wp_enqueue_style( 'bootstrap' );
 		wp_enqueue_style( 'select2' );
