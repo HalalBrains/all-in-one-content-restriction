@@ -9,10 +9,6 @@ use HeyMehedi\All_In_One_Content_Restriction\Helper;
 ?>
 <div class="part1 mb-3">
 
-	<div class="heymehedi_setting_heading">
-		<h1><?php esc_html_e( 'All in One Content Restriction', 'all-in-one-content-restriction' );?></h1>
-	</div>
-
 	<label for="post-type" class="form-label"><?php esc_html_e( 'Post Type', 'all-in-one-content-restriction' );?></label>
 	<select class="form-select form-control" id="post-type" name="post-type">
 		<option value="posts" <?php selected( 'posts' == $args['post_type'] );?>><?php esc_html_e( 'Posts', 'all-in-one-content-restriction' );?></option>

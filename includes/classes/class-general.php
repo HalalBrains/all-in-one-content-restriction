@@ -7,8 +7,6 @@
 
 namespace HeyMehedi\All_In_One_Content_Restriction;
 
-use HeyMehedi\All_In_One_Content_Restriction\Settings;
-
 class General {
 
 	protected static $instance = null;
@@ -38,7 +36,44 @@ class General {
 	}
 
 	public function menu_page() {
-		Helper::get_template_part( 'menu-page', Settings::get() );
+
+		if ( isset( $_GET['action'] ) && 'new' === $_GET['action'] ) {
+			return Helper::get_template_part( 'menu-page' );
+		}
+
+		if (  ( isset( $_GET['action'] ) && 'edit' === $_GET['action'] ) && ( isset( $_GET['id'] ) && ! empty( $_GET['id'] ) ) ) {
+			$settings     = Settings::get();
+			$restrictions = isset( $settings['restrictions'] ) ? $settings['restrictions'] : array();
+
+			foreach ( $restrictions as $key => $value ) {
+				if ( $_GET['id'] == $value['restriction_id'] ) {
+					return Helper::get_template_part( 'menu-page', $value );
+				}
+			}
+
+		}?>
+
+			<div class="wrap">
+
+				<h2><?php _e( 'All in One Content Restriction', 'all-in-one-content-restriction' );?> <a href="<?php echo admin_url( 'admin.php?page=all-in-one-content-restriction&action=new' ); ?>" class="add-new-h2"><?php _e( 'Add New', 'all-in-one-content-restriction' );?></a></h2>
+
+				<form method="post">
+
+					<input type="hidden" name="page" value="ttest_list_table">
+
+					<?php
+					$list_table = new AIOCR_List_Table();
+					$list_table->prepare_items();
+					$list_table->search_box( 'search', 'search_id' );
+					$list_table->display();
+					?>
+
+				</form>
+
+			</div>
+
+		<?php
+
 	}
 
 }

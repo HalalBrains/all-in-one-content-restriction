@@ -8,6 +8,13 @@
 			$(document).on('click', '#heymehedi-submit', function () {
 
 				var itemIds = [];
+
+				var actionType = $('#heymehedi-action').val();
+				if ('edit' === actionType) {
+					var restrictionID = $('#heymehedi-action').attr('data-restriction-id');
+				}
+
+				var title = $('#title').val();
 				var restrictionIn = $('#restriction-in').val();
 				var posttype = $('#post-type').val();
 				var roles = $('#roles').val();
@@ -33,6 +40,9 @@
 					heymehedi_object.ajaxurl,
 					{
 						"action": "all_in_one_content_restriction_update_settings",
+						"title": title,
+						"actionType": actionType,
+						"restrictionID": restrictionID,
 						"posttype": posttype,
 						"itemIds": itemIds,
 						"restrictionIn": restrictionIn,
@@ -45,10 +55,12 @@
 						"customUrl": customUrl,
 					}, function (data) {
 						if (data) {
-							$('#heymehedi-msg').html(data);
+							var data = JSON.parse(data);
+							$('#heymehedi-msg').html(data.msg);
+							$('#heymehedi-action').val('edit')
+							$('#heymehedi-action').attr('data-restriction-id', data.restrictionId);
 							window.setTimeout(function () {
 								$('#heymehedi-msg').html('');
-
 							}, 5000);
 						} else {
 							$('#heymehedi-msg').html('Something went wrong');

@@ -120,4 +120,57 @@ class Helper {
 		return $content;
 	}
 
+	// Restriction ID from $_GET
+	public static function get_restriction_id() {
+		if ( isset( $_GET['action'] ) && 'edit' === $_GET['action'] ) {
+			return ! empty( $_GET['id'] ) ? $_GET['id'] : '';
+		}
+	}
+
+	public static function taxonomy_selectlist( $taxonomies = array(), $args = array(), $include_total = false ) {
+		if ( empty( $taxonomies ) ) {
+			$taxonomies = array( 'category' );
+		}
+
+		$args = wp_parse_args( $args, array(
+			'hide_empty' => false,
+			'number'     => 10,
+			'search'     => '',
+			'include'    => null,
+			'offset'     => 0,
+			'page'       => null,
+		) );
+
+		if ( $args['page'] ) {
+			$args['offset'] = ( $args['page'] - 1 ) * $args['number'];
+		}
+
+		// Query Caching.
+		static $queries = array();
+
+		$key = md5( serialize( $args ) );
+
+		if ( ! isset( $queries[$key] ) ) {
+			$terms = array();
+
+			foreach ( get_terms( $taxonomies, $args ) as $term ) {
+				$terms[$term->name] = $term->term_id;
+			}
+
+			$total_args = $args;
+			unset( $total_args['number'] );
+			unset( $total_args['offset'] );
+
+			$results = array(
+				'items'       => $terms,
+				'total_count' => $include_total ? wp_count_terms( $taxonomies, $total_args ) : null,
+			);
+
+			$queries[$key] = $results;
+		} else {
+			$results = $queries[$key];
+		}
+
+		return ! $include_total ? $results['items'] : $results;
+	}
 }
