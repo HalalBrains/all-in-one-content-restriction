@@ -2,7 +2,7 @@
 /**
  * @author  HeyMehedi
  * @since   1.0
- * @version 1.0
+ * @version 1.1
  */
 
 namespace HeyMehedi\All_In_One_Content_Restriction;
@@ -70,6 +70,14 @@ class Query {
 		$posts = get_posts( $args );
 
 		return $posts;
+	}
+
+	public static function get_post_types() {
+		return get_post_types( array( 'public' => true ), 'objects' );
+	}
+
+	public static function get_taxonomies( $post_type_key ) {
+		return get_object_taxonomies( $post_type_key, 'object' );
 	}
 
 }

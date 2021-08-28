@@ -2,7 +2,7 @@
 /**
  * @author  HeyMehedi
  * @since   1.0
- * @version 1.0
+ * @version 1.1
  */
 
 namespace HeyMehedi\All_In_One_Content_Restriction;
@@ -36,66 +36,24 @@ class Helper {
 		require $file;
 	}
 
-	public static function get_not_found_html() {
-		return sprintf( '<tr class="not-found"><td></td> <td></td> <td> %s </td> </tr>', esc_html( Strings::get()[101] ) );
-	}
-
 	public static function display_items( $restrict_in, $icon, $exclude_ids = array(), $selected_items = array(), $no_items = false ) {
 
 		if ( $no_items && empty( $selected_items ) ) {
-			return self::get_not_found_html();
+			return Markup_Manager::get_not_found_html();
 		}
 
 		if ( 'category' === $restrict_in ) {
 			$items_array = Query::get_categories( $exclude_ids, $selected_items );
 
-			return self::get_items_html( $items_array, $icon, 'category' );
+			return Markup_Manager::get_items_html( $items_array, $icon, 'category' );
 		}
 
 		if ( 'single_post' === $restrict_in ) {
 			$items_array = Query::get_posts( $exclude_ids, $selected_items );
 
-			return self::get_items_html( $items_array, $icon, 'single_post' );
+			return Markup_Manager::get_items_html( $items_array, $icon, 'single_post' );
 		}
 
-	}
-
-	public static function get_items_html( $items_array, $icon, $in_type ) {
-
-		$items_list_html = '';
-
-		if ( empty( $items_array ) ) {
-			return self::get_not_found_html();
-		}
-
-		if ( 'category' === $in_type ) {
-			foreach ( $items_array->terms as $id => $name ) {
-				$items_list_html .= sprintf( '<tr data-item-id="%s"><td class="text-center action"><div class="dashicons-before %s" aria-hidden="true"></div></td><td class="text-center">%s</td><td>%s</td></tr>', $id, $icon, $id, $name );
-			}
-		}
-
-		if ( 'single_post' === $in_type ) {
-			foreach ( $items_array as $id ) {
-				$items_list_html .= sprintf( '<tr data-item-id="%s"><td class="text-center action"><div class="dashicons-before %s" aria-hidden="true"></div></td><td class="text-center">%s</td><td>%s</td></tr>', $id, $icon, $id, get_post( $id )->post_title );
-			}
-		}
-
-		return $items_list_html;
-	}
-
-	// User Roles List HTML for Settings Page
-	public static function get_role_names_html( $selected_role_names ) {
-		$role_names      = Query::get_role_names();
-		$role_names_html = '';
-		foreach ( $role_names as $key => $value ) {
-			if ( in_array( $key, $selected_role_names ) ) {
-				$role_names_html .= sprintf( '<option value="%s" selected>%s</option>', $key, $value );
-			} else {
-				$role_names_html .= sprintf( '<option value="%s">%s</option>', $key, $value );
-			}
-		}
-
-		return $role_names_html;
 	}
 
 	// Displaying Text Editor to Modify The_Content
@@ -127,50 +85,4 @@ class Helper {
 		}
 	}
 
-	public static function taxonomy_selectlist( $taxonomies = array(), $args = array(), $include_total = false ) {
-		if ( empty( $taxonomies ) ) {
-			$taxonomies = array( 'category' );
-		}
-
-		$args = wp_parse_args( $args, array(
-			'hide_empty' => false,
-			'number'     => 10,
-			'search'     => '',
-			'include'    => null,
-			'offset'     => 0,
-			'page'       => null,
-		) );
-
-		if ( $args['page'] ) {
-			$args['offset'] = ( $args['page'] - 1 ) * $args['number'];
-		}
-
-		// Query Caching.
-		static $queries = array();
-
-		$key = md5( serialize( $args ) );
-
-		if ( ! isset( $queries[$key] ) ) {
-			$terms = array();
-
-			foreach ( get_terms( $taxonomies, $args ) as $term ) {
-				$terms[$term->name] = $term->term_id;
-			}
-
-			$total_args = $args;
-			unset( $total_args['number'] );
-			unset( $total_args['offset'] );
-
-			$results = array(
-				'items'       => $terms,
-				'total_count' => $include_total ? wp_count_terms( $taxonomies, $total_args ) : null,
-			);
-
-			$queries[$key] = $results;
-		} else {
-			$results = $queries[$key];
-		}
-
-		return ! $include_total ? $results['items'] : $results;
-	}
 }

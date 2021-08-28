@@ -2,7 +2,7 @@
 /**
  * @author  HeyMehedi
  * @since   1.0
- * @version 1.0
+ * @version 1.1
  */
 
 namespace HeyMehedi\All_In_One_Content_Restriction;
@@ -57,7 +57,7 @@ class Ajax_Handler {
 		$selected_items       = $settings[$selected_items_index];
 
 		if ( empty( $selected_items ) ) {
-			echo Helper::get_not_found_html();
+			echo Markup_Manager::get_not_found_html();
 			wp_die();
 		}
 
@@ -67,7 +67,7 @@ class Ajax_Handler {
 	}
 
 	public function wp_ajax_all_in_one_content_restriction_not_found_html() {
-		echo Helper::get_not_found_html();
+		echo Markup_Manager::get_not_found_html();
 		wp_die();
 	}
 }

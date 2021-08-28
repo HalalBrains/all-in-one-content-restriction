@@ -30,7 +30,7 @@ $active_index = isset( $args['active_index'] ) ? $args['active_index'] : '';
 
 				</div>
 
-				<?php // Helper::get_template_part( 'menu-page/post-type', $args );?>
+				<?php Helper::get_template_part( 'menu-page/post-types', $args );?>
 
 				<?php //Helper::get_template_part( 'menu-page/protection-type', $args );?>
 
