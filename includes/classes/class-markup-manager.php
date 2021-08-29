@@ -26,7 +26,7 @@ class Markup_Manager {
 		return self::create_html_options( Query::get_post_types(), $selected_post_type_key );
 	}
 
-	public static function get_taxonomies_options( $selected_taxonomy = 'category', $post_type_key = 'post' ) {
+	public static function get_taxonomies_options( $post_type_key = 'post', $selected_taxonomy = 'category' ) {
 		return self::create_html_options( Query::get_taxonomies( $post_type_key ), $selected_taxonomy );
 	}
 

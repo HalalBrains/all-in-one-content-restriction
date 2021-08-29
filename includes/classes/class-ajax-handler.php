@@ -21,6 +21,9 @@ class Ajax_Handler {
 		add_action( 'wp_ajax_all_in_one_content_restriction_show_not_selected_items', array( $this, 'wp_ajax_all_in_one_content_restriction_show_not_selected_items' ) );
 		add_action( 'wp_ajax_all_in_one_content_restriction_show_selected_items', array( $this, 'wp_ajax_all_in_one_content_restriction_show_selected_items' ) );
 		add_action( 'wp_ajax_all_in_one_content_restriction_not_found_html', array( $this, 'wp_ajax_all_in_one_content_restriction_not_found_html' ) );
+
+		// V1.1
+		add_action( 'wp_ajax_all_in_one_content_restriction_restriction_in', array( $this, 'wp_ajax_all_in_one_content_restriction_restriction_in' ) );
 	}
 
 	public static function instance() {
@@ -68,6 +71,11 @@ class Ajax_Handler {
 
 	public function wp_ajax_all_in_one_content_restriction_not_found_html() {
 		echo Markup_Manager::get_not_found_html();
+		wp_die();
+	}
+
+	public function wp_ajax_all_in_one_content_restriction_restriction_in() {
+		echo Markup_Manager::get_taxonomies_options( esc_attr( $_POST['restriction_in'] ) );
 		wp_die();
 	}
 }

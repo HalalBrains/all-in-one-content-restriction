@@ -7,7 +7,7 @@
 
 			$(document).on('click', '#heymehedi-submit', function () {
 
-				var itemIds = [];
+				// var itemIds = [];
 
 				var actionType = $('#heymehedi-action').val();
 				if ('edit' === actionType) {
@@ -15,50 +15,50 @@
 				}
 
 				var title = $('#title').val();
-				var restrictionIn = $('#restriction-in').val();
 				var posttype = $('#post-type').val();
+				var restrictionIn = $('#restriction-in').val();
 				var roles = $('#roles').val();
-				var protectionType = $('#protection_type').val();
-				var redirectionType = $('#redirection_type').val();
-				var theTitle = $('#heymehedi_the_title').val();
-				var theExcerpt = $('#heymehedi_the_excerpt').val();
-				var customUrl = $('#custom_url').val();
 
-				if ($('#wp-heymehedi_custom_editor-wrap').hasClass('tmce-active')) {
-					var textEditor = tinymce.activeEditor.getContent();
-				} else {
-					var textEditor = $('#heymehedi_custom_editor').val();
-				}
+				// var protectionType = $('#protection_type').val();
+				// var redirectionType = $('#redirection_type').val();
+				// var theTitle = $('#heymehedi_the_title').val();
+				// var theExcerpt = $('#heymehedi_the_excerpt').val();
+				// var customUrl = $('#custom_url').val();
 
+				// if ($('#wp-heymehedi_custom_editor-wrap').hasClass('tmce-active')) {
+				// 	var textEditor = tinymce.activeEditor.getContent();
+				// } else {
+				// 	var textEditor = $('#heymehedi_custom_editor').val();
+				// }
 
-				$('#heymehedi-selected_items_table_body tr').each(function (index, element) {
-					var itemId = $(this).data('item-id');
-					itemIds.push(itemId)
-				});
+				// $('#heymehedi-selected_items_table_body tr').each(function (index, element) {
+				// 	var itemId = $(this).data('item-id');
+				// 	itemIds.push(itemId)
+				// });
 
 				$.post(
 					heymehedi_object.ajaxurl,
 					{
 						"action": "all_in_one_content_restriction_update_settings",
+						"action_type": actionType,
+						"restriction_id": restrictionID,
 						"title": title,
-						"actionType": actionType,
-						"restrictionID": restrictionID,
-						"posttype": posttype,
-						"itemIds": itemIds,
-						"restrictionIn": restrictionIn,
-						"roleNames": roles,
-						"protectionType": protectionType,
-						"redirectionType": redirectionType,
-						"theTitle": theTitle,
-						"theExcerpt": theExcerpt,
-						"theContent": textEditor,
-						"customUrl": customUrl,
+						"post_type": posttype,
+						"restriction_in": restrictionIn,
+						"role_names": roles,
+						// "itemIds": itemIds,
+						// "protectionType": protectionType,
+						// "redirectionType": redirectionType,
+						// "theTitle": theTitle,
+						// "theExcerpt": theExcerpt,
+						// "theContent": textEditor,
+						// "customUrl": customUrl,
 					}, function (data) {
 						if (data) {
 							var data = JSON.parse(data);
 							$('#heymehedi-msg').html(data.msg);
 							$('#heymehedi-action').val('edit')
-							$('#heymehedi-action').attr('data-restriction-id', data.restrictionId);
+							$('#heymehedi-action').attr('data-restriction-id', data.restriction_id);
 							window.setTimeout(function () {
 								$('#heymehedi-msg').html('');
 							}, 5000);
@@ -75,9 +75,25 @@
 
 		},
 
+		restrictionIn: function () {
+			$(document).on('click', '#post-type', function () {
+
+				$.post(
+					heymehedi_object.ajaxurl,
+					{
+						"action": "all_in_one_content_restriction_restriction_in",
+						"restriction_in": $(this).val(),
+					}, function (data) {
+						$('#restriction-in').html(data);
+					}
+				);
+
+			});
+		},
+
 		itemsQuery: function () {
 
-			$(document).on('click', '#restriction-in', function () {
+			$(document).on('click', '#nrestriction-i', function () {
 
 				var restrictionIn = $(this).val();
 
@@ -242,13 +258,16 @@
 
 
 	$(document).ready(function () {
+
 		heymehedi.formSubmission();
+		heymehedi.restrictionIn();
 		heymehedi.itemsQuery();
 		heymehedi.searchItems();
 		heymehedi.addToSelectedTable();
 		heymehedi.deleteFromSelectedTable();
 		heymehedi.protectionType();
 		heymehedi.redirectionType()
+
 	});
 
 	$(window).on('load', function () {
