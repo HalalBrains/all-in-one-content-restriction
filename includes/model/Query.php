@@ -9,12 +9,6 @@ namespace HeyMehedi\All_In_One_Content_Restriction;
 
 class Query {
 
-	public static function get_registered_post_types() {
-		global $wp_post_types;
-
-		return array_keys( $wp_post_types );
-	}
-
 	public static function get_role_names() {
 
 		global $wp_roles;

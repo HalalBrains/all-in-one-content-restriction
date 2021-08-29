@@ -19,7 +19,7 @@ $restriction_in = isset( $args['restriction_in'] ) ? $args['restriction_in'] : '
 
 	<label for="restriction-in" class="form-label"><?php esc_html_e( 'Restrict in', 'all-in-one-content-restriction' );?></label>
 	<select class="form-select form-control" id="restriction-in" name="restriction-in">
-		<?php echo Markup_Manager::get_taxonomies_options( $post_type, $restriction_in ); ?>
+		<?php echo Markup_Manager::get_restriction_in_options( $post_type, $restriction_in ); ?>
 	</select>
 
 	<label for="heymehedi-search_bar" class="form-label"><?php esc_html_e( 'Type the title or ID', 'all-in-one-content-restriction' );?></label>

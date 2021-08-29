@@ -75,7 +75,7 @@ class Ajax_Handler {
 	}
 
 	public function wp_ajax_all_in_one_content_restriction_restriction_in() {
-		echo Markup_Manager::get_taxonomies_options( esc_attr( $_POST['restriction_in'] ) );
+		echo Markup_Manager::get_restriction_in_options( esc_attr( $_POST['restriction_in'] ) );
 		wp_die();
 	}
 }
