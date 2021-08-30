@@ -22,41 +22,11 @@ class Markup_Manager {
 		return self::$instance;
 	}
 
-	public static function get_post_types_options( $selected_post_type_key = 'post' ) {
-		return self::create_html_options( Query::get_post_types(), $selected_post_type_key );
-	}
-
-	public static function get_restriction_in_options( $post_type_key = 'post', $selected_restrict_in = 'category' ) {
-		$taxonomies = Query::get_taxonomies( $post_type_key );
-		$obj        = get_post_type_object( $post_type_key );
-
-		if ( 'page' === $post_type_key ) {
-			return '<option>Homepage</option>'; // marge create_page_restrict_in_object();
-		}
-		if ( 'post' === $post_type_key ) {
-			return '<option>Sticky</option>'; // marge create_post_restrict_in_object();
-		}
-
-		foreach ( $taxonomies as $key => $value ) {
-			$taxonomies[$key]->label = sprintf( "Any '%s' has selected '%s'", ucwords( $obj->labels->singular_name ), ucwords( $value->label ) );
-		}
-
-		return self::create_html_options( $taxonomies, $selected_restrict_in );
-	}
-
-	private static function create_page_restrict_in_object() {
-		// return an object
-	}
-
-	private static function create_post_restrict_in_object() {
-		// return an object
-	}
-
-	private static function create_html_options( $items, $selected_item ) {
+	public static function create_html_options( $items, $selected_item ) {
 		$items_html = '';
 
 		foreach ( $items as $key => $value ) {
-			$items_html .= sprintf( '<option value="%s" %s>%s</option>', $key, selected( $key === $selected_item, true, false ), $value->label );
+			$items_html .= sprintf( '<option value="%s" %s>%s</option>', $key, selected( $key === $selected_item, true, false ), $value['label'] );
 		}
 
 		return $items_html;

@@ -46,6 +46,7 @@ class All_In_One_Content_Restriction {
 
 		require_once self::$base_dir . '/includes/classes/class-helper.php';
 		require_once self::$base_dir . '/includes/classes/class-markup-manager.php';
+		require_once self::$base_dir . '/includes/classes/class-post-type-taxonomies.php';
 
 		require_once self::$base_dir . '/includes/classes/class-list-table.php';
 		require_once self::$base_dir . '/includes/classes/class-general.php';
