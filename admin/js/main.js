@@ -88,12 +88,14 @@
 					}
 				);
 
+				
+
 			});
 		},
 
 		itemsQuery: function () {
 
-			$(document).on('click', '#nrestriction-i', function () {
+			$(document).on('click', '#restriction-in', function () {
 
 				var restrictionIn = $(this).val();
 
@@ -101,7 +103,7 @@
 					heymehedi_object.ajaxurl,
 					{
 						"action": "all_in_one_content_restriction_show_not_selected_items",
-						"restrictionIn": restrictionIn,
+						"restriction_in": restrictionIn,
 					}, function (data) {
 						$('#heymehedi-items_table_body').html(data);
 					}
@@ -111,7 +113,7 @@
 					heymehedi_object.ajaxurl,
 					{
 						"action": "all_in_one_content_restriction_show_selected_items",
-						"restrictionIn": restrictionIn,
+						"restriction_in": restrictionIn,
 					}, function (data) {
 						$('#heymehedi-selected_items_table_body').html(data);
 					}

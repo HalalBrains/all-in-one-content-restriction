@@ -46,7 +46,7 @@ class Ajax_Handler {
 		$settings          = $this->settings;
 		$exclude_ids       = $settings[$exclude_ids_index];
 
-		echo Helper::display_items( $restrict_in, $icon, $exclude_ids );
+		echo Markup_Manager::display_taxonomy_single_items_html( $restrict_in, $icon, $exclude_ids );
 		wp_die();
 
 		return;
@@ -64,7 +64,7 @@ class Ajax_Handler {
 			wp_die();
 		}
 
-		echo Helper::display_items( $restrict_in, $icon, array(), $selected_items );
+		echo Markup_Manager::display_taxonomy_single_items_html( $restrict_in, $icon, array(), $selected_items );
 
 		wp_die();
 	}

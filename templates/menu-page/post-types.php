@@ -5,6 +5,7 @@
  * @version 1.0
  */
 
+use HeyMehedi\All_In_One_Content_Restriction\Helper;
 use HeyMehedi\All_In_One_Content_Restriction\Post_Type_Taxonomies;
 
 $post_type      = isset( $args['post_type'] ) ? $args['post_type'] : 'post';
@@ -25,6 +26,6 @@ $restriction_in = isset( $args['restriction_in'] ) ? $args['restriction_in'] : '
 	<label for="heymehedi-search_bar" class="form-label"><?php esc_html_e( 'Type the title or ID', 'all-in-one-content-restriction' );?></label>
 	<input id="heymehedi-search_bar" type="text" class="form-control" placeholder="<?php esc_attr_e( 'Search Here...', 'all-in-one-content-restriction' );?>">
 
-	<?php // Helper::get_template_part( 'menu-page/items-table', $args );?>
+	<?php Helper::get_template_part( 'menu-page/items-table', $args );?>
 
 </div>

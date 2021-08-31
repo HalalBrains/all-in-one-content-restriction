@@ -36,26 +36,6 @@ class Helper {
 		require $file;
 	}
 
-	public static function display_items( $restrict_in, $icon, $exclude_ids = array(), $selected_items = array(), $no_items = false ) {
-
-		if ( $no_items && empty( $selected_items ) ) {
-			return Markup_Manager::get_not_found_html();
-		}
-
-		if ( 'category' === $restrict_in ) {
-			$items_array = Query::get_categories( $exclude_ids, $selected_items );
-
-			return Markup_Manager::get_items_html( $items_array, $icon, 'category' );
-		}
-
-		if ( 'single_post' === $restrict_in ) {
-			$items_array = Query::get_posts( $exclude_ids, $selected_items );
-
-			return Markup_Manager::get_items_html( $items_array, $icon, 'single_post' );
-		}
-
-	}
-
 	// Displaying Text Editor to Modify The_Content
 	public static function get_text_editor( $content = '' ) {
 		$editor_id = 'heymehedi_custom_editor';
@@ -84,5 +64,4 @@ class Helper {
 			return ! empty( $_GET['id'] ) ? $_GET['id'] : '';
 		}
 	}
-
 }

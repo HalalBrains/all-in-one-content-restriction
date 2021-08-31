@@ -62,7 +62,7 @@ class Markup_Manager {
 			return self::get_not_found_html();
 		}
 
-		if ( 'category' === $in_type ) {
+		if ( 'taxonomy' === $in_type ) {
 			foreach ( $items_array->terms as $id => $name ) {
 				$items_list_html .= sprintf( '<tr data-item-id="%s"><td class="text-center action"><div class="dashicons-before %s" aria-hidden="true"></div></td><td class="text-center">%s</td><td>%s</td></tr>', $id, $icon, $id, $name );
 			}
@@ -75,5 +75,34 @@ class Markup_Manager {
 		}
 
 		return $items_list_html;
+	}
+
+	public static function display_taxonomy_single_items_html( $post_type, $restrict_in, $icon, $exclude_ids = array(), $selected_items = array(), $no_items = false ) {
+		$items_list_html = '';
+
+		if ( $no_items && empty( $selected_items ) ) {
+			return self::get_not_found_html();
+		}
+
+		if ( 'selected_single_items' === $restrict_in ) {
+			$single_itmes = Query::get_posts( $post_type, $exclude_ids, $selected_items );
+
+			foreach ( $single_itmes as $id ) {
+				$items_list_html .= sprintf( '<tr data-item-id="%s"><td class="text-center action"><div class="dashicons-before %s" aria-hidden="true"></div></td><td class="text-center">%s</td><td>%s</td></tr>', esc_attr( $id ), esc_attr( $icon ), esc_attr( $id ), esc_html( get_post( $id )->post_title ) );
+			}
+
+			return $items_list_html;
+		}
+
+		$terms = Query::get_terms( $restrict_in );
+		if ( isset( $terms->errors ) || isset( $terms->error_data ) || ! $terms ) {
+			return self::get_not_found_html();
+		} else {
+			foreach ( $terms as $key => $value ) {
+				$items_list_html .= sprintf( '<tr data-item-id="%s"><td class="text-center action"><div class="dashicons-before %s" aria-hidden="true"></div></td><td class="text-center">%s</td><td>%s</td></tr>', esc_attr( $value->term_id ), esc_attr( $icon ), esc_attr( $value->term_id ), esc_attr( $value->name ) );
+			}
+
+			return $items_list_html;
+		}
 	}
 }

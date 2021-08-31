@@ -29,12 +29,20 @@ class Post_Type_Taxonomies {
 	}
 
 	public static function get_restriction_in_options( $post_type_key = 'post', $selected_restrict_in = 'category' ) {
+		$obj = get_post_type_object( $post_type_key );
+
 		$taxonomies = json_decode( json_encode( Query::get_taxonomies( $post_type_key ) ), true );
-		$obj        = get_post_type_object( $post_type_key );
 
 		foreach ( $taxonomies as $key => $value ) {
-			$taxonomies[$key]['label'] = sprintf( "Any '%s' has selected '%s'", ucwords( $obj->labels->singular_name ), ucwords( $value['label'] ) );
+			$taxonomies[$key]['label'] = sprintf( "Any %s has selected %s", ucwords( $obj->labels->singular_name ), ucwords( $value['label'] ) );
 		}
+
+		$taxonomies['all_items'] = array(
+			'label' => sprintf( "Selected %s", ucwords( $obj->labels->name ) ),
+		);
+		$taxonomies['selected_single_items'] = array(
+			'label' => sprintf( "Any %s", ucwords( $obj->labels->singular_name ) ),
+		);
 
 		if ( 'page' === $post_type_key ) {
 			$taxonomies = self::create_page_restrict_in_extra( $taxonomies );
@@ -48,16 +56,15 @@ class Post_Type_Taxonomies {
 	}
 
 	private static function create_page_restrict_in_extra( $taxonomies ) {
-		
 		$custom_restriction_in = array(
 			'frontpage'     => array(
-				'label' => 'The Home Page',
+				'label' => esc_attr__( 'The Home Page', 'all-in-one-content-restriction' ),
 			),
 			'search_result' => array(
-				'label' => 'A Search Result Page',
+				'label' => esc_attr__( 'A Search Result Page', 'all-in-one-content-restriction' ),
 			),
 			'error_404'     => array(
-				'label' => '404 Error page',
+				'label' => esc_attr__( '404 Error page', 'all-in-one-content-restriction' ),
 			),
 		);
 
@@ -66,11 +73,8 @@ class Post_Type_Taxonomies {
 
 	private static function create_post_restrict_in_extra( $taxonomies ) {
 		$custom_restriction_in = array(
-			'frontpage' => array(
-				'label' => 'Homepage',
-			),
-			'error_404' => array(
-				'label' => 'Error 404 page',
+			'the_blog_index' => array(
+				'label' => esc_attr__( 'The Blog Index', 'all-in-one-content-restriction' ),
 			),
 		);
 

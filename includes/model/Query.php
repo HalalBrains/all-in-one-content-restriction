@@ -49,7 +49,7 @@ class Query {
 		return $term_query;
 	}
 
-	public static function get_posts( $exclude_ids = array(), $include_ids = array() ) {
+	public static function get_posts( $post_type = 'post', $exclude_ids = array(), $include_ids = array() ) {
 
 		$args = array( 'fields' => 'ids', 'numberposts' => -1 );
 
@@ -60,6 +60,8 @@ class Query {
 		if ( ! empty( $include_ids ) ) {
 			$args['include'] = $include_ids;
 		}
+
+		$args['post_type'] = $post_type;
 
 		$posts = get_posts( $args );
 
@@ -72,6 +74,13 @@ class Query {
 
 	public static function get_taxonomies( $post_type_key ) {
 		return get_object_taxonomies( $post_type_key, 'object' );
+	}
+
+	public static function get_terms( $taxonomy ) {
+		return get_terms( array(
+			'taxonomy'   => $taxonomy,
+			'hide_empty' => false,
+		) );
 	}
 
 }
