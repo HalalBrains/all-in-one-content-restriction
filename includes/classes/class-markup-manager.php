@@ -23,7 +23,7 @@ class Markup_Manager {
 	}
 
 	public static function create_html_options( $items, $selected_item ) {
-		$items_html = '';
+		$items_html = sprintf( '<option value="" selected disabled hidden>%s</option>', esc_html__( 'Select your option', 'all-in-one-content-restriction' ) );
 
 		foreach ( $items as $key => $value ) {
 			$items_html .= sprintf( '<option value="%s" %s>%s</option>', $key, selected( $key === $selected_item, true, false ), $value['label'] );
@@ -84,7 +84,7 @@ class Markup_Manager {
 			return self::get_not_found_html();
 		}
 
-		if ( 'selected_single_items' === $restrict_in ) {
+		if ( 'selected_single_items' == $restrict_in ) {
 			$single_itmes = Query::get_posts( $post_type, $exclude_ids, $selected_items );
 
 			foreach ( $single_itmes as $id ) {

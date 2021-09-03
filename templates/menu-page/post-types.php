@@ -23,9 +23,14 @@ $restriction_in = isset( $args['restriction_in'] ) ? $args['restriction_in'] : '
 		<?php echo Post_Type_Taxonomies::get_restriction_in_options( $post_type, $restriction_in ); ?>
 	</select>
 
-	<label for="heymehedi-search_bar" class="form-label"><?php esc_html_e( 'Type the title or ID', 'all-in-one-content-restriction' );?></label>
-	<input id="heymehedi-search_bar" type="text" class="form-control" placeholder="<?php esc_attr_e( 'Search Here...', 'all-in-one-content-restriction' );?>">
+	<div id="heymehedi-items-table-wrapper">
 
-	<?php Helper::get_template_part( 'menu-page/items-table', $args );?>
+		<label for="heymehedi-search_bar" class="form-label"><?php esc_html_e( 'Type the title or ID', 'all-in-one-content-restriction' );?></label>
+		<input id="heymehedi-search_bar" type="text" class="form-control" placeholder="<?php esc_attr_e( 'Search Here...', 'all-in-one-content-restriction' );?>">
+
+		<?php Helper::get_template_part( 'menu-page/items-table', $args );?>
+
+	</div>
+
 
 </div>

@@ -91,6 +91,29 @@ class Settings {
 
 	}
 
+	public static function drop( $data ) {
+		$settings = self::get();
+
+		foreach ( $settings['restrictions'] as $key => $value ) {
+			if ( $value['restriction_id'] == $data['restriction_id'] ) {
+				unset( $settings['restrictions'][$key] );
+				break;
+			}
+		}
+		e_var_dump( $settings );
+
+		if ( user_can( wp_get_current_user(), 'manage_options' ) ) {
+			update_option( 'all_in_one_content_restriction_settings', $settings, true );
+
+			echo 'done';
+
+			return;
+		}
+
+		echo 'nothing';
+
+	}
+
 	private static function sanitize_array( $array ) {
 
 		foreach ( $array as &$value ) {

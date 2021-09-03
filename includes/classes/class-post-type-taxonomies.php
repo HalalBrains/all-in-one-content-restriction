@@ -38,10 +38,10 @@ class Post_Type_Taxonomies {
 		}
 
 		$taxonomies['all_items'] = array(
-			'label' => sprintf( "Selected %s", ucwords( $obj->labels->name ) ),
+			'label' => sprintf( "Any %s", ucwords( $obj->labels->name ) ),
 		);
 		$taxonomies['selected_single_items'] = array(
-			'label' => sprintf( "Any %s", ucwords( $obj->labels->singular_name ) ),
+			'label' => sprintf( "Selected %s", ucwords( $obj->labels->singular_name ) ),
 		);
 
 		if ( 'page' === $post_type_key ) {
@@ -53,6 +53,18 @@ class Post_Type_Taxonomies {
 		}
 
 		return Markup_Manager::create_html_options( $taxonomies, $selected_restrict_in );
+	}
+
+	public static function has_custom_restriction_in( $restricion_in ) {
+		$custom_restriction_in = array(
+			'frontpage',
+			'search_result',
+			'error_404',
+			'the_blog_index',
+			'all_items',
+		);
+
+		return in_array( $restricion_in, $custom_restriction_in );
 	}
 
 	private static function create_page_restrict_in_extra( $taxonomies ) {

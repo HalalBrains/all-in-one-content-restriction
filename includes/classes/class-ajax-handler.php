@@ -18,6 +18,7 @@ class Ajax_Handler {
 		$this->settings = Settings::get();
 
 		add_action( 'wp_ajax_all_in_one_content_restriction_update_settings', array( $this, 'wp_ajax_all_in_one_content_restriction_update_settings' ) );
+		add_action( 'wp_ajax_all_in_one_content_restriction_delete_restrictions', array( $this, 'wp_ajax_all_in_one_content_restriction_delete_restrictions' ) );
 		add_action( 'wp_ajax_all_in_one_content_restriction_show_not_selected_items', array( $this, 'wp_ajax_all_in_one_content_restriction_show_not_selected_items' ) );
 		add_action( 'wp_ajax_all_in_one_content_restriction_show_selected_items', array( $this, 'wp_ajax_all_in_one_content_restriction_show_selected_items' ) );
 		add_action( 'wp_ajax_all_in_one_content_restriction_not_found_html', array( $this, 'wp_ajax_all_in_one_content_restriction_not_found_html' ) );
@@ -39,21 +40,32 @@ class Ajax_Handler {
 		wp_die();
 	}
 
-	public function wp_ajax_all_in_one_content_restriction_show_not_selected_items() {
-		$restrict_in       = sanitize_text_field( $_POST['restrictionIn'] );
-		$exclude_ids_index = $restrict_in . '_ids';
-		$icon              = 'dashicons-plus-alt2';
-		$settings          = $this->settings;
-		$exclude_ids       = $settings[$exclude_ids_index];
+	public function wp_ajax_all_in_one_content_restriction_delete_restrictions() {
+		Settings::drop( $_POST );
+		wp_die();
+	}
 
-		echo Markup_Manager::display_taxonomy_single_items_html( $restrict_in, $icon, $exclude_ids );
+	public function wp_ajax_all_in_one_content_restriction_show_not_selected_items() {
+
+		$post_type   = sanitize_text_field( $_POST['post_type'] );
+		$restrict_in = sanitize_text_field( $_POST['restriction_in'] );
+		$icon        = 'dashicons-plus-alt2';
+		// $settings    = $this->settings;
+		$exclude_ids = array(); //$settings[$exclude_ids_index];
+
+		if ( Post_Type_Taxonomies::has_custom_restriction_in( $restrict_in ) ) {
+			echo 'nothing';
+		} else {
+			echo Markup_Manager::display_taxonomy_single_items_html( $post_type, $restrict_in, $icon, $exclude_ids );
+		}
+
 		wp_die();
 
 		return;
 	}
 
 	public function wp_ajax_all_in_one_content_restriction_show_selected_items() {
-		$restrict_in          = sanitize_text_field( $_POST['restrictionIn'] );
+		$restrict_in          = sanitize_text_field( $_POST['restriction_in'] );
 		$selected_items_index = $restrict_in . '_ids';
 		$icon                 = 'dashicons-minus';
 		$settings             = $this->settings;
@@ -75,7 +87,7 @@ class Ajax_Handler {
 	}
 
 	public function wp_ajax_all_in_one_content_restriction_restriction_in() {
-		echo Post_Type_Taxonomies::get_restriction_in_options( esc_attr( $_POST['restriction_in'] ) );
+		echo Post_Type_Taxonomies::get_restriction_in_options( esc_attr( $_POST['post_type'] ) );
 		wp_die();
 	}
 }
