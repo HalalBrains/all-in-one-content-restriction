@@ -8,22 +8,20 @@
 			$('.submitdelete').click(function (e) {
 				e.preventDefault();
 				if (window.confirm('Are you sure?')) {
+
 					$(this).parents("tr").remove();
+					
 					$.post(
 						heymehedi_object.ajaxurl,
 						{
 							"action": "all_in_one_content_restriction_delete_restrictions",
 							"restriction_id": $(this).data('id'),
 						}, function (data) {
-
+							
 						}
 					);
 				}
 			});
-
-			// $('#bulk-action-selector-top').val();
-
-			// alert('are you sure?');
 
 		},
 
