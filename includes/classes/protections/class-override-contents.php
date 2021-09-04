@@ -26,18 +26,18 @@ class Override_Contents extends Protection_Base {
 
 	private function condition() {
 
-		if ( 'override_contents' !== $this->settings['protection_type'] || ! isset( $this->settings['protection_type'] ) ) {
-			return;
-		}
+		// if ( 'override_contents' !== $this->restrictions['protection_type'] || ! isset( $this->restrictions['protection_type'] ) ) {
+		// 	return;
+		// }
 
 		add_filter( 'the_title', array( $this, 'the_title' ), 10, 2 );
 		add_filter( 'the_content', array( $this, 'the_content' ) );
 		add_filter( 'get_the_excerpt', array( $this, 'the_excerpt' ), 11, 2 );
 	}
 
-	public function the_title( $title, $id ) {
+	public function the_title( $title, $post_id ) {
 		if ( $this->settings['the_title'] ) {
-			return $this->show_content( $title, $id, Helper::add_suffix_prefix( '%%title%%', $title, $this->settings['the_title'] ) );
+			return $this->show_content( $title, $post_id, Helper::add_suffix_prefix( '%%title%%', $title, $this->settings['the_title'] ) );
 		}
 
 		return $title;

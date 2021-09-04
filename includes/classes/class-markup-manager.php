@@ -94,7 +94,7 @@ class Markup_Manager {
 			return $items_list_html;
 		}
 
-		$terms = Query::get_terms( $restrict_in );
+		$terms = Query::get_terms( $restrict_in, $exclude_ids, $selected_items );
 		if ( isset( $terms->errors ) || isset( $terms->error_data ) || ! $terms ) {
 			return self::get_not_found_html();
 		} else {

@@ -5,7 +5,7 @@
  * @version 1.0
  */
 
-use HeyMehedi\All_In_One_Content_Restriction\Helper;
+use HeyMehedi\All_In_One_Content_Restriction\Markup_Manager;
 ?>
 <div class="part5">
 
@@ -30,8 +30,13 @@ use HeyMehedi\All_In_One_Content_Restriction\Helper;
 
 			<tbody id="heymehedi-selected_items_table_body">
 
-				<?php echo Helper::display_items( $args['restrict_in'], 'dashicons-minus', array(), $args[$active_index], true ); ?>
-
+				<?php echo Markup_Manager::display_taxonomy_single_items_html( 
+					isset( $args['post_type'] ) ? $args['post_type'] : 'post', 
+					isset( $args['restrict_in'] ) ? $args['restrict_in'] : array(), 
+					'dashicons-minus',
+					array(),
+					isset( $args['selected_ids'] ) ? $args['selected_ids'] : array(), 
+					true ); ?>
 			</tbody>
 
 		</table>

@@ -7,8 +7,8 @@
 
 use HeyMehedi\All_In_One_Content_Restriction\Markup_Manager;
 
-$post_type      = isset( $args['post_type'] ) ? $args['post_type'] : 'post';
-$restriction_in = isset( $args['restriction_in'] ) ? $args['restriction_in'] : 'category';
+$post_type   = isset( $args['post_type'] ) ? $args['post_type'] : 'post';
+$restrict_in = isset( $args['restrict_in'] ) ? $args['restrict_in'] : 'category';
 ?>
 <div id="heymehedi-items-wrapper">
 
@@ -24,7 +24,11 @@ $restriction_in = isset( $args['restriction_in'] ) ? $args['restriction_in'] : '
 
 		<tbody id="heymehedi-items_table_body">
 
-			<?php echo Markup_Manager::display_taxonomy_single_items_html( $post_type, $restriction_in, 'dashicons-plus-alt2' ); ?>
+			<?php echo Markup_Manager::display_taxonomy_single_items_html( 
+				$post_type,
+				$restrict_in,
+				'dashicons-plus-alt2', 
+				isset( $args['selected_ids'] ) ? $args['selected_ids'] : array() ); ?>
 
 		</tbody>
 

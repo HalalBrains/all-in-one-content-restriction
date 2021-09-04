@@ -13,7 +13,7 @@ $active_index = isset( $args['active_index'] ) ? $args['active_index'] : '';
 
 	<div class="row">
 
-		<div class="col-md-6 offset-md-3" style="margin: 0 auto;">
+		<div class="col-md-6" style="margin: 0 auto;">
 
 			<form id="heymehedi-form" method="post">
 
@@ -26,17 +26,22 @@ $active_index = isset( $args['active_index'] ) ? $args['active_index'] : '';
 					<label for="title" class="form-label">
 						<?php esc_html_e( 'Restriction Title', 'all-in-one-content-restriction' );?>
 					</label>
-					<input id="title" type="text" value="<?php echo wp_kses_post( isset( $args['title'] ) ? $args['title'] : '' ); ?>" placeholder="<?php esc_attr_e( 'Hello World', 'all-in-one-content-restriction' );?>" class="form-control">
+					<input id="title" type="text" value="<?php echo wp_kses_post( isset( $args['title'] ) ? $args['title'] : '' ); ?>" placeholder="<?php esc_attr_e( 'ex: Hello World', 'all-in-one-content-restriction' );?>" class="form-control">
+
+					<label for="priority" class="form-label">
+						<?php esc_html_e( 'Restriction Priority', 'all-in-one-content-restriction' );?>
+					</label>
+					<input id="priority" type="number" value="<?php echo wp_kses_post( isset( $args['priority'] ) ? $args['priority'] : '' ); ?>" placeholder="<?php esc_attr_e( 'ex: 10', 'all-in-one-content-restriction' );?>" class="form-control">
 
 				</div>
 
 				<?php Helper::get_template_part( 'menu-page/post-types', $args );?>
 
-				<?php //Helper::get_template_part( 'menu-page/protection-type', $args );?>
+				<?php Helper::get_template_part( 'menu-page/protection-type', $args );?>
 
 				<?php Helper::get_template_part( 'menu-page/roles', $args );?>
 
-				<?php // Helper::get_template_part( 'menu-page/override-contents', $args );?>
+				<?php Helper::get_template_part( 'menu-page/override-contents', $args );?>
 
 				<?php // Helper::get_template_part( 'menu-page/redirect', $args );?>
 
@@ -52,11 +57,11 @@ $active_index = isset( $args['active_index'] ) ? $args['active_index'] : '';
 
 		</div>
 
-		<!-- <div class="col-md-6">
+		<div class="col-md-6">
 
-			<?php // Helper::get_template_part( 'menu-page/selected-items', $args );?>
+			<?php Helper::get_template_part( 'menu-page/selected-items', $args );?>
 
-		</div> -->
+		</div>
 
 	</div>
 

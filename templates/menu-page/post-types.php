@@ -9,7 +9,7 @@ use HeyMehedi\All_In_One_Content_Restriction\Helper;
 use HeyMehedi\All_In_One_Content_Restriction\Post_Type_Taxonomies;
 
 $post_type      = isset( $args['post_type'] ) ? $args['post_type'] : 'post';
-$restriction_in = isset( $args['restriction_in'] ) ? $args['restriction_in'] : 'category';
+$restrict_in = isset( $args['restrict_in'] ) ? $args['restrict_in'] : 'category';
 ?>
 <div class="part1 mb-3">
 
@@ -20,7 +20,7 @@ $restriction_in = isset( $args['restriction_in'] ) ? $args['restriction_in'] : '
 
 	<label for="restriction-in" class="form-label"><?php esc_html_e( 'Restrict in', 'all-in-one-content-restriction' );?></label>
 	<select class="form-select form-control" id="restriction-in" name="restriction-in">
-		<?php echo Post_Type_Taxonomies::get_restriction_in_options( $post_type, $restriction_in ); ?>
+		<?php echo Post_Type_Taxonomies::get_restrict_in_options( $post_type, $restrict_in ); ?>
 	</select>
 
 	<div id="heymehedi-items-table-wrapper">

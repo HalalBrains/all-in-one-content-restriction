@@ -24,7 +24,7 @@ class Ajax_Handler {
 		add_action( 'wp_ajax_all_in_one_content_restriction_not_found_html', array( $this, 'wp_ajax_all_in_one_content_restriction_not_found_html' ) );
 
 		// V1.1
-		add_action( 'wp_ajax_all_in_one_content_restriction_restriction_in', array( $this, 'wp_ajax_all_in_one_content_restriction_restriction_in' ) );
+		add_action( 'wp_ajax_all_in_one_content_restriction_restrict_in', array( $this, 'wp_ajax_all_in_one_content_restriction_restrict_in' ) );
 	}
 
 	public static function instance() {
@@ -48,12 +48,12 @@ class Ajax_Handler {
 	public function wp_ajax_all_in_one_content_restriction_show_not_selected_items() {
 
 		$post_type   = sanitize_text_field( $_POST['post_type'] );
-		$restrict_in = sanitize_text_field( $_POST['restriction_in'] );
+		$restrict_in = sanitize_text_field( $_POST['restrict_in'] );
 		$icon        = 'dashicons-plus-alt2';
 		// $settings    = $this->settings;
 		$exclude_ids = array(); //$settings[$exclude_ids_index];
 
-		if ( Post_Type_Taxonomies::has_custom_restriction_in( $restrict_in ) ) {
+		if ( Post_Type_Taxonomies::has_custom_restrict_in( $restrict_in ) ) {
 			echo 'nothing';
 		} else {
 			echo Markup_Manager::display_taxonomy_single_items_html( $post_type, $restrict_in, $icon, $exclude_ids );
@@ -65,7 +65,7 @@ class Ajax_Handler {
 	}
 
 	public function wp_ajax_all_in_one_content_restriction_show_selected_items() {
-		$restrict_in          = sanitize_text_field( $_POST['restriction_in'] );
+		$restrict_in          = sanitize_text_field( $_POST['restrict_in'] );
 		$selected_items_index = $restrict_in . '_ids';
 		$icon                 = 'dashicons-minus';
 		$settings             = $this->settings;
@@ -86,8 +86,8 @@ class Ajax_Handler {
 		wp_die();
 	}
 
-	public function wp_ajax_all_in_one_content_restriction_restriction_in() {
-		echo Post_Type_Taxonomies::get_restriction_in_options( esc_attr( $_POST['post_type'] ) );
+	public function wp_ajax_all_in_one_content_restriction_restrict_in() {
+		echo Post_Type_Taxonomies::get_restrict_in_options( esc_attr( $_POST['post_type'] ) );
 		wp_die();
 	}
 }

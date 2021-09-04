@@ -10,14 +10,14 @@
 				if (window.confirm('Are you sure?')) {
 
 					$(this).parents("tr").remove();
-					
+
 					$.post(
 						heymehedi_object.ajaxurl,
 						{
 							"action": "all_in_one_content_restriction_delete_restrictions",
 							"restriction_id": $(this).data('id'),
 						}, function (data) {
-							
+
 						}
 					);
 				}
@@ -29,7 +29,6 @@
 
 			$(document).on('click', '#heymehedi-submit', function () {
 
-				// var itemIds = [];
 
 				var actionType = $('#heymehedi-action').val();
 				if ('edit' === actionType) {
@@ -37,9 +36,19 @@
 				}
 
 				var title = $('#title').val();
+				var priority = $('#priority').val();
+
 				var posttype = $('#post-type').val();
 				var restrictionIn = $('#restriction-in').val();
+
+				var protectionType = $('#protection_type').val();
 				var roles = $('#roles').val();
+
+				var itemIds = [];
+				$('#heymehedi-selected_items_table_body tr').each(function (index, element) {
+					var itemId = $(this).data('item-id');
+					itemIds.push(itemId)
+				});
 
 				// var protectionType = $('#protection_type').val();
 				// var redirectionType = $('#redirection_type').val();
@@ -53,10 +62,6 @@
 				// 	var textEditor = $('#heymehedi_custom_editor').val();
 				// }
 
-				// $('#heymehedi-selected_items_table_body tr').each(function (index, element) {
-				// 	var itemId = $(this).data('item-id');
-				// 	itemIds.push(itemId)
-				// });
 
 				$.post(
 					heymehedi_object.ajaxurl,
@@ -65,16 +70,21 @@
 						"action_type": actionType,
 						"restriction_id": restrictionID,
 						"title": title,
+						"priority": priority,
 						"post_type": posttype,
-						"restriction_in": restrictionIn,
+						"restrict_in": restrictionIn,
+						"protection_type": protectionType,
+
 						"role_names": roles,
-						// "itemIds": itemIds,
+						"selected_ids": itemIds,
+
 						// "protectionType": protectionType,
 						// "redirectionType": redirectionType,
 						// "theTitle": theTitle,
 						// "theExcerpt": theExcerpt,
 						// "theContent": textEditor,
 						// "customUrl": customUrl,
+
 					}, function (data) {
 						if (data) {
 							var data = JSON.parse(data);
@@ -106,9 +116,9 @@
 				$.post(
 					heymehedi_object.ajaxurl,
 					{
-						"action": "all_in_one_content_restriction_restriction_in",
+						"action": "all_in_one_content_restriction_restrict_in",
 						"post_type": postType,
-						"restriction_in": restrictionIn,
+						"restrict_in": restrictionIn,
 					}, function (data) {
 						if ('post' != postType) {
 							$('#heymehedi-items-table-wrapper').hide();
@@ -123,7 +133,7 @@
 						{
 							"action": "all_in_one_content_restriction_show_not_selected_items",
 							"post_type": 'post',
-							"restriction_in": 'category',
+							"restrict_in": 'category',
 						}, function (data) {
 							$('#heymehedi-items-table-wrapper').show();
 							$('#heymehedi-items_table_body').html(data);
@@ -146,7 +156,7 @@
 					{
 						"action": "all_in_one_content_restriction_show_not_selected_items",
 						"post_type": postType,
-						"restriction_in": restrictionIn,
+						"restrict_in": restrictionIn,
 					}, function (data) {
 						if ('nothing' === data) {
 							$('#heymehedi-items-table-wrapper').hide();
@@ -161,7 +171,7 @@
 				// 	heymehedi_object.ajaxurl,
 				// 	{
 				// 		"action": "all_in_one_content_restriction_show_selected_items",
-				// 		"restriction_in": restrictionIn,
+				// 		"restrict_in": restrictionIn,
 				// 	}, function (data) {
 				// 		$('#heymehedi-selected_items_table_body').html(data);
 				// 	}

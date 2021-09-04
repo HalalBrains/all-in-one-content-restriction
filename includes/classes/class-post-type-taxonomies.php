@@ -28,7 +28,7 @@ class Post_Type_Taxonomies {
 		return Markup_Manager::create_html_options( $post_types, $selected_post_type_key );
 	}
 
-	public static function get_restriction_in_options( $post_type_key = 'post', $selected_restrict_in = 'category' ) {
+	public static function get_restrict_in_options( $post_type_key = 'post', $selected_restrict_in = 'category' ) {
 		$obj = get_post_type_object( $post_type_key );
 
 		$taxonomies = json_decode( json_encode( Query::get_taxonomies( $post_type_key ) ), true );
@@ -55,8 +55,8 @@ class Post_Type_Taxonomies {
 		return Markup_Manager::create_html_options( $taxonomies, $selected_restrict_in );
 	}
 
-	public static function has_custom_restriction_in( $restricion_in ) {
-		$custom_restriction_in = array(
+	public static function has_custom_restrict_in( $restricion_in ) {
+		$custom_restrict_in = array(
 			'frontpage',
 			'search_result',
 			'error_404',
@@ -64,11 +64,11 @@ class Post_Type_Taxonomies {
 			'all_items',
 		);
 
-		return in_array( $restricion_in, $custom_restriction_in );
+		return in_array( $restricion_in, $custom_restrict_in );
 	}
 
 	private static function create_page_restrict_in_extra( $taxonomies ) {
-		$custom_restriction_in = array(
+		$custom_restrict_in = array(
 			'frontpage'     => array(
 				'label' => esc_attr__( 'The Home Page', 'all-in-one-content-restriction' ),
 			),
@@ -80,17 +80,17 @@ class Post_Type_Taxonomies {
 			),
 		);
 
-		return array_merge( $custom_restriction_in, $taxonomies );
+		return array_merge( $custom_restrict_in, $taxonomies );
 	}
 
 	private static function create_post_restrict_in_extra( $taxonomies ) {
-		$custom_restriction_in = array(
+		$custom_restrict_in = array(
 			'the_blog_index' => array(
 				'label' => esc_attr__( 'The Blog Index', 'all-in-one-content-restriction' ),
 			),
 		);
 
-		return array_merge( $custom_restriction_in, $taxonomies );
+		return array_merge( $custom_restrict_in, $taxonomies );
 	}
 
 }

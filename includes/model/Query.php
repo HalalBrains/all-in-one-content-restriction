@@ -76,11 +76,22 @@ class Query {
 		return get_object_taxonomies( $post_type_key, 'object' );
 	}
 
-	public static function get_terms( $taxonomy ) {
-		return get_terms( array(
+	public static function get_terms( $taxonomy, $exclude_ids = array(), $include_ids = array() ) {
+
+		$args = array(
 			'taxonomy'   => $taxonomy,
 			'hide_empty' => false,
-		) );
+		);
+
+		if ( $exclude_ids ) {
+			$args['exclude'] = $exclude_ids;
+		}
+
+		if ( $include_ids ) {
+			$args['include'] = $include_ids;
+		}
+
+		return get_terms( $args );
 	}
 
 }
