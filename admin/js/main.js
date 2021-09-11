@@ -50,17 +50,20 @@
 					itemIds.push(itemId)
 				});
 
-				// var protectionType = $('#protection_type').val();
+				var protectionType = $('#protection_type').val();
+
+				// Override Contents
+				var theTitle = $('#heymehedi_the_title').val();
+				var theExcerpt = $('#heymehedi_the_excerpt').val();
+				if ($('#wp-heymehedi_custom_editor-wrap').hasClass('tmce-active')) {
+					var textEditor = tinymce.activeEditor.getContent();
+				} else {
+					var textEditor = $('#heymehedi_custom_editor').val();
+				}
+
 				// var redirectionType = $('#redirection_type').val();
-				// var theTitle = $('#heymehedi_the_title').val();
-				// var theExcerpt = $('#heymehedi_the_excerpt').val();
 				// var customUrl = $('#custom_url').val();
 
-				// if ($('#wp-heymehedi_custom_editor-wrap').hasClass('tmce-active')) {
-				// 	var textEditor = tinymce.activeEditor.getContent();
-				// } else {
-				// 	var textEditor = $('#heymehedi_custom_editor').val();
-				// }
 
 
 				$.post(
@@ -78,12 +81,16 @@
 						"role_names": roles,
 						"selected_ids": itemIds,
 
-						// "protectionType": protectionType,
+						"protectionType": protectionType,
+
+						// Override Contents
+						"the_title": theTitle,
+						"the_excerpt": theExcerpt,
+						"the_content": textEditor,
+
 						// "redirectionType": redirectionType,
-						// "theTitle": theTitle,
-						// "theExcerpt": theExcerpt,
-						// "theContent": textEditor,
 						// "customUrl": customUrl,
+
 
 					}, function (data) {
 						if (data) {

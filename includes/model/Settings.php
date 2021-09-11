@@ -2,7 +2,7 @@
 /**
  * @author  HeyMehedi
  * @since   1.0
- * @version 1.0
+ * @version 1.1
  */
 
 namespace HeyMehedi\All_In_One_Content_Restriction;
@@ -33,15 +33,18 @@ class Settings {
 		$single_restriction_data['role_names']      = self::sanitize_array( $data['role_names'] );
 		$single_restriction_data['selected_ids']    = self::sanitize_array( $data['selected_ids'] );
 
+		$single_restriction_data['protection_type'] = sanitize_text_field( $data['protectionType'] );
+
+		// Override Contents
+		$single_restriction_data['the_title']   = sanitize_text_field( $data['the_title'] );
+		$single_restriction_data['the_excerpt'] = sanitize_textarea_field( htmlentities( $data['the_excerpt'] ) );
+		$single_restriction_data['the_content'] = sanitize_textarea_field( htmlentities( $data['the_content'] ) );
+
+		// $single_restriction_data['redirection_type'] = sanitize_text_field( $data['redirectionType'] );
+		// $single_restriction_data['custom_url']       = esc_url( $data['customUrl'] );
+
 		// $ids                                          = self::sanitize_array( $data['itemIds'] );
 		// $ids_by_restrict_in                           = $single_restriction_data['restrict_in'] . '_ids';
-
-		// $single_restriction_data['protection_type']  = sanitize_text_field( $data['protectionType'] );
-		// $single_restriction_data['redirection_type'] = sanitize_text_field( $data['redirectionType'] );
-		// $single_restriction_data['the_title']        = sanitize_text_field( $data['theTitle'] );
-		// $single_restriction_data['the_excerpt']      = sanitize_textarea_field( htmlentities( $data['theExcerpt'] ) );
-		// $single_restriction_data['the_content']      = sanitize_textarea_field( htmlentities( $data['theContent'] ) );
-		// $single_restriction_data['custom_url']       = esc_url( $data['customUrl'] );
 		// $single_restriction_data[$ids_by_restrict_in] = $ids;
 
 		if ( 'new' === $data['action_type'] ) {
