@@ -30,6 +30,10 @@
   display: block;
 }
 
+#heymehedi-main label[for=priority] {
+  padding-top: 15px;
+}
+
 #heymehedi-main table {
   border-collapse: collapse;
   width: 100%;
