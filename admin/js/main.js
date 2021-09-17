@@ -61,10 +61,8 @@
 					var textEditor = $('#heymehedi_custom_editor').val();
 				}
 
-				// var redirectionType = $('#redirection_type').val();
-				// var customUrl = $('#custom_url').val();
-
-
+				var redirectionType = $('#redirection_type').val();
+				var customUrl = $('#custom_url').val();
 
 				$.post(
 					heymehedi_object.ajaxurl,
@@ -88,8 +86,9 @@
 						"the_excerpt": theExcerpt,
 						"the_content": textEditor,
 
-						// "redirectionType": redirectionType,
-						// "customUrl": customUrl,
+						// Redirection
+						"redirectionType": redirectionType,
+						"customUrl": customUrl,
 
 
 					}, function (data) {

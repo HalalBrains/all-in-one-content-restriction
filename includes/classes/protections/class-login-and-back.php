@@ -13,7 +13,7 @@ class Login_And_Back extends Protection_Base {
 
 	public function __construct() {
 		parent::__construct();
-		$this->condition();
+		add_action( 'template_redirect', array( $this, 'template_redirect' ) );
 	}
 
 	public static function instance() {
@@ -22,15 +22,6 @@ class Login_And_Back extends Protection_Base {
 		}
 
 		return self::$instance;
-	}
-
-	private function condition() {
-
-		if ( 'login_and_back' !== $this->settings['protection_type'] || ! isset( $this->settings['protection_type'] ) ) {
-			return;
-		}
-
-		add_action( 'template_redirect', array( $this, 'template_redirect' ) );
 	}
 
 	public function template_redirect() {
@@ -45,6 +36,12 @@ class Login_And_Back extends Protection_Base {
 
 		if ( ! $this->is_protected( get_the_ID() ) ) {
 			return;
+		}
+
+		foreach ( $this->matched_restrictions as $key => $value ) {
+			if ( 'login_and_back' != $value['protection_type'] ) {
+				return;
+			}
 		}
 
 		$requested_and_login = wp_login_url( $this->current_url() );

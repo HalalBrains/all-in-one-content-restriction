@@ -19,9 +19,6 @@ class Protection_Base {
 	public function __construct() {
 		$settings           = Settings::get();
 		$this->restrictions = $settings['restrictions'];
-
-		add_action( 'the_post', array( $this, 'the_post' ) );
-
 	}
 
 	public function the_post( $post_object ) {

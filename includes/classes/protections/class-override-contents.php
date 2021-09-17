@@ -14,6 +14,7 @@ class Override_Contents extends Protection_Base {
 
 	public function __construct() {
 		parent::__construct();
+		add_action( 'the_post', array( $this, 'the_post' ) );
 	}
 
 	public static function instance() {

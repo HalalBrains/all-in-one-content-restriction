@@ -13,7 +13,6 @@ class Redirection extends Protection_Base {
 
 	public function __construct() {
 		parent::__construct();
-		$this->condition();
 	}
 
 	public static function instance() {
@@ -24,9 +23,11 @@ class Redirection extends Protection_Base {
 		return self::$instance;
 	}
 
-	private function condition() {
+	public function condition( $value ) {
 
-		if ( 'redirect' !== $this->settings['protection_type'] || ! isset( $this->settings['protection_type'] ) ) {
+		$this->single_restriction_data = $value;
+
+		if ( 'redirect' !== $value['protection_type'] ) {
 			return;
 		}
 
@@ -43,19 +44,19 @@ class Redirection extends Protection_Base {
 			return;
 		}
 
-		if ( ! isset( $this->settings['redirection_type'] ) || empty( $this->settings['redirection_type'] ) ) {
+		if ( ! isset( $this->single_restriction_data['redirection_type'] ) || empty( $this->single_restriction_data['redirection_type'] ) ) {
 			return;
 		}
 
 		$redirect = false;
 
-		switch ( $this->settings['redirection_type'] ) {
+		switch ( $this->single_restriction_data['redirection_type'] ) {
 			case 'homepage':
 				$redirect = home_url();
 				break;
 
 			case 'custom_url':
-				$redirect = esc_url( $this->settings['custom_url'] );
+				$redirect = esc_url( $this->single_restriction_data['custom_url'] );
 				break;
 		}
 
