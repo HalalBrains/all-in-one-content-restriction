@@ -13,6 +13,7 @@ class Redirection extends Protection_Base {
 
 	public function __construct() {
 		parent::__construct();
+		add_action( 'template_redirect', array( $this, 'template_redirect' ) );
 	}
 
 	public static function instance() {
@@ -23,46 +24,42 @@ class Redirection extends Protection_Base {
 		return self::$instance;
 	}
 
-	public function condition( $value ) {
-
-		$this->single_restriction_data = $value;
-
-		if ( 'redirect' !== $value['protection_type'] ) {
-			return;
-		}
-
-		add_action( 'template_redirect', array( $this, 'template_redirect' ) );
-	}
-
 	public function template_redirect() {
 
 		if ( is_archive() || is_home() ) {
 			return;
 		}
 
-		if ( $this->users_can_see() || ! $this->is_protected( get_the_ID() ) ) {
+		if ( $this->users_can_see() ) {
 			return;
 		}
 
-		if ( ! isset( $this->single_restriction_data['redirection_type'] ) || empty( $this->single_restriction_data['redirection_type'] ) ) {
+		if ( ! $this->is_protected( get_the_ID() ) ) {
 			return;
 		}
 
-		$redirect = false;
+		foreach ( $this->matched_restrictions as $key => $value ) {
 
-		switch ( $this->single_restriction_data['redirection_type'] ) {
-			case 'homepage':
-				$redirect = home_url();
-				break;
+			if ( 'redirect' != $value['protection_type'] ) {
+				return;
+			} else {
+				$redirect = false;
 
-			case 'custom_url':
-				$redirect = esc_url( $this->single_restriction_data['custom_url'] );
-				break;
-		}
+				switch ( $value['redirection_type'] ) {
+					case 'homepage':
+						$redirect = home_url();
+						break;
 
-		if ( $redirect ) {
-			wp_redirect( $redirect );
-			exit;
+					case 'custom_url':
+						$redirect = esc_url( $value['custom_url'] );
+						break;
+				}
+
+				if ( $redirect ) {
+					wp_redirect( $redirect );
+					exit;
+				}
+			}
 		}
 	}
 }

@@ -43,7 +43,7 @@ $active_index = isset( $args['active_index'] ) ? $args['active_index'] : '';
 
 				<?php Helper::get_template_part( 'menu-page/override-contents', $args );?>
 
-				<?php // Helper::get_template_part( 'menu-page/redirect', $args );?>
+				<?php Helper::get_template_part( 'menu-page/redirect', $args );?>
 
 				<input type="hidden" value="<?php echo esc_attr( $_GET['action'] ); ?>" id="heymehedi-action" data-restriction-id="<?php echo esc_attr( Helper::get_restriction_id() ); ?>">
 

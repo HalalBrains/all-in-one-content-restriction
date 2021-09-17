@@ -13,7 +13,7 @@ class Settings {
 		$settings['restrictions'] = array();
 		$settings                 = get_option( 'all_in_one_content_restriction_settings' );
 
-		return $settings;
+		return apply_filters( 'all_in_one_content_restriction_get_settings', $settings );
 	}
 
 	public static function set( $data ) {
@@ -40,8 +40,8 @@ class Settings {
 		$single_restriction_data['the_excerpt'] = sanitize_textarea_field( htmlentities( $data['the_excerpt'] ) );
 		$single_restriction_data['the_content'] = sanitize_textarea_field( htmlentities( $data['the_content'] ) );
 
-		// $single_restriction_data['redirection_type'] = sanitize_text_field( $data['redirectionType'] );
-		// $single_restriction_data['custom_url']       = esc_url( $data['customUrl'] );
+		$single_restriction_data['redirection_type'] = sanitize_text_field( $data['redirectionType'] );
+		$single_restriction_data['custom_url']       = esc_url( $data['customUrl'] );
 
 		// $ids                                          = self::sanitize_array( $data['itemIds'] );
 		// $ids_by_restrict_in                           = $single_restriction_data['restrict_in'] . '_ids';
@@ -62,7 +62,7 @@ class Settings {
 		}
 
 		if ( user_can( wp_get_current_user(), 'manage_options' ) ) {
-			$is_submitted = update_option( 'all_in_one_content_restriction_settings', $settings, true );
+			$is_submitted = update_option( 'all_in_one_content_restriction_settings', apply_filters( 'all_in_one_content_restriction_set_settings', $settings ), true );
 
 			if ( $is_submitted ) {
 				$msg['msg'] = Strings::get()[123];
