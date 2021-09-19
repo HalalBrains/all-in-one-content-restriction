@@ -11,7 +11,7 @@ $role_names = isset( $args['role_names'] ) ? $args['role_names'] : array();
 ?>
 <div class="part3 mb-3" id="roles_wrapper">
 
-	<label class="form-label" for="roles"><?php esc_html_e( 'Who can see these contents?(multiple roles allowed)', 'all-in-one-content-restriction' );?></label>
+	<label class="form-label" for="roles"><?php esc_html_e( 'Select who should have access to this content.', 'all-in-one-content-restriction' );?></label>
 	<select id="roles" class="form-control" multiple>
 		<option></option>
 		<?php echo Markup_Manager::get_role_names_html( $role_names ); ?>

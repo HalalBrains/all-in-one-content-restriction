@@ -9,10 +9,10 @@ use HeyMehedi\All_In_One_Content_Restriction\Markup_Manager;
 ?>
 <div class="part5">
 
-	<h2><?php esc_html_e( 'Selected items', 'all-in-one-content-restriction' );?></h2>
+	<h2><?php esc_html_e( 'Restricted Posts / Categories / Pages / Tags / .... Dynamic', 'all-in-one-content-restriction' );?></h2>
 
-	<label for="heymehedi-search_bar_selected" class="form-label"><?php esc_html_e( 'Type the title or ID', 'all-in-one-content-restriction' );?></label>
-	<input id="heymehedi-search_bar_selected" type="text" class="form-control" placeholder="<?php esc_attr_e( 'Search Here...', 'all-in-one-content-restriction' );?>">
+	<label for="heymehedi-search_bar_selected" class="form-label"><?php esc_html_e( 'Title or ID', 'all-in-one-content-restriction' );?></label>
+	<input id="heymehedi-search_bar_selected" type="text" class="form-control" placeholder="<?php esc_attr_e( 'Type to search', 'all-in-one-content-restriction' );?>">
 
 	<div id="heymehedi-items-wrapper-selected">
 
