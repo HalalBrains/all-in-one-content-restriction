@@ -8,6 +8,7 @@
 namespace HeyMehedi\All_In_One_Content_Restriction;
 
 use HeyMehedi\All_In_One_Content_Restriction\Settings;
+use HeyMehedi\All_In_One_Content_Restriction\Helper;
 
 class Ajax_Handler {
 
@@ -65,20 +66,35 @@ class Ajax_Handler {
 	}
 
 	public function wp_ajax_all_in_one_content_restriction_show_selected_items() {
-		$restrict_in          = sanitize_text_field( $_POST['restrict_in'] );
-		$selected_items_index = $restrict_in . '_ids';
-		$icon                 = 'dashicons-minus';
-		$settings             = $this->settings;
-		$selected_items       = $settings[$selected_items_index];
 
-		if ( empty( $selected_items ) ) {
-			echo Markup_Manager::get_not_found_html();
-			wp_die();
-		}
+		// wp_send_json_success( 'hellssso' );
+		wp_send_json(
+			array(
+				'markup'            => Markup_Manager::get_not_found_html(),
+				'restrict_in_title' => Helper::get_current_restrict_in_label($_POST['post_type'] , $_POST['restrict_in']  ),
+			),
+		);
 
-		echo Markup_Manager::display_taxonomy_single_items_html( $restrict_in, $icon, array(), $selected_items );
-
+		// echo Markup_Manager::get_not_found_html();
 		wp_die();
+
+		//@Future Update
+		/*
+	$restrict_in          = sanitize_text_field( $_POST['restrict_in'] );
+	$selected_items_index = $restrict_in . '_ids';
+	$icon                 = 'dashicons-minus';
+	$settings             = $this->settings;
+	$selected_items       = $settings[$selected_items_index];
+
+	if ( empty( $selected_items ) ) {
+	echo Markup_Manager::get_not_found_html();
+	wp_die();
+	}
+
+	echo Markup_Manager::display_taxonomy_single_items_html( $restrict_in, $icon, array(), $selected_items );
+
+	wp_die();
+	 */
 	}
 
 	public function wp_ajax_all_in_one_content_restriction_not_found_html() {

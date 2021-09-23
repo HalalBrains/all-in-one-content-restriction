@@ -18,13 +18,13 @@ $active_index = isset( $args['active_index'] ) ? $args['active_index'] : '';
 			<form id="heymehedi-form" method="post">
 
 				<div class="heymehedi_setting_heading">
-					<h1><?php esc_html_e( 'All in One Content Restriction', 'all-in-one-content-restriction' );?></h1>
+					<h1><?php esc_html_e( 'Setup Content Restriction Rule', 'all-in-one-content-restriction' );?></h1>
 				</div>
 
 				<div class="part4 mb-3">
 
 					<label for="title" class="form-label">
-						<?php esc_html_e( 'Restriction Title', 'all-in-one-content-restriction' );?>
+						<?php esc_html_e( 'Rule Title', 'all-in-one-content-restriction' );?>
 					</label>
 					<input id="title" type="text" value="<?php echo wp_kses_post( isset( $args['title'] ) ? $args['title'] : '' ); ?>" placeholder="<?php esc_attr_e( 'ex: Hello World', 'all-in-one-content-restriction' );?>" class="form-control">
 

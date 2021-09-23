@@ -28,7 +28,7 @@ class Post_Type_Taxonomies {
 		return Markup_Manager::create_html_options( $post_types, $selected_post_type_key );
 	}
 
-	public static function get_restrict_in_options( $post_type_key = 'post', $selected_restrict_in = 'category' ) {
+	public static function get_restrict_in_options( $post_type_key = 'post', $selected_restrict_in = 'category', $markup = true ) {
 		$obj = get_post_type_object( $post_type_key );
 
 		$taxonomies = json_decode( json_encode( Query::get_taxonomies( $post_type_key ) ), true );
@@ -38,7 +38,7 @@ class Post_Type_Taxonomies {
 		}
 
 		$taxonomies['all_items'] = array(
-			'label' => sprintf( "Any %s", ucwords( $obj->labels->name ) ),
+			'label' => sprintf( "All %s", ucwords( $obj->labels->name ) ),
 		);
 		$taxonomies['selected_single_items'] = array(
 			'label' => sprintf( "Selected %s", ucwords( $obj->labels->singular_name ) ),
@@ -50,6 +50,9 @@ class Post_Type_Taxonomies {
 
 		if ( 'post' === $post_type_key ) {
 			$taxonomies = self::create_post_restrict_in_extra( $taxonomies );
+		}
+		if ( ! $markup ) {
+			return $taxonomies;
 		}
 
 		return Markup_Manager::create_html_options( $taxonomies, $selected_restrict_in );

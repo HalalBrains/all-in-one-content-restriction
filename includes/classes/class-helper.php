@@ -64,4 +64,12 @@ class Helper {
 			return ! empty( $_GET['id'] ) ? $_GET['id'] : '';
 		}
 	}
+
+	// Get Current Restrict In Title
+	public static function get_current_restrict_in_label( $post_type, $restrict_in ) {
+		$restrict_in_list          = Post_Type_Taxonomies::get_restrict_in_options( $post_type, $restrict_in, false );
+		$current_restrict_in_label = isset( $restrict_in_list[$restrict_in]['label'] ) ? $restrict_in_list[$restrict_in]['label'] : esc_html__( 'Any Post has selected Categories', 'all-in-one-content-restriction' );
+
+		return $current_restrict_in_label;
+	}
 }

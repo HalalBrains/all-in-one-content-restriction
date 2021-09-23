@@ -173,15 +173,18 @@
 					}
 				);
 
-				// $.post(
-				// 	heymehedi_object.ajaxurl,
-				// 	{
-				// 		"action": "all_in_one_content_restriction_show_selected_items",
-				// 		"restrict_in": restrictionIn,
-				// 	}, function (data) {
-				// 		$('#heymehedi-selected_items_table_body').html(data);
-				// 	}
-				// );
+				// @Future Update
+				$.post(
+					heymehedi_object.ajaxurl,
+					{
+						"action": "all_in_one_content_restriction_show_selected_items",
+						"restrict_in": restrictionIn,
+						"post_type": postType,
+					}, function (data) {
+						$('span#restrict_in_title').html(data.restrict_in_title);
+						$('#heymehedi-selected_items_table_body').html(data.markup);
+					}
+				);
 
 			});
 
