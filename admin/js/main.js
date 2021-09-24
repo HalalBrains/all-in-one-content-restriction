@@ -38,6 +38,10 @@
 				var title = $('#title').val();
 				var priority = $('#priority').val();
 
+				if (null === priority || '' === priority) {
+					return;
+				}
+
 				var posttype = $('#post-type').val();
 				var restrictionIn = $('#restriction-in').val();
 

@@ -73,7 +73,7 @@ class Post_Type_Taxonomies {
 	private static function create_page_restrict_in_extra( $taxonomies ) {
 		$custom_restrict_in = array(
 			'frontpage'     => array(
-				'label' => esc_attr__( 'The Home Page', 'all-in-one-content-restriction' ),
+				'label' => esc_attr__( 'Homepage / Frontpage', 'all-in-one-content-restriction' ),
 			),
 			'search_result' => array(
 				'label' => esc_attr__( 'A Search Result Page', 'all-in-one-content-restriction' ),

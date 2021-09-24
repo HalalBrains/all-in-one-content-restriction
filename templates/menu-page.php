@@ -24,14 +24,14 @@ $active_index = isset( $args['active_index'] ) ? $args['active_index'] : '';
 				<div class="part4 mb-3">
 
 					<label for="title" class="form-label">
-						<?php esc_html_e( 'Rule Title', 'all-in-one-content-restriction' );?>
+						<?php esc_html_e( 'Restriction name', 'all-in-one-content-restriction' );?>
 					</label>
 					<input id="title" type="text" value="<?php echo wp_kses_post( isset( $args['title'] ) ? $args['title'] : '' ); ?>" placeholder="<?php esc_attr_e( 'ex: Hello World', 'all-in-one-content-restriction' );?>" class="form-control">
 
 					<label for="priority" class="form-label">
-						<?php esc_html_e( 'Restriction Priority', 'all-in-one-content-restriction' );?>
+						<?php esc_html_e( 'Access Priority', 'all-in-one-content-restriction' );?>
 					</label>
-					<input id="priority" type="number" value="<?php echo wp_kses_post( isset( $args['priority'] ) ? $args['priority'] : '' ); ?>" placeholder="<?php esc_attr_e( 'ex: 10', 'all-in-one-content-restriction' );?>" class="form-control">
+					<input id="priority" type="number" value="<?php echo wp_kses_post( isset( $args['priority'] ) ? $args['priority'] : '10' ); ?>" placeholder="<?php esc_attr_e( 'ex: 10', 'all-in-one-content-restriction' );?>" class="form-control" required>
 
 				</div>
 

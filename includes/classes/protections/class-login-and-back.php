@@ -30,10 +30,6 @@ class Login_And_Back extends Protection_Base {
 			return;
 		}
 
-		if ( is_archive() || is_home() ) {
-			return;
-		}
-
 		if ( ! $this->is_protected( get_the_ID() ) ) {
 			return;
 		}

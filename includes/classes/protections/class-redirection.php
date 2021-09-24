@@ -26,19 +26,15 @@ class Redirection extends Protection_Base {
 
 	public function template_redirect() {
 
-		if ( is_archive() || is_home() ) {
-			return;
-		}
-
-		if ( $this->users_can_see() ) {
-			return;
-		}
-
 		if ( ! $this->is_protected( get_the_ID() ) ) {
 			return;
 		}
 
 		foreach ( $this->matched_restrictions as $key => $value ) {
+
+			if ( $this->users_can_see( $value['role_names'] ) ) {
+				return;
+			}
 
 			if ( 'redirect' != $value['protection_type'] ) {
 				return;

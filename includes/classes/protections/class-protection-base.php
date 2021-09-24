@@ -50,6 +50,11 @@ class Protection_Base {
 		foreach ( $matched_post_types as $key => $value ) {
 
 			if ( 'selected_single_items' === $value['restrict_in'] ) {
+
+				if ( is_archive() || is_home() ) {
+					return;
+				}
+
 				if ( ! $value['selected_ids'] ) {
 					return false;
 				}
@@ -115,23 +120,23 @@ class Protection_Base {
 		return false;
 	}
 
-	public function users_can_see() {
+	public function users_can_see( $role_names ) {
 
 		if ( is_blog_admin() ) {
 			return true;
 		}
 
-		if ( ! isset( $this->restrictions['role_names'] ) || empty( $this->settings['role_names'] ) ) {
+		if ( ! isset( $role_names ) || empty( $role_names ) ) {
 			return false;
 		}
 
-		if ( in_array( 'not_logged_in', $this->settings['role_names'] ) && ! is_user_logged_in() ) {
+		if ( in_array( 'not_logged_in', $role_names ) && ! is_user_logged_in() ) {
 			return true;
 		}
 
 		$current_user = wp_get_current_user();
 
-		foreach ( $this->settings['role_names'] as $role ) {
+		foreach ( $role_names as $role ) {
 			if ( in_array( $role, $current_user->roles ) ) {
 				return true;
 			}

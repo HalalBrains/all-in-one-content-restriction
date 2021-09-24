@@ -22,7 +22,7 @@ class Strings {
 	public static function get() {
 		return array(
 			100 => __( 'All in One Content Restriction', 'all-in-one-content-restriction' ),
-			101 => __( 'Sorry, no items found!', 'all-in-one-content-restriction' ),
+			101 => __( 'Nothing found!', 'all-in-one-content-restriction' ),
 			123 => __( 'Saved Successfully', 'all-in-one-content-restriction' ),
 			124 => __( 'No changes made', 'all-in-one-content-restriction' ),
 		);
