@@ -2,7 +2,7 @@
 /**
  * @author  HeyMehedi
  * @since   1.0
- * @version 1.0
+ * @version 1.1
  */
 
 $redirection_type = isset( $args['redirection_type'] ) ? $args['redirection_type'] : 'homepage';

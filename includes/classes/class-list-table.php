@@ -1,7 +1,7 @@
 <?php
 /**
  * @author  HeyMehedi
- * @since   1.0
+ * @since   1.1
  * @version 1.0
  */
 
