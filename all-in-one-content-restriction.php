@@ -5,7 +5,7 @@ Plugin URI: https://github.com/HeyMehedi/all-in-one-content-restriction
 Description: All in One Content Restriction - A simple and user-friendly plugin to restrict users / visitors from viewing posts by restricting access, as simple as that.
 Author: HeyMehedi
 Author URI: https://heymehedi.com
-version: 1.0
+version: 1.1
 License: GPLv2 or later
 Text Domain: all-in-one-content-restriction
 Domain Path: /languages
@@ -43,14 +43,23 @@ class All_In_One_Content_Restriction {
 	public function includes() {
 		require_once self::$base_dir . '/includes/model/Settings.php';
 		require_once self::$base_dir . '/includes/model/Query.php';
+
 		require_once self::$base_dir . '/includes/classes/class-helper.php';
-		require_once self::$base_dir . '/includes/classes/class-protection-base.php';
+		require_once self::$base_dir . '/includes/classes/class-markup-manager.php';
+		require_once self::$base_dir . '/includes/classes/class-post-type-taxonomies.php';
+
+		require_once self::$base_dir . '/includes/classes/class-list-table.php';
 		require_once self::$base_dir . '/includes/classes/class-general.php';
+
 		require_once self::$base_dir . '/includes/classes/class-ajax-handler.php';
 		require_once self::$base_dir . '/includes/classes/class-scripts.php';
-		require_once self::$base_dir . '/includes/classes/class-override-contents.php';
-		require_once self::$base_dir . '/includes/classes/class-login-and-back.php';
-		require_once self::$base_dir . '/includes/classes/class-redirection.php';
+
+		require_once self::$base_dir . '/includes/classes/protections/class-protection-base.php';
+		require_once self::$base_dir . '/includes/classes/protections/class-override-contents.php';
+		require_once self::$base_dir . '/includes/classes/protections/class-login-and-back.php';
+		
+		require_once self::$base_dir . '/includes/classes/protections/class-redirection.php';
+
 		require_once self::$base_dir . '/includes/classes/class-strings.php';
 	}
 

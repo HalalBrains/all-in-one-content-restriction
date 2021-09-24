@@ -2,12 +2,10 @@
 /**
  * @author  HeyMehedi
  * @since   1.0
- * @version 1.0
+ * @version 1.1
  */
 
 namespace HeyMehedi\All_In_One_Content_Restriction;
-
-use HeyMehedi\All_In_One_Content_Restriction\Settings;
 
 class General {
 
@@ -38,7 +36,28 @@ class General {
 	}
 
 	public function menu_page() {
-		Helper::get_template_part( 'menu-page', Settings::get() );
+
+		if ( isset( $_GET['action'] ) && 'new' === $_GET['action'] ) {
+			return Helper::get_template_part( 'menu-page' );
+		}
+
+		if (  ( isset( $_GET['action'] ) && 'edit' === $_GET['action'] ) && ( isset( $_GET['id'] ) && ! empty( $_GET['id'] ) ) ) {
+			$settings     = Settings::get();
+			$restrictions = isset( $settings['restrictions'] ) ? $settings['restrictions'] : array();
+
+			foreach ( $restrictions as $key => $value ) {
+				if ( $_GET['id'] == $value['restriction_id'] ) {
+					return Helper::get_template_part( 'menu-page', $value );
+				}
+			}
+		}
+
+		if ( isset( $_POST['action'] ) && 'trash' === $_POST['action'] ) {
+			Settings::drop( $_POST );
+		}
+
+		Helper::get_template_part( 'menu-list-table', new AIOCR_List_Table() );
+
 	}
 
 }

@@ -2,10 +2,13 @@
 /**
  * @author  HeyMehedi
  * @since   1.0
- * @version 1.0
+ * @version 1.1
  */
 
-use HeyMehedi\All_In_One_Content_Restriction\Helper;
+use HeyMehedi\All_In_One_Content_Restriction\Markup_Manager;
+
+$post_type   = isset( $args['post_type'] ) ? $args['post_type'] : 'post';
+$restrict_in = isset( $args['restrict_in'] ) ? $args['restrict_in'] : 'category';
 ?>
 <div id="heymehedi-items-wrapper">
 
@@ -21,7 +24,11 @@ use HeyMehedi\All_In_One_Content_Restriction\Helper;
 
 		<tbody id="heymehedi-items_table_body">
 
-			<?php echo Helper::display_items( $args['restrict_in'], 'dashicons-plus-alt2', $args[$active_index] ); ?>
+			<?php echo Markup_Manager::display_taxonomy_single_items_html( 
+				$post_type,
+				$restrict_in,
+				'dashicons-plus-alt2', 
+				isset( $args['selected_ids'] ) ? $args['selected_ids'] : array() ); ?>
 
 		</tbody>
 

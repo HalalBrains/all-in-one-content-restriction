@@ -2,22 +2,40 @@
 /**
  * @author  HeyMehedi
  * @since   1.0
- * @version 1.0
+ * @version 1.1
  */
 
 use HeyMehedi\All_In_One_Content_Restriction\Helper;
 
-$active_index = $args['active_index'];
+$active_index = isset( $args['active_index'] ) ? $args['active_index'] : '';
 ?>
 <div class="container-fluid mt-5" id="heymehedi-main">
 
 	<div class="row">
 
-		<div class="col-md-6">
+		<div class="col-md-6" style="margin: 0 auto;">
 
 			<form id="heymehedi-form" method="post">
 
-				<?php Helper::get_template_part( 'menu-page/post-type', $args );?>
+				<div class="heymehedi_setting_heading">
+					<h1><?php esc_html_e( 'Setup Content Restriction Rule', 'all-in-one-content-restriction' );?></h1>
+				</div>
+
+				<div class="part4 mb-3">
+
+					<label for="title" class="form-label">
+						<?php esc_html_e( 'Restriction name', 'all-in-one-content-restriction' );?>
+					</label>
+					<input id="title" type="text" value="<?php echo wp_kses_post( isset( $args['title'] ) ? $args['title'] : '' ); ?>" placeholder="<?php esc_attr_e( 'ex: Hello World', 'all-in-one-content-restriction' );?>" class="form-control">
+
+					<label for="priority" class="form-label">
+						<?php esc_html_e( 'Access Priority', 'all-in-one-content-restriction' );?>
+					</label>
+					<input id="priority" type="number" value="<?php echo wp_kses_post( isset( $args['priority'] ) ? $args['priority'] : '10' ); ?>" placeholder="<?php esc_attr_e( 'ex: 10', 'all-in-one-content-restriction' );?>" class="form-control" required>
+
+				</div>
+
+				<?php Helper::get_template_part( 'menu-page/post-types', $args );?>
 
 				<?php Helper::get_template_part( 'menu-page/protection-type', $args );?>
 
@@ -26,6 +44,8 @@ $active_index = $args['active_index'];
 				<?php Helper::get_template_part( 'menu-page/override-contents', $args );?>
 
 				<?php Helper::get_template_part( 'menu-page/redirect', $args );?>
+
+				<input type="hidden" value="<?php echo esc_attr( $_GET['action'] ); ?>" id="heymehedi-action" data-restriction-id="<?php echo esc_attr( Helper::get_restriction_id() ); ?>">
 
 				<p class="submit">
 					<input type="submit" name="submit" id="heymehedi-submit" class="button button-primary" value="<?php esc_attr_e( 'Save Changes', 'all-in-one-content-restriction' );?>">

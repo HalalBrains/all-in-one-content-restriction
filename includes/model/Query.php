@@ -2,18 +2,12 @@
 /**
  * @author  HeyMehedi
  * @since   1.0
- * @version 1.0
+ * @version 1.1
  */
 
 namespace HeyMehedi\All_In_One_Content_Restriction;
 
 class Query {
-
-	public static function get_registered_post_types() {
-		global $wp_post_types;
-
-		return array_keys( $wp_post_types );
-	}
 
 	public static function get_role_names() {
 
@@ -55,7 +49,7 @@ class Query {
 		return $term_query;
 	}
 
-	public static function get_posts( $exclude_ids = array(), $include_ids = array() ) {
+	public static function get_posts( $post_type = 'post', $exclude_ids = array(), $include_ids = array() ) {
 
 		$args = array( 'fields' => 'ids', 'numberposts' => -1 );
 
@@ -67,9 +61,37 @@ class Query {
 			$args['include'] = $include_ids;
 		}
 
+		$args['post_type'] = $post_type;
+
 		$posts = get_posts( $args );
 
 		return $posts;
+	}
+
+	public static function get_post_types() {
+		return get_post_types( array( 'public' => true ), 'objects' );
+	}
+
+	public static function get_taxonomies( $post_type_key ) {
+		return get_object_taxonomies( $post_type_key, 'object' );
+	}
+
+	public static function get_terms( $taxonomy, $exclude_ids = array(), $include_ids = array() ) {
+
+		$args = array(
+			'taxonomy'   => $taxonomy,
+			'hide_empty' => false,
+		);
+
+		if ( $exclude_ids ) {
+			$args['exclude'] = $exclude_ids;
+		}
+
+		if ( $include_ids ) {
+			$args['include'] = $include_ids;
+		}
+
+		return get_terms( $args );
 	}
 
 }

@@ -2,54 +2,103 @@
 /**
  * @author  HeyMehedi
  * @since   1.0
- * @version 1.0
+ * @version 1.1
  */
 
 namespace HeyMehedi\All_In_One_Content_Restriction;
 
 class Settings {
 
-	public static function get() {
-		$settings                     = get_option( 'all_in_one_content_restriction_settings' );
-		$settings['post_type']        = isset( $settings['post_type'] ) ? $settings['post_type'] : 'posts';
-		$settings['restrict_in']      = isset( $settings['restrict_in'] ) ? $settings['restrict_in'] : 'category';
-		$settings['category_ids']     = isset( $settings['category_ids'] ) ? $settings['category_ids'] : array();
-		$settings['single_post_ids']  = isset( $settings['single_post_ids'] ) ? $settings['single_post_ids'] : array();
-		$settings['active_index']     = $settings['restrict_in'] . '_ids';
-		$settings['role_names']       = isset( $settings['role_names'] ) ? $settings['role_names'] : array();
-		$settings['protection_type']  = isset( $settings['protection_type'] ) ? $settings['protection_type'] : 'override_contents';
-		$settings['redirection_type'] = isset( $settings['redirection_type'] ) ? $settings['redirection_type'] : 'login';
-		$settings['the_title']        = isset( $settings['the_title'] ) ? $settings['the_title'] : '';
-		$settings['the_excerpt']      = isset( $settings['the_excerpt'] ) ? stripslashes( wp_specialchars_decode( $settings['the_excerpt'], ENT_QUOTES, 'UTF-8' ) ) : '';
-		$settings['the_content']      = isset( $settings['the_content'] ) ? stripslashes( wp_specialchars_decode( $settings['the_content'], ENT_QUOTES, 'UTF-8' ) ) : '';
-		$settings['custom_url']       = isset( $settings['custom_url'] ) ? $settings['custom_url'] : '';
+	public static function get( $restriction_id = null ) {
+		$settings['restrictions'] = array();
+		$settings                 = get_option( 'all_in_one_content_restriction_settings' );
 
-		return $settings;
+		return apply_filters( 'all_in_one_content_restriction_get_settings', $settings );
 	}
 
 	public static function set( $data ) {
-		$settings                      = self::get();
-		$ids                           = self::sanitize_array( $data['itemIds'] );
-		$settings['post_type']         = sanitize_text_field( $data['posttype'] );
-		$settings['restrict_in']       = sanitize_text_field( $data['restrictionIn'] );
-		$ids_by_restrict_in            = $settings['restrict_in'] . '_ids';
-		$settings['role_names']        = self::sanitize_array( $data['roleNames'] );
-		$settings['protection_type']   = sanitize_text_field( $data['protectionType'] );
-		$settings['redirection_type']  = sanitize_text_field( $data['redirectionType'] );
-		$settings['the_title']         = sanitize_text_field( $data['theTitle'] );
-		$settings['the_excerpt']       = sanitize_textarea_field( htmlentities( $data['theExcerpt'] ) );
-		$settings['the_content']       = sanitize_textarea_field( htmlentities( $data['theContent'] ) );
-		$settings['custom_url']        = esc_url( $data['customUrl'] );
-		$settings[$ids_by_restrict_in] = $ids;
+		$msg                     = array();
+		$settings                = self::get();
+		$single_restriction_data = array();
+
+		$single_restriction_data['restriction_id'] = sanitize_text_field( $data['restriction_id'] );
+
+		$single_restriction_data['title']    = sanitize_text_field( $data['title'] );
+		$single_restriction_data['priority'] = sanitize_text_field( $data['priority'] );
+
+		$single_restriction_data['post_type']   = sanitize_text_field( $data['post_type'] );
+		$single_restriction_data['restrict_in'] = sanitize_text_field( $data['restrict_in'] );
+
+		$single_restriction_data['protection_type'] = sanitize_text_field( $data['protection_type'] );
+		$single_restriction_data['role_names']      = self::sanitize_array( $data['role_names'] );
+		$single_restriction_data['selected_ids']    = self::sanitize_array( $data['selected_ids'] );
+
+		$single_restriction_data['protection_type'] = sanitize_text_field( $data['protectionType'] );
+
+		// Override Contents
+		$single_restriction_data['the_title']   = sanitize_text_field( $data['the_title'] );
+		$single_restriction_data['the_excerpt'] = sanitize_textarea_field( htmlentities( $data['the_excerpt'] ) );
+		$single_restriction_data['the_content'] = sanitize_textarea_field( htmlentities( $data['the_content'] ) );
+
+		$single_restriction_data['redirection_type'] = sanitize_text_field( $data['redirectionType'] );
+		$single_restriction_data['custom_url']       = esc_url( $data['customUrl'] );
+
+		// $ids                                          = self::sanitize_array( $data['itemIds'] );
+		// $ids_by_restrict_in                           = $single_restriction_data['restrict_in'] . '_ids';
+		// $single_restriction_data[$ids_by_restrict_in] = $ids;
+
+		if ( 'new' === $data['action_type'] ) {
+			$single_restriction_data['restriction_id'] = self::create_restriction_id( $settings );
+			$settings['restrictions'][]                = $single_restriction_data;
+			$msg['restriction_id']                     = $single_restriction_data['restriction_id'];
+		}
+
+		if ( 'edit' === $data['action_type'] && ! empty( $data['restriction_id'] ) ) {
+			foreach ( $settings['restrictions'] as $key => $value ) {
+				if ( $value['restriction_id'] == $data['restriction_id'] ) {
+					$settings['restrictions'][$key] = $single_restriction_data;
+				}
+			}
+		}
 
 		if ( user_can( wp_get_current_user(), 'manage_options' ) ) {
-			$is_submitted = update_option( 'all_in_one_content_restriction_settings', $settings, true );
+			$is_submitted = update_option( 'all_in_one_content_restriction_settings', apply_filters( 'all_in_one_content_restriction_set_settings', $settings ), true );
 
 			if ( $is_submitted ) {
-				echo Strings::get()[123];
+				$msg['msg'] = Strings::get()[123];
 			} else {
-				echo Strings::get()[124];
+				$msg['msg'] = Strings::get()[124];
 			}
+
+			$msg = json_encode( $msg );
+
+			echo $msg;
+		}
+
+	}
+
+	public static function drop( $data ) {
+		$settings = self::get();
+
+		if ( 'trash' === $data['action'] ) {
+			foreach ( $settings['restrictions'] as $key => $value ) {
+				if ( in_array( $value['restriction_id'], $data['aiocr_id'] ) ) {
+					unset( $settings['restrictions'][$key] );
+				}
+			}
+		} else {
+			foreach ( $settings['restrictions'] as $key => $value ) {
+				if ( $value['restriction_id'] == $data['restriction_id'] ) {
+					unset( $settings['restrictions'][$key] );
+					break;
+				}
+			}
+		}
+
+		if ( user_can( wp_get_current_user(), 'manage_options' ) ) {
+			update_option( 'all_in_one_content_restriction_settings', $settings, true );
+
+			return;
 		}
 
 	}
@@ -67,5 +116,16 @@ class Settings {
 		}
 
 		return $array;
+	}
+
+	private static function create_restriction_id( $settings ) {
+		$temp_max = 0;
+		if ( isset( $settings['restrictions'] ) && ! empty( $settings['restrictions'] ) ) {
+			foreach ( $settings['restrictions'] as $key => $value ) {
+				$temp_max = max( $value['restriction_id'], $temp_max );
+			}
+		}
+
+		return $temp_max + 1;
 	}
 }

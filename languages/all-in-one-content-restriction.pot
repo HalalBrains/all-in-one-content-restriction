@@ -128,7 +128,7 @@ msgid "Search Here..."
 msgstr ""
 
 #: templates/menu-page/protection-type.php:10
-msgid "Choose how to protect your content"
+msgid "Select how to protect your content"
 msgstr ""
 
 #: templates/menu-page/protection-type.php:12
