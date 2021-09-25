@@ -38,6 +38,8 @@ class Scripts {
 
 		// JS
 		wp_register_script( 'select2', Helper::get_file_uri( 'admin/js/select2.min.js' ), array( 'jquery' ), $this->version, true );
+		wp_register_script( 'popper', Helper::get_file_uri( 'admin/js/popper.min.js' ), array( 'jquery' ), $this->version, true );
+		wp_register_script( 'bootstrap', Helper::get_file_uri( 'admin/js/bootstrap.min.js' ), array( 'jquery' ), $this->version, true );
 		wp_register_script( 'all-in-one-content-restriction-main', Helper::get_file_uri( 'admin/js/main.js' ), array( 'jquery' ), $this->version, true );
 	}
 
@@ -54,6 +56,8 @@ class Scripts {
 
 		// JS
 		wp_enqueue_script( 'select2' );
+		wp_enqueue_script( 'popper' );
+		wp_enqueue_script( 'bootstrap' );
 		wp_enqueue_script( 'all-in-one-content-restriction-main' );
 		wp_localize_script( 'all-in-one-content-restriction-main', 'heymehedi_object', array( 'ajaxurl' => admin_url( 'admin-ajax.php' ) ) );
 	}

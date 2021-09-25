@@ -16,7 +16,7 @@ $active_index = isset( $args['active_index'] ) ? $args['active_index'] : '';
 		<div class="col-md-6" style="margin: 0 auto;">
 
 			<form id="heymehedi-form" method="post">
-
+				
 				<div class="heymehedi_setting_heading">
 					<h1><?php esc_html_e( 'Setup Content Restriction Rule', 'all-in-one-content-restriction' );?></h1>
 				</div>
@@ -29,7 +29,7 @@ $active_index = isset( $args['active_index'] ) ? $args['active_index'] : '';
 					<input id="title" type="text" value="<?php echo wp_kses_post( isset( $args['title'] ) ? $args['title'] : '' ); ?>" placeholder="<?php esc_attr_e( 'ex: Hello World', 'all-in-one-content-restriction' );?>" class="form-control">
 
 					<label for="priority" class="form-label">
-						<?php esc_html_e( 'Access Priority', 'all-in-one-content-restriction' );?>
+						<?php esc_html_e( 'Access Priority', 'all-in-one-content-restriction' );?> <span class="helper-text" data-container="body" data-toggle="popover" data-placement="right" title="Priority" data-content="And here's some amazing content. It's very engaging. Right?">?</span>
 					</label>
 					<input id="priority" type="number" value="<?php echo wp_kses_post( isset( $args['priority'] ) ? $args['priority'] : '10' ); ?>" placeholder="<?php esc_attr_e( 'ex: 10', 'all-in-one-content-restriction' );?>" class="form-control" required>
 

@@ -344,6 +344,19 @@
 		heymehedi.protectionType();
 		heymehedi.redirectionType()
 
+		// $(function () {
+		// 	$('[data-toggle="tooltip"]').tooltip()
+		// })
+
+		$(function () {
+			$('[data-toggle="popover"]').popover()
+		})
+
+		$(function () {
+			$('[data-toggle="popover"]').popover()
+		  })
+
+
 	});
 
 	$(window).on('load', function () {
