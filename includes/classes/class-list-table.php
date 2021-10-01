@@ -76,7 +76,7 @@ class AIOCR_List_Table extends \WP_List_Table{
 	public function get_columns() {
 		$columns = array(
 			'cb'       => '<input type="checkbox" />',
-			'title'    => __( 'Restriction Title', 'all-in-one-content-restriction' ),
+			'title'    => __( 'Restriction Name', 'all-in-one-content-restriction' ),
 			'overview' => __( 'Overview', 'all-in-one-content-restriction' ),
 
 		);
