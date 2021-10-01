@@ -49,15 +49,18 @@ class Scripts {
 			return;
 		}
 
-		// CSS
-		wp_enqueue_style( 'bootstrap' );
-		wp_enqueue_style( 'select2' );
-		wp_enqueue_style( 'all-in-one-content-restriction-main' );
+		if ( isset( $_GET['action'] ) ) {
+			// CSS
+			wp_enqueue_style( 'bootstrap' );
+			wp_enqueue_style( 'select2' );
 
-		// JS
-		wp_enqueue_script( 'select2' );
-		wp_enqueue_script( 'popper' );
-		wp_enqueue_script( 'bootstrap' );
+			// JS
+			wp_enqueue_script( 'select2' );
+			wp_enqueue_script( 'popper' );
+			wp_enqueue_script( 'bootstrap' );
+		}
+
+		wp_enqueue_style( 'all-in-one-content-restriction-main' );
 		wp_enqueue_script( 'all-in-one-content-restriction-main' );
 		wp_localize_script( 'all-in-one-content-restriction-main', 'heymehedi_object', array( 'ajaxurl' => admin_url( 'admin-ajax.php' ) ) );
 	}
