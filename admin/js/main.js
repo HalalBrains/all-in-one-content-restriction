@@ -325,7 +325,18 @@
 				let redirectionType = $('#redirection_type').val();
 				showHide(redirectionType);
 			});
+		},
+
+		popover: function () {
+			$(function () {
+				if (typeof $.fn.popover != "function") {
+					return;
+				} else {
+					$('[data-toggle="popover"]').popover();
+				}
+			})
 		}
+
 
 	}
 
@@ -342,21 +353,9 @@
 		heymehedi.addToSelectedTable();
 		heymehedi.deleteFromSelectedTable();
 		heymehedi.protectionType();
-		heymehedi.redirectionType()
+		heymehedi.redirectionType();
 
-		// $(function () {
-		// 	$('[data-toggle="tooltip"]').tooltip()
-		// })
-
-		$(function () {
-			$('[data-toggle="popover"]').popover()
-		})
-
-		$(function () {
-			$('[data-toggle="popover"]').popover()
-		  })
-
-
+		heymehedi.popover();
 	});
 
 	$(window).on('load', function () {
