@@ -169,6 +169,12 @@ select#redirection_type {
   box-shadow: 0 0 3px 1px #a8d5c5;
 }
 
+.part5.fixed-details  {
+  position: -webkit-sticky; /* Safari */
+  position: sticky;
+  top: 50px;
+}
+
 #heymehedi-submit {
   border-radius: 5px;
   box-shadow: 0 0 3px 1px #a8d5c5;
