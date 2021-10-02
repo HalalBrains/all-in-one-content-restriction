@@ -30,7 +30,7 @@ class General {
 			'manage_options',
 			'all-in-one-content-restriction',
 			array( $this, 'menu_page' ),
-			'dashicons-privacy',
+			Helper::get_file_uri( 'admin/images/dash-icon.png' ),
 			6
 		);
 	}
