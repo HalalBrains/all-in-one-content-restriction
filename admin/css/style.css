@@ -45,8 +45,8 @@
   display: block;
 }
 
-#heymehedi-main tr:nth-child(even) {
-  background-color: #fff;
+#heymehedi-main tr {
+  background-color: #e7efef;
 }
 
 #heymehedi-main td, #heymehedi-main th {
