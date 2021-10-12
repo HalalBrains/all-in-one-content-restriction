@@ -2,7 +2,7 @@
 /**
  * @author  HeyMehedi
  * @since   1.1
- * @version 1.0
+ * @version 1.1
  */
 
 namespace HeyMehedi\All_In_One_Content_Restriction;
@@ -76,7 +76,7 @@ class AIOCR_List_Table extends \WP_List_Table{
 	public function get_columns() {
 		$columns = array(
 			'cb'       => '<input type="checkbox" />',
-			'title'    => __( 'Restriction Title', 'all-in-one-content-restriction' ),
+			'title'    => __( 'Restriction Name', 'all-in-one-content-restriction' ),
 			'overview' => __( 'Overview', 'all-in-one-content-restriction' ),
 
 		);
@@ -97,7 +97,7 @@ class AIOCR_List_Table extends \WP_List_Table{
 		$actions['edit']   = sprintf( '<a href="%s" data-id="%d" title="%s">%s</a>', admin_url( 'admin.php?page=all-in-one-content-restriction&action=edit&id=' . $item['restriction_id'] ), $item['restriction_id'], __( 'Edit this item', 'all-in-one-content-restriction' ), __( 'Edit', 'all-in-one-content-restriction' ) );
 		$actions['delete'] = sprintf( '<a href="%s" class="submitdelete" data-id="%d" title="%s">%s</a>', admin_url( 'admin.php?page=all-in-one-content-restriction&action=delete&id=' . $item['restriction_id'] ), $item['restriction_id'], __( 'Delete this item', 'all-in-one-content-restriction' ), __( 'Delete', 'all-in-one-content-restriction' ) );
 
-		return sprintf( '<a href="%1$s"><strong>%2$s</strong></a> %3$s', admin_url( 'admin.php?page=all-in-one-content-restriction&action=view&id=' . $item['restriction_id'] ), $item['title'], $this->row_actions( $actions ) );
+		return sprintf( '<a href="%1$s"><strong>%2$s</strong></a> %3$s', admin_url( 'admin.php?page=all-in-one-content-restriction&action=edit&id=' . $item['restriction_id'] ), $item['title'], $this->row_actions( $actions ) );
 	}
 
 	/**

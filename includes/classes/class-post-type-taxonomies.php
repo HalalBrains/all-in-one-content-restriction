@@ -2,7 +2,7 @@
 /**
  * @author  HeyMehedi
  * @since   1.1
- * @version 1.0
+ * @version 1.1
  */
 
 namespace HeyMehedi\All_In_One_Content_Restriction;
@@ -34,7 +34,7 @@ class Post_Type_Taxonomies {
 		$taxonomies = json_decode( json_encode( Query::get_taxonomies( $post_type_key ) ), true );
 
 		foreach ( $taxonomies as $key => $value ) {
-			$taxonomies[$key]['label'] = sprintf( "Any %s has selected %s", ucwords( $obj->labels->singular_name ), ucwords( $value['label'] ) );
+			$taxonomies[$key]['label'] = sprintf( "Selected %s's %s", ucwords( $value['label'] ), ucwords( $obj->labels->singular_name ) );
 		}
 
 		$taxonomies['all_items'] = array(
@@ -61,8 +61,6 @@ class Post_Type_Taxonomies {
 	public static function has_custom_restrict_in( $restricion_in ) {
 		$custom_restrict_in = array(
 			'frontpage',
-			'search_result',
-			'error_404',
 			'the_blog_index',
 			'all_items',
 		);
@@ -75,12 +73,6 @@ class Post_Type_Taxonomies {
 			'frontpage'     => array(
 				'label' => esc_attr__( 'Homepage / Frontpage', 'all-in-one-content-restriction' ),
 			),
-			'search_result' => array(
-				'label' => esc_attr__( 'A Search Result Page', 'all-in-one-content-restriction' ),
-			),
-			'error_404'     => array(
-				'label' => esc_attr__( '404 Error page', 'all-in-one-content-restriction' ),
-			),
 		);
 
 		return array_merge( $custom_restrict_in, $taxonomies );
@@ -89,7 +81,7 @@ class Post_Type_Taxonomies {
 	private static function create_post_restrict_in_extra( $taxonomies ) {
 		$custom_restrict_in = array(
 			'the_blog_index' => array(
-				'label' => esc_attr__( 'The Blog Index', 'all-in-one-content-restriction' ),
+				'label' => esc_attr__( 'Blog Index', 'all-in-one-content-restriction' ),
 			),
 		);
 

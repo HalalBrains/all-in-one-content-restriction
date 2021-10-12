@@ -2,7 +2,7 @@
 /**
  * @author  HeyMehedi
  * @since   1.0
- * @version 1.1
+ * @version 1.1.1
  */
 
 namespace HeyMehedi\All_In_One_Content_Restriction;
@@ -30,7 +30,7 @@ class General {
 			'manage_options',
 			'all-in-one-content-restriction',
 			array( $this, 'menu_page' ),
-			'dashicons-privacy',
+			Helper::get_file_uri( 'admin/images/dash-icon.png' ),
 			6
 		);
 	}

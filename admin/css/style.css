@@ -1,6 +1,5 @@
 #heymehedi-main .form-control {
   display: block !important;
-  width: 100% !important;
   max-width: inherit !important;
   padding: 10px 15px !important;
   font-size: 14px !important;
@@ -170,16 +169,29 @@ select#redirection_type {
   box-shadow: 0 0 3px 1px #a8d5c5;
 }
 
+.part5.fixed-details  {
+  position: -webkit-sticky; /* Safari */
+  position: sticky;
+  top: 50px;
+}
+
 #heymehedi-submit {
   border-radius: 5px;
   box-shadow: 0 0 3px 1px #a8d5c5;
 }
 
-.heymehedi_helper_text {
-  background: #000;
-  color: #fff;
-  padding: 1px 6px;
-  border-radius: 50%;
+#heymehedi-main .helper-text img {
+  max-width: 15px;
+  margin-top: -2px;
+  margin-left: 3px;
+}
+
+.popover.fade.bs-popover-right.show .arrow {
+  transform: rotate(317deg);
+}
+
+.popover.fade.bs-popover-right.show {
+  left: 15px !important;
 }
 
 .select2-search__field {

@@ -2,7 +2,7 @@
 /**
  * @author  HeyMehedi
  * @since   1.0
- * @version 1.1
+ * @version 1.1.1
  */
 
 use HeyMehedi\All_In_One_Content_Restriction\Helper;
@@ -13,7 +13,9 @@ $restrict_in = isset( $args['restrict_in'] ) ? $args['restrict_in'] : 'category'
 ?>
 <div class="part1 mb-3">
 
-	<label for="post-type" class="form-label"><?php esc_html_e( 'Content-Type', 'all-in-one-content-restriction' );?></label>
+	<label for="post-type" class="form-label"><?php esc_html_e( 'Content-Type', 'all-in-one-content-restriction' );?> <span class="helper-text" data-container="body" data-toggle="popover" data-placement="right" title="<?php esc_attr_e( 'Content-Type', 'all-in-one-content-restriction' );?>" data-content="<?php esc_attr_e( 'Specify types of content  that are restricted to certain user roles.' ) ; ?>"><img src="<?php echo Helper::get_file_uri( 'admin/images/question-mark.png' ) ?>" alt=""></span>
+		
+	</label> 
 	<select class="form-select form-control" id="post-type" name="post-type">
 		<?php echo Post_Type_Taxonomies::get_post_types_options( $post_type ); ?>
 	</select>

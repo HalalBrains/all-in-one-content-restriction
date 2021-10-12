@@ -1,29 +1,47 @@
-=== All in One Content Restriction ===
+=== All In One Content Restriction – easy to use WordPress plugin to restrict any type content ===
 Contributors: HeyMehedi
 Tags: content restriction, access control, private, permission, restrict access
 Requires at least: 5.6
 Tested up to: 5.8
 Requires PHP: 5.6
-Stable tag: 1.0
+Stable tag: 1.1.1
 License: GPLv3 or Any Later Version
 
 All in One Content Restriction - A simple and user-friendly plugin to restrict users/visitors from viewing posts by restricting access, as simple as that.
 
 == Description ==
-= All in One Content Restriction = - A simple and user-friendly plugin to restrict users/visitors from viewing posts by restricting access, as simple as that.
+AIO Content Restriction is a comprehensive, easy to use & feature-packed WordPress content restriction plugin to limit users/visitors from viewing content by restricting access.
 
-You can use the AIO Content Restriction plugin for free to create restriction rules on your post without any hassle.
+All the features of this plugin hits all the checkpoints for a full-fledged members-only publishing magazine / blog website. 
 
-= FEATURES AT A GLANCE =
-* Limit access to the post by id or category.
-* Limit access to content with user role
-* Replace posts title to a default custom title 
-* Replace posts excerpt to a  default custom message 
-* Replace posts description/content with a default custom description
-* Redirect users who do not have permission to view the content to a custom URL or homepage/ frontpage.
-* Redirect users who do not have permission to view the content to the login page (redirects back to the same URL after the user logged in).
+This plugin is completely free to use & open sourced. Most importantly this plugin is intently built with the non-technical user in mind.
 
-If you want to contribute to the project, you’re most welcome to make it happen. The full source code is available on [GitHub](https://github.com/HeyMehedi/all-in-one-content-restriction). If you find anything improbable, feel free to shoot a bug report.
+
+= Features Spotlight: =
+
+🔐 **Post**
+* Limit access to the blog index
+* Limit access to all of the posts
+* Limit access to specific post by id / category / tag / post formats
+* Limit access to post with user role
+
+🔐 **Page**
+* Limit access to the homepage/ frontpage
+* Limit access to all of the pages by id 
+* Limit access to page with user role
+
+🔐 **Replace Texts**
+* Replace post or page  title to a default custom title
+* Replace post or page excerpt to default custom texts
+* Replace post or page description with a default custom texts
+
+🔐 **URL Redirect**
+* Redirect users who do not have permission to view the post or page to a custom URL or homepage/ frontpage
+* Redirect users who do not have permission to view the post or page to the login URL
+* Redirect back to the current post or page URL after the user logged in
+
+**BE A CONTRIBUTOR**
+If you want to contribute, you’re most welcome to make it happen. The full source code is available on  [GitHub](https://github.com/HeyMehedi/all-in-one-content-restriction). If you find anything improbable, feel free to shoot a bug report.
 
 Please let me know your feedback, if you think something can be more awesome in this plugin, I would be happy to add it.
 

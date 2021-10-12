@@ -276,7 +276,7 @@
 
 		select2js: function () {
 			$("#roles").select2({
-				placeholder: "Select Roles",
+				placeholder: "Select users",
 				allowClear: true,
 			});
 		},
@@ -325,7 +325,20 @@
 				let redirectionType = $('#redirection_type').val();
 				showHide(redirectionType);
 			});
+		},
+
+		popover: function () {
+			$(function () {
+				if (typeof $.fn.popover != "function") {
+					return;
+				} else {
+					$('[data-toggle="popover"]').popover({
+						html: true
+					});
+				}
+			})
 		}
+
 
 	}
 
@@ -342,8 +355,9 @@
 		heymehedi.addToSelectedTable();
 		heymehedi.deleteFromSelectedTable();
 		heymehedi.protectionType();
-		heymehedi.redirectionType()
+		heymehedi.redirectionType();
 
+		heymehedi.popover();
 	});
 
 	$(window).on('load', function () {

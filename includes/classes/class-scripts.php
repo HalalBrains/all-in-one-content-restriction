@@ -2,7 +2,7 @@
 /**
  * @author  HeyMehedi
  * @since   1.0
- * @version 1.0
+ * @version 1.1
  */
 
 namespace HeyMehedi\All_In_One_Content_Restriction;
@@ -38,6 +38,8 @@ class Scripts {
 
 		// JS
 		wp_register_script( 'select2', Helper::get_file_uri( 'admin/js/select2.min.js' ), array( 'jquery' ), $this->version, true );
+		wp_register_script( 'popper', Helper::get_file_uri( 'admin/js/popper.min.js' ), array( 'jquery' ), $this->version, true );
+		wp_register_script( 'bootstrap', Helper::get_file_uri( 'admin/js/bootstrap.min.js' ), array( 'jquery' ), $this->version, true );
 		wp_register_script( 'all-in-one-content-restriction-main', Helper::get_file_uri( 'admin/js/main.js' ), array( 'jquery' ), $this->version, true );
 	}
 
@@ -47,13 +49,18 @@ class Scripts {
 			return;
 		}
 
-		// CSS
-		wp_enqueue_style( 'bootstrap' );
-		wp_enqueue_style( 'select2' );
-		wp_enqueue_style( 'all-in-one-content-restriction-main' );
+		if ( isset( $_GET['action'] ) ) {
+			// CSS
+			wp_enqueue_style( 'bootstrap' );
+			wp_enqueue_style( 'select2' );
 
-		// JS
-		wp_enqueue_script( 'select2' );
+			// JS
+			wp_enqueue_script( 'select2' );
+			wp_enqueue_script( 'popper' );
+			wp_enqueue_script( 'bootstrap' );
+		}
+
+		wp_enqueue_style( 'all-in-one-content-restriction-main' );
 		wp_enqueue_script( 'all-in-one-content-restriction-main' );
 		wp_localize_script( 'all-in-one-content-restriction-main', 'heymehedi_object', array( 'ajaxurl' => admin_url( 'admin-ajax.php' ) ) );
 	}
