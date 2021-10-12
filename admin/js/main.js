@@ -276,7 +276,7 @@
 
 		select2js: function () {
 			$("#roles").select2({
-				placeholder: "Select Roles",
+				placeholder: "Select users",
 				allowClear: true,
 			});
 		},
@@ -332,7 +332,9 @@
 				if (typeof $.fn.popover != "function") {
 					return;
 				} else {
-					$('[data-toggle="popover"]').popover();
+					$('[data-toggle="popover"]').popover({
+						html: true
+					});
 				}
 			})
 		}

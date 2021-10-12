@@ -1,4 +1,4 @@
-=== All in One Content Restriction ===
+=== All In One Content Restriction – easy to use WordPress plugin to restrict any type content ===
 Contributors: HeyMehedi
 Tags: content restriction, access control, private, permission, restrict access
 Requires at least: 5.6
