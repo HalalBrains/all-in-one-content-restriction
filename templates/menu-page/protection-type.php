@@ -7,7 +7,7 @@
 
 $protection_type = isset( $args['protection_type'] ) ? $args['protection_type'] : 'override_contents';
 ?>
-<div class="part2 mb-3">
+<div class="protection-type mb-3">
 
 	<label class="form-label" for="protection_type"><?php esc_html_e( 'Select how to protect your content', 'all-in-one-content-restriction' );?></label>
 	<select id="protection_type" class="form-select form-control">

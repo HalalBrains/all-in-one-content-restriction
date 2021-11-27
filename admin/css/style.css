@@ -16,12 +16,6 @@
   outline: none !important;
 }
 
-#heymehedi-main .form-control:focus, #heymehedi-main #heymehedi-submit {
-  box-shadow: none !important;
-  outline: 0 !important;
-  border: 0 !important;
-}
-
 #heymehedi-main .form-label {
   width: 100%;
   font-size: 14px;
@@ -29,15 +23,12 @@
   display: block;
 }
 
-#heymehedi-main label[for=priority] {
-  padding-top: 15px;
-}
-
 #heymehedi-main table {
   border-collapse: collapse;
   width: 100%;
   display: block;
   font-size: 14px;
+  background-color: #E5EFEA;
 }
 
 #heymehedi-main thead, #heymehedi-main tbody {
@@ -89,19 +80,6 @@
   overflow: auto;
 }
 
-#heymehedi-submit {
-  width: 100%;
-  font-size: 14px;
-  background: #d1e4dd;
-  color: #070606;
-  transition: .3s;
-  border: 0;
-  padding: 5px;
-}
-
-#heymehedi-submit:hover {
-  background: #bcdacf;
-}
 
 #heymehedi-msg {
   text-align: center;
@@ -161,24 +139,24 @@ select#redirection_type {
   text-align: center;
 }
 
-.part1, .part2, .part3, .part4, .part5 {
+
+/* .part1, .part2, .part3, .part4, .part5 {
   padding: 15px;
   background-color: #d1e4dd;
   margin-bottom: 15px;
   border-radius: 5px;
   box-shadow: 0 0 3px 1px #a8d5c5;
-}
+} */
 
-.part5.fixed-details  {
-  position: -webkit-sticky; /* Safari */
+
+
+/* .part5.fixed-details  {
+  position: -webkit-sticky; 
   position: sticky;
   top: 50px;
 }
+ */
 
-#heymehedi-submit {
-  border-radius: 5px;
-  box-shadow: 0 0 3px 1px #a8d5c5;
-}
 
 #heymehedi-main .helper-text img {
   max-width: 15px;
@@ -220,3 +198,86 @@ select#redirection_type {
 #heymehedi-main .select2.select2-container.select2-container--default, #heymehedi-main .select2.select2-container.select2-container--default.select2-container--above, #heymehedi-main .select2.select2-container.select2-container--default.select2-container--focus {
   width: 100% !important;
 }
+
+
+/* Optimize these css */
+#msform {
+  text-align: center;
+  position: relative;
+}
+
+#msform fieldset .form-card {
+  background: #DCF5D0;
+  border: 0 none;
+  border-radius: 0px;
+  padding: 15px;
+  box-sizing: border-box;
+  position: relative
+}
+
+#msform fieldset {
+  background: white;
+  border: 0 none;
+  border-radius: 0.5rem;
+  box-sizing: border-box;
+  width: 100%;
+  margin: 0;
+  padding-bottom: 20px;
+  position: relative
+}
+
+#msform fieldset:not(:first-of-type) {
+  display: none
+}
+
+#msform fieldset .form-card {
+  text-align: left;
+}
+
+#msform .action-button {
+  background: #2271b1;
+  font-weight: bold;
+  color: white;
+  border: 0 none;
+  border-radius: 0px;
+  cursor: pointer;
+  padding: 10px 25px;
+  margin: 10px 5px
+}
+
+#msform .action-button:hover,
+#msform .action-button:focus {
+  box-shadow: 0 0 0 2px white, 0 0 0 3px skyblue
+}
+
+#msform .action-button-previous {
+  background: #616161;
+  font-weight: bold;
+  color: white;
+  border: 0 none;
+  border-radius: 0px;
+  cursor: pointer;
+  padding: 10px 25px;
+  margin: 10px 5px
+}
+
+#msform .action-button-previous:hover,
+#msform .action-button-previous:focus {
+  box-shadow: 0 0 0 2px white, 0 0 0 3px #616161
+}
+
+.card {
+  z-index: 0;
+  border: none;
+  border-radius: 0.5rem;
+  position: relative
+}
+
+.fs-title {
+  font-size: 28px;
+  color: #25223F;
+  margin-bottom: 10px;
+  font-weight: 500;
+  text-align: left
+}
+/* end */
