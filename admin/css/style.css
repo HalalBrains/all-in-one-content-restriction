@@ -42,8 +42,9 @@
 #heymehedi-main td, #heymehedi-main th {
   border: 1px solid #fff;
   text-align: left;
-  padding: 8px;
+  padding: 4px;
   cursor: pointer;
+  font-size: 13px;
 }
 
 #heymehedi-main tr {
