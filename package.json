@@ -1,0 +1,13 @@
+{
+	"name": "all-in-one-content-restriction",
+	"version": "1.0.0",
+	"main": "gulpfile.js",
+	"author": "HeyMehedi",
+	"license": "(GPL-3.0)",
+	"devDependencies": {
+		"gulp": "^4.0.2",
+		"gulp-clean": "^0.4.0",
+		"gulp-wp-pot": "^2.3.5",
+		"gulp-zip": "^4.2.0"
+	}
+}
