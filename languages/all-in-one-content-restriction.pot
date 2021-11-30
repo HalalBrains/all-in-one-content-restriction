@@ -1,27 +1,72 @@
+# Copyright (C) 2021 all-in-one-content-restriction
+# This file is distributed under the same license as the all-in-one-content-restriction package.
 msgid ""
 msgstr ""
-"Project-Id-Version: \n"
-"POT-Creation-Date: 2021-08-13 07:08+0600\n"
-"PO-Revision-Date: 2021-08-13 07:12+0600\n"
-"Last-Translator: \n"
-"Language-Team: \n"
-"Language: en_US\n"
+"Project-Id-Version: all-in-one-content-restriction\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Poedit 2.3\n"
 "X-Poedit-Basepath: ..\n"
-"Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Poedit-KeywordsList: __;_e;esc_html_e;esc_attr_e\n"
+"X-Poedit-KeywordsList: __;_e;_ex:1,2c;_n:1,2;_n_noop:1,2;_nx:1,2,4c;_nx_noop:1,2,3c;_x:1,2c;esc_attr__;esc_attr_e;esc_attr_x:1,2c;esc_html__;esc_html_e;esc_html_x:1,2c\n"
 "X-Poedit-SearchPath-0: .\n"
-"X-Poedit-SearchPathExcluded-0: admin\n"
+"X-Poedit-SearchPathExcluded-0: *.js\n"
+"X-Poedit-SourceCharset: UTF-8\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#: includes/classes/class-strings.php:24 templates/menu-page/post-type.php:13
+#: templates/menu-list-table.php:10, includes/classes/class-strings.php:24
 msgid "All in One Content Restriction"
 msgstr ""
 
+#: templates/menu-list-table.php:10
+msgid "Add New"
+msgstr ""
+
+#: includes/classes/class-helper.php:71
+msgid "Any Post has selected Categories"
+msgstr ""
+
+#: includes/classes/class-list-table.php:42
+msgid "No items found"
+msgstr ""
+
+#: includes/classes/class-list-table.php:79
+msgid "Restriction Name"
+msgstr ""
+
+#: includes/classes/class-list-table.php:80
+msgid "Overview"
+msgstr ""
+
+#: includes/classes/class-list-table.php:97
+msgid "Edit this item"
+msgstr ""
+
+#: includes/classes/class-list-table.php:97
+msgid "Edit"
+msgstr ""
+
+#: includes/classes/class-list-table.php:98
+msgid "Delete this item"
+msgstr ""
+
+#: includes/classes/class-list-table.php:98, includes/classes/class-list-table.php:123
+msgid "Delete"
+msgstr ""
+
+#: includes/classes/class-markup-manager.php:26
+msgid "Select your option"
+msgstr ""
+
+#: includes/classes/class-post-type-taxonomies.php:74
+msgid "Homepage / Frontpage"
+msgstr ""
+
+#: includes/classes/class-post-type-taxonomies.php:84
+msgid "Blog Index"
+msgstr ""
+
 #: includes/classes/class-strings.php:25
-msgid "Sorry, no items found!"
+msgid "Nothing found!"
 msgstr ""
 
 #: includes/classes/class-strings.php:26
@@ -32,145 +77,146 @@ msgstr ""
 msgid "No changes made"
 msgstr ""
 
-#: includes/model/Query.php:26
+#: includes/model/Query.php:20
 msgid "Not logged in"
 msgstr ""
 
-#: templates/menu-page.php:31
-msgid "Save Changes"
-msgstr ""
-
-#: templates/menu-page/items-table.php:16
+#: templates/menu-page/items-table.php:19
 msgid "Add"
 msgstr ""
 
-#: templates/menu-page/items-table.php:17
-#: templates/menu-page/selected-items.php:25
+#: templates/menu-page/items-table.php:20, templates/menu-page/selected-items.php:45
 msgid "ID"
 msgstr ""
 
-#: templates/menu-page/items-table.php:18
-#: templates/menu-page/selected-items.php:26
+#: templates/menu-page/items-table.php:21, templates/menu-page/selected-items.php:46
 msgid "Title"
 msgstr ""
 
-#: templates/menu-page/override-contents.php:13
-msgid "Replace Default Title"
+#: templates/menu-page/override-contents.php:13, templates/menu-page/override-contents.php:13
+msgid "Replace Title"
 msgstr ""
 
-#: templates/menu-page/override-contents.php:14
-#, php-format
-msgid "Use the_title by %%title%%"
+#: templates/menu-page/override-contents.php:15
+msgid "Enter a custom title to display to restricted users"
 msgstr ""
 
-#: templates/menu-page/override-contents.php:14
-#: templates/menu-page/override-contents.php:20
-#: templates/menu-page/override-contents.php:26
-msgid "?"
-msgstr ""
-
-#: templates/menu-page/override-contents.php:16
-#, php-format
-msgid "Prefix %%title%% Suffix"
-msgstr ""
-
-#: templates/menu-page/override-contents.php:19
-msgid "Replace Default Excerpt"
+#: templates/menu-page/override-contents.php:18, templates/menu-page/override-contents.php:18
+msgid "Replace Excerpt"
 msgstr ""
 
 #: templates/menu-page/override-contents.php:20
-#, php-format
-msgid "Use the_content by %%excerpt%%"
+msgid "Enter a custom excerpt  to display to restricted users"
 msgstr ""
 
-#: templates/menu-page/override-contents.php:22
-#, php-format
-msgid "Prefix %%excerpt%% Suffix"
+#: templates/menu-page/override-contents.php:23, templates/menu-page/override-contents.php:23
+msgid "Replace Description"
 msgstr ""
 
-#: templates/menu-page/override-contents.php:25
-msgid "Replace Default Description"
+#: templates/menu-page/post-types.php:16
+msgid "Type"
 msgstr ""
 
-#: templates/menu-page/override-contents.php:26
-#, php-format
-msgid "Use the_content by %%content%%"
+#: templates/menu-page/post-types.php:16
+msgid "Content-Type"
 msgstr ""
 
-#: templates/menu-page/post-type.php:16
-msgid "Post Type"
-msgstr ""
-
-#: templates/menu-page/post-type.php:18
-msgid "Posts"
-msgstr ""
-
-#: templates/menu-page/post-type.php:21
+#: templates/menu-page/post-types.php:21
 msgid "Restrict in"
 msgstr ""
 
-#: templates/menu-page/post-type.php:23
-msgid "Category"
-msgstr ""
-
-#: templates/menu-page/post-type.php:24
-msgid "Single Post"
-msgstr ""
-
-#: templates/menu-page/post-type.php:27
-#: templates/menu-page/selected-items.php:14
-msgid "Type the title or ID"
-msgstr ""
-
-#: templates/menu-page/post-type.php:28
-#: templates/menu-page/selected-items.php:15
-msgid "Search Here..."
-msgstr ""
-
-#: templates/menu-page/protection-type.php:10
+#: templates/menu-page/protection-type.php:12
 msgid "Select how to protect your content"
 msgstr ""
 
-#: templates/menu-page/protection-type.php:12
-msgid "Override Contents"
-msgstr ""
-
-#: templates/menu-page/protection-type.php:13
-msgid "Login and Back"
-msgstr ""
-
 #: templates/menu-page/protection-type.php:14
+msgid "Override content"
+msgstr ""
+
+#: templates/menu-page/protection-type.php:15
+msgid "Login & back to current page/post"
+msgstr ""
+
+#: templates/menu-page/protection-type.php:16
 msgid "Redirect"
 msgstr ""
 
-#: templates/menu-page/redirect.php:10
+#: templates/menu-page/redirect.php:13
 msgid "Where will they be taken? "
 msgstr ""
 
-#: templates/menu-page/redirect.php:12
+#: templates/menu-page/redirect.php:15
 msgid "Home Page"
 msgstr ""
 
-#: templates/menu-page/redirect.php:13
+#: templates/menu-page/redirect.php:16
 msgid "Custom URL"
 msgstr ""
 
-#: templates/menu-page/redirect.php:17
+#: templates/menu-page/redirect.php:20
 msgid "Redirect URL"
 msgstr ""
 
-#: templates/menu-page/redirect.php:18
+#: templates/menu-page/redirect.php:21
 msgid "https://your-url.com"
 msgstr ""
 
-#: templates/menu-page/roles.php:12
-msgid "Who can see these contents?(multiple roles allowed)"
+#: templates/menu-page/roles.php:14
+msgid "Select who should have access to this content"
 msgstr ""
 
-#: templates/menu-page/selected-items.php:12
-msgid "Selected items"
+#: templates/menu-page/selected-items.php:21
+msgid "Select"
 msgstr ""
 
-#: templates/menu-page/selected-items.php:24
+#: templates/menu-page/selected-items.php:22, templates/menu-page/selected-items.php:35
+msgid "Type to search"
+msgstr ""
+
+#: templates/menu-page/selected-items.php:34
+msgid "Selected"
+msgstr ""
+
+#: templates/menu-page/selected-items.php:44
 msgid "Drop"
+msgstr ""
+
+#: templates/menu-page/steps/access-restriction.php:20, templates/menu-page/steps/content-shield-option.php:23, templates/menu-page/steps/restriction-rule.php:38
+msgid "Back"
+msgstr ""
+
+#: templates/menu-page/steps/access-restriction.php:21, templates/menu-page/steps/restriction-rule.php:39
+msgid "Next"
+msgstr ""
+
+#: templates/menu-page/steps/content-shield-option.php:14
+msgid "Content shield option"
+msgstr ""
+
+#: templates/menu-page/steps/content-shield-option.php:24
+msgid "Save"
+msgstr ""
+
+#: templates/menu-page/steps/restriction-rule.php:14
+msgid "Restriction rule"
+msgstr ""
+
+#: templates/menu-page/steps/restriction-rule.php:18
+msgid "Name"
+msgstr ""
+
+#: templates/menu-page/steps/restriction-rule.php:18
+msgid "Restriction name"
+msgstr ""
+
+#: templates/menu-page/steps/restriction-rule.php:20
+msgid "Posts restricted to logged out users"
+msgstr ""
+
+#: templates/menu-page/steps/restriction-rule.php:31, templates/menu-page/steps/restriction-rule.php:31
+msgid "Access Priority"
+msgstr ""
+
+#: templates/menu-page/steps/restriction-rule.php:33
+msgid "Level of access this restriction gives."
 msgstr ""
