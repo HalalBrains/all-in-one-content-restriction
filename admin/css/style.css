@@ -208,7 +208,7 @@ select#redirection_type {
 }
 
 #msform fieldset .form-card {
-  background: #DCF5D0;
+  background: #E8E2F8;
   border: 0 none;
   border-radius: 0px;
   padding: 15px;
@@ -244,6 +244,24 @@ select#redirection_type {
   cursor: pointer;
   padding: 10px 25px;
   margin: 10px 5px
+}
+
+a.previous.action-button-previous,
+input.previous.action-button-previous {
+  width: 45% !important;
+  display: inline-block;
+  text-decoration: auto;
+  /* margin: 0px !important; */
+  /* text-align: center; */
+  /* margin-top: 15px !important; */
+}
+
+input.next.action-button,
+input#heymehedi-submit {
+  width: 45%;
+  /* display: inline-block; */
+  /* margin: 0 !important; */
+  /* margin-top: 15px !important; */
 }
 
 #msform .action-button:hover,
