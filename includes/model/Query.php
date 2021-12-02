@@ -69,7 +69,18 @@ class Query {
 	}
 
 	public static function get_post_types() {
-		return get_post_types( array( 'public' => true ), 'objects' );
+
+		// return get_post_types( array( 'public' => true ), 'objects' ); @will use it in the future to work with all the post types.
+		$post_types = array(
+			'post' => array(
+				'label' => esc_html__( 'Posts', 'all-in-one-content-restriction' ),
+			),
+			'page' => array(
+				'label' => esc_html__( 'Pages', 'all-in-one-content-restriction' ),
+			),
+		);
+
+		return $post_types;
 	}
 
 	public static function get_taxonomies( $post_type_key ) {
