@@ -11,7 +11,7 @@ use HeyMehedi\All_In_One_Content_Restriction\Helper;
 
 	<div class="form-card">
 
-		<h2 class="fs-title">Post / Page access restriction </h2>
+		<h2 class="fs-title"><?php printf( __( '<span id="post-type-dynamic-title">%s</span> access restriction', 'all-in-one-content-restriction' ), isset( $args['post_type'] ) ? $args['post_type'] : __( 'Post', 'all-in-one-content-restriction' ) );?></h2>
 
 		<?php Helper::get_template_part( 'menu-page/selected-items', $args );?>
 

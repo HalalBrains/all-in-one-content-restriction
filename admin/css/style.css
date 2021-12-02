@@ -297,6 +297,7 @@ input#heymehedi-submit {
   color: #25223F;
   margin-bottom: 10px;
   font-weight: 500;
-  text-align: left
+  text-align: left;
+  text-transform: capitalize;
 }
 /* end */

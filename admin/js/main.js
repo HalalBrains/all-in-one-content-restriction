@@ -124,6 +124,8 @@
 				var postType = $(this).val();
 				var restrictionIn = $('#restriction-in').val();
 
+				$('#post-type-dynamic-title').html(postType);
+
 				$.post(
 					heymehedi_object.ajaxurl,
 					{
