@@ -202,13 +202,21 @@ select#redirection_type {
 
 
 /* Optimize these css */
+input {
+  color:  #91929B;
+}
+
+::-webkit-scrollbar {
+  display: none;
+}
+
 #msform {
   text-align: center;
   position: relative;
 }
 
 #msform fieldset .form-card {
-  background: #E8E2F8;
+  background: #F3EEFF;
   border: 0 none;
   border-radius: 0px;
   padding: 15px;
@@ -236,7 +244,7 @@ select#redirection_type {
 }
 
 #msform .action-button {
-  background: #2271b1;
+  background: #323733;
   font-weight: bold;
   color: white;
   border: 0 none;
@@ -245,7 +253,10 @@ select#redirection_type {
   padding: 10px 25px;
   margin: 10px 5px
 }
+#msform .action-button:hover {
+  background: #595C53;
 
+}
 a.previous.action-button-previous,
 input.previous.action-button-previous {
   width: 45% !important;
@@ -257,7 +268,7 @@ input.previous.action-button-previous {
 }
 
 input.next.action-button,
-input#heymehedi-submit {
+input.heymehedi-submit {
   width: 45%;
   /* display: inline-block; */
   /* margin: 0 !important; */
@@ -277,7 +288,7 @@ input#heymehedi-submit {
   border-radius: 0px;
   cursor: pointer;
   padding: 10px 25px;
-  margin: 10px 5px
+  margin: 40px 5px
 }
 
 #msform .action-button-previous:hover,

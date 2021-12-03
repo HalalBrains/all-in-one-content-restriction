@@ -21,8 +21,6 @@ use HeyMehedi\All_In_One_Content_Restriction\Helper;
 	</div>
 
 	<input type="button" name="previous" class="previous action-button-previous" value="<?php esc_attr_e( 'Back', 'all-in-one-content-restriction' )?>" />
-	<input type="submit" name="submit" id="heymehedi-submit" class="action-button" value="<?php esc_attr_e( 'Save', 'all-in-one-content-restriction' );?>">
-
-	<p id="heymehedi-msg"></p>
+	<input type="submit" name="submit" class="action-button heymehedi-submit" value="<?php esc_attr_e( 'Save', 'all-in-one-content-restriction' );?>">
 
 </fieldset>

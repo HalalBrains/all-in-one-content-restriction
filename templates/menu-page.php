@@ -9,7 +9,7 @@ use HeyMehedi\All_In_One_Content_Restriction\Helper;
 
 $active_index = isset( $args['active_index'] ) ? $args['active_index'] : '';
 ?>
-<div class="container mt-5" id="heymehedi-main">
+<div class="container-fluid mt-5" id="heymehedi-main">
 
 	<div class="row">
 
@@ -21,6 +21,8 @@ $active_index = isset( $args['active_index'] ) ? $args['active_index'] : '';
           <?php Helper::get_template_part( 'menu-page/steps/restriction-rule', $args );?>
           <?php Helper::get_template_part( 'menu-page/steps/access-restriction', $args );?>
           <?php Helper::get_template_part( 'menu-page/steps/content-shield-option', $args );?>
+		  
+		  <p id="heymehedi-msg"></p>
 
         </form>
 
