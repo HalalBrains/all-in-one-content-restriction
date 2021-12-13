@@ -81,6 +81,14 @@ msgstr ""
 msgid "Not logged in"
 msgstr ""
 
+#: includes/model/Query.php:76
+msgid "Posts"
+msgstr ""
+
+#: includes/model/Query.php:79
+msgid "Pages"
+msgstr ""
+
 #: templates/menu-page/items-table.php:19
 msgid "Add"
 msgstr ""
@@ -181,6 +189,14 @@ msgstr ""
 msgid "Drop"
 msgstr ""
 
+#: templates/menu-page/steps/access-restriction.php:14
+msgid "<span id=\"post-type-dynamic-title\">%s</span> access restriction"
+msgstr ""
+
+#: templates/menu-page/steps/access-restriction.php:14
+msgid "Post"
+msgstr ""
+
 #: templates/menu-page/steps/access-restriction.php:20, templates/menu-page/steps/content-shield-option.php:23, templates/menu-page/steps/restriction-rule.php:38
 msgid "Back"
 msgstr ""
@@ -189,12 +205,12 @@ msgstr ""
 msgid "Next"
 msgstr ""
 
-#: templates/menu-page/steps/content-shield-option.php:14
-msgid "Content shield option"
+#: templates/menu-page/steps/access-restriction.php:22, templates/menu-page/steps/content-shield-option.php:24
+msgid "Save"
 msgstr ""
 
-#: templates/menu-page/steps/content-shield-option.php:24
-msgid "Save"
+#: templates/menu-page/steps/content-shield-option.php:14
+msgid "Content shield option"
 msgstr ""
 
 #: templates/menu-page/steps/restriction-rule.php:14

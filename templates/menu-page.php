@@ -9,7 +9,7 @@ use HeyMehedi\All_In_One_Content_Restriction\Helper;
 
 $active_index = isset( $args['active_index'] ) ? $args['active_index'] : '';
 ?>
-<div class="container-fluid mt-5" id="heymehedi-main">
+<div class="container mt-5" id="heymehedi-main">
 
 	<div class="row">
 

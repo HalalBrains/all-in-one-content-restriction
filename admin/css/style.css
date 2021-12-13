@@ -1,3 +1,7 @@
+div#wpcontent {
+  padding-left: 0;
+}
+
 #heymehedi-main .form-control {
   display: block !important;
   max-width: inherit !important;
@@ -5,6 +9,7 @@
   font-size: 14px !important;
   outline: none !important;
   border: 0px !important;
+  border-radius: 8px;
 }
 
 #heymehedi-main .form-control:focus-visible {
@@ -120,7 +125,7 @@
 }
 
 #heymehedi-main select, #heymehedi_the_title, #heymehedi_the_excerpt {
-  margin-bottom: 15px;
+  margin-bottom: 20px;
 }
 
 #heymehedi-main .custom_url_box {
@@ -203,7 +208,7 @@ select#redirection_type {
 
 /* Optimize these css */
 input {
-  color:  #91929B;
+  color: #91929B;
 }
 
 ::-webkit-scrollbar {
@@ -253,10 +258,12 @@ input {
   padding: 10px 25px;
   margin: 10px 5px
 }
+
 #msform .action-button:hover {
   background: #595C53;
 
 }
+
 a.previous.action-button-previous,
 input.previous.action-button-previous {
   width: 45% !important;
@@ -281,7 +288,7 @@ input.heymehedi-submit {
 }
 
 #msform .action-button-previous {
-  background: #616161;
+  background: #323733;
   font-weight: bold;
   color: white;
   border: 0 none;
@@ -293,7 +300,8 @@ input.heymehedi-submit {
 
 #msform .action-button-previous:hover,
 #msform .action-button-previous:focus {
-  box-shadow: 0 0 0 2px white, 0 0 0 3px #616161
+  box-shadow: 0 0 0 2px white, 0 0 0 3px #616161;
+  background: #595C53;
 }
 
 .card {
@@ -311,4 +319,5 @@ input.heymehedi-submit {
   text-align: left;
   text-transform: capitalize;
 }
+
 /* end */
