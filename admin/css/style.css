@@ -12,12 +12,12 @@ div#wpcontent {
   border-radius: 8px;
 }
 
-#heymehedi-main .form-control:focus-visible {
+#heymehedi-main .form-control:focus-visible,
+#heymehedi-main .form-control:focus {
   display: block !important;
   width: 100% !important;
   max-width: inherit !important;
   padding: 10px 15px !important;
-  font-size: 14px !important;
   outline: none !important;
 }
 
@@ -33,7 +33,8 @@ div#wpcontent {
   width: 100%;
   display: block;
   font-size: 14px;
-  background-color: #E5EFEA;
+  background-color: #eae9f1d1;
+  box-shadow: 0 0 0 0 !important;
 }
 
 #heymehedi-main thead, #heymehedi-main tbody {
@@ -49,12 +50,12 @@ div#wpcontent {
   text-align: left;
   padding: 4px;
   cursor: pointer;
-  font-size: 13px;
+  font-size: 16px;
 }
 
 #heymehedi-main tr {
   display: grid;
-  grid-template-columns: 1fr 1fr 10fr;
+  grid-template-columns: 2fr 2fr 19fr;
 }
 
 #heymehedi-main .dashicons-minus:before {
@@ -77,6 +78,7 @@ div#wpcontent {
   height: auto;
   max-height: 400px;
   overflow: auto;
+  margin-top: 5px;
 }
 
 #heymehedi-items-wrapper-selected {
@@ -84,6 +86,7 @@ div#wpcontent {
   max-height: 640px;
   height: auto;
   overflow: auto;
+  margin-top: 5px;
 }
 
 
@@ -211,9 +214,9 @@ input {
   color: #91929B;
 }
 
-::-webkit-scrollbar {
+/* ::-webkit-scrollbar {
   display: none;
-}
+} */
 
 #msform {
   text-align: center;
@@ -221,7 +224,7 @@ input {
 }
 
 #msform fieldset .form-card {
-  background: #F3EEFF;
+  background: #E8E2F8;
   border: 0 none;
   border-radius: 0px;
   padding: 15px;
@@ -312,7 +315,7 @@ input.heymehedi-submit {
 }
 
 .fs-title {
-  font-size: 28px;
+  font-size: 25px !important;
   color: #25223F;
   margin-bottom: 10px;
   font-weight: 500;
