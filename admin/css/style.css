@@ -131,6 +131,10 @@ div#wpcontent {
   margin-bottom: 20px;
 }
 
+#heymehedi_custom_editor_ifr {
+  height: 140px !important;
+}
+
 #heymehedi-main .custom_url_box {
   margin-top: 15px !important;
 }
