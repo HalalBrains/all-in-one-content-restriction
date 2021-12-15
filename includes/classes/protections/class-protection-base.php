@@ -37,7 +37,7 @@ class Protection_Base {
 
 		// Get Post Type for @post_id
 		$post_type = get_post_type( $post_id );
-		// Separating Matched Post Type
+		// Separating Matched Post Types
 		$matched_post_types = array();
 		foreach ( $this->restrictions as $key => $value ) {
 			if ( $post_type === $value['post_type'] ) {
@@ -45,6 +45,7 @@ class Protection_Base {
 			}
 		}
 
+		// Sort by priorities @SORT_DESC
 		$priorities = array_column( $matched_post_types, 'priority' );
 		array_multisort( $priorities, SORT_DESC, $matched_post_types );
 
@@ -53,7 +54,6 @@ class Protection_Base {
 			// Excute Only for Single Post Item
 			if ( 'selected_single_items' === $value['restrict_in'] ) {
 
-				// // If it's not archive or blog page, redirect it.
 				// check if it's a archive or blog, don't redirect it.
 				if ( is_archive() || is_home() ) {
 					if ( isset( $value['protection_type'] ) && ( 'login_and_back' === $value['protection_type'] || 'redirect' === $value['protection_type'] ) ) {
