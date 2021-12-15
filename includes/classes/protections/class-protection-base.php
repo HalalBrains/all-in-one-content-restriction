@@ -2,7 +2,7 @@
 /**
  * @author  HeyMehedi
  * @since   1.0
- * @version 1.1
+ * @version 1.3
  */
 
 namespace HeyMehedi\All_In_One_Content_Restriction;
@@ -28,16 +28,17 @@ class Protection_Base {
 
 	public function condition( $value ) {}
 
+	// check is post item is protected or not?
 	public function is_protected( $post_id = '' ) {
 
 		if ( empty( $post_id ) || '' === $post_id ) {
 			$post_id = $this->post_id;
 		}
 
-		$post_type          = get_post_type( $post_id );
-		$matched_post_types = array();
-
+		// Get Post Type for @post_id
+		$post_type = get_post_type( $post_id );
 		// Separating Matched Post Type
+		$matched_post_types = array();
 		foreach ( $this->restrictions as $key => $value ) {
 			if ( $post_type === $value['post_type'] ) {
 				array_push( $matched_post_types, $value );
@@ -49,10 +50,15 @@ class Protection_Base {
 
 		foreach ( $matched_post_types as $key => $value ) {
 
+			// Excute Only for Single Post Item
 			if ( 'selected_single_items' === $value['restrict_in'] ) {
 
+				// // If it's not archive or blog page, redirect it.
+				// check if it's a archive or blog, don't redirect it.
 				if ( is_archive() || is_home() ) {
-					return;
+					if ( isset( $value['protection_type'] ) && ( 'login_and_back' === $value['protection_type'] || 'redirect' === $value['protection_type'] ) ) {
+						return;
+					}
 				}
 
 				if ( ! $value['selected_ids'] ) {
@@ -65,12 +71,16 @@ class Protection_Base {
 					return true;
 				}
 
+				// Else, execute with taxonomy and others.
 			} else {
 
+				// check if post go with taxonomy terms
 				if ( has_term( $value['selected_ids'], $value['restrict_in'], $post_id ) ) {
 					$this->matched_restrictions[] = $matched_post_types[$key];
 
 					return true;
+
+					// else check these predefined cases
 				} else {
 
 					switch ( $value['restrict_in'] ) {
@@ -120,6 +130,7 @@ class Protection_Base {
 		return false;
 	}
 
+	// Selected user can see the content...
 	public function users_can_see( $role_names ) {
 
 		if ( is_blog_admin() ) {
