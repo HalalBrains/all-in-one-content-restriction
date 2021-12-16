@@ -57,7 +57,6 @@ class Override_Contents extends Protection_Base {
 	}
 
 	public function the_content( $the_content ) {
-
 		if ( $this->single_restriction_data['the_content'] ) {
 			return $this->show_content( $the_content, get_the_ID(), Helper::add_suffix_prefix( '%%content%%', $the_content, $this->single_restriction_data['the_content'] ), $this->single_restriction_data );
 		}

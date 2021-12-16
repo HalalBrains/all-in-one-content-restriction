@@ -51,6 +51,8 @@ class Helper {
 	// Adding Suffix & Prefix for The_Title, The_Excerpt & The_Content
 	public static function add_suffix_prefix( $search, $replace, $content ) {
 
+		$content = stripslashes( wp_specialchars_decode( $content, ENT_QUOTES, 'UTF-8' ) );
+
 		if ( strpos( $content, $search ) ) {
 			$content = str_replace( $search, $replace, $content );
 		}
