@@ -21,7 +21,7 @@ msgstr ""
 msgid "Add New"
 msgstr ""
 
-#: includes/classes/class-helper.php:71
+#: includes/classes/class-helper.php:73
 msgid "Any Post has selected Categories"
 msgstr ""
 
