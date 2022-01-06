@@ -1,0 +1,18 @@
+span.aiocr-blur,
+.aiocr-blur * {
+	-webkit-filter: blur(10px);
+	color: transparent;
+	text-shadow: 0 0 10px #000;
+}
+
+span.aiocr-blur::selection,
+.aiocr-blur::selection * {
+	-webkit-filter: blur(20px);
+	text-shadow: 0 0 20px #000;
+}
+
+.aiocr-blur img {
+	-webkit-filter: blur(10px);
+	/* Safari 6.0 - 9.0 */
+	filter: blur(15px);
+}
