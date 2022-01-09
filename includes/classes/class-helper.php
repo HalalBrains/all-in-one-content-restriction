@@ -74,4 +74,35 @@ class Helper {
 
 		return $current_restrict_in_label;
 	}
+
+	// Get Random Text
+	public static function get_random_text( $content ) {
+		$return = '';
+		$chars  = preg_split( '/ /', $content, -1, PREG_SPLIT_NO_EMPTY | PREG_SPLIT_DELIM_CAPTURE );
+
+		foreach ( $chars as $value ) {
+
+			if ( strpos( $value, '<' ) != false || strpos( $value, '/>' ) != false ) {
+				$return .= $value . ' ';
+				continue;
+			}
+
+			$return .= self::generate_random_string() . ' ';
+		}
+
+		return $return;
+	}
+
+	public static function generate_random_string() {
+		$length           = rand( 0, 10 );
+		$characters       = '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ';
+		$charactersLength = strlen( $characters );
+		$randomString     = '';
+
+		for ( $i = 0; $i < $length; $i++ ) {
+			$randomString .= $characters[rand( 0, $charactersLength - 1 )];
+		}
+
+		return $randomString;
+	}
 }
