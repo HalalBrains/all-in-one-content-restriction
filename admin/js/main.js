@@ -289,23 +289,38 @@
 
 			var showHide = function (protectionType) {
 				if ('login_and_back' === protectionType) {
+
 					$("#roles_wrapper").hide();
 					$("#override_contents").hide();
 					$("#redirect").hide();
+
 					$('.hide-next').hide();
 					$('.hide-save').show();
 				}
 				else if ('override_contents' === protectionType) {
+
 					$("#roles_wrapper").show();
 					$("#override_contents").show();
 					$("#redirect").hide();
+
 					$('.hide-next').show();
 					$('.hide-save').hide();
 				}
 				else if ('redirect' === protectionType) {
+
 					$("#roles_wrapper").show();
 					$("#override_contents").hide();
 					$("#redirect").show();
+
+					$('.hide-next').show();
+					$('.hide-save').hide();
+				}
+				else if ('blur' === protectionType) {
+					
+					$("#roles_wrapper").show();
+					$("#override_contents").hide();
+					$("#redirect").hide();
+
 					$('.hide-next').show();
 					$('.hide-save').hide();
 				}

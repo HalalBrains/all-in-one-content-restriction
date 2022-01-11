@@ -13,8 +13,9 @@ use HeyMehedi\All_In_One_Content_Restriction\Helper;
 
 		<h2 class="fs-title"><?php esc_attr_e( 'Content shield option', 'all-in-one-content-restriction' );?></h2>
 		
-		<?php Helper::get_template_part( 'menu-page/override-contents', $args );?>
-		<?php Helper::get_template_part( 'menu-page/redirect', $args );?>
+		<?php Helper::get_template_part( 'menu-page/protections/override-contents', $args );?>
+		<?php Helper::get_template_part( 'menu-page/protections/redirect', $args );?>
+		<?php Helper::get_template_part( 'menu-page/protections/blur', $args );?>
 		
 		<input type="hidden" value="<?php echo esc_attr( $_GET['action'] ); ?>" id="heymehedi-action" data-restriction-id="<?php echo esc_attr( Helper::get_restriction_id() ); ?>">
 
