@@ -80,7 +80,16 @@ class Helper {
 		$return = '';
 		$chars  = preg_split( '/ /', $content, -1, PREG_SPLIT_NO_EMPTY | PREG_SPLIT_DELIM_CAPTURE );
 
-		foreach ( $chars as $value ) {
+		foreach ( $chars as $key => $value ) {
+
+			if ( strlen( $value ) > 4 ) {
+				$return .= $value . ' ';
+				continue;
+			}
+			if ( strpos( $value, 'href' ) === 0 ) {
+				$return .= sprintf( ' <a href="%s">Some Resource</a> ', site_url() );
+				continue;
+			}
 
 			if ( strpos( $value, '<' ) != false || strpos( $value, '/>' ) != false ) {
 				$return .= $value . ' ';
@@ -94,7 +103,7 @@ class Helper {
 	}
 
 	public static function generate_random_string() {
-		$length           = rand( 0, 10 );
+		$length           = rand( 0, 8 );
 		$characters       = '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ';
 		$charactersLength = strlen( $characters );
 		$randomString     = '';

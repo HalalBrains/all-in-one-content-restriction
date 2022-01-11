@@ -32,7 +32,6 @@ class Blur extends Protection_Base {
 		if ( 'blur' != $value['protection_type'] ) {
 			return;
 		}
-		// var_dump( $value );
 
 		add_filter( 'the_title', array( $this, 'the_title' ), 10, 2 );
 		add_filter( 'the_content', array( $this, 'the_content' ) );
@@ -59,8 +58,6 @@ class Blur extends Protection_Base {
 
 	public function the_content( $the_content ) {
 
-		return Helper::get_random_text( $the_content );
-
 		if ( $this->single_restriction_data['the_content'] ) {
 			return $this->add_blur_class( $the_content, get_the_ID(), $this->single_restriction_data, 'div' );
 		}
@@ -75,7 +72,7 @@ class Blur extends Protection_Base {
 		}
 
 		if ( $this->is_protected( $post_id ) ) {
-			return sprintf( '<%s class="aiocr-blur">%s</%s>', $html_tag, $content, $html_tag );
+			return sprintf( '<%s class="aiocr-blur">%s</%s>', $html_tag, Helper::get_random_text( $content ), $html_tag );
 		}
 
 		return $content;
