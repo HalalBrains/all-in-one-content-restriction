@@ -66,6 +66,13 @@
 					var textEditor = $('#heymehedi_custom_editor').val();
 				}
 
+				// Blur
+				var spread = $('#spread').val();
+				var blur_level = $('#blur_level').val();
+				var blurApplyTo = $('#blur_apply_to').val();
+
+
+
 				var redirectionType = $('#redirection_type').val();
 				var customUrl = $('#custom_url').val();
 
@@ -95,6 +102,10 @@
 						"redirectionType": redirectionType,
 						"customUrl": customUrl,
 
+						// Blur
+						"spread": spread,
+						"blur_level": blur_level,
+						"blur_apply_to": blurApplyTo,
 
 					}, function (data) {
 						if (data) {
@@ -282,6 +293,11 @@
 				placeholder: "Select users",
 				allowClear: true,
 			});
+
+			$("#blur_apply_to").select2({
+				placeholder: "Select",
+				allowClear: true,
+			});
 		},
 
 		protectionType: function () {
@@ -364,13 +380,26 @@
 		},
 
 		sliderRange: function () {
+
 			$(".slider-range").slider({
-				value: 1,
+				value: 15,
+			});
+
+			let blurLevel = $(".blur_level").slider("option", "value");
+			$('#blur_level').val(blurLevel);
+
+			$(".blur_level").on("slide", function (event, ui) {
+				$('#blur_level').val(ui.value);
+			});
+
+			let spread = $(".spread").slider("option", "value");
+			$('#spread').val(spread);
+
+			$(".spread").on("slide", function (event, ui) {
+				$('#spread').val(ui.value);
 			});
 		},
-
 	}
-
 
 	$(document).ready(function () {
 

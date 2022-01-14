@@ -1,18 +1,17 @@
 /*  Range Slider */
 
 .slider-range.ui-slider.ui-corner-all.ui-slider-horizontal.ui-widget.ui-widget-content {
-  border: 3px solid #C6BAE3;
-  background: #C6BAE3;
+  border: 3px solid #E0D6F9;
+  background: #E0D6F9;
   font-weight: normal;
   color: #454545;
   position: relative;
 }
 
-
 span.ui-slider-handle.ui-corner-all.ui-state-default {
   margin-left: -8px;
-  border: 4px solid #E0D6F9;
-  background: #E0D6F9;
+  border: 4px solid #C6BAE3;
+  background: #C6BAE3;
   font-weight: normal;
   color: #454545;
   position: absolute;
@@ -27,8 +26,6 @@ span.ui-slider-handle.ui-corner-all.ui-state-default {
 }
 
 .slider-group {
-  background: #fff !important;
-  padding: 10px;
   overflow: hidden;
   position: relative;
   background: #fff !important;
@@ -167,8 +164,8 @@ div#wpcontent {
   margin-bottom: 11px;
 }
 
-#heymehedi-main select, #heymehedi_the_title, #heymehedi_the_excerpt {
-  margin-bottom: 20px;
+#heymehedi-main select, #heymehedi_the_title, #heymehedi_the_excerpt, .slider-group {
+  margin-bottom: 1rem;
 }
 
 #heymehedi_custom_editor_ifr {

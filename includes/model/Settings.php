@@ -35,13 +35,19 @@ class Settings {
 
 		$single_restriction_data['protection_type'] = sanitize_text_field( $data['protectionType'] );
 
-		// Override Contents
+		// #1 Override Contents
 		$single_restriction_data['the_title']   = sanitize_text_field( $data['the_title'] );
 		$single_restriction_data['the_excerpt'] = sanitize_textarea_field( htmlentities( $data['the_excerpt'] ) );
 		$single_restriction_data['the_content'] = sanitize_textarea_field( htmlentities( $data['the_content'] ) );
 
+		// #2 Redirections
 		$single_restriction_data['redirection_type'] = sanitize_text_field( $data['redirectionType'] );
 		$single_restriction_data['custom_url']       = esc_url( $data['customUrl'] );
+
+		// #3 Blur
+		$single_restriction_data['spread']        = sanitize_text_field( $data['spread'] );
+		$single_restriction_data['blur_level']    = sanitize_text_field( $data['blur_level'] );
+		$single_restriction_data['blur_apply_to'] = self::sanitize_array( $data['blur_apply_to'] );
 
 		// $ids                                          = self::sanitize_array( $data['itemIds'] );
 		// $ids_by_restrict_in                           = $single_restriction_data['restrict_in'] . '_ids';
