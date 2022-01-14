@@ -66,6 +66,9 @@ class Scripts {
 			wp_enqueue_script( 'bootstrap' );
 		}
 
+		// jQuery UI Slider / enqueue from wordpress
+		wp_enqueue_script( 'jquery-ui-slider' );
+
 		wp_enqueue_style( 'all-in-one-content-restriction-main' );
 		wp_enqueue_script( 'all-in-one-content-restriction-main' );
 		wp_localize_script( 'all-in-one-content-restriction-main', 'heymehedi_object', array( 'ajaxurl' => admin_url( 'admin-ajax.php' ) ) );

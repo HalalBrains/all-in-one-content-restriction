@@ -316,7 +316,7 @@
 					$('.hide-save').hide();
 				}
 				else if ('blur' === protectionType) {
-					
+
 					$("#roles_wrapper").show();
 					$("#override_contents").hide();
 					$("#redirect").hide();
@@ -361,8 +361,13 @@
 					});
 				}
 			})
-		}
+		},
 
+		sliderRange: function () {
+			$(".slider-range").slider({
+				value: 1,
+			});
+		},
 
 	}
 
@@ -382,6 +387,8 @@
 		heymehedi.redirectionType();
 
 		heymehedi.popover();
+
+		heymehedi.sliderRange();
 	});
 
 	$(window).on('load', function () {
