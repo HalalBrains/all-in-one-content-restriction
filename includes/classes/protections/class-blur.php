@@ -40,7 +40,7 @@ class Blur extends Protection_Base {
 
 	public function the_title( $title, $post_id ) {
 
-		if ( $this->single_restriction_data['the_title'] ) {
+		if ( in_array( 'the_title', $this->single_restriction_data['blur_apply_to'] ) ) {
 			return $this->add_blur_class( $title, $post_id, $this->single_restriction_data );
 		}
 
@@ -49,7 +49,7 @@ class Blur extends Protection_Base {
 
 	public function the_excerpt( $the_excerpt, $post ) {
 
-		if ( $this->single_restriction_data['the_excerpt'] ) {
+		if ( in_array( 'the_excerpt', $this->single_restriction_data['blur_apply_to'] ) ) {
 			return $this->add_blur_class( $the_excerpt, $post->ID, $this->single_restriction_data );
 		}
 
@@ -58,7 +58,7 @@ class Blur extends Protection_Base {
 
 	public function the_content( $the_content ) {
 
-		if ( $this->single_restriction_data['the_content'] ) {
+		if ( in_array( 'the_content', $this->single_restriction_data['blur_apply_to'] ) ) {
 			return $this->add_blur_class( $the_content, get_the_ID(), $this->single_restriction_data, 'div' );
 		}
 
@@ -72,7 +72,13 @@ class Blur extends Protection_Base {
 		}
 
 		if ( $this->is_protected( $post_id ) ) {
-			return sprintf( '<%s class="aiocr-blur">%s</%s>', $html_tag, Helper::get_random_text( $content ), $html_tag );
+
+			$add_rand_text = apply_filters( 'all_in_one_blur_protection_rand_text', true );
+			if ( $add_rand_text ) {
+				$content = Helper::get_random_text( $content );
+			}
+
+			return sprintf( '<%s class="aiocr-blur">%s</%s>', $html_tag, $content, $html_tag );
 		}
 
 		return $content;

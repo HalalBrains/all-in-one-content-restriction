@@ -385,6 +385,8 @@
 				value: 15,
 			});
 
+			let initBlurLevel = $('.blur_level').data('amount');
+			$(".blur_level").slider("option", "value", initBlurLevel);
 			let blurLevel = $(".blur_level").slider("option", "value");
 			$('#blur_level').val(blurLevel);
 
@@ -392,6 +394,8 @@
 				$('#blur_level').val(ui.value);
 			});
 
+			let initSpread = $('.spread').data('amount');
+			$(".spread").slider("option", "value", initSpread);
 			let spread = $(".spread").slider("option", "value");
 			$('#spread').val(spread);
 
