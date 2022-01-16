@@ -32,7 +32,7 @@ class Blur extends Protection_Base {
 		if ( 'blur' != $value['protection_type'] ) {
 			return;
 		}
-
+		$this->single_restriction_data['blur_apply_to'] = isset( $this->single_restriction_data['blur_apply_to'] ) ? $this->single_restriction_data['blur_apply_to'] : array();
 		add_filter( 'the_title', array( $this, 'the_title' ), 10, 2 );
 		add_filter( 'the_content', array( $this, 'the_content' ) );
 		add_filter( 'get_the_excerpt', array( $this, 'the_excerpt' ), 11, 2 );
@@ -78,7 +78,10 @@ class Blur extends Protection_Base {
 				$content = Helper::get_random_text( $content );
 			}
 
-			return sprintf( '<%s class="aiocr-blur">%s</%s>', $html_tag, $content, $html_tag );
+			$blur_level = isset( $single_restriction_data['blur_level'] ) ? $single_restriction_data['blur_level'] : 10;
+			$spread     = isset( $single_restriction_data['spread'] ) ? $single_restriction_data['spread'] : 10;
+
+			return sprintf( '<%s class="aiocr-blur" style="-webkit-filter: blur(%spx); text-shadow: 0 0 %spx #000;">%s</%s>', $html_tag, esc_attr( $blur_level ), esc_attr( $spread ), $content, $html_tag );
 		}
 
 		return $content;

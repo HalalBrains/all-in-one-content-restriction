@@ -309,6 +309,7 @@
 					$("#roles_wrapper").hide();
 					$("#override_contents").hide();
 					$("#redirect").hide();
+					$("#blur").hide();
 
 					$('.hide-next').hide();
 					$('.hide-save').show();
@@ -318,6 +319,7 @@
 					$("#roles_wrapper").show();
 					$("#override_contents").show();
 					$("#redirect").hide();
+					$("#blur").hide();
 
 					$('.hide-next').show();
 					$('.hide-save').hide();
@@ -327,6 +329,7 @@
 					$("#roles_wrapper").show();
 					$("#override_contents").hide();
 					$("#redirect").show();
+					$("#blur").hide();
 
 					$('.hide-next').show();
 					$('.hide-save').hide();
@@ -336,6 +339,7 @@
 					$("#roles_wrapper").show();
 					$("#override_contents").hide();
 					$("#redirect").hide();
+					$("#blur").show();
 
 					$('.hide-next').show();
 					$('.hide-save').hide();
