@@ -57,7 +57,7 @@ Install All in One Content Restriction either via the WordPress.org plugin repos
 * Improve - Dashhboard UI
 
 = 1.1.1 – Oct 12, 2021 =
-* New - Typo mistake
+* Fix - Typo mistake
 
 = 1.1 – Oct 02, 2021 =
 * New - Listing review issues
