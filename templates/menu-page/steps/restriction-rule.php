@@ -36,6 +36,7 @@ use HeyMehedi\All_In_One_Content_Restriction\Helper;
 	</div>
 
 	<a href="<?php echo admin_url('admin.php?page=all-in-one-content-restriction') ; ?>" class="previous action-button-previous"><?php esc_html_e( 'Back', 'all-in-one-content-restriction' ); ?></a>
-	<input type="button" name="next" class="next action-button" value="<?php esc_attr_e( 'Next', 'all-in-one-content-restriction' ); ?>" />
+	<input type="submit" name="submit" class="hide-save-first action-button heymehedi-submit" value="<?php esc_attr_e( 'Save', 'all-in-one-content-restriction' );?>">
+	<input type="button" name="next" class="hide-next-first common-next-submit-btn next action-button" value="<?php esc_attr_e( 'Next', 'all-in-one-content-restriction' ); ?>" />
 
 </fieldset>

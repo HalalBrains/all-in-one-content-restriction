@@ -1,4 +1,4 @@
-# Copyright (C) 2021 all-in-one-content-restriction
+# Copyright (C) 2022 all-in-one-content-restriction
 # This file is distributed under the same license as the all-in-one-content-restriction package.
 msgid ""
 msgstr ""
@@ -57,6 +57,18 @@ msgstr ""
 msgid "Select your option"
 msgstr ""
 
+#: includes/classes/class-markup-manager.php:59, templates/menu-page/items-table.php:21, templates/menu-page/selected-items.php:46
+msgid "Title"
+msgstr ""
+
+#: includes/classes/class-markup-manager.php:60
+msgid "Excerpt"
+msgstr ""
+
+#: includes/classes/class-markup-manager.php:61
+msgid "Descriptions"
+msgstr ""
+
 #: includes/classes/class-post-type-taxonomies.php:74
 msgid "Homepage / Frontpage"
 msgstr ""
@@ -97,30 +109,6 @@ msgstr ""
 msgid "ID"
 msgstr ""
 
-#: templates/menu-page/items-table.php:21, templates/menu-page/selected-items.php:46
-msgid "Title"
-msgstr ""
-
-#: templates/menu-page/override-contents.php:13, templates/menu-page/override-contents.php:13
-msgid "Replace Title"
-msgstr ""
-
-#: templates/menu-page/override-contents.php:15
-msgid "Enter a custom title to display to restricted users"
-msgstr ""
-
-#: templates/menu-page/override-contents.php:18, templates/menu-page/override-contents.php:18
-msgid "Replace Excerpt"
-msgstr ""
-
-#: templates/menu-page/override-contents.php:20
-msgid "Enter a custom excerpt  to display to restricted users"
-msgstr ""
-
-#: templates/menu-page/override-contents.php:23, templates/menu-page/override-contents.php:23
-msgid "Replace Description"
-msgstr ""
-
 #: templates/menu-page/post-types.php:16
 msgid "Type"
 msgstr ""
@@ -149,24 +137,8 @@ msgstr ""
 msgid "Redirect"
 msgstr ""
 
-#: templates/menu-page/redirect.php:13
-msgid "Where will they be taken? "
-msgstr ""
-
-#: templates/menu-page/redirect.php:15
-msgid "Home Page"
-msgstr ""
-
-#: templates/menu-page/redirect.php:16
-msgid "Custom URL"
-msgstr ""
-
-#: templates/menu-page/redirect.php:20
-msgid "Redirect URL"
-msgstr ""
-
-#: templates/menu-page/redirect.php:21
-msgid "https://your-url.com"
+#: templates/menu-page/protection-type.php:17
+msgid "Blur"
 msgstr ""
 
 #: templates/menu-page/roles.php:14
@@ -189,6 +161,58 @@ msgstr ""
 msgid "Drop"
 msgstr ""
 
+#: templates/menu-page/protections/blur.php:18
+msgid "Blur Level"
+msgstr ""
+
+#: templates/menu-page/protections/blur.php:26
+msgid "Spread"
+msgstr ""
+
+#: templates/menu-page/protections/blur.php:34
+msgid "Apply to"
+msgstr ""
+
+#: templates/menu-page/protections/blur.php:34, templates/menu-page/protections/override-contents.php:23, templates/menu-page/protections/override-contents.php:23
+msgid "Replace Description"
+msgstr ""
+
+#: templates/menu-page/protections/override-contents.php:13, templates/menu-page/protections/override-contents.php:13
+msgid "Replace Title"
+msgstr ""
+
+#: templates/menu-page/protections/override-contents.php:15
+msgid "Enter a custom title to display to restricted users"
+msgstr ""
+
+#: templates/menu-page/protections/override-contents.php:18, templates/menu-page/protections/override-contents.php:18
+msgid "Replace Excerpt"
+msgstr ""
+
+#: templates/menu-page/protections/override-contents.php:20
+msgid "Enter a custom excerpt  to display to restricted users"
+msgstr ""
+
+#: templates/menu-page/protections/redirect.php:13
+msgid "Where will they be taken? "
+msgstr ""
+
+#: templates/menu-page/protections/redirect.php:15
+msgid "Home Page"
+msgstr ""
+
+#: templates/menu-page/protections/redirect.php:16
+msgid "Custom URL"
+msgstr ""
+
+#: templates/menu-page/protections/redirect.php:20
+msgid "Redirect URL"
+msgstr ""
+
+#: templates/menu-page/protections/redirect.php:21
+msgid "https://your-url.com"
+msgstr ""
+
 #: templates/menu-page/steps/access-restriction.php:14
 msgid "<span id=\"post-type-dynamic-title\">%s</span> access restriction"
 msgstr ""
@@ -197,7 +221,7 @@ msgstr ""
 msgid "Post"
 msgstr ""
 
-#: templates/menu-page/steps/access-restriction.php:20, templates/menu-page/steps/content-shield-option.php:23, templates/menu-page/steps/restriction-rule.php:38
+#: templates/menu-page/steps/access-restriction.php:20, templates/menu-page/steps/content-shield-option.php:24, templates/menu-page/steps/restriction-rule.php:38
 msgid "Back"
 msgstr ""
 
@@ -205,7 +229,7 @@ msgstr ""
 msgid "Next"
 msgstr ""
 
-#: templates/menu-page/steps/access-restriction.php:22, templates/menu-page/steps/content-shield-option.php:24
+#: templates/menu-page/steps/access-restriction.php:22, templates/menu-page/steps/content-shield-option.php:25
 msgid "Save"
 msgstr ""
 

@@ -303,7 +303,28 @@
 		protectionType: function () {
 			let protectionType = $('#protection_type').val();
 
-			var showHide = function (protectionType) {
+			let showSubmitButtonAndHideNextButton = function (val) {
+				if (val) {
+					$('.hide-next').hide();
+					$('.hide-save').show();
+				} else {
+					$('.hide-next').show();
+					$('.hide-save').hide();
+				}
+			}
+
+			let showSubmitButtonAndHideNextButtonFirstStep = function (val) {
+				if (val) {
+					$('.hide-next-first').hide();
+					$('.hide-save-first').show();
+				} else {
+					$('.hide-next-first').show();
+					$('.hide-save-first').hide();
+				}
+			}
+
+			let showHide = function (protectionType) {
+
 				if ('login_and_back' === protectionType) {
 
 					$("#roles_wrapper").hide();
@@ -311,8 +332,7 @@
 					$("#redirect").hide();
 					$("#blur").hide();
 
-					$('.hide-next').hide();
-					$('.hide-save').show();
+					showSubmitButtonAndHideNextButton(true);
 				}
 				else if ('override_contents' === protectionType) {
 
@@ -321,8 +341,7 @@
 					$("#redirect").hide();
 					$("#blur").hide();
 
-					$('.hide-next').show();
-					$('.hide-save').hide();
+					showSubmitButtonAndHideNextButton(false);
 				}
 				else if ('redirect' === protectionType) {
 
@@ -331,8 +350,7 @@
 					$("#redirect").show();
 					$("#blur").hide();
 
-					$('.hide-next').show();
-					$('.hide-save').hide();
+					showSubmitButtonAndHideNextButton(false);
 				}
 				else if ('blur' === protectionType) {
 
@@ -341,15 +359,31 @@
 					$("#redirect").hide();
 					$("#blur").show();
 
-					$('.hide-next').show();
-					$('.hide-save').hide();
+					showSubmitButtonAndHideNextButton(false);
 				}
 			}
+
+			let showHideFirstStepButtons = function () {
+				let restrictionIn = $('#restriction-in').val();
+				let protectionType = $('#protection_type').val();
+				if (('the_blog_index' == restrictionIn || 'all_items' == restrictionIn || 'frontpage' == restrictionIn) && 'login_and_back' == protectionType) {
+					showSubmitButtonAndHideNextButtonFirstStep(true);
+				} else {
+					showSubmitButtonAndHideNextButtonFirstStep(false);
+				}
+			}
+
 			showHide(protectionType);
+			showHideFirstStepButtons();
+
+			$(document).on('click', '#restriction-in', function () {
+				showHideFirstStepButtons();
+			});
 
 			$(document).on('click', '#protection_type', function () {
 				let protectionType = $('#protection_type').val();
 				showHide(protectionType);
+				showHideFirstStepButtons();
 			});
 		},
 
@@ -438,11 +472,19 @@
 		var current_fs, next_fs, previous_fs; //fieldsets
 		var opacity;
 
+		var restrictionIn = $('#restriction-in').val();
+		$('#restriction-in').click(function (e) {
+			restrictionIn = $(this).val();
+		});
+
 		$(".next").click(function () {
 
 			current_fs = $(this).parent();
-			next_fs = $(this).parent().next();
-
+			if ('the_blog_index' == restrictionIn || 'all_items' == restrictionIn || 'frontpage' == restrictionIn) {
+				next_fs = $(this).parent().next().next();
+			} else {
+				next_fs = $(this).parent().next();
+			}
 
 			//show the next fieldset
 			next_fs.show();
@@ -465,7 +507,11 @@
 		$(".previous").click(function () {
 
 			current_fs = $(this).parent();
-			previous_fs = $(this).parent().prev();
+			if ('the_blog_index' == restrictionIn || 'all_items' == restrictionIn || 'frontpage' == restrictionIn) {
+				previous_fs = $(this).parent().prev().prev();
+			} else {
+				previous_fs = $(this).parent().prev();
+			}
 
 			//show the previous fieldset
 			previous_fs.show();
@@ -499,4 +545,3 @@
 	// end
 
 })(jQuery);
-

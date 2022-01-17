@@ -31,7 +31,7 @@ $selected_blur_items = isset( $args['blur_apply_to'] ) ? $args['blur_apply_to'] 
 	</div>
 
 	<label for="heymehedi_custom_editor" class="form-label">
-		<?php esc_html_e( 'Apply to', 'all-in-one-content-restriction' );?> <span class="helper-text" data-container="body" data-toggle="popover" data-placement="right" title="<?php esc_attr_e( 'Replace Description', 'all-in-one-content-restriction' );?>" data-content="<?php echo wp_kses_post( "refers to a custom parapraph or sentence related to the specific restricted page/ post. <strong> Tip </strong> : A few sentences as a preview of the post/page is a good practice for gaining  users' traction to sign up for the membership." ); ?>"><img src="<?php echo Helper::get_file_uri( 'admin/images/question-mark.png' ) ?>" alt=""></span>
+		<?php esc_html_e( 'Apply to', 'all-in-one-content-restriction' );?>
 	</label>
 	<select id="blur_apply_to" class="form-control" multiple>
 		<?php echo Markup_Manager::blur_apply_to_html( $selected_blur_items ); ?>
