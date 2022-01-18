@@ -173,10 +173,6 @@ msgstr ""
 msgid "Apply to"
 msgstr ""
 
-#: templates/menu-page/protections/blur.php:34, templates/menu-page/protections/override-contents.php:23, templates/menu-page/protections/override-contents.php:23
-msgid "Replace Description"
-msgstr ""
-
 #: templates/menu-page/protections/override-contents.php:13, templates/menu-page/protections/override-contents.php:13
 msgid "Replace Title"
 msgstr ""
@@ -191,6 +187,10 @@ msgstr ""
 
 #: templates/menu-page/protections/override-contents.php:20
 msgid "Enter a custom excerpt  to display to restricted users"
+msgstr ""
+
+#: templates/menu-page/protections/override-contents.php:23, templates/menu-page/protections/override-contents.php:23
+msgid "Replace Description"
 msgstr ""
 
 #: templates/menu-page/protections/redirect.php:13
@@ -225,11 +225,11 @@ msgstr ""
 msgid "Back"
 msgstr ""
 
-#: templates/menu-page/steps/access-restriction.php:21, templates/menu-page/steps/restriction-rule.php:39
+#: templates/menu-page/steps/access-restriction.php:21, templates/menu-page/steps/restriction-rule.php:40
 msgid "Next"
 msgstr ""
 
-#: templates/menu-page/steps/access-restriction.php:22, templates/menu-page/steps/content-shield-option.php:25
+#: templates/menu-page/steps/access-restriction.php:22, templates/menu-page/steps/content-shield-option.php:25, templates/menu-page/steps/restriction-rule.php:39
 msgid "Save"
 msgstr ""
 
