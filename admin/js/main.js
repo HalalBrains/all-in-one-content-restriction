@@ -71,7 +71,8 @@
 				var blur_level = $('#blur_level').val();
 				var blurApplyTo = $('#blur_apply_to').val();
 
-
+				// Obfuscate
+				var obfuscateApplyTo = $('#obfuscate_apply_to').val();
 
 				var redirectionType = $('#redirection_type').val();
 				var customUrl = $('#custom_url').val();
@@ -106,6 +107,9 @@
 						"spread": spread,
 						"blur_level": blur_level,
 						"blur_apply_to": blurApplyTo,
+
+						// Obfuscate
+						"obfuscate_apply_to": obfuscateApplyTo,
 
 					}, function (data) {
 						if (data) {
@@ -298,6 +302,11 @@
 				placeholder: "Select",
 				allowClear: true,
 			});
+
+			$("#obfuscate_apply_to").select2({
+				placeholder: "Select",
+				allowClear: true,
+			});
 		},
 
 		protectionType: function () {
@@ -325,42 +334,23 @@
 
 			let showHide = function (protectionType) {
 
-				if ('login_and_back' === protectionType) {
+				let protection_types = [
+					'roles_wrapper',
+					'override_contents',
+					'redirect',
+					'blur',
+					'obfuscate',
+				]
 
-					$("#roles_wrapper").hide();
-					$("#override_contents").hide();
-					$("#redirect").hide();
-					$("#blur").hide();
-
-					showSubmitButtonAndHideNextButton(true);
-				}
-				else if ('override_contents' === protectionType) {
-
-					$("#roles_wrapper").show();
-					$("#override_contents").show();
-					$("#redirect").hide();
-					$("#blur").hide();
-
-					showSubmitButtonAndHideNextButton(false);
-				}
-				else if ('redirect' === protectionType) {
-
-					$("#roles_wrapper").show();
-					$("#override_contents").hide();
-					$("#redirect").show();
-					$("#blur").hide();
-
-					showSubmitButtonAndHideNextButton(false);
-				}
-				else if ('blur' === protectionType) {
-
-					$("#roles_wrapper").show();
-					$("#override_contents").hide();
-					$("#redirect").hide();
-					$("#blur").show();
-
-					showSubmitButtonAndHideNextButton(false);
-				}
+				protection_types.forEach(element => {
+					if (element === protectionType) {
+						$(`#${element}`).show();
+						showSubmitButtonAndHideNextButton(true);
+					} else {
+						$(`#${element}`).hide();
+						showSubmitButtonAndHideNextButton(false);
+					}
+				});
 			}
 
 			let showHideFirstStepButtons = function () {

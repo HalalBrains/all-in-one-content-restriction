@@ -74,6 +74,7 @@ if ( ! class_exists( 'All_In_One_Content_Restriction' ) ) {
 			require_once self::$base_dir . '/includes/classes/protections/class-override-contents.php';
 			require_once self::$base_dir . '/includes/classes/protections/class-login-and-back.php';
 			require_once self::$base_dir . '/includes/classes/protections/class-blur.php';
+			require_once self::$base_dir . '/includes/classes/protections/class-obfuscate.php';
 
 			require_once self::$base_dir . '/includes/classes/protections/class-redirection.php';
 

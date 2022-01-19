@@ -49,9 +49,8 @@ class Settings {
 		$single_restriction_data['blur_level']    = sanitize_text_field( $data['blur_level'] );
 		$single_restriction_data['blur_apply_to'] = self::sanitize_array( $data['blur_apply_to'] );
 
-		// $ids                                          = self::sanitize_array( $data['itemIds'] );
-		// $ids_by_restrict_in                           = $single_restriction_data['restrict_in'] . '_ids';
-		// $single_restriction_data[$ids_by_restrict_in] = $ids;
+		// #4 Obfuscate
+		$single_restriction_data['obfuscate_apply_to'] = self::sanitize_array( $data['obfuscate_apply_to'] );
 
 		if ( 'new' === $data['action_type'] ) {
 			$single_restriction_data['restriction_id'] = self::create_restriction_id( $settings );

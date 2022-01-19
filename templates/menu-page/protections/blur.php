@@ -2,10 +2,9 @@
 /**
  * @author  HeyMehedi
  * @since   1.4
- * @version 1.4
+ * @version 1.5
  */
 
-use HeyMehedi\All_In_One_Content_Restriction\Helper;
 use HeyMehedi\All_In_One_Content_Restriction\Markup_Manager;
 
 $blur_level          = isset( $args['blur_level'] ) ? $args['blur_level'] : 7;
@@ -30,10 +29,10 @@ $selected_blur_items = isset( $args['blur_apply_to'] ) ? $args['blur_apply_to'] 
 		<input id="spread" type="hidden" value="">
 	</div>
 
-	<label for="heymehedi_custom_editor" class="form-label">
+	<label for="blur_apply_to" class="form-label">
 		<?php esc_html_e( 'Apply to', 'all-in-one-content-restriction' );?>
 	</label>
 	<select id="blur_apply_to" class="form-control" multiple>
-		<?php echo Markup_Manager::blur_apply_to_html( $selected_blur_items ); ?>
+		<?php echo Markup_Manager::apply_to_html( $selected_blur_items ); ?>
 	</select>
 </div>

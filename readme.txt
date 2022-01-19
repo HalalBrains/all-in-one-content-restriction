@@ -40,6 +40,9 @@ This plugin is completely free to use & open sourced. Most importantly this plug
 * Redirect users who do not have permission to view the post or page to the login URL
 * Redirect back to the current post or page URL after the user logged in
 
+🔐 **Blur**
+* Blur post / page title, excerpt, description
+
 **BE A CONTRIBUTOR**
 If you want to contribute, you’re most welcome to make it happen. The full source code is available on  [GitHub](https://github.com/HeyMehedi/all-in-one-content-restriction). If you find anything improbable, feel free to shoot a bug report.
 
@@ -49,6 +52,9 @@ Please let me know your feedback, if you think something can be more awesome in 
 Install All in One Content Restriction either via the WordPress.org plugin repository or by uploading the files to your server.
 
 == Changelog ==
+
+= 1.4 – Jan 18, 2022 =
+* New - Blur
 
 = 1.3 – Dec 19, 2021 =
 * Remove - Unused post types

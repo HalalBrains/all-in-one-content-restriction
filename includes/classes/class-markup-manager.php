@@ -53,24 +53,24 @@ class Markup_Manager {
 		return $role_names_html;
 	}
 
-	// Blur Apply List HTML for Settings Page
-	public static function blur_apply_to_html( $selected_blur_items ) {
-		$blur_apply_to_arr = array(
+	// Blur & Obfuscate Apply List HTML for Settings Page
+	public static function apply_to_html( $selected_items ) {
+		$apply_to_arr = array(
 			'the_title'   => __( 'Title', 'all-in-one-content-restriction' ),
 			'the_excerpt' => __( 'Excerpt', 'all-in-one-content-restriction' ),
 			'the_content' => __( 'Descriptions', 'all-in-one-content-restriction' ),
 		);
-		$blur_apply_to_html = '';
+		$apply_to_html = '';
 
-		foreach ( $blur_apply_to_arr as $key => $value ) {
-			if ( in_array( $key, $selected_blur_items ) ) {
-				$blur_apply_to_html .= sprintf( '<option value="%s" selected>%s</option>', $key, $value );
+		foreach ( $apply_to_arr as $key => $value ) {
+			if ( in_array( $key, $selected_items ) ) {
+				$apply_to_html .= sprintf( '<option value="%s" selected>%s</option>', $key, $value );
 			} else {
-				$blur_apply_to_html .= sprintf( '<option value="%s">%s</option>', $key, $value );
+				$apply_to_html .= sprintf( '<option value="%s">%s</option>', $key, $value );
 			}
 		}
 
-		return $blur_apply_to_html;
+		return $apply_to_html;
 	}
 
 	// Get Items HTML for Table
