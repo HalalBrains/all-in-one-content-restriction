@@ -82,12 +82,13 @@ class Helper {
 
 		foreach ( $chars as $key => $value ) {
 
-			if ( strlen( $value ) > 4 ) {
-				$return .= $value . ' ';
-				continue;
-			}
 			if ( strpos( $value, 'href' ) === 0 ) {
 				$return .= sprintf( ' <a href="%s">Some Resource</a> ', site_url() );
+				continue;
+			}
+
+			if ( strlen( $value ) > 4 ) {
+				$return .= $value . ' ';
 				continue;
 			}
 
@@ -103,15 +104,15 @@ class Helper {
 	}
 
 	public static function generate_random_string() {
-		$length           = rand( 0, 8 );
-		$characters       = '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ';
-		$charactersLength = strlen( $characters );
-		$randomString     = '';
+		$length            = rand( 0, 8 );
+		$characters        = 'abcdefghijklmnopqrstuvwxyz';
+		$characters_length = strlen( $characters );
+		$random_string     = '';
 
 		for ( $i = 0; $i < $length; $i++ ) {
-			$randomString .= $characters[rand( 0, $charactersLength - 1 )];
+			$random_string .= $characters[rand( 0, $characters_length - 1 )];
 		}
 
-		return $randomString;
+		return $random_string;
 	}
 }
