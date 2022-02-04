@@ -141,6 +141,10 @@ msgstr ""
 msgid "Blur"
 msgstr ""
 
+#: templates/menu-page/protection-type.php:18
+msgid "Obfuscate"
+msgstr ""
+
 #: templates/menu-page/roles.php:14
 msgid "Select who should have access to this content"
 msgstr ""
@@ -161,15 +165,15 @@ msgstr ""
 msgid "Drop"
 msgstr ""
 
-#: templates/menu-page/protections/blur.php:18
+#: templates/menu-page/protections/blur.php:17
 msgid "Blur Level"
 msgstr ""
 
-#: templates/menu-page/protections/blur.php:26
+#: templates/menu-page/protections/blur.php:25
 msgid "Spread"
 msgstr ""
 
-#: templates/menu-page/protections/blur.php:34
+#: templates/menu-page/protections/blur.php:33, templates/menu-page/protections/obfuscate.php:15
 msgid "Apply to"
 msgstr ""
 
@@ -221,7 +225,7 @@ msgstr ""
 msgid "Post"
 msgstr ""
 
-#: templates/menu-page/steps/access-restriction.php:20, templates/menu-page/steps/content-shield-option.php:24, templates/menu-page/steps/restriction-rule.php:38
+#: templates/menu-page/steps/access-restriction.php:20, templates/menu-page/steps/content-shield-option.php:25, templates/menu-page/steps/restriction-rule.php:38
 msgid "Back"
 msgstr ""
 
@@ -229,7 +233,7 @@ msgstr ""
 msgid "Next"
 msgstr ""
 
-#: templates/menu-page/steps/access-restriction.php:22, templates/menu-page/steps/content-shield-option.php:25, templates/menu-page/steps/restriction-rule.php:39
+#: templates/menu-page/steps/access-restriction.php:22, templates/menu-page/steps/content-shield-option.php:26, templates/menu-page/steps/restriction-rule.php:39
 msgid "Save"
 msgstr ""
 

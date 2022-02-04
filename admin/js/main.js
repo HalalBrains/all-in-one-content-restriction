@@ -310,7 +310,6 @@
 		},
 
 		protectionType: function () {
-			let protectionType = $('#protection_type').val();
 
 			let showSubmitButtonAndHideNextButton = function (val) {
 				if (val) {
@@ -319,16 +318,6 @@
 				} else {
 					$('.hide-next').show();
 					$('.hide-save').hide();
-				}
-			}
-
-			let showSubmitButtonAndHideNextButtonFirstStep = function (val) {
-				if (val) {
-					$('.hide-next-first').hide();
-					$('.hide-save-first').show();
-				} else {
-					$('.hide-next-first').show();
-					$('.hide-save-first').hide();
 				}
 			}
 
@@ -343,12 +332,19 @@
 				]
 
 				protection_types.forEach(element => {
+
 					if (element === protectionType) {
+
 						$(`#${element}`).show();
-						showSubmitButtonAndHideNextButton(true);
+
+						if (element === 'obfuscate' || element === 'blur') {
+							showSubmitButtonAndHideNextButton(false);
+						} else {
+							showSubmitButtonAndHideNextButton(true);
+						}
+
 					} else {
 						$(`#${element}`).hide();
-						showSubmitButtonAndHideNextButton(false);
 					}
 				});
 			}
@@ -356,16 +352,22 @@
 			let showHideFirstStepButtons = function () {
 				let restrictionIn = $('#restriction-in').val();
 				let protectionType = $('#protection_type').val();
+
 				if (('the_blog_index' == restrictionIn || 'all_items' == restrictionIn || 'frontpage' == restrictionIn) && 'login_and_back' == protectionType) {
-					showSubmitButtonAndHideNextButtonFirstStep(true);
+					$('.hide-next-first').hide();
+					$('.hide-save-first').show();
 				} else {
-					showSubmitButtonAndHideNextButtonFirstStep(false);
+					$('.hide-next-first').show();
+					$('.hide-save-first').hide();
 				}
 			}
 
+			// First Load
+			let protectionType = $('#protection_type').val();
 			showHide(protectionType);
 			showHideFirstStepButtons();
 
+			// Events
 			$(document).on('click', '#restriction-in', function () {
 				showHideFirstStepButtons();
 			});
