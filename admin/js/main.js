@@ -324,13 +324,17 @@
 			let showHide = function (protectionType) {
 
 				let protection_types = [
-					'roles_wrapper',
 					'override_contents',
 					'redirect',
 					'blur',
 					'obfuscate',
 				]
 
+				if ('login_and_back' == protectionType) {
+					$('#roles_wrapper').hide();
+				} else {
+					$('#roles_wrapper').show();
+				}
 				protection_types.forEach(element => {
 
 					if (element === protectionType) {
