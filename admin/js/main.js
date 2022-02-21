@@ -311,8 +311,21 @@
 
 		protectionType: function () {
 
-			let showSubmitButtonAndHideNextButton = function (val) {
-				if (val) {
+			let showSaveHideNext = function (restrictionIn, protectionType) {
+
+				if (
+					('the_blog_index' == restrictionIn
+						|| 'all_items' == restrictionIn
+						|| 'frontpage' == restrictionIn
+					) && 'login_and_back' == protectionType) {
+					$('.hide-next-first').hide();
+					$('.hide-save-first').show();
+				} else {
+					$('.hide-next-first').show();
+					$('.hide-save-first').hide();
+				}
+
+				if (protectionType == 'login_and_back') {
 					$('.hide-next').hide();
 					$('.hide-save').show();
 				} else {
@@ -321,66 +334,52 @@
 				}
 			}
 
-			let showHide = function (protectionType) {
+			let showHideUserRoles = function (protectionType) {
+				if ('login_and_back' == protectionType) {
+					$('#roles_wrapper').hide();
+				} else {
+					$('#roles_wrapper').show();
+				}
+			}
+
+			let hideOtherSections = function (protectionType) {
 
 				let protection_types = [
 					'override_contents',
 					'redirect',
 					'blur',
 					'obfuscate',
-				]
+				];
 
-				if ('login_and_back' == protectionType) {
-					$('#roles_wrapper').hide();
-				} else {
-					$('#roles_wrapper').show();
-				}
 				protection_types.forEach(element => {
-
 					if (element === protectionType) {
-
 						$(`#${element}`).show();
-
-						if (element === 'obfuscate' || element === 'blur') {
-							showSubmitButtonAndHideNextButton(false);
-						} else {
-							showSubmitButtonAndHideNextButton(true);
-						}
-
 					} else {
 						$(`#${element}`).hide();
 					}
 				});
 			}
 
-			let showHideFirstStepButtons = function () {
+			let run = function () {
 				let restrictionIn = $('#restriction-in').val();
 				let protectionType = $('#protection_type').val();
-
-				if (('the_blog_index' == restrictionIn || 'all_items' == restrictionIn || 'frontpage' == restrictionIn) && 'login_and_back' == protectionType) {
-					$('.hide-next-first').hide();
-					$('.hide-save-first').show();
-				} else {
-					$('.hide-next-first').show();
-					$('.hide-save-first').hide();
-				}
+				showSaveHideNext(restrictionIn, protectionType);
+				hideOtherSections(protectionType);
+				showHideUserRoles(protectionType);
 			}
 
 			// First Load
-			let protectionType = $('#protection_type').val();
-			showHide(protectionType);
-			showHideFirstStepButtons();
+			run();
 
-			// Events
-			$(document).on('click', '#restriction-in', function () {
-				showHideFirstStepButtons();
-			});
-
+			// On Click
 			$(document).on('click', '#protection_type', function () {
-				let protectionType = $('#protection_type').val();
-				showHide(protectionType);
-				showHideFirstStepButtons();
+				run();
 			});
+
+			$(document).on('click', '#restriction-in', function () {
+				run();
+			});
+
 		},
 
 		redirectionType: function () {
