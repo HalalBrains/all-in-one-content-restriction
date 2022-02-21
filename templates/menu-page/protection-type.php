@@ -2,7 +2,7 @@
 /**
  * @author  HeyMehedi
  * @since   1.0
- * @version 1.4
+ * @version 1.5
  */
 
 $protection_type = isset( $args['protection_type'] ) ? $args['protection_type'] : 'override_contents';
