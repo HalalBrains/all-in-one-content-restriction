@@ -16,6 +16,7 @@ $protection_type = isset( $args['protection_type'] ) ? $args['protection_type'] 
 		<option value="redirect" <?php selected( 'redirect' == $protection_type );?>><?php esc_html_e( 'Redirect', 'all-in-one-content-restriction' );?></option>
 		<option value="blur" <?php selected( 'blur' == $protection_type );?>><?php esc_html_e( 'Blur', 'all-in-one-content-restriction' );?></option>
 		<option value="obfuscate" <?php selected( 'obfuscate' == $protection_type );?>><?php esc_html_e( 'Obfuscate', 'all-in-one-content-restriction' );?></option>
+		<option value="hide_from_loop" <?php selected( 'hide_from_loop' == $protection_type );?>><?php esc_html_e( 'hide_from_loop', 'all-in-one-content-restriction' );?></option>
 	</select>
 
 </div>
