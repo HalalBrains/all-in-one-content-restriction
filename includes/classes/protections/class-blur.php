@@ -67,7 +67,7 @@ class Blur extends Protection_Base {
 
 	private function add_blur_class( $content, $post_id, $single_restriction_data, $html_tag = 'span' ) {
 
-		if ( $this->users_can_see( $single_restriction_data['role_names'] ) ) {
+		if ( $this->users_can_see( $single_restriction_data ) ) {
 			return $content;
 		}
 

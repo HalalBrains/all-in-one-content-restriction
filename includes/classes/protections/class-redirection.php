@@ -32,7 +32,7 @@ class Redirection extends Protection_Base {
 
 		foreach ( $this->matched_restrictions as $key => $value ) {
 
-			if ( $this->users_can_see( $value['role_names'] ) ) {
+			if ( $this->users_can_see( $value ) ) {
 				return;
 			}
 

@@ -11,7 +11,7 @@ if ( ! class_exists( 'WP_List_Table' ) ) {
 	require_once ABSPATH . 'wp-admin/includes/class-wp-list-table.php';
 }
 
-class AIOCR_List_Table extends \WP_List_Table{
+class AIOCR_List_Table extends \WP_List_Table {
 
 	public $item_id = 1;
 
@@ -94,10 +94,12 @@ class AIOCR_List_Table extends \WP_List_Table{
 	public function column_title( $item ) {
 
 		$actions           = array();
-		$actions['edit']   = sprintf( '<a href="%s" data-id="%d" title="%s">%s</a>', admin_url( 'admin.php?page=all-in-one-content-restriction&action=edit&id=' . $item['restriction_id'] ), $item['restriction_id'], __( 'Edit this item', 'all-in-one-content-restriction' ), __( 'Edit', 'all-in-one-content-restriction' ) );
-		$actions['delete'] = sprintf( '<a href="%s" class="submitdelete" data-id="%d" title="%s">%s</a>', admin_url( 'admin.php?page=all-in-one-content-restriction&action=delete&id=' . $item['restriction_id'] ), $item['restriction_id'], __( 'Delete this item', 'all-in-one-content-restriction' ), __( 'Delete', 'all-in-one-content-restriction' ) );
+		$restriction_id    = isset( $item['restriction_id'] ) ? $item['restriction_id'] : 0;
+		$title             = isset( $item['title'] ) ? $item['title'] : 0;
+		$actions['edit']   = sprintf( '<a href="%s" data-id="%d" title="%s">%s</a>', admin_url( 'admin.php?page=all-in-one-content-restriction&action=edit&id=' . $restriction_id ), $restriction_id, __( 'Edit this item', 'all-in-one-content-restriction' ), __( 'Edit', 'all-in-one-content-restriction' ) );
+		$actions['delete'] = sprintf( '<a href="%s" class="submitdelete" data-id="%d" title="%s">%s</a>', admin_url( 'admin.php?page=all-in-one-content-restriction&action=delete&id=' . $restriction_id ), $restriction_id, __( 'Delete this item', 'all-in-one-content-restriction' ), __( 'Delete', 'all-in-one-content-restriction' ) );
 
-		return sprintf( '<a href="%1$s"><strong>%2$s</strong></a> %3$s', admin_url( 'admin.php?page=all-in-one-content-restriction&action=edit&id=' . $item['restriction_id'] ), $item['title'], $this->row_actions( $actions ) );
+		return sprintf( '<a href="%1$s"><strong>%2$s</strong></a> %3$s', admin_url( 'admin.php?page=all-in-one-content-restriction&action=edit&id=' . $restriction_id ), $title, $this->row_actions( $actions ) );
 	}
 
 	/**
@@ -134,8 +136,10 @@ class AIOCR_List_Table extends \WP_List_Table{
 	 * @return string
 	 */
 	public function column_cb( $item ) {
+		$restriction_id = isset( $item['restriction_id'] ) ? $item['restriction_id'] : 0;
+
 		return sprintf(
-			'<input type="checkbox" name="aiocr_id[]" value="%d" />', $item['restriction_id']
+			'<input type="checkbox" name="aiocr_id[]" value="%d" />', $restriction_id
 		);
 	}
 

@@ -53,6 +53,25 @@ class Markup_Manager {
 		return $role_names_html;
 	}
 
+	// User Roles List HTML for Settings Page
+	public static function get_specified_user_html( $selected_role_names ) {
+		$users      = Query::get_users();
+		$users_html = '';
+
+		foreach ( $users as $key => $value ) {
+			$display_name = $value->display_name;
+			$user_login   = $value->user_login;
+
+			if ( in_array( $user_login, $selected_role_names ) ) {
+				$users_html .= sprintf( '<option value="%s" selected>%s (%s)</option>', $user_login, $display_name, $user_login );
+			} else {
+				$users_html .= sprintf( '<option value="%s">%s (%s)</option>', $user_login, $display_name, $user_login );
+			}
+		}
+
+		return $users_html;
+	}
+
 	// Blur & Obfuscate Apply List HTML for Settings Page
 	public static function apply_to_html( $selected_items ) {
 		$apply_to_arr = array(

@@ -47,7 +47,10 @@
 				var restrictionIn = $('#restriction-in').val();
 
 				var protectionType = $('#protection_type').val();
+
+				var user_restriction_type = $('#user_restriction_type').val();
 				var roles = $('#roles').val();
+				var specify_users = $('#specify_users').val();
 
 				var itemIds = [];
 				$('#heymehedi-selected_items_table_body tr').each(function (index, element) {
@@ -89,7 +92,10 @@
 						"restrict_in": restrictionIn,
 						"protection_type": protectionType,
 
+						"user_restriction_type": user_restriction_type,
 						"role_names": roles,
+						"specify_users": specify_users,
+
 						"selected_ids": itemIds,
 
 						"protectionType": protectionType,
@@ -297,6 +303,11 @@
 				placeholder: "Select users",
 				allowClear: true,
 			});
+			$("#specify_users").select2({
+				placeholder: "Specify users",
+				allowClear: true,
+			});
+
 
 			$("#blur_apply_to").select2({
 				placeholder: "Select",
@@ -336,9 +347,9 @@
 
 			let showHideUserRoles = function (protectionType) {
 				if ('login_and_back' == protectionType) {
-					$('#roles_wrapper').hide();
+					$('#user_restriction_type_wrapper').hide();
 				} else {
-					$('#roles_wrapper').show();
+					$('#user_restriction_type_wrapper').show();
 				}
 			}
 
@@ -436,6 +447,28 @@
 				$('#spread').val(ui.value);
 			});
 		},
+
+		userControlType: function () {
+
+			function showHide(type) {
+				if ('roles' == type) {
+					$('.roles-group').show();
+					$('.specify_users-group').hide();
+				} else {
+					$('.roles-group').hide();
+					$('.specify_users-group').show();
+				}
+			}
+
+			let type = $('#user_restriction_type').val();
+			showHide(type);
+
+			$(document).on('click', '#user_restriction_type', function () {
+				type = $('#user_restriction_type').val();
+				showHide(type);
+				console.log(type);
+			});
+		},
 	}
 
 	$(document).ready(function () {
@@ -444,6 +477,7 @@
 
 		heymehedi.formSubmission();
 		heymehedi.restrictionIn();
+		heymehedi.userControlType();
 		heymehedi.itemsQuery();
 
 		heymehedi.searchItems();

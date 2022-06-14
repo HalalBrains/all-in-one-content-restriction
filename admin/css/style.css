@@ -253,6 +253,9 @@ select#redirection_type {
 #heymehedi-main .select2-search.select2-search--inline {
   display: inline-block;
 }
+#heymehedi-main  .select2.select2-container.select2-container--default {
+  background: white;
+}
 
 /* Optimize these css */
 input {

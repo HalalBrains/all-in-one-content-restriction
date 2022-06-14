@@ -18,8 +18,15 @@ class Query {
 		}
 		$role_names                  = $wp_roles->get_names();
 		$role_names['not_logged_in'] = __( 'Not logged in', 'all-in-one-content-restriction' );
+		$role_names['specify_users'] = __( 'Specify Users', 'all-in-one-content-restriction' );
 
 		return $role_names;
+	}
+
+	public static function get_users() {
+		$users = get_users( array( 'fields' => array( 'display_name', 'user_login' ) ) );
+
+		return $users;
 	}
 
 	public static function get_categories( $exclude_ids = array(), $include_ids = array() ) {
@@ -104,5 +111,4 @@ class Query {
 
 		return get_terms( $args );
 	}
-
 }

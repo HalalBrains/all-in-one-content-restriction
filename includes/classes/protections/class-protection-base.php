@@ -40,7 +40,8 @@ class Protection_Base {
 		// Separating Matched Post Types
 		$matched_post_types = array();
 		foreach ( $this->restrictions as $key => $value ) {
-			if ( $post_type === $value['post_type'] ) {
+			$val = isset( $value['post_type'] ) ? $value['post_type'] : '';
+			if ( $post_type === $val ) {
 				array_push( $matched_post_types, $value );
 			}
 		}
@@ -131,24 +132,33 @@ class Protection_Base {
 	}
 
 	// Selected user can see the content...
-	public function users_can_see( $role_names ) {
+	public function users_can_see( $single_restriction_data ) {
 
 		if ( is_blog_admin() ) {
 			return true;
 		}
 
-		if ( ! isset( $role_names ) || empty( $role_names ) ) {
-			return false;
-		}
+		$user_restriction_type = isset( $single_restriction_data['user_restriction_type'] ) ? $single_restriction_data['user_restriction_type'] : 'role_names';
+		$role_names            = isset( $single_restriction_data['role_names'] ) ? $single_restriction_data['role_names'] : array();
+		$specify_users         = isset( $single_restriction_data['specify_users'] ) ? $single_restriction_data['specify_users'] : array();
+		$current_user          = wp_get_current_user();
 
-		if ( in_array( 'not_logged_in', $role_names ) && ! is_user_logged_in() ) {
-			return true;
-		}
+		if ( 'role_names' == $user_restriction_type ) {
+			if ( ! isset( $role_names ) || empty( $role_names ) ) {
+				return false;
+			}
 
-		$current_user = wp_get_current_user();
+			if ( in_array( 'not_logged_in', $role_names ) && ! is_user_logged_in() ) {
+				return true;
+			}
 
-		foreach ( $role_names as $role ) {
-			if ( in_array( $role, $current_user->roles ) ) {
+			foreach ( $role_names as $role ) {
+				if ( in_array( $role, $current_user->roles ) ) {
+					return true;
+				}
+			}
+		} elseif ( 'specify_users' == $user_restriction_type ) {
+			if ( in_array( $current_user->user_login, $specify_users ) ) {
 				return true;
 			}
 		}

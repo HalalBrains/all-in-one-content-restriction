@@ -30,8 +30,12 @@ class Settings {
 		$single_restriction_data['restrict_in'] = sanitize_text_field( $data['restrict_in'] );
 
 		$single_restriction_data['protection_type'] = sanitize_text_field( $data['protection_type'] );
-		$single_restriction_data['role_names']      = self::sanitize_array( $data['role_names'] );
-		$single_restriction_data['selected_ids']    = self::sanitize_array( $data['selected_ids'] );
+
+		$single_restriction_data['user_restriction_type'] = self::sanitize_array( $data['user_restriction_type'] );
+		$single_restriction_data['role_names']            = self::sanitize_array( $data['role_names'] );
+		$single_restriction_data['specify_users']         = self::sanitize_array( $data['specify_users'] );
+
+		$single_restriction_data['selected_ids'] = self::sanitize_array( $data['selected_ids'] );
 
 		$single_restriction_data['protection_type'] = sanitize_text_field( $data['protectionType'] );
 

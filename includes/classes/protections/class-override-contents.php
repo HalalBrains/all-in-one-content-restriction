@@ -66,7 +66,7 @@ class Override_Contents extends Protection_Base {
 
 	private function show_content( $content, $post_id, $modified_content, $single_restriction_data ) {
 
-		if ( $this->users_can_see( $single_restriction_data['role_names'] ) ) {
+		if ( $this->users_can_see( $single_restriction_data ) ) {
 			return $content;
 		}
 
