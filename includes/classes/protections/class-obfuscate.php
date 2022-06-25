@@ -7,43 +7,29 @@
 
 namespace HeyMehedi\All_In_One_Content_Restriction;
 
-class Obfuscate extends Protection_Base {
+class Obfuscate {
 
-	protected static $instance      = null;
-	public $single_restriction_data = array();
+	public $matched_restrictions = array();
 
 	public function __construct() {
-		parent::__construct();
-		add_action( 'the_post', array( $this, 'the_post' ) );
-	}
-
-	public static function instance() {
-		if ( null == self::$instance ) {
-			self::$instance = new self;
-		}
-
-		return self::$instance;
-	}
-
-	public function condition( $value ) {
-
-		$this->single_restriction_data = $value;
-
-		if ( 'obfuscate' != $value['protection_type'] ) {
-			return;
-		}
-
-		$this->single_restriction_data['obfuscate_apply_to'] = isset( $this->single_restriction_data['obfuscate_apply_to'] ) ? $this->single_restriction_data['obfuscate_apply_to'] : array();
-
 		add_filter( 'the_title', array( $this, 'the_title' ), 10, 2 );
 		add_filter( 'the_content', array( $this, 'the_content' ) );
 		add_filter( 'get_the_excerpt', array( $this, 'the_excerpt' ), 11, 2 );
 	}
 
 	public function the_title( $title, $post_id ) {
+		$this->matched_restrictions = Protection_Manager::instance()->get_matched_restrictions( $post_id );
 
-		if ( in_array( 'the_title', $this->single_restriction_data['obfuscate_apply_to'] ) ) {
-			return $this->add_blur_class( $title, $post_id, $this->single_restriction_data );
+		foreach ( $this->matched_restrictions as $key => $single_restriction_data ) {
+
+			if ( 'obfuscate' != $single_restriction_data['protection_type'] ) {
+				continue;
+			}
+
+			$obfuscate_apply_to = isset( $single_restriction_data['obfuscate_apply_to'] ) ? $single_restriction_data['obfuscate_apply_to'] : array();
+			if ( in_array( 'the_title', $obfuscate_apply_to ) ) {
+				$title = $this->add_obfuscate( $title, $single_restriction_data );
+			}
 		}
 
 		return $title;
@@ -51,8 +37,16 @@ class Obfuscate extends Protection_Base {
 
 	public function the_excerpt( $the_excerpt, $post ) {
 
-		if ( in_array( 'the_excerpt', $this->single_restriction_data['obfuscate_apply_to'] ) ) {
-			return $this->add_blur_class( $the_excerpt, $post->ID, $this->single_restriction_data );
+		foreach ( $this->matched_restrictions as $key => $single_restriction_data ) {
+
+			if ( 'obfuscate' != $single_restriction_data['protection_type'] ) {
+				continue;
+			}
+
+			$obfuscate_apply_to = isset( $single_restriction_data['obfuscate_apply_to'] ) ? $single_restriction_data['obfuscate_apply_to'] : array();
+			if ( in_array( 'the_excerpt', $obfuscate_apply_to ) ) {
+				$the_excerpt = $this->add_obfuscate( $the_excerpt, $single_restriction_data );
+			}
 		}
 
 		return $the_excerpt;
@@ -60,20 +54,28 @@ class Obfuscate extends Protection_Base {
 
 	public function the_content( $the_content ) {
 
-		if ( in_array( 'the_content', $this->single_restriction_data['obfuscate_apply_to'] ) ) {
-			return $this->add_blur_class( $the_content, get_the_ID(), $this->single_restriction_data, 'div' );
+		foreach ( $this->matched_restrictions as $key => $single_restriction_data ) {
+
+			if ( 'obfuscate' != $single_restriction_data['protection_type'] ) {
+				continue;
+			}
+
+			$obfuscate_apply_to = isset( $single_restriction_data['obfuscate_apply_to'] ) ? $single_restriction_data['obfuscate_apply_to'] : array();
+			if ( in_array( 'the_content', $obfuscate_apply_to ) ) {
+				$the_content = $this->add_obfuscate( $the_content, $single_restriction_data );
+			}
 		}
 
 		return $the_content;
 	}
 
-	private function add_blur_class( $content, $post_id, $single_restriction_data, $html_tag = 'span' ) {
+	private function add_obfuscate( $content, $single_restriction_data ) {
 
-		if ( $this->users_can_see( $single_restriction_data ) ) {
+		if ( Protection_Manager::users_can_see( $single_restriction_data ) ) {
 			return $content;
 		}
 
-		if ( $this->is_protected( $post_id ) ) {
+		if ( Protection_Manager::is_protected() ) {
 			return Helper::get_random_text( $content );
 		}
 
@@ -81,4 +83,4 @@ class Obfuscate extends Protection_Base {
 	}
 }
 
-Obfuscate::instance();
+new Obfuscate;

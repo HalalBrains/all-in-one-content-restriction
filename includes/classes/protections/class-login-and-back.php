@@ -7,21 +7,10 @@
 
 namespace HeyMehedi\All_In_One_Content_Restriction;
 
-class Login_And_Back extends Protection_Base {
-
-	protected static $instance = null;
+class Login_And_Back {
 
 	public function __construct() {
-		parent::__construct();
 		add_action( 'template_redirect', array( $this, 'template_redirect' ) );
-	}
-
-	public static function instance() {
-		if ( null == self::$instance ) {
-			self::$instance = new self;
-		}
-
-		return self::$instance;
 	}
 
 	public function template_redirect() {
@@ -30,21 +19,32 @@ class Login_And_Back extends Protection_Base {
 			return;
 		}
 
-		if ( ! $this->is_protected( get_the_ID() ) ) {
+		$matched_restrictions = Protection_Manager::instance()->get_matched_restrictions( get_the_ID() );
+
+		if ( ! Protection_Manager::is_protected() ) {
 			return;
 		}
 
-		foreach ( $this->matched_restrictions as $key => $value ) {
-			if ( 'login_and_back' != $value['protection_type'] ) {
-				return;
+		foreach ( $matched_restrictions as $key => $single_restriction_data ) {
+			$protection_type = isset( $single_restriction_data['protection_type'] ) ? $single_restriction_data['protection_type'] : '';
+
+			if ( 'login_and_back' != $protection_type ) {
+				continue;
 			}
-		}
 
-		$requested_and_login = wp_login_url( $this->current_url() );
+			// Check if it's a archive or blog, don't redirect it.
+			if ( in_array( $single_restriction_data['restrict_in'], array( 'all_items', 'selected_single_items' ) ) ) {
+				if ( is_archive() || is_home() ) {
+					continue;
+				}
+			}
 
-		if ( $requested_and_login ) {
-			wp_redirect( $requested_and_login );
-			exit;
+			$requested_and_login = wp_login_url( $this->current_url() );
+
+			if ( $requested_and_login ) {
+				wp_redirect( $requested_and_login );
+				exit;
+			}
 		}
 	}
 
@@ -55,4 +55,4 @@ class Login_And_Back extends Protection_Base {
 	}
 }
 
-Login_And_Back::instance();
+new Login_And_Back;
