@@ -78,7 +78,6 @@ if ( ! class_exists( 'All_In_One_Content_Restriction' ) ) {
 			require_once self::$base_dir . '/includes/classes/protections/class-obfuscate.php';
 			require_once self::$base_dir . '/includes/classes/protections/class-blur.php';
 
-
 			// require_once self::$base_dir . '/includes/classes/protections/class-hide-from-loop.php';
 
 			require_once self::$base_dir . '/includes/classes/class-strings.php';

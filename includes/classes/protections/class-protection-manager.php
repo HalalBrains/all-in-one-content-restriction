@@ -97,8 +97,6 @@ class Protection_Manager {
 		$priorities = array_column( $matched_post_types, 'priority' );
 		array_multisort( $priorities, SORT_DESC, $matched_post_types );
 
-		var_dump( $priorities );
-
 		foreach ( $matched_post_types as $key => $value ) {
 
 			// Excute Only for Single Post Items
@@ -173,7 +171,9 @@ class Protection_Manager {
 			}
 		}
 
-		return $matched_restrictions;
+		$return_single_restrction_by_top_piority[0] = isset( $matched_restrictions[0] ) ? $matched_restrictions[0] : array();
+
+		return $return_single_restrction_by_top_piority;
 	}
 
 	/**
@@ -230,5 +230,3 @@ class Protection_Manager {
 		return false;
 	}
 }
-
-new Protection_Manager;

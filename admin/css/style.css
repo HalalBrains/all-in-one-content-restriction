@@ -73,6 +73,9 @@ div#wpcontent {
   background-color: #eae9f1d1;
   box-shadow: 0 0 0 0 !important;
 }
+.toplevel_page_all-in-one-content-restriction .error {
+  display: none;
+}
 
 #heymehedi-main thead, #heymehedi-main tbody {
   display: block;
