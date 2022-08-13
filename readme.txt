@@ -2,7 +2,7 @@
 Contributors: HeyMehedi
 Tags: content restriction, access control, private, permission, restrict access
 Requires at least: 5.6
-Tested up to: 5.8
+Tested up to: 6.0.1
 Requires PHP: 5.6
 Stable tag: 1.4
 License: GPLv3 or Any Later Version
