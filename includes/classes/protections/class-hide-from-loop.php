@@ -38,7 +38,9 @@ class Hide_From_Loop extends Protection_Base {
 
 		foreach ( $this->restrictions as $value ) {
 			$this->single_restriction_data = $value;
-			if ( 'hide_from_loop' != $this->single_restriction_data['protection_type'] ) {
+
+			$protection_type = isset( $single_restriction_data['protection_type'] ) ? $single_restriction_data['protection_type'] : null;
+			if ( 'hide_from_loop' != $protection_type ) {
 				return;
 			}
 

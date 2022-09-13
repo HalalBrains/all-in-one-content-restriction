@@ -26,8 +26,7 @@ class Login_And_Back {
 		}
 
 		foreach ( $matched_restrictions as $key => $single_restriction_data ) {
-			$protection_type = isset( $single_restriction_data['protection_type'] ) ? $single_restriction_data['protection_type'] : '';
-
+			$protection_type = isset( $single_restriction_data['protection_type'] ) ? $single_restriction_data['protection_type'] : null;
 			if ( 'login_and_back' != $protection_type ) {
 				continue;
 			}

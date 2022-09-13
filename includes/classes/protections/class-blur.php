@@ -22,8 +22,8 @@ class Blur {
 		$this->matched_restrictions = Protection_Manager::instance()->get_matched_restrictions( $post_id );
 
 		foreach ( $this->matched_restrictions as $key => $single_restriction_data ) {
-
-			if ( 'blur' != $single_restriction_data['protection_type'] ) {
+			$protection_type = isset( $single_restriction_data['protection_type'] ) ? $single_restriction_data['protection_type'] : null;
+			if ( 'blur' != $protection_type ) {
 				continue;
 			}
 
@@ -39,8 +39,9 @@ class Blur {
 	public function the_excerpt( $the_excerpt, $post ) {
 
 		foreach ( $this->matched_restrictions as $key => $single_restriction_data ) {
+			$protection_type = isset( $single_restriction_data['protection_type'] ) ? $single_restriction_data['protection_type'] : null;
 
-			if ( 'blur' != $single_restriction_data['protection_type'] ) {
+			if ( 'blur' != $protection_type ) {
 				continue;
 			}
 
@@ -56,8 +57,8 @@ class Blur {
 	public function the_content( $the_content ) {
 
 		foreach ( $this->matched_restrictions as $key => $single_restriction_data ) {
-
-			if ( 'blur' != $single_restriction_data['protection_type'] ) {
+			$protection_type = isset( $single_restriction_data['protection_type'] ) ? $single_restriction_data['protection_type'] : null;
+			if ( 'blur' != $protection_type ) {
 				continue;
 			}
 
@@ -75,7 +76,7 @@ class Blur {
 		if ( Protection_Manager::users_can_see( $single_restriction_data ) ) {
 			return $content;
 		}
-		
+
 		if ( Protection_Manager::is_protected() ) {
 
 			$add_rand_text = apply_filters( 'all_in_one_blur_protection_rand_text', true );

@@ -42,7 +42,7 @@ class Protection_Manager {
 		}
 
 		foreach ( $matched_restrictions as $key => $single_restriction_data ) {
-			$protection_type = isset( $single_restriction_data['protection_type'] ) ? $single_restriction_data['protection_type'] : '';
+			$protection_type = isset( $single_restriction_data['protection_type'] ) ? $single_restriction_data['protection_type'] : null;
 
 			switch ( $protection_type ) {
 				case 'redirect':

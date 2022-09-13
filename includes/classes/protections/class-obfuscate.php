@@ -21,8 +21,8 @@ class Obfuscate {
 		$this->matched_restrictions = Protection_Manager::instance()->get_matched_restrictions( $post_id );
 
 		foreach ( $this->matched_restrictions as $key => $single_restriction_data ) {
-
-			if ( 'obfuscate' != $single_restriction_data['protection_type'] ) {
+			$protection_type = isset( $single_restriction_data['protection_type'] ) ? $single_restriction_data['protection_type'] : null;
+			if ( 'obfuscate' != $protection_type ) {
 				continue;
 			}
 
@@ -38,8 +38,9 @@ class Obfuscate {
 	public function the_excerpt( $the_excerpt, $post ) {
 
 		foreach ( $this->matched_restrictions as $key => $single_restriction_data ) {
+			$protection_type = isset( $single_restriction_data['protection_type'] ) ? $single_restriction_data['protection_type'] : null;
 
-			if ( 'obfuscate' != $single_restriction_data['protection_type'] ) {
+			if ( 'obfuscate' != $protection_type ) {
 				continue;
 			}
 
@@ -55,8 +56,9 @@ class Obfuscate {
 	public function the_content( $the_content ) {
 
 		foreach ( $this->matched_restrictions as $key => $single_restriction_data ) {
+			$protection_type = isset( $single_restriction_data['protection_type'] ) ? $single_restriction_data['protection_type'] : null;
 
-			if ( 'obfuscate' != $single_restriction_data['protection_type'] ) {
+			if ( 'obfuscate' != $protection_type ) {
 				continue;
 			}
 
