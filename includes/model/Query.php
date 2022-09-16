@@ -2,7 +2,7 @@
 /**
  * @author  HeyMehedi
  * @since   1.0
- * @version 1.1
+ * @version 1.6.2
  */
 
 namespace HeyMehedi\All_In_One_Content_Restriction;
@@ -18,7 +18,6 @@ class Query {
 		}
 		$role_names                  = $wp_roles->get_names();
 		$role_names['not_logged_in'] = __( 'Not logged in', 'all-in-one-content-restriction' );
-		$role_names['specify_users'] = __( 'Specify Users', 'all-in-one-content-restriction' );
 
 		return $role_names;
 	}
