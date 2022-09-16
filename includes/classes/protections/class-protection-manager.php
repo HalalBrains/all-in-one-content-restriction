@@ -2,7 +2,7 @@
 /**
  * @author  HeyMehedi
  * @since   1.0
- * @version 1.6.1
+ * @version 1.6.2
  */
 
 namespace HeyMehedi\All_In_One_Content_Restriction;
@@ -72,7 +72,7 @@ class Protection_Manager {
 	 * Retrieves matched restrictions if the current post is restricted.
 	 *
 	 * @param string $post_id  Optional.
-	 * @return array if post have restrction
+	 * @return array if post have restriction
 	 */
 	public static function get_matched_restrictions( $post_id = '' ) {
 
@@ -99,7 +99,7 @@ class Protection_Manager {
 
 		foreach ( $matched_post_types as $key => $value ) {
 
-			// Excute Only for Single Post Items
+			// Execute Only for Single Post Items
 			if ( 'selected_single_items' === $value['restrict_in'] ) {
 
 				if ( ! $value['selected_ids'] ) {
@@ -171,16 +171,16 @@ class Protection_Manager {
 			}
 		}
 
-		$return_single_restrction_by_top_piority[0] = isset( $matched_restrictions[0] ) ? $matched_restrictions[0] : array();
+		$return_single_restriction_by_top_priority[0] = isset( $matched_restrictions[0] ) ? $matched_restrictions[0] : array();
 
-		return $return_single_restrction_by_top_piority;
+		return $return_single_restriction_by_top_priority;
 	}
 
 	/**
 	 * Whether the current post is restricted.
 	 *
 	 * @param string $post_id  Optional.
-	 * @return bool if post have restrction : true
+	 * @return bool if post have restriction : true
 	 */
 	public static function is_protected( $post_id = '' ) {
 		if ( empty( self::$instance->is_protected ) && $post_id ) {
@@ -198,16 +198,18 @@ class Protection_Manager {
 	 */
 	public static function users_can_see( $single_restriction_data ) {
 
-		if ( is_blog_admin() ) {
+		$current_user = wp_get_current_user();
+
+		if ( is_blog_admin() || is_admin() || user_can( $current_user->ID, 'edit_posts' ) ) {
 			return true;
 		}
 
 		$user_restriction_type = isset( $single_restriction_data['user_restriction_type'] ) ? $single_restriction_data['user_restriction_type'] : 'role_names';
 		$role_names            = isset( $single_restriction_data['role_names'] ) ? $single_restriction_data['role_names'] : array();
 		$specify_users         = isset( $single_restriction_data['specify_users'] ) ? $single_restriction_data['specify_users'] : array();
-		$current_user          = wp_get_current_user();
 
-		if ( 'role_names' == $user_restriction_type ) {
+		if ( 'role_names' == $user_restriction_type || 'roles' == $user_restriction_type ) {
+
 			if ( ! isset( $role_names ) || empty( $role_names ) ) {
 				return false;
 			}
@@ -221,6 +223,7 @@ class Protection_Manager {
 					return true;
 				}
 			}
+
 		} elseif ( 'specify_users' == $user_restriction_type ) {
 			if ( in_array( $current_user->user_login, $specify_users ) ) {
 				return true;
