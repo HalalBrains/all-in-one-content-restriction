@@ -12,6 +12,7 @@
 		"gulp-zip": "^4.2.0"
 	},
 	"dependencies": {
-		"del": "^6.0.0"
+		"del": "^6.0.0",
+		"gulp-cli": "^2.3.0"
 	}
 }
