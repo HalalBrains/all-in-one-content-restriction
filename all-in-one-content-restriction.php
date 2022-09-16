@@ -5,7 +5,7 @@
  * Description: All in One Content Restriction - A simple and user-friendly plugin to restrict users / visitors from viewing posts by restricting access, as simple as that.
  * Author: HeyMehedi
  * Author URI: https://heymehedi.com
- * version: 1.6.1
+ * version: 1.6.2
  * License: GPLv2 or later
  * Text Domain: all-in-one-content-restriction
  * Domain Path: /languages
@@ -81,6 +81,10 @@ if ( ! class_exists( 'All_In_One_Content_Restriction' ) ) {
 			// require_once self::$base_dir . '/includes/classes/protections/class-hide-from-loop.php';
 
 			require_once self::$base_dir . '/includes/classes/class-strings.php';
+
+			if ( isset( $_REQUEST['page'] ) && 'all-in-one-content-restriction' === $_REQUEST['page'] && ! class_exists( 'Hide_Admin_Notices' ) ) {
+				require_once self::$base_dir . '/includes/libs/hide-admin-notices/hide-admin-notices.php';
+			}
 		}
 
 		public function get_data() {
