@@ -1,10 +1,10 @@
 === All In One Content Restriction Tool for WordPress ===
-Contributors: HeyMehedi
+Contributors: wptownhall, HeyMehedi, HiMrFaruk
 Tags: content restriction, access control, private, permission, restrict access
 Requires at least: 5.6
 Tested up to: 6.0.2
 Requires PHP: 5.6
-Stable tag: 1.6.1
+Stable tag: 1.6.2
 License: GPLv3 or Any Later Version
 
 All in One Content Restriction - A simple and user-friendly plugin to restrict users/visitors from viewing posts by restricting access, as simple as that.

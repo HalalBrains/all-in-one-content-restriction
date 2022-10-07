@@ -3,7 +3,7 @@
  * Plugin Name: All in One Content Restriction
  * Plugin URI: https://github.com/HeyMehedi/all-in-one-content-restriction
  * Description: All in One Content Restriction - A simple and user-friendly plugin to restrict users / visitors from viewing posts by restricting access, as simple as that.
- * Author: HeyMehedi
+ * Author: WPtownhall
  * Author URI: https://heymehedi.com
  * version: 1.6.2
  * License: GPLv2 or later
