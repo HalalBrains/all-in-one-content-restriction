@@ -11,6 +11,7 @@ class Login_And_Back {
 
 	public function __construct() {
 		add_action( 'template_redirect', array( $this, 'template_redirect' ) );
+		add_filter( 'register_url', array( $this, 'register_url' ) );
 	}
 
 	public function template_redirect() {
@@ -51,6 +52,10 @@ class Login_And_Back {
 		$protocol = ( ! empty( $_SERVER['HTTPS'] ) && $_SERVER['HTTPS'] !== 'off' ) || $_SERVER['SERVER_PORT'] == 443 ? 'https://' : 'http://';
 
 		return $protocol . $_SERVER['HTTP_HOST'] . $_SERVER["REQUEST_URI"];
+	}
+
+	public function register_url( $str ) {
+		return site_url( "wp-login.php?action=register&redirect_to={$this->current_url()}", 'login' );
 	}
 }
 
