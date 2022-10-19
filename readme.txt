@@ -4,7 +4,7 @@ Tags: content restriction, access control, private, permission, restrict access
 Requires at least: 5.6
 Tested up to: 6.0.2
 Requires PHP: 5.6
-Stable tag: 1.6.2
+Stable tag: 1.6.3
 License: GPLv3 or Any Later Version
 
 All in One Content Restriction - A simple and user-friendly plugin to restrict users/visitors from viewing posts by restricting access, as simple as that.
