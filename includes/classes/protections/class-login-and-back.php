@@ -2,7 +2,7 @@
 /**
  * @author  HeyMehedi
  * @since   1.0
- * @version 1.6.3
+ * @version 1.6.4
  */
 
 namespace HeyMehedi\All_In_One_Content_Restriction;
@@ -20,29 +20,24 @@ class Login_And_Back {
 			return;
 		}
 
-		$matched_restrictions = Protection_Manager::instance()->get_matched_restrictions( get_the_ID() );
+		$restrictions = Protection_Manager::instance()->get_restrictions( get_the_ID(), '', 'login_and_back' );
 
 		if ( ! Protection_Manager::is_protected() ) {
 			return;
 		}
 
-		foreach ( $matched_restrictions as $key => $single_restriction_data ) {
-			$protection_type = isset( $single_restriction_data['protection_type'] ) ? $single_restriction_data['protection_type'] : null;
-			if ( 'login_and_back' != $protection_type ) {
-				continue;
-			}
+		foreach ( $restrictions as $key => $restriction ) {
 
-			// Check if it's a archive or blog, don't redirect it.
-			if ( in_array( $single_restriction_data['restrict_in'], array( 'all_items', 'selected_single_items' ) ) ) {
+			/* don't redirect, if it's a archive or blog */
+			if ( in_array( $restriction['restrict_in'], array( 'all_items', 'selected_single_items' ) ) ) {
 				if ( is_archive() || is_home() ) {
 					continue;
 				}
 			}
 
-			$requested_and_login = wp_login_url( $this->current_url() );
-
-			if ( $requested_and_login ) {
-				wp_redirect( $requested_and_login );
+			$url = wp_login_url( $this->current_url() );
+			if ( $url ) {
+				wp_redirect( $url );
 				exit;
 			}
 		}

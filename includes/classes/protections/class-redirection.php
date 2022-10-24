@@ -2,7 +2,7 @@
 /**
  * @author  HeyMehedi
  * @since   1.0
- * @version 1.6.1
+ * @version 1.6.4
  */
 
 namespace HeyMehedi\All_In_One_Content_Restriction;
@@ -15,38 +15,33 @@ class Redirection {
 
 	public function template_redirect() {
 
-		$matched_restrictions = Protection_Manager::instance()->get_matched_restrictions( get_the_ID() );
+		$restrictions = Protection_Manager::instance()->get_restrictions( get_the_ID(), '', 'redirect' );
 
 		if ( ! Protection_Manager::is_protected() ) {
 			return;
 		}
 
-		foreach ( $matched_restrictions as $key => $single_restriction_data ) {
-			$protection_type = isset( $single_restriction_data['protection_type'] ) ? $single_restriction_data['protection_type'] : null;
-			$redirect        = false;
-
-			if ( 'redirect' != $protection_type ) {
-				continue;
-			}
+		foreach ( $restrictions as $key => $restriction ) {
+			$redirect = false;
 
 			// Check if it's a archive or blog, don't redirect it.
-			if ( in_array( $single_restriction_data['restrict_in'], array( 'all_items', 'selected_single_items' ) ) ) {
+			if ( in_array( $restriction['restrict_in'], array( 'all_items', 'selected_single_items' ) ) ) {
 				if ( is_archive() || is_home() ) {
 					continue;
 				}
 			}
 
 			// If current user has permission to see the post
-			if ( Protection_Manager::users_can_see( $single_restriction_data ) ) {
+			if ( Protection_Manager::users_can_see( $restriction ) ) {
 				return;
 			}
 
-			switch ( $single_restriction_data['redirection_type'] ) {
+			switch ( $restriction['redirection_type'] ) {
 				case 'homepage':
 					$redirect = home_url();
 					break;
 				case 'custom_url':
-					$redirect = esc_url( $single_restriction_data['custom_url'] );
+					$redirect = esc_url( $restriction['custom_url'] );
 					break;
 			}
 

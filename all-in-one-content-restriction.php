@@ -5,7 +5,7 @@
  * Description: All in One Content Restriction - A simple and user-friendly plugin to restrict users / visitors from viewing posts by restricting access, as simple as that.
  * Author: WPtownhall
  * Author URI: https://profiles.wordpress.org/wptownhall/
- * version: 1.6.3
+ * version: 1.6.4
  * License: GPLv2 or later
  * Text Domain: all-in-one-content-restriction
  * Domain Path: /languages
@@ -78,7 +78,7 @@ if ( ! class_exists( 'All_In_One_Content_Restriction' ) ) {
 			require_once self::$base_dir . '/includes/classes/protections/class-obfuscate.php';
 			require_once self::$base_dir . '/includes/classes/protections/class-blur.php';
 
-			// require_once self::$base_dir . '/includes/classes/protections/class-hide-from-loop.php';
+			require_once self::$base_dir . '/includes/classes/protections/class-hide-from-loop.php';
 
 			require_once self::$base_dir . '/includes/classes/class-strings.php';
 

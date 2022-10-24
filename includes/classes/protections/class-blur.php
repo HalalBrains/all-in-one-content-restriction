@@ -2,14 +2,14 @@
 /**
  * @author  HeyMehedi
  * @since   1.4
- * @version 1.6.1
+ * @version 1.6.4
  */
 
 namespace HeyMehedi\All_In_One_Content_Restriction;
 
 class Blur {
 
-	public $matched_restrictions = array();
+	public $restrictions = array();
 
 	public function __construct() {
 		add_filter( 'the_title', array( $this, 'the_title' ), 10, 2 );
@@ -19,17 +19,12 @@ class Blur {
 
 	public function the_title( $title, $post_id ) {
 
-		$this->matched_restrictions = Protection_Manager::instance()->get_matched_restrictions( $post_id );
+		$this->restrictions = Protection_Manager::instance()->get_restrictions( $post_id, '', 'blur' );
 
-		foreach ( $this->matched_restrictions as $key => $single_restriction_data ) {
-			$protection_type = isset( $single_restriction_data['protection_type'] ) ? $single_restriction_data['protection_type'] : null;
-			if ( 'blur' != $protection_type ) {
-				continue;
-			}
-
-			$blur_apply_to = isset( $single_restriction_data['blur_apply_to'] ) ? $single_restriction_data['blur_apply_to'] : array();
+		foreach ( $this->restrictions as $key => $restriction ) {
+			$blur_apply_to = isset( $restriction['blur_apply_to'] ) ? $restriction['blur_apply_to'] : array();
 			if ( in_array( 'the_title', $blur_apply_to ) ) {
-				$title = $this->add_blur_class( $title, $single_restriction_data );
+				$title = $this->add_blur_class( $title, $restriction );
 			}
 		}
 
@@ -38,16 +33,10 @@ class Blur {
 
 	public function the_excerpt( $the_excerpt, $post ) {
 
-		foreach ( $this->matched_restrictions as $key => $single_restriction_data ) {
-			$protection_type = isset( $single_restriction_data['protection_type'] ) ? $single_restriction_data['protection_type'] : null;
-
-			if ( 'blur' != $protection_type ) {
-				continue;
-			}
-
-			$blur_apply_to = isset( $single_restriction_data['blur_apply_to'] ) ? $single_restriction_data['blur_apply_to'] : array();
+		foreach ( $this->restrictions as $key => $restriction ) {
+			$blur_apply_to = isset( $restriction['blur_apply_to'] ) ? $restriction['blur_apply_to'] : array();
 			if ( in_array( 'the_excerpt', $blur_apply_to ) ) {
-				$the_excerpt = $this->add_blur_class( $the_excerpt, $single_restriction_data );
+				$the_excerpt = $this->add_blur_class( $the_excerpt, $restriction );
 			}
 		}
 
@@ -56,24 +45,19 @@ class Blur {
 
 	public function the_content( $the_content ) {
 
-		foreach ( $this->matched_restrictions as $key => $single_restriction_data ) {
-			$protection_type = isset( $single_restriction_data['protection_type'] ) ? $single_restriction_data['protection_type'] : null;
-			if ( 'blur' != $protection_type ) {
-				continue;
-			}
-
-			$blur_apply_to = isset( $single_restriction_data['blur_apply_to'] ) ? $single_restriction_data['blur_apply_to'] : array();
+		foreach ( $this->restrictions as $key => $restriction ) {
+			$blur_apply_to = isset( $restriction['blur_apply_to'] ) ? $restriction['blur_apply_to'] : array();
 			if ( in_array( 'the_content', $blur_apply_to ) ) {
-				$the_content = $this->add_blur_class( $the_content, $single_restriction_data, 'div' );
+				$the_content = $this->add_blur_class( $the_content, $restriction, 'div' );
 			}
 		}
 
 		return $the_content;
 	}
 
-	private function add_blur_class( $content, $single_restriction_data, $html_tag = 'span' ) {
+	private function add_blur_class( $content, $restriction, $html_tag = 'span' ) {
 
-		if ( Protection_Manager::users_can_see( $single_restriction_data ) ) {
+		if ( Protection_Manager::users_can_see( $restriction ) ) {
 			return $content;
 		}
 
@@ -84,8 +68,8 @@ class Blur {
 				$content = Helper::get_random_text( $content );
 			}
 
-			$blur_level = isset( $single_restriction_data['blur_level'] ) ? $single_restriction_data['blur_level'] : 10;
-			$spread     = isset( $single_restriction_data['spread'] ) ? $single_restriction_data['spread'] : 10;
+			$blur_level = isset( $restriction['blur_level'] ) ? $restriction['blur_level'] : 10;
+			$spread     = isset( $restriction['spread'] ) ? $restriction['spread'] : 10;
 
 			return sprintf( '<%s class="aiocr-blur" style="-webkit-filter: blur(%spx); text-shadow: 0 0 %spx #000;">%s</%s>', $html_tag, esc_attr( $blur_level ), esc_attr( $spread ), $content, $html_tag );
 		}

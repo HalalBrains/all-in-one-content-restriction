@@ -1,21 +1,17 @@
 <?php
 /**
  * @author  HeyMehedi
- * @since   1.5
- * @version 1.6.1
+ * @since   1.6.4
+ * @version 1.6.4
  */
 
 namespace HeyMehedi\All_In_One_Content_Restriction;
 
-class Hide_From_Loop extends Protection_Base {
+class Hide_From_Loop {
 
-	protected static $instance      = null;
-	public $single_restriction_data = array();
-	public $exclude_args            = array();
+	protected static $instance = null;
 
 	public function __construct() {
-		parent::__construct();
-		add_action( 'the_post', array( $this, 'the_post' ) );
 		add_action( 'pre_get_posts', array( $this, 'exclude_posts' ) );
 	}
 
@@ -27,33 +23,17 @@ class Hide_From_Loop extends Protection_Base {
 		return self::$instance;
 	}
 
-	public function condition( $value ) {
-
-		$this->single_restriction_data = $value;
-
-		$this->exclude_args = 1;
-	}
-
 	public function exclude_posts( $query ) {
+		$restrictions = Protection_Manager::instance()->get_restrictions( 0, '', 'hide_from_loop' );
 
-		foreach ( $this->restrictions as $value ) {
-			$this->single_restriction_data = $value;
+		foreach ( $restrictions as $value ) {
 
-			$protection_type = isset( $single_restriction_data['protection_type'] ) ? $single_restriction_data['protection_type'] : null;
-			if ( 'hide_from_loop' != $protection_type ) {
+			if ( Protection_Manager::users_can_see( $value ) ) {
 				return;
 			}
 
-			if ( $this->users_can_see( $this->single_restriction_data ) ) {
-				return;
-			}
-
-			// if ( ! $this->is_protected() ) {
-			// 	return;
-			// }
-
-			$restrict_in  = isset( $this->single_restriction_data['restrict_in'] ) ? $this->single_restriction_data['restrict_in'] : '';
-			$exclude_args = isset( $this->single_restriction_data['selected_ids'] ) ? $this->single_restriction_data['selected_ids'] : array();
+			$restrict_in  = isset( $value['restrict_in'] ) ? $value['restrict_in'] : '';
+			$exclude_args = isset( $value['selected_ids'] ) ? $value['selected_ids'] : array();
 
 			if ( 'category' == $restrict_in ) {
 				$not_in = 'category__not_in';

@@ -19,53 +19,53 @@ class Settings {
 	public static function set( $data ) {
 		$msg                     = array();
 		$settings                = self::get();
-		$single_restriction_data = array();
+		$restriction = array();
 
-		$single_restriction_data['restriction_id'] = sanitize_text_field( $data['restriction_id'] );
+		$restriction['restriction_id'] = sanitize_text_field( $data['restriction_id'] );
 
-		$single_restriction_data['title']    = sanitize_text_field( $data['title'] );
-		$single_restriction_data['priority'] = sanitize_text_field( $data['priority'] );
+		$restriction['title']    = sanitize_text_field( $data['title'] );
+		$restriction['priority'] = sanitize_text_field( $data['priority'] );
 
-		$single_restriction_data['post_type']   = sanitize_text_field( $data['post_type'] );
-		$single_restriction_data['restrict_in'] = sanitize_text_field( $data['restrict_in'] );
+		$restriction['post_type']   = sanitize_text_field( $data['post_type'] );
+		$restriction['restrict_in'] = sanitize_text_field( $data['restrict_in'] );
 
-		$single_restriction_data['protection_type'] = sanitize_text_field( $data['protection_type'] );
+		$restriction['protection_type'] = sanitize_text_field( $data['protection_type'] );
 
-		$single_restriction_data['user_restriction_type'] = self::sanitize_array( $data['user_restriction_type'] );
-		$single_restriction_data['role_names']            = self::sanitize_array( $data['role_names'] );
-		$single_restriction_data['specify_users']         = self::sanitize_array( $data['specify_users'] );
+		$restriction['user_restriction_type'] = self::sanitize_array( $data['user_restriction_type'] );
+		$restriction['role_names']            = self::sanitize_array( $data['role_names'] );
+		$restriction['specify_users']         = self::sanitize_array( $data['specify_users'] );
 
-		$single_restriction_data['selected_ids'] = self::sanitize_array( $data['selected_ids'] );
+		$restriction['selected_ids'] = self::sanitize_array( $data['selected_ids'] );
 
-		$single_restriction_data['protection_type'] = sanitize_text_field( $data['protectionType'] );
+		$restriction['protection_type'] = sanitize_text_field( $data['protectionType'] );
 
 		// #1 Override Contents
-		$single_restriction_data['the_title']   = sanitize_text_field( $data['the_title'] );
-		$single_restriction_data['the_excerpt'] = sanitize_textarea_field( htmlentities( $data['the_excerpt'] ) );
-		$single_restriction_data['the_content'] = sanitize_textarea_field( htmlentities( $data['the_content'] ) );
+		$restriction['the_title']   = sanitize_text_field( $data['the_title'] );
+		$restriction['the_excerpt'] = sanitize_textarea_field( htmlentities( $data['the_excerpt'] ) );
+		$restriction['the_content'] = sanitize_textarea_field( htmlentities( $data['the_content'] ) );
 
 		// #2 Redirections
-		$single_restriction_data['redirection_type'] = sanitize_text_field( $data['redirectionType'] );
-		$single_restriction_data['custom_url']       = esc_url( $data['customUrl'] );
+		$restriction['redirection_type'] = sanitize_text_field( $data['redirectionType'] );
+		$restriction['custom_url']       = esc_url( $data['customUrl'] );
 
 		// #3 Blur
-		$single_restriction_data['spread']        = sanitize_text_field( $data['spread'] );
-		$single_restriction_data['blur_level']    = sanitize_text_field( $data['blur_level'] );
-		$single_restriction_data['blur_apply_to'] = self::sanitize_array( $data['blur_apply_to'] );
+		$restriction['spread']        = sanitize_text_field( $data['spread'] );
+		$restriction['blur_level']    = sanitize_text_field( $data['blur_level'] );
+		$restriction['blur_apply_to'] = self::sanitize_array( $data['blur_apply_to'] );
 
 		// #4 Obfuscate
-		$single_restriction_data['obfuscate_apply_to'] = self::sanitize_array( $data['obfuscate_apply_to'] );
+		$restriction['obfuscate_apply_to'] = self::sanitize_array( $data['obfuscate_apply_to'] );
 
 		if ( 'new' === $data['action_type'] ) {
-			$single_restriction_data['restriction_id'] = self::create_restriction_id( $settings );
-			$settings['restrictions'][]                = $single_restriction_data;
-			$msg['restriction_id']                     = $single_restriction_data['restriction_id'];
+			$restriction['restriction_id'] = self::create_restriction_id( $settings );
+			$settings['restrictions'][]                = $restriction;
+			$msg['restriction_id']                     = $restriction['restriction_id'];
 		}
 
 		if ( 'edit' === $data['action_type'] && ! empty( $data['restriction_id'] ) ) {
 			foreach ( $settings['restrictions'] as $key => $value ) {
 				if ( $value['restriction_id'] == $data['restriction_id'] ) {
-					$settings['restrictions'][$key] = $single_restriction_data;
+					$settings['restrictions'][$key] = $restriction;
 				}
 			}
 		}
