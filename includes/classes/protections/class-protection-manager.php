@@ -168,7 +168,7 @@ class Protection_Manager {
 	 *
 	 * @return array if post have restriction
 	 */
-	public function get_restrictions( int $post_id = 0, string $post_type = '', string $protection_type = '', bool $single_return = true, string $order = 'desc' ) {
+	public function get_restrictions( int $post_id = 0, string $post_type = '', string $protection_type = '', bool $single_return = false, string $order = 'desc' ) {
 
 		$restrictions = $this->restrictions;
 
@@ -190,11 +190,11 @@ class Protection_Manager {
 			$restrictions = $this->sort( $restrictions, 'desc' );
 		}
 
-		if ( ! $single_return ) {
-			return $restrictions;
+		if ( $single_return ) {
+			return isset( $restrictions[0] ) ? $restrictions[0] : array();
 		}
 
-		return isset( $restrictions[0] ) ? $restrictions[0] : array();
+		return $restrictions;
 	}
 
 	/**
@@ -208,7 +208,7 @@ class Protection_Manager {
 			self::$instance->get_restrictions( $post_id );
 		}
 
-		return self::$is_protected;
+		return self::instance()->is_protected;
 	}
 
 	/**

@@ -2,7 +2,7 @@
 /**
  * @author  HeyMehedi
  * @since   1.0
- * @version 1.5
+ * @version 1.6.4
  */
 
 namespace HeyMehedi\All_In_One_Content_Restriction;
@@ -17,8 +17,8 @@ class Settings {
 	}
 
 	public static function set( $data ) {
-		$msg                     = array();
-		$settings                = self::get();
+		$msg         = array();
+		$settings    = self::get();
 		$restriction = array();
 
 		$restriction['restriction_id'] = sanitize_text_field( $data['restriction_id'] );
@@ -58,8 +58,8 @@ class Settings {
 
 		if ( 'new' === $data['action_type'] ) {
 			$restriction['restriction_id'] = self::create_restriction_id( $settings );
-			$settings['restrictions'][]                = $restriction;
-			$msg['restriction_id']                     = $restriction['restriction_id'];
+			$settings['restrictions'][]    = $restriction;
+			$msg['restriction_id']         = $restriction['restriction_id'];
 		}
 
 		if ( 'edit' === $data['action_type'] && ! empty( $data['restriction_id'] ) ) {
