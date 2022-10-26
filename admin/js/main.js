@@ -324,11 +324,14 @@
 
 			let showSaveHideNext = function (restrictionIn, protectionType) {
 
+				// 1st Step Save or New Button
 				if (
 					('the_blog_index' == restrictionIn
 						|| 'all_items' == restrictionIn
 						|| 'frontpage' == restrictionIn
-					) && 'login_and_back' == protectionType) {
+					) && ('login_and_back' == protectionType
+						|| 'hide_from_loop' == protectionType)
+				) {
 					$('.hide-next-first').hide();
 					$('.hide-save-first').show();
 				} else {
@@ -336,7 +339,8 @@
 					$('.hide-save-first').hide();
 				}
 
-				if (protectionType == 'login_and_back') {
+				// 2nd Step Save or New Button
+				if ('login_and_back' == protectionType || 'hide_from_loop' == protectionType) {
 					$('.hide-next').hide();
 					$('.hide-save').show();
 				} else {
@@ -466,7 +470,6 @@
 			$(document).on('click', '#user_restriction_type', function () {
 				type = $('#user_restriction_type').val();
 				showHide(type);
-				console.log(type);
 			});
 		},
 	}
