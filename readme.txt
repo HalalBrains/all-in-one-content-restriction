@@ -53,7 +53,26 @@ Install All in One Content Restriction either via the WordPress.org plugin repos
 
 == Changelog ==
 
-= 1.4 – Jan 18, 2022 =
+= 1.6.3 – Oct 10, 2022 =
+* Improve: Redirection for Registration
+* Fix: Unwanted errors
+
+= 1.6.2 – Sep 20, 2022 =
+* Add: Admin Notice Hide
+* Improve: Code Optimized
+
+= 1.6.1 – Sep 13, 2022 =
+* Add: Code Compatibility with Latest WordPress
+
+= 1.6 – Aug 13, 2022 =
+* New: Specify User
+
+= 1.5 – Feb 21, 2022 =
+* Improve - Settings Form
+* New - Obfuscate Protection Type
+* New - Condition For Users
+
+= 1.4 – Feb 18, 2022 =
 * New - Blur
 
 = 1.3 – Dec 19, 2021 =
