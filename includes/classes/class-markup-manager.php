@@ -2,7 +2,7 @@
 /**
  * @author  HeyMehedi
  * @since   1.1
- * @version 1.5
+ * @version 1.6.4
  */
 
 namespace HeyMehedi\All_In_One_Content_Restriction;
@@ -124,9 +124,9 @@ class Markup_Manager {
 		}
 
 		if ( 'selected_single_items' == $restrict_in ) {
-			$single_itmes = Query::get_posts( $post_type, $exclude_ids, $selected_items );
+			$single_items = Query::get_posts( $post_type, $exclude_ids, $selected_items );
 
-			foreach ( $single_itmes as $id ) {
+			foreach ( $single_items as $id ) {
 				$items_list_html .= sprintf( '<tr data-item-id="%s"><td class="text-center action"><div class="dashicons-before %s" aria-hidden="true"></div></td><td class="text-center">%s</td><td>%s</td></tr>', esc_attr( $id ), esc_attr( $icon ), esc_attr( $id ), esc_html( get_post( $id )->post_title ) );
 			}
 

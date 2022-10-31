@@ -2,7 +2,7 @@
 /**
  * @author  HeyMehedi
  * @since   1.0
- * @version 1.1.1
+ * @version 1.6.4
  */
 
 use HeyMehedi\All_In_One_Content_Restriction\Helper;
@@ -20,7 +20,7 @@ use HeyMehedi\All_In_One_Content_Restriction\Helper;
 	<textarea class="form-control" name="heymehedi_the_excerpt" id="heymehedi_the_excerpt" rows="4" placeholder="<?php esc_attr_e( 'Enter a custom excerpt  to display to restricted users', 'all-in-one-content-restriction' );?>"><?php echo wp_kses_post( isset( $args['the_excerpt'] ) ? stripslashes( wp_specialchars_decode( $args['the_excerpt'], ENT_QUOTES, 'UTF-8' ) ) : '' ); ?></textarea>
 
 	<label for="heymehedi_custom_editor" class="form-label">
-		<?php esc_html_e( 'Replace Description', 'all-in-one-content-restriction' );?> <span class="helper-text" data-container="body" data-toggle="popover" data-placement="right" title="<?php esc_attr_e( 'Replace Description', 'all-in-one-content-restriction' );?>" data-content="<?php echo wp_kses_post( "refers to a custom parapraph or sentence related to the specific restricted page/ post. <strong> Tip </strong> : A few sentences as a preview of the post/page is a good practice for gaining  users' traction to sign up for the membership." ) ; ?>"><img src="<?php echo Helper::get_file_uri( 'admin/images/question-mark.png' ) ?>" alt=""></span>
+		<?php esc_html_e( 'Replace Description', 'all-in-one-content-restriction' );?> <span class="helper-text" data-container="body" data-toggle="popover" data-placement="right" title="<?php esc_attr_e( 'Replace Description', 'all-in-one-content-restriction' );?>" data-content="<?php echo wp_kses_post( "refers to a custom paragraph or sentence related to the specific restricted page/ post. <strong> Tip </strong> : A few sentences as a preview of the post/page is a good practice for gaining  users' traction to sign up for the membership." ) ; ?>"><img src="<?php echo Helper::get_file_uri( 'admin/images/question-mark.png' ) ?>" alt=""></span>
 	</label>
 	<?php Helper::get_text_editor( isset( $args['the_content'] ) ? stripslashes( wp_specialchars_decode( $args['the_content'], ENT_QUOTES, 'UTF-8' ) ) : '' );?>
 

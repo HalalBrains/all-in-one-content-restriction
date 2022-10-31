@@ -10,7 +10,6 @@ use HeyMehedi\All_In_One_Content_Restriction\Markup_Manager;
 $user_restriction_type = isset( $args['user_restriction_type'] ) ? $args['user_restriction_type'] : 'role_names';
 $role_names            = isset( $args['role_names'] ) ? $args['role_names'] : array();
 $specify_users         = isset( $args['specify_users'] ) ? $args['specify_users'] : array();
-// var_dump( $specify_users );
 ?>
 <div class="roles mb-3" id="user_restriction_type_wrapper">
 

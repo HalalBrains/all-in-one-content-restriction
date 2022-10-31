@@ -2,7 +2,7 @@
 /**
  * @author  HeyMehedi
  * @since   1.1
- * @version 1.1
+ * @version 1.6.4
  */
 
 namespace HeyMehedi\All_In_One_Content_Restriction;
@@ -177,7 +177,7 @@ class AIOCR_List_Table extends \WP_List_Table {
 		$offset            = ( $current_page - 1 ) * $per_page;
 		$this->page_status = isset( $_GET['status'] ) ? sanitize_text_field( $_GET['status'] ) : '2';
 
-		// only ncessary because we have sample data
+		// only necessary because we have sample data
 		$args = array(
 			'offset' => $offset,
 			'number' => $per_page,

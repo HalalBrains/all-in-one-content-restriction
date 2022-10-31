@@ -2,7 +2,7 @@
 /**
  * @author  HeyMehedi
  * @since   1.1
- * @version 1.1
+ * @version 1.6.4
  */
 
 namespace HeyMehedi\All_In_One_Content_Restriction;
@@ -50,22 +50,23 @@ class Post_Type_Taxonomies {
 
 		if ( 'post' === $post_type_key ) {
 			$taxonomies = self::create_post_restrict_in_extra( $taxonomies );
+			unset( $taxonomies['post_format'] );
 		}
 		if ( ! $markup ) {
 			return $taxonomies;
 		}
 
-		return Markup_Manager::create_html_options( $taxonomies, $selected_restrict_in );
+		return Markup_Manager::create_html_options( apply_filters( 'all_in_one_content_restriction_taxonomies', $taxonomies ), $selected_restrict_in );
 	}
 
-	public static function has_custom_restrict_in( $restricion_in ) {
+	public static function has_custom_restrict_in( $restriction_in ) {
 		$custom_restrict_in = array(
 			'frontpage',
 			'the_blog_index',
 			'all_items',
 		);
 
-		return in_array( $restricion_in, $custom_restrict_in );
+		return in_array( $restriction_in, $custom_restrict_in );
 	}
 
 	private static function create_page_restrict_in_extra( $taxonomies ) {

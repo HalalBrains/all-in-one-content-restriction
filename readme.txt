@@ -79,7 +79,7 @@ Install All in One Content Restriction either via the WordPress.org plugin repos
 * Remove - Unused post types
 
 = 1.2 – Nov 09, 2021 =
-* Improve - Dashhboard UI
+* Improve - Dashboard UI
 
 = 1.1.1 – Oct 12, 2021 =
 * Fix - Typo mistake
