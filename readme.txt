@@ -1,4 +1,4 @@
-=== AIl in One WordPress Content Restriction ===
+=== All in One WordPress Content Restriction ===
 Contributors: wptownhall, HeyMehedi, HiMrFaruk
 Tags: content restriction, access control, private, permission, restrict access
 Requires at least: 5.6
