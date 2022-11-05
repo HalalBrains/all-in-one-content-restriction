@@ -2,7 +2,7 @@
 /**
  * @author  HeyMehedi
  * @since   1.0
- * @version 1.3
+ * @version 1.6.4
  */
 
 use HeyMehedi\All_In_One_Content_Restriction\Markup_Manager;
