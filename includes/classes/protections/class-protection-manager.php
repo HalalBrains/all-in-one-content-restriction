@@ -2,7 +2,7 @@
 /**
  * @author  HeyMehedi
  * @since   1.0
- * @version 1.6.4
+ * @version 1.6.5
  */
 
 namespace HeyMehedi\All_In_One_Content_Restriction;
@@ -27,7 +27,7 @@ class Protection_Manager {
 		return self::$instance;
 	}
 
-	public function get_restrictions_by_post_type( string $post_type, array $restrictions = array() ) {
+	public function get_restrictions_by_post_type( $post_type, array $restrictions = array() ) {
 		if ( ! $restrictions ) {
 			$restrictions = $this->restrictions;
 		}
@@ -43,7 +43,7 @@ class Protection_Manager {
 		return $return;
 	}
 
-	public function get_restrictions_by_post_id( string $post_id, array $restrictions = array() ) {
+	public function get_restrictions_by_post_id( $post_id, array $restrictions = array() ) {
 		if ( ! $restrictions ) {
 			$restrictions = $this->restrictions;
 		}
@@ -129,7 +129,7 @@ class Protection_Manager {
 		return $return;
 	}
 
-	public function get_restrictions_by_protection( string $protection_type, array $restrictions = array() ) {
+	public function get_restrictions_by_protection( $protection_type, array $restrictions = array() ) {
 		if ( ! $restrictions ) {
 			$restrictions = $this->restrictions;
 		}
@@ -145,7 +145,7 @@ class Protection_Manager {
 		return $return;
 	}
 
-	public function sort( array $restrictions, string $order = 'asc' ) {
+	public function sort( array $restrictions, $order = 'asc' ) {
 		if ( 'asc' == $order ) {
 			$priorities = array_column( $restrictions, 'priority' );
 			array_multisort( $priorities, SORT_ASC, $restrictions );
@@ -168,7 +168,7 @@ class Protection_Manager {
 	 *
 	 * @return array if post have restriction
 	 */
-	public function get_restrictions( int $post_id = 0, string $post_type = '', string $protection_type = '', bool $single_return = false, string $order = 'desc' ) {
+	public function get_restrictions( $post_id = 0, $post_type = '', $protection_type = '', $single_return = false, $order = 'desc' ) {
 
 		$restrictions = $this->restrictions;
 
@@ -203,7 +203,7 @@ class Protection_Manager {
 	 * @param int $post_id  Optional.
 	 * @return bool if post protected
 	 */
-	public static function is_protected( int $post_id = 0 ) {
+	public static function is_protected( $post_id = 0 ) {
 		if ( empty( self::instance()->is_protected ) && $post_id ) {
 			self::$instance->get_restrictions( $post_id );
 		}

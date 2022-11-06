@@ -2,7 +2,7 @@
 /**
  * @author  HeyMehedi
  * @since   1.6.4
- * @version 1.6.4
+ * @version 1.6.5
  */
 
 namespace HeyMehedi\All_In_One_Content_Restriction;
@@ -25,6 +25,8 @@ class Hide_From_Loop {
 
 	public function exclude_posts( $query ) {
 		$restrictions = Protection_Manager::instance()->get_restrictions( 0, '', 'hide_from_loop' );
+		$not_in       = null;
+		$exclude_args = null;
 
 		foreach ( $restrictions as $value ) {
 
@@ -48,7 +50,9 @@ class Hide_From_Loop {
 			}
 		}
 
-		$query->set( $not_in, $exclude_args );
+		if ( $not_in && $exclude_args ) {
+			$query->set( $not_in, $exclude_args );
+		}
 	}
 }
 
