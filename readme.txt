@@ -4,7 +4,7 @@ Tags: content restriction, access control, private, permission, restrict access
 Requires at least: 5.6
 Tested up to: 6.0.2
 Requires PHP: 5.6
-Stable tag: 1.6.3
+Stable tag: 1.6.5
 License: GPLv3 or Any Later Version
 
 All in One Content Restriction - A simple and user-friendly plugin to restrict users/visitors from viewing posts by restricting access, as simple as that.
@@ -63,11 +63,10 @@ No. It’s completely free to use. Enjoy!
 
 = Will AIO content restriction work with my theme? =
 Yes! This plugin works with most theme out-of-the-box. However some themes may need adjustments due to not using WordPress/WooCommerce standard hooks or styles or if they add their own customizations which might conflict with AIO Content Restriction.
+**If you have any issues using AIO Content Restriction with your theme please let us know through the [support forum](https://wordpress.org/support/plugin/all-in-one-content-restriction/) and we’ll fix it asap.**
 
 = Is there a AIO content restriction PRO version? =
 No. It’s completely free to use. Enjoy!
-
-**If you have any issues using AIO Content Restriction with your theme please let us know through the [support forum](https://wordpress.org/support/plugin/all-in-one-content-restriction/) and we’ll fix it asap.**
 
 = Is AIO content restriction  compliant with privacy laws (GDPR / RGPD / CCPA / LGPD)? =
 We value your privacy and your customers’ privacy.
@@ -88,6 +87,14 @@ No you don’t have to create account to use this plugin. Gated content rules se
 
 
 == Changelog ==
+
+= 1.6.5 – Nov 07, 2022 =
+* Fix: Version Compatibility add with PHP 5.6 
+
+= 1.6.4 – Nov 07, 2022 =
+* New - Hide Protection Type
+* Remove - Unused Taxonomies
+* Improve: Code Compatibility with Latest WordPress
 
 = 1.6.3 – Oct 10, 2022 =
 * Improve: Redirection for Registration
