@@ -50,8 +50,7 @@ class Scripts {
 	}
 
 	public function admin_enqueue_scripts( $hook ) {
-
-		if ( 'toplevel_page_all-in-one-content-restriction' != $hook ) {
+		if ( ! in_array( $hook, array( 'dashboard_page_restrictions', 'toplevel_page_all-in-one-content-restriction' ) ) ) {
 			return;
 		}
 
@@ -63,6 +62,14 @@ class Scripts {
 			// JS
 			wp_enqueue_script( 'select2' );
 			wp_enqueue_script( 'popper' );
+			wp_enqueue_script( 'bootstrap' );
+		}
+
+		if ( isset( $_GET['page'] )  && 'all-in-one-content-restriction' == $_GET['page'] ) {
+			// CSS
+			wp_enqueue_style( 'bootstrap' );
+
+			// JS
 			wp_enqueue_script( 'bootstrap' );
 		}
 

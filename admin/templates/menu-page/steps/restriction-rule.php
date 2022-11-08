@@ -20,11 +20,11 @@ use HeyMehedi\All_In_One_Content_Restriction\Helper;
 			<input id="title" type="text" value="<?php echo wp_kses_post( isset( $args['title'] ) ? $args['title'] : '' ); ?>" placeholder="<?php esc_attr_e( 'Posts restricted to logged out users', 'all-in-one-content-restriction' );?>" class="form-control">
 		</div>
 
-		<?php Helper::get_template_part( 'menu-page/post-types', $args );?>
+		<?php Helper::get_template_part_admin( 'menu-page/post-types', $args );?>
 
-		<?php Helper::get_template_part( 'menu-page/protection-type', $args );?>
+		<?php Helper::get_template_part_admin( 'menu-page/protection-type', $args );?>
 
-		<?php Helper::get_template_part( 'menu-page/roles', $args );?>
+		<?php Helper::get_template_part_admin( 'menu-page/roles', $args );?>
 
 		<div class="access-priority">
 			<label for="priority" class="form-label">

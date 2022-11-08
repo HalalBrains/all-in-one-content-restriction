@@ -18,9 +18,9 @@ $active_index = isset( $args['active_index'] ) ? $args['active_index'] : '';
 	  	<form id="msform">
 
           <!-- fieldsets -->
-          <?php Helper::get_template_part( 'menu-page/steps/restriction-rule', $args );?>
-          <?php Helper::get_template_part( 'menu-page/steps/access-restriction', $args );?>
-          <?php Helper::get_template_part( 'menu-page/steps/content-shield-option', $args );?>
+          <?php Helper::get_template_part_admin( 'menu-page/steps/restriction-rule', $args );?>
+          <?php Helper::get_template_part_admin( 'menu-page/steps/access-restriction', $args );?>
+          <?php Helper::get_template_part_admin( 'menu-page/steps/content-shield-option', $args );?>
 		  
 		  <p id="heymehedi-msg"></p>
 

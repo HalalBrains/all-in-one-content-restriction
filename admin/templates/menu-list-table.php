@@ -7,7 +7,7 @@
 ?>
 <div class="wrap">
 
-	<h2><?php esc_html_e( 'All in One Content Restriction', 'all-in-one-content-restriction' );?> <a href="<?php echo admin_url( 'admin.php?page=all-in-one-content-restriction&action=new' ); ?>" class="add-new-h2"><?php _e( 'Add New', 'all-in-one-content-restriction' );?></a></h2>
+	<h2><?php esc_html_e( 'All in One Content Restriction', 'all-in-one-content-restriction' );?> <a href="<?php echo admin_url( 'admin.php?page=restrictions&action=new' ); ?>" class="add-new-h2"><?php _e( 'Add New', 'all-in-one-content-restriction' );?></a></h2>
 
 	<form method="post">
 

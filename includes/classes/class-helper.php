@@ -24,12 +24,23 @@ class Helper {
 	}
 
 	public static function get_template_part( $template, $args = array() ) {
-
 		if ( is_array( $args ) ) {
 			extract( $args );
 		}
 
 		$template = '/templates/' . $template . '.php';
+
+		$file = self::get_file_dir() . $template;
+
+		require $file;
+	}
+
+	public static function get_template_part_admin( $template, $args = array() ) {
+		if ( is_array( $args ) ) {
+			extract( $args );
+		}
+
+		$template = '/admin/templates/' . $template . '.php';
 
 		$file = self::get_file_dir() . $template;
 
