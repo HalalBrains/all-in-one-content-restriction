@@ -8,73 +8,14 @@
 use HeyMehedi\All_In_One_Content_Restriction\Helper;
 ?>
 
-<style>#wpcontent{
-    padding: 0;
-} body {
-	background-color: #f0f0f1;
-}
-.list-group-flush .list-group-item {
-    border: 0;
-    padding: 0;
-    padding-bottom: 10px;
-}
-
-.extra-icon {
-    background-repeat: no-repeat;
-    background-position: bottom right;
-    min-height: 210px;
-    background-size: 120px;
-}
-
-.extra-icon .card-text {
-    max-width: 450px;
-}
-
-.extra-icon .card-title {
-    padding-bottom: 10px;
-}
-.extra-icon.documentation {
-	background-image: url("<?php echo Helper::get_file_uri( 'admin/images/dashboard-doc.svg' ) ?>");
-}
-.extra-icon.support {
-	background-image: url("<?php echo Helper::get_file_uri( 'admin/images/dashboard-support.svg' ) ?>");
-}
-div#wpfooter {
-    display: none;
-}
-.border-bottom {
-    border-bottom: 1px solid #dee2e6!important;
-    border-width: 2px !important;
-    margin-bottom: 5px;
-}
-#wpbody-content {
-    padding-bottom: 0px;
-}
-</style>
-<div class="d-flex align-items-center p-1 bg-primary shadow-sm"></div>
-
-<div class="text-dark text-center p-3" style="background: #ddd !important;">
-   Find this plugin useful? Help others discover this plugin by leaving  a <a href="https://wordpress.org/support/plugin/all-in-one-content-restriction/reviews/?rate=5#new-post" target="_blank" rel="noopener noreferrer">review</a> on WordPress.org
-</div>
-
-<div class="text-dark p-3" style="background-color: #e7e7e7 !important;">
-	<div class="container-fluid">
-		<div class="row">
-			<div class="col-md-12 align-items-center d-flex">
-				<img class="me-3" src="<?php echo Helper::get_file_uri( 'admin/images/dashboard-logo.svg' ); ?>" alt="" width="48" height="38">
-				<h2>AIO Content Restriction</h2>
-				<sup class="text-light bg-dark m-2 rounded" style="padding: 13px 7px !important;">v1.6.5</sup>
-			</div>
-		</div>
-	</div>
-</div>
+<?php Helper::get_template_part_admin( 'header-banner' );?>
 
 <!-- Welcome message -->
 <div class="p-3">
 	<div class="container-fluid">
 		<div class="row">
 			<div class="col-md-12 border-bottom">
-				<h2>Hello <?php echo esc_html( get_the_author_meta('display_name', get_current_user_id()) );?>!</h2>
+				<h3 class="text-dark">Hello <?php echo esc_html( get_the_author_meta( 'display_name', get_current_user_id() ) ); ?>!</h3>
 				<p>Welcome back to the dashboard. Take a look at the recent update.</p>
 			</div>
 		</div>
@@ -144,15 +85,4 @@ div#wpfooter {
 	</div>
 </div>
 
-<!-- Footer Credit -->
-<div class="p-3">
-	<div class="container-fluid">
-		<div class="row">
-			<div class="col-md-12">
-				<h4>HalalBrains</h4>
-				<div class="border-bottom"></div>
-				<p>Thanks you for choosing AIO Content Restriction. We are honored and fully dedicated to making your experience perfect.</p>
-			</div>
-		</div>
-	</div>
-</div>
+<?php Helper::get_template_part_admin( 'footer-message' );

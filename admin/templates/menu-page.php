@@ -9,7 +9,9 @@ use HeyMehedi\All_In_One_Content_Restriction\Helper;
 
 $active_index = isset( $args['active_index'] ) ? $args['active_index'] : '';
 ?>
-<div class="container mt-5" id="heymehedi-main">
+<?php Helper::get_template_part_admin( 'header-banner' );?>
+
+<div class="container mt-5 p-3" id="heymehedi-main">
 
 	<div class="row">
 
@@ -31,3 +33,5 @@ $active_index = isset( $args['active_index'] ) ? $args['active_index'] : '';
 	</div>
 
 </div>
+
+<?php Helper::get_template_part_admin( 'footer-message' );

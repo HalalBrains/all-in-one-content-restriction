@@ -137,4 +137,17 @@ class Settings {
 
 		return $temp_max + 1;
 	}
+
+	public static function get_protections_list() {
+		$protections = array(
+			'override_contents' => __( 'Override content', 'all-in-one-content-restriction' ),
+			'login_and_back'    => __( 'Login & back to current page/post', 'all-in-one-content-restriction' ),
+			'redirect'          => __( 'Redirect', 'all-in-one-content-restriction' ),
+			'blur'              => __( 'Blur', 'all-in-one-content-restriction' ),
+			'obfuscate'         => __( 'Obfuscate', 'all-in-one-content-restriction' ),
+			'hide_from_loop'    => __( 'Hide', 'all-in-one-content-restriction' ),
+		);
+
+		return $protections;
+	}
 }
