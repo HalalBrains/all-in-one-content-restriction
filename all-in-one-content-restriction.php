@@ -82,7 +82,7 @@ if ( ! class_exists( 'All_In_One_Content_Restriction' ) ) {
 
 			require_once self::$base_dir . '/includes/classes/class-strings.php';
 
-			if ( isset( $_REQUEST['page'] ) && 'all-in-one-content-restriction' === $_REQUEST['page'] && ! class_exists( 'Hide_Admin_Notices' ) ) {
+			if ( isset( $_REQUEST['page'] ) && in_array( $_REQUEST['page'], array( 'all-in-one-content-restriction', 'all-in-one-content-restriction', 'dashboard' ) ) && ! class_exists( 'Hide_Admin_Notices' ) ) {
 				require_once self::$base_dir . '/includes/libs/hide-admin-notices/hide-admin-notices.php';
 			}
 		}
