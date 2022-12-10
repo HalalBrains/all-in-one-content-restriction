@@ -1,3 +1,6 @@
-node_modules/
-package-lock.json
-__build/
+# Project Specific
+/public
+/vendor
+/node_modules
+/storybook
+.DS_Store

@@ -1,0 +1,63 @@
+{
+	"name": "eightshift/all-in-one-content-restriction-plugin",
+	"description": "This repository contains all the tools you need to start building a modern WordPress project.",
+	"keywords": [
+		"composer",
+		"installer",
+		"plugin",
+		"blocks",
+		"Gutenberg",
+		"WordPress"
+	],
+	"homepage": "https://eightshift.com/",
+	"license": "MIT",
+	"authors": [
+		{
+			"name": "Eightshift team",
+			"email": "team@eightshift.com",
+			"homepage": "https://eightshift.com/",
+			"role": "Developer / IT Manager"
+		}
+	],
+	"support": {
+		"issues": "https://github.com/infinum/all-in-one-content-restriction-plugin/issues",
+		"source": "https://github.com/infinum/all-in-one-content-restriction-plugin"
+	},
+	"require-dev": {
+		"infinum/eightshift-coding-standards": "^1.6",
+		"dealerdirect/phpcodesniffer-composer-installer": "^0.7",
+		"szepeviktor/phpstan-wordpress": "^1.0.3",
+		"php-stubs/wordpress-stubs": "^5.9"
+	},
+	"require": {
+		"php": "^7.4 || <8.0",
+		"infinum/eightshift-libs": "^6.0.0",
+		"typisttech/imposter-plugin": "^0.6.2"
+	},
+	"autoload": {
+		"psr-4": {
+			"AllInOneContentRestriction\\": "src/"
+		}
+	},
+	"minimum-stability": "dev",
+	"prefer-stable": true,
+	"config": {
+		"sort-packages": true,
+		"optimize-autoloader": true,
+		"process-timeout": 2000,
+		"allow-plugins": {
+			"dealerdirect/phpcodesniffer-composer-installer": true,
+			"typisttech/imposter-plugin": true
+		}
+	},
+	"scripts": {
+		"analyze": "@php ./vendor/bin/phpstan analyze",
+		"standards:check": "@php ./vendor/squizlabs/php_codesniffer/bin/phpcs",
+		"standards:fix": "@php ./vendor/squizlabs/php_codesniffer/bin/phpcbf"
+	},
+	"extra": {
+		"imposter": {
+			"namespace": "AllInOneContentRestrictionPluginVendor"
+		}
+	}
+}
