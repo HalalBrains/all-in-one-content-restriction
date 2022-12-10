@@ -48,7 +48,7 @@ class General {
 		add_submenu_page(
 			'all-in-one-content-restriction',
 			esc_html( 'Restrictions - AIO Content Restriction', 'all-in-one-content-restriction' ),
-			esc_html( 'Restrictions', 'all-in-one-content-restriction' ),
+			esc_html( 'Restriction Options', 'all-in-one-content-restriction' ),
 			'manage_options',
 			'restrictions',
 			array( $this, 'restrictions' ),

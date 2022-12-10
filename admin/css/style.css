@@ -89,10 +89,10 @@ span.ui-slider-handle.ui-corner-all.ui-state-default {
   font-size: 16px;
 }
 
-/* #heymehedi-main tr {
+#heymehedi-main tr {
   display: grid;
   grid-template-columns: 2fr 2fr 19fr;
-} */
+}
 
 #heymehedi-main .dashicons-minus:before {
   color: red !important;
@@ -280,7 +280,7 @@ input {
 }
 
 #msform fieldset {
-  background: #E8E2F8;
+  background: white;
   border: 0 none;
   border-radius: 0.5rem;
   box-sizing: border-box;

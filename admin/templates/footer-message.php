@@ -8,10 +8,10 @@
 
 <!-- Footer Credit -->
 <div class="p-3">
-	<div class="container-fluid">
+	<div class="container">
 		<div class="row">
 			<div class="col-md-12">
-				<h4>HalalBrains</h4>
+				<h6 class="fs-6">@HalalBrains</h6>
 				<div class="border-bottom"></div>
 				<p>Thanks you for choosing AIO Content Restriction. We are honored and fully dedicated to making your experience perfect.</p>
 			</div>

@@ -50,6 +50,7 @@ class Scripts {
 	}
 
 	public function admin_enqueue_scripts( $hook ) {
+
 		if ( ! in_array(
 			$hook,
 			array(
@@ -62,24 +63,14 @@ class Scripts {
 			return;
 		}
 
-		if ( isset( $_GET['action'] ) ) {
-			// CSS
-			wp_enqueue_style( 'bootstrap' );
-			wp_enqueue_style( 'select2' );
+		// CSS
+		wp_enqueue_style( 'bootstrap' );
+		wp_enqueue_style( 'select2' );
 
-			// JS
-			wp_enqueue_script( 'select2' );
-			wp_enqueue_script( 'popper' );
-			wp_enqueue_script( 'bootstrap' );
-		}
-
-		if ( isset( $_GET['page'] ) && in_array( $_GET['page'], array( 'all-in-one-content-restriction', 'dashboard', 'restrictions' ) ) ) {
-			// CSS
-			wp_enqueue_style( 'bootstrap' );
-
-			// JS
-			wp_enqueue_script( 'bootstrap' );
-		}
+		// JS
+		wp_enqueue_script( 'select2' );
+		wp_enqueue_script( 'popper' );
+		wp_enqueue_script( 'bootstrap' );
 
 		// jQuery UI Slider / enqueue from wordpress
 		wp_enqueue_script( 'jquery-ui-slider' );

@@ -9,14 +9,30 @@ use HeyMehedi\All_In_One_Content_Restriction\Helper;
 ?>
 <?php Helper::get_template_part_admin( 'header-banner' );?>
 
-<div class="container-fluid mt-5 p-3" id="heymehedi-main">
+<style>
+	.header-action {
+    display: flex;
+    justify-content: space-between;
+    align-items: self-start;
+}
+</style>
+<div class="container mt-5">
 	<div class="row">
-		<div class="col-md-12" style="margin: 0 auto;">
+		<div class="col-md-12 border-bottom">
+			<h4 class="fs-4 text-dark"><?php esc_html_e( 'Restriction Options', 'all-in-one-content-restriction') ?></h4>
+		</div>
+	</div>
+</div>
+
+<div class="container mt-5">
+	<div class="row">
+		<div class="col-md-12">
 			<div class="wrap">
 
-				<h2><?php esc_html_e( 'Overview', 'all-in-one-content-restriction' );?> 
-					<a href="<?php echo admin_url( 'admin.php?page=restrictions&action=new' ); ?>" class="add-new-h2"><?php _e( 'Add New', 'all-in-one-content-restriction' );?></a>
-				</h2>
+				<div class="header-action">
+					<h5 class="fs-5"><?php esc_html_e( 'Overview', 'all-in-one-content-restriction' );?></h5>
+					<a href="<?php echo admin_url( 'admin.php?page=restrictions&action=new' ); ?>" class="button button-primary add-new-h2"><?php _e( 'Add New', 'all-in-one-content-restriction' );?></a>
+				</div>
 
 				<form method="post">
 

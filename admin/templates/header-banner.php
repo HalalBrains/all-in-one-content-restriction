@@ -54,16 +54,16 @@ use HeyMehedi\All_In_One_Content_Restriction\Helper;
 </style>
 <div class="d-flex align-items-center p-1 bg-primary shadow-sm"></div>
 
-<div class="text-dark text-center p-3" style="background: #ddd !important;">
-   Find this plugin useful? Help others discover this plugin by leaving  a <a href="https://wordpress.org/support/plugin/all-in-one-content-restriction/reviews/?rate=5#new-post" target="_blank" rel="noopener noreferrer">review</a> on WordPress.org
+<div class="text-dark text-center text-dark p-3" style="background: #ddd !important;">
+  <p class="m-0" >Find this plugin useful? Help others discover this plugin by leaving  a <a href="https://wordpress.org/support/plugin/all-in-one-content-restriction/reviews/?rate=5#new-post" target="_blank" rel="noopener noreferrer">review</a> on WordPress.org</p>
 </div>
 
 <div class="text-dark p-3" style="background-color: #e7e7e7 !important;">
-	<div class="container-fluid">
+	<div class="container">
 		<div class="row">
 			<div class="col-md-12 align-items-center d-flex">
 				<img class="me-3" src="<?php echo Helper::get_file_uri( 'admin/images/dashboard-header-icon.svg' ); ?>" alt="" width="48" height="38">
-				<h3 class="m-0" style="font-weight: 400;">AIO Content Restriction</h3>
+				<h3 class="m-0 fs-3" style="font-weight: 400;">AIO Content Restriction</h3>
 				<sup class="text-light bg-dark m-2 rounded" style="padding: 13px 7px !important;">v<?php echo esc_html( All_In_One_Content_Restriction::$version ); ?></sup>
 			</div>
 		</div>
