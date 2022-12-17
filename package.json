@@ -1,18 +1,24 @@
 {
-	"name": "all-in-one-content-restriction",
-	"version": "1.0.0",
-	"main": "gulpfile.js",
-	"author": "HeyMehedi",
-	"license": "(GPL-3.0)",
-	"devDependencies": {
-		"gulp": "^4.0.2",
-		"gulp-clean": "^0.4.0",
-		"gulp-util": "^3.0.8",
-		"gulp-wp-pot": "^2.3.5",
-		"gulp-zip": "^4.2.0"
-	},
-	"dependencies": {
-		"del": "^6.0.0",
-		"gulp-cli": "^2.3.0"
-	}
+  "name": "all-in-one-content-restriction",
+  "version": "1.0.0",
+  "main": "gulpfile.js",
+  "author": "HeyMehedi",
+  "license": "(GPL-3.0)",
+  "devDependencies": {
+    "gulp": "^4.0.2",
+    "gulp-autoprefixer": "^4.0.0",
+    "gulp-clean": "^0.4.0",
+    "gulp-rtlcss": "^1.4.2",
+    "gulp-sass": "^5.1.0",
+    "gulp-wp-pot": "^2.3.5",
+    "gulp-zip": "^4.2.0",
+    "sass": "^1.51.0"
+  },
+  "dependencies": {
+    "gulp-cli": "^2.3.0",
+    "gulp-filter": "^7.0.0",
+    "gulp-rename": "^2.0.0",
+    "merge-stream": "^2.0.0",
+    "node-sass": "^6.0.1"
+  }
 }

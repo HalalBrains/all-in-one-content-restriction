@@ -1,8 +1,8 @@
 <?php
 /**
  * @author  HeyMehedi
- * @since   1.6.6
- * @version 1.6.6
+ * @since   1.7.0
+ * @version 1.7.0
  */
 
 use HeyMehedi\All_In_One_Content_Restriction;
