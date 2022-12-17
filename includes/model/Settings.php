@@ -22,6 +22,7 @@ class Settings {
 		$restriction = array();
 
 		$restriction['restriction_id'] = sanitize_text_field( $data['restriction_id'] );
+		$restriction['last_modified']  = time();
 
 		$restriction['title']    = sanitize_text_field( $data['title'] );
 		$restriction['priority'] = sanitize_text_field( $data['priority'] );

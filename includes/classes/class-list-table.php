@@ -2,7 +2,7 @@
 /**
  * @author  HeyMehedi
  * @since   1.1
- * @version 1.6.4
+ * @version 1.7.0
  */
 
 namespace HeyMehedi\All_In_One_Content_Restriction;
@@ -61,8 +61,8 @@ class AIOCR_List_Table extends \WP_List_Table {
 	}
 
 	private function get_last_modified( $item ) {
-		$priority = isset( $item['last_modified'] ) ? $item['last_modified'] : current_time( 'date');
-		echo esc_html( $priority );
+		$date = isset( $item['last_modified'] ) ? date( get_option( 'date_format' ), $item['last_modified'] ) : '-';
+		echo esc_html( $date );
 	}
 
 	/**
