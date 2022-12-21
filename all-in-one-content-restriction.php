@@ -2,12 +2,14 @@
 
 /**
  * Plugin Name: All In One Content Restriction
- * Plugin URI:
- * Description: Eightshift Boilerplate Description
- * Author: Team Eightshift
- * Author URI: https://eightshift.com/
- * Version: 3.0.0
+ * Plugin URI: https://github.com/HalalBrains/all-in-one-content-restriction/
+ * Description: All in One Content Restriction - A simple and user-friendly plugin to restrict users / visitors from viewing posts by restricting access, as simple as that.
+ * Author: HalalBrains
+ * Author URI: https://profiles.wordpress.org/halalbrains/
+ * Version: 2.0.0
+ * License: GPLv2 or later
  * Text Domain: all-in-one-content-restriction
+ * Domain Path: /languages
  *
  * @package AllInOneContentRestriction
  */
