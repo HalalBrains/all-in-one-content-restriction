@@ -2,7 +2,7 @@
 /**
  * @author  HeyMehedi
  * @since   1.1
- * @version 1.6.4
+ * @version 1.7.0
  */
 
 namespace HeyMehedi\All_In_One_Content_Restriction;
@@ -30,7 +30,7 @@ class AIOCR_List_Table extends \WP_List_Table {
 	}
 
 	public function get_table_classes() {
-		return array( 'widefat', 'fixed', 'striped', $this->_args['plural'] );
+		return array( 'table-view-list', 'widefat', 'fixed', 'striped', $this->_args['plural'] );
 	}
 
 	/**
@@ -42,8 +42,27 @@ class AIOCR_List_Table extends \WP_List_Table {
 		_e( 'No items found', 'all-in-one-content-restriction' );
 	}
 
-	private function get_overview( $item ) {
-		echo 'Overview Coming Soon!';
+	private function get_action( $item ) {
+		$type             = isset( $item['post_type'] ) ? $item['post_type'] : '';
+		$protection       = isset( $item['protection_type'] ) ? $item['protection_type'] : '';
+		$protections_list = Settings::get_protections_list();
+
+		if ( $type ) {
+			printf( __( 'Type: %s</br>', 'all-in-one-content-restriction' ), ucwords( $type ) );
+		}
+		if ( $protection ) {
+			printf( __( 'Protection: %s', 'all-in-one-content-restriction' ), $protections_list[$protection] );
+		}
+	}
+
+	private function get_priority( $item ) {
+		$priority = isset( $item['priority'] ) ? $item['priority'] : 10;
+		echo esc_html( $priority );
+	}
+
+	private function get_last_modified( $item ) {
+		$date = isset( $item['last_modified'] ) ? date( get_option( 'date_format' ), $item['last_modified'] ) : '-';
+		echo esc_html( $date );
 	}
 
 	/**
@@ -55,14 +74,15 @@ class AIOCR_List_Table extends \WP_List_Table {
 	 * @return string
 	 */
 	public function column_default( $item, $column_name ) {
-
 		switch ( $column_name ) {
 			case 'title':
 				return $item['title'];
-
-			case 'overview':
-				return $this->get_overview( $item );
-
+			case 'action':
+				return $this->get_action( $item );
+			case 'priority':
+				return $this->get_priority( $item );
+			case 'last_modified':
+				return $this->get_last_modified( $item );
 			default:
 				return isset( $item->$column_name ) ? $item->$column_name : '';
 		}
@@ -75,10 +95,11 @@ class AIOCR_List_Table extends \WP_List_Table {
 	 */
 	public function get_columns() {
 		$columns = array(
-			'cb'       => '<input type="checkbox" />',
-			'title'    => __( 'Restriction Name', 'all-in-one-content-restriction' ),
-			'overview' => __( 'Overview', 'all-in-one-content-restriction' ),
-
+			'cb'            => '<input type="checkbox" />',
+			'title'         => __( 'Name', 'all-in-one-content-restriction' ),
+			'action'        => __( 'Action', 'all-in-one-content-restriction' ),
+			'priority'      => __( 'Priority', 'all-in-one-content-restriction' ),
+			'last_modified' => __( 'Last modified', 'all-in-one-content-restriction' ),
 		);
 
 		return $columns;
@@ -92,14 +113,13 @@ class AIOCR_List_Table extends \WP_List_Table {
 	 * @return string
 	 */
 	public function column_title( $item ) {
-
 		$actions           = array();
 		$restriction_id    = isset( $item['restriction_id'] ) ? $item['restriction_id'] : 0;
 		$title             = isset( $item['title'] ) ? $item['title'] : 0;
-		$actions['edit']   = sprintf( '<a href="%s" data-id="%d" title="%s">%s</a>', admin_url( 'admin.php?page=all-in-one-content-restriction&action=edit&id=' . $restriction_id ), $restriction_id, __( 'Edit this item', 'all-in-one-content-restriction' ), __( 'Edit', 'all-in-one-content-restriction' ) );
-		$actions['delete'] = sprintf( '<a href="%s" class="submitdelete" data-id="%d" title="%s">%s</a>', admin_url( 'admin.php?page=all-in-one-content-restriction&action=delete&id=' . $restriction_id ), $restriction_id, __( 'Delete this item', 'all-in-one-content-restriction' ), __( 'Delete', 'all-in-one-content-restriction' ) );
+		$actions['edit']   = sprintf( '<a href="%s" data-id="%d" title="%s">%s</a>', admin_url( 'admin.php?page=restrictions&action=edit&id=' . $restriction_id ), $restriction_id, __( 'Edit this item', 'all-in-one-content-restriction' ), __( 'Edit', 'all-in-one-content-restriction' ) );
+		$actions['delete'] = sprintf( '<a href="%s" class="submitdelete" data-id="%d" title="%s">%s</a>', admin_url( 'admin.php?page=restrictions&action=delete&id=' . $restriction_id ), $restriction_id, __( 'Delete this item', 'all-in-one-content-restriction' ), __( 'Delete', 'all-in-one-content-restriction' ) );
 
-		return sprintf( '<a href="%1$s"><strong>%2$s</strong></a> %3$s', admin_url( 'admin.php?page=all-in-one-content-restriction&action=edit&id=' . $restriction_id ), $title, $this->row_actions( $actions ) );
+		return sprintf( '<a href="%1$s"><strong>%2$s</strong></a> %3$s', admin_url( 'admin.php?page=restrictions&action=edit&id=' . $restriction_id ), $title, $this->row_actions( $actions ) );
 	}
 
 	/**

@@ -51,20 +51,26 @@ class Scripts {
 
 	public function admin_enqueue_scripts( $hook ) {
 
-		if ( 'toplevel_page_all-in-one-content-restriction' != $hook ) {
+		if ( ! in_array(
+			$hook,
+			array(
+				'dashboard_page_restrictions',
+				'aio-content-restriction_page_dashboard',
+				'toplevel_page_all-in-one-content-restriction',
+				'aio-content-restriction_page_restrictions',
+			)
+		) ) {
 			return;
 		}
 
-		if ( isset( $_GET['action'] ) ) {
-			// CSS
-			wp_enqueue_style( 'bootstrap' );
-			wp_enqueue_style( 'select2' );
+		// CSS
+		wp_enqueue_style( 'bootstrap' );
+		wp_enqueue_style( 'select2' );
 
-			// JS
-			wp_enqueue_script( 'select2' );
-			wp_enqueue_script( 'popper' );
-			wp_enqueue_script( 'bootstrap' );
-		}
+		// JS
+		wp_enqueue_script( 'select2' );
+		wp_enqueue_script( 'popper' );
+		wp_enqueue_script( 'bootstrap' );
 
 		// jQuery UI Slider / enqueue from wordpress
 		wp_enqueue_script( 'jquery-ui-slider' );

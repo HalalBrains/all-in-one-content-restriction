@@ -21,7 +21,7 @@ $restrict_in = isset( $args['restrict_in'] ) ? $args['restrict_in'] : 'category'
 			<label for="heymehedi-search_bar" class="form-label"><?php esc_html_e( 'Select', 'all-in-one-content-restriction' );?></label>
 			<input id="heymehedi-search_bar" type="text" class="form-control" placeholder="<?php esc_attr_e( 'Type to search', 'all-in-one-content-restriction' );?>">
 
-			<?php Helper::get_template_part( 'menu-page/items-table', $args );?>
+			<?php Helper::get_template_part_admin( 'menu-page/items-table', $args );?>
 
 		</div>
 

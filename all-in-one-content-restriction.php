@@ -5,7 +5,7 @@
  * Description: All in One Content Restriction - A simple and user-friendly plugin to restrict users / visitors from viewing posts by restricting access, as simple as that.
  * Author: HalalBrains
  * Author URI: https://profiles.wordpress.org/halalbrains/
- * version: 1.6.6
+ * version: 1.7.0
  * License: GPLv2 or later
  * Text Domain: all-in-one-content-restriction
  * Domain Path: /languages
@@ -82,7 +82,12 @@ if ( ! class_exists( 'All_In_One_Content_Restriction' ) ) {
 
 			require_once self::$base_dir . '/includes/classes/class-strings.php';
 
-			if ( isset( $_REQUEST['page'] ) && 'all-in-one-content-restriction' === $_REQUEST['page'] && ! class_exists( 'Hide_Admin_Notices' ) ) {
+			if ( isset( $_REQUEST['page'] )
+				&& in_array( $_REQUEST['page'], array(
+					'all-in-one-content-restriction',
+					'dashboard',
+					'restrictions' ) )
+				&& ! class_exists( 'Hide_Admin_Notices' ) ) {
 				require_once self::$base_dir . '/includes/libs/hide-admin-notices/hide-admin-notices.php';
 			}
 		}
