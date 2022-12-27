@@ -2,7 +2,7 @@
 /**
  * @author  HeyMehedi
  * @since   1.6.4
- * @version 1.6.5
+ * @version 1.6.6
  */
 
 namespace HeyMehedi\All_In_One_Content_Restriction;
@@ -42,7 +42,8 @@ class Hide_From_Loop {
 			} elseif ( 'post_tag' == $restrict_in ) {
 				$not_in = 'tag__not_in';
 			} elseif ( 'all_items' == $restrict_in ) {
-				$not_in = '______________';
+				$not_in       = 'category__in';
+				$exclude_args = 1000000000000000000000;
 			} elseif ( 'post_format' == $restrict_in ) {
 				$not_in = '______________';
 			} elseif ( 'selected_single_items' == $restrict_in ) {

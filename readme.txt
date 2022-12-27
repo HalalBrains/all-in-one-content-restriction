@@ -1,10 +1,10 @@
 === All in One WordPress Content Restriction ===
-Contributors: wptownhall, HeyMehedi, HiMrFaruk
+Contributors: HalalBrains, HeyMehedi, HiMrFaruk
 Tags: content restriction, access control, private, permission, restrict access
 Requires at least: 5.6
-Tested up to: 6.0.2
+Tested up to: 6.1.1
 Requires PHP: 5.6
-Stable tag: 1.6.5
+Stable tag: 1.6.6
 License: GPLv3 or Any Later Version
 
 All in One Content Restriction - A simple and user-friendly plugin to restrict users/visitors from viewing posts by restricting access, as simple as that.
@@ -49,7 +49,7 @@ This plugin is intently built with the non-technical users in mind.You have full
 * Obfuscate ( randomize words ) of post / page title, excerpt, description
 
 **FIND AN ISSUE?**
-If you want to report a technical bug or interest to contribute we encourage you to [follow along](https://github.com/wptownhall/all-in-one-content-restriction/) or [contribute](https://github.com/wptownhall/all-in-one-content-restriction/) to the development of this plugin on GitHub and join the party . Please note that GitHub is not a support forum.
+If you want to report a technical bug or interest to contribute we encourage you to [follow along](https://github.com/HalalBrains/all-in-one-content-restriction/) or [contribute](https://github.com/HalalBrains/all-in-one-content-restriction/) to the development of this plugin on GitHub and join the party . Please note that GitHub is not a support forum.
 
 If you need some help, we are right here to support you in the plugin’s [support forum](https://wordpress.org/support/plugin/all-in-one-content-restriction/), You can post a topic. Please search existing topics before starting a new one.
 
@@ -87,6 +87,9 @@ No you don’t have to create account to use this plugin. Gated content rules se
 
 
 == Changelog ==
+
+= 1.6.6 – Dec 26, 2022 =
+* Fix: Hide Protection's All Items  
 
 = 1.6.5 – Nov 07, 2022 =
 * Fix: Version Compatibility add with PHP 5.6 
