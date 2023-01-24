@@ -2,7 +2,7 @@
 /**
  * @author  HeyMehedi
  * @since   1.6.4
- * @version 1.6.6
+ * @version 1.7.0
  */
 
 namespace HeyMehedi\All_In_One_Content_Restriction;
@@ -24,36 +24,64 @@ class Hide_From_Loop {
 	}
 
 	public function exclude_posts( $query ) {
-		$restrictions = Protection_Manager::instance()->get_restrictions( 0, '', 'hide_from_loop' );
-		$not_in       = null;
-		$exclude_args = null;
+		if ( ! $query->is_main_query() ) {
+			return;
+		}
+
+		$restrictions    = Protection_Manager::instance()->get_restrictions( 0, '', 'hide_from_loop' );
+		$exclude_cats    = array();
+		$exclude_tags    = array();
+		$exclude_posts   = array();
+		$exclude_posts   = array();
+		$exclude_formats = array();
 
 		foreach ( $restrictions as $value ) {
-
+			
 			if ( Protection_Manager::users_can_see( $value ) ) {
-				return;
+				continue;
 			}
 
 			$restrict_in  = isset( $value['restrict_in'] ) ? $value['restrict_in'] : '';
 			$exclude_args = isset( $value['selected_ids'] ) ? $value['selected_ids'] : array();
 
 			if ( 'category' == $restrict_in ) {
-				$not_in = 'category__not_in';
+				$exclude_cats = array_merge( $exclude_cats, $exclude_args );
 			} elseif ( 'post_tag' == $restrict_in ) {
-				$not_in = 'tag__not_in';
+				$exclude_tags = array_merge( $exclude_tags, $exclude_args );
 			} elseif ( 'all_items' == $restrict_in ) {
-				$not_in       = 'category__in';
-				$exclude_args = 1000000000000000000000;
+				$exclude_cats = array_merge( $exclude_cats, array( 1000000000000000000000 ) );
 			} elseif ( 'post_format' == $restrict_in ) {
-				$not_in = '______________';
+				$exclude_formats = array_merge( $exclude_formats, $exclude_args );
 			} elseif ( 'selected_single_items' == $restrict_in ) {
-				$not_in = 'post__not_in';
+				$exclude_posts = array_merge( $exclude_posts, $exclude_args );
 			}
 		}
 
-		if ( $not_in && $exclude_args ) {
-			$query->set( $not_in, $exclude_args );
-		}
+		$query->set(
+			'tax_query',
+			array(
+				'relation' => 'OR',
+				array(
+					'taxonomy' => 'category',
+					'field'    => 'term_id',
+					'terms'    => $exclude_cats,
+					'operator' => 'NOT IN',
+				),
+				array(
+					'taxonomy' => 'post_tag',
+					'field'    => 'term_id',
+					'terms'    => $exclude_tags,
+					'operator' => 'NOT IN',
+				),
+				array(
+					'taxonomy' => 'post_format',
+					'field'    => 'slug',
+					'terms'    => $exclude_formats,
+				),
+			)
+		);
+
+		$query->set( 'post__not_in', $exclude_posts );
 	}
 }
 
