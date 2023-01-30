@@ -36,7 +36,7 @@ class Hide_From_Loop {
 		$exclude_formats = array();
 
 		foreach ( $restrictions as $value ) {
-			
+
 			if ( Protection_Manager::users_can_see( $value ) ) {
 				continue;
 			}
@@ -57,6 +57,21 @@ class Hide_From_Loop {
 			}
 		}
 
+		$query->set( 'post__not_in', $exclude_posts );
+
+		if ( is_archive() ) {
+			$c_term_id = get_queried_object()->term_id;
+			if ( in_array( $c_term_id, $exclude_cats, ) ) {
+				$query->set( 'category__not_in', $c_term_id );
+			}
+
+			if ( in_array( $c_term_id, $exclude_tags, ) ) {
+				$query->set( 'tag__not_in', $c_term_id );
+			}
+
+			return;
+		}
+
 		$query->set(
 			'tax_query',
 			array(
@@ -73,15 +88,13 @@ class Hide_From_Loop {
 					'terms'    => $exclude_tags,
 					'operator' => 'NOT IN',
 				),
-				array(
-					'taxonomy' => 'post_format',
-					'field'    => 'slug',
-					'terms'    => $exclude_formats,
-				),
+				// array(
+				// 	'taxonomy' => 'post_format',
+				// 	'field'    => 'slug',
+				// 	'terms'    => $exclude_formats,
+				// ),
 			)
 		);
-
-		$query->set( 'post__not_in', $exclude_posts );
 	}
 }
 
