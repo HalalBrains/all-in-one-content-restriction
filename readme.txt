@@ -4,7 +4,7 @@ Tags: content restriction, access control, private, permission, restrict access
 Requires at least: 5.6
 Tested up to: 6.1.1
 Requires PHP: 5.6
-Stable tag: 1.6.6
+Stable tag: 1.6.7
 License: GPLv3 or Any Later Version
 
 All in One Content Restriction - A simple and user-friendly plugin to restrict users/visitors from viewing posts by restricting access, as simple as that.
@@ -87,6 +87,10 @@ No you don’t have to create account to use this plugin. Gated content rules se
 
 
 == Changelog ==
+
+= 1.6.7 – Jan 31, 2023 =
+* Fix: Redirection Protection Issue
+* Fix: Hide Protection Issue
 
 = 1.6.6 – Dec 26, 2022 =
 * Fix: Hide Protection's All Items  

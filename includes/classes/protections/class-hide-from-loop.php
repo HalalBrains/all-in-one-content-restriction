@@ -2,7 +2,7 @@
 /**
  * @author  HeyMehedi
  * @since   1.6.4
- * @version 1.7.0
+ * @version 1.6.7
  */
 
 namespace HeyMehedi\All_In_One_Content_Restriction;
