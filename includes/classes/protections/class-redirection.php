@@ -1,8 +1,8 @@
 <?php
 /**
  * @author  HeyMehedi
- * @since   1.0.0
- * @version 1.6.7
+ * @since   1.0
+ * @version 1.6.4
  */
 
 namespace HeyMehedi\All_In_One_Content_Restriction;
@@ -45,14 +45,8 @@ class Redirection {
 					break;
 			}
 
-			// echo "<pre>";
-			// print_r( get_queried_object() );
-			// print_r( $restrictions );
-			// echo "<pre>";
-			// die();
-
 			if ( $redirect ) {
-				wp_redirect( 'http://localhost:10044/ccc/' );
+				wp_redirect( $redirect );
 				exit;
 			}
 		}
