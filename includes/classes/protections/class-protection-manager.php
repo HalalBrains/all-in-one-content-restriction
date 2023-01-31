@@ -1,8 +1,8 @@
 <?php
 /**
  * @author  HeyMehedi
- * @since   1.0
- * @version 1.6.5
+ * @since   1.0.0
+ * @version 1.6.7
  */
 
 namespace HeyMehedi\All_In_One_Content_Restriction;
@@ -12,7 +12,8 @@ use HeyMehedi\All_In_One_Content_Restriction\Settings;
 class Protection_Manager {
 
 	protected static $instance = null;
-	public $is_protected;
+	public $is_protected       = false;
+	public $restrictions       = array();
 
 	public function __construct() {
 		$settings           = Settings::get();

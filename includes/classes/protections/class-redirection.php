@@ -26,7 +26,7 @@ class Redirection {
 
 			// Check if it's a archive or blog, don't redirect it.
 			if ( in_array( $restriction['restrict_in'], array( 'all_items', 'selected_single_items' ) ) ) {
-				if ( is_archive() || is_home() ) {
+				if ( is_archive() || is_home() || $restriction['post_type'] !== get_post_type( get_the_ID() ) ) {
 					continue;
 				}
 			}
