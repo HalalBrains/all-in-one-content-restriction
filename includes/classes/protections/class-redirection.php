@@ -1,8 +1,8 @@
 <?php
 /**
  * @author  HeyMehedi
- * @since   1.0
- * @version 1.6.4
+ * @since   1.0.0
+ * @version 1.6.7
  */
 
 namespace HeyMehedi\All_In_One_Content_Restriction;
@@ -26,7 +26,7 @@ class Redirection {
 
 			// Check if it's a archive or blog, don't redirect it.
 			if ( in_array( $restriction['restrict_in'], array( 'all_items', 'selected_single_items' ) ) ) {
-				if ( is_archive() || is_home() ) {
+				if ( is_archive() || is_home() || $restriction['post_type'] !== get_post_type( get_the_ID() ) ) {
 					continue;
 				}
 			}
@@ -45,8 +45,14 @@ class Redirection {
 					break;
 			}
 
+			// echo "<pre>";
+			// print_r( get_queried_object() );
+			// print_r( $restrictions );
+			// echo "<pre>";
+			// die();
+
 			if ( $redirect ) {
-				wp_redirect( $redirect );
+				wp_redirect( 'http://localhost:10044/ccc/' );
 				exit;
 			}
 		}
