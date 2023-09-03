@@ -2,9 +2,9 @@
 Contributors: HalalBrains, HeyMehedi, HiMrFaruk
 Tags: content restriction, access control, private, permission, restrict access
 Requires at least: 5.6
-Tested up to: 6.1.1
-Requires PHP: 5.6
-Stable tag: 1.6.7
+Tested up to: 6.3
+Requires PHP: 7.4
+Stable tag: 1.6.8
 License: GPLv3 or Any Later Version
 
 All in One Content Restriction - A simple and user-friendly plugin to restrict users/visitors from viewing posts by restricting access, as simple as that.
@@ -87,6 +87,9 @@ No you don’t have to create account to use this plugin. Gated content rules se
 
 
 == Changelog ==
+
+= 1.6.8 – Sep 03, 2023 =
+* Fix: Hide from the loom error
 
 = 1.6.7 – Jan 31, 2023 =
 * Fix: Redirection Protection Issue
