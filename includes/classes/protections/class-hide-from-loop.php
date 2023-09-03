@@ -60,7 +60,7 @@ class Hide_From_Loop {
 		$query->set( 'post__not_in', $exclude_posts );
 
 		if ( is_archive() ) {
-			$c_term_id = get_queried_object()->term_id;
+			$c_term_id = isset( get_queried_object()->term_id ) ? get_queried_object()->term_id : 0;
 			if ( in_array( $c_term_id, $exclude_cats, ) ) {
 				$query->set( 'category__not_in', $c_term_id );
 			}
