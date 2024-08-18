@@ -1,11 +1,11 @@
 <?php
 /**
- * Plugin Name: All in One Content Restriction
- * Plugin URI: https://github.com/HalalBrains/all-in-one-content-restriction
- * Description: All in One Content Restriction - A simple and user-friendly plugin to restrict users / visitors from viewing posts by restricting access, as simple as that.
- * Author: HalalBrains
- * Author URI: https://profiles.wordpress.org/halalbrains/
- * Version: 1.6.8
+ * Plugin Name: CR
+ * Plugin URI: https://wordpress.org/plugins/content-restriction/
+ * Description: CR
+ * Author: HeyMehedi
+ * Author URI: https://profiles.wordpress.org/heymehedi/
+ * Version: 1.7.0
  * Tested up to: 6.3
  * Requires PHP: 7.4
  * License: GPLv2 or later
@@ -41,7 +41,7 @@ if ( ! class_exists( 'All_In_One_Content_Restriction' ) ) {
 		private function __construct() {}
 
 		public function init() {
-			add_action( 'plugins_loaded', array( $this, 'load_textdomain' ), 20 );
+			add_action( 'plugins_loaded', [$this, 'load_textdomain'], 20 );
 
 			self::$base_dir   = plugin_dir_path( __FILE__ );
 			self::$base_url   = plugin_dir_url( __FILE__ );
@@ -51,8 +51,20 @@ if ( ! class_exists( 'All_In_One_Content_Restriction' ) ) {
 			self::$author_uri = $data['AuthorURI'];
 			self::$prefix     = 'all-in-one-content-restriction';
 
+			add_action( 'admin_notices', [$this, '_admin_notice'] );
+
 			$this->includes();
 		}
+
+		public function _admin_notice() {
+			?>
+			<div class="notice notice-info is-dismissible">
+				<h1>Important Notice</h1>
+				<p>Your installed <b>CR</b> plugin has been superseded by a new and improved solution! We’ve developed a more advanced plugin that offers better features, enhanced performance, and ongoing support.</p>
+				<p><a href="https://wordpress.org/plugins/content-restriction/" target="_blank">All in one content restriction</a> is the recommended replacement of this plugin. It comes with more customization options, improved compatibility, and a more user-friendly interface.</p>
+				<p>We strongly encourage you to switch to <a href="https://wordpress.org/plugins/content-restriction/" target="_blank">All in one content restriction</a> for an upgraded experience.</p>
+			</div>
+		<?php }
 
 		public function load_textdomain() {
 			load_plugin_textdomain( 'all-in-one-content-restriction', false, dirname( plugin_basename( __FILE__ ) ) . '/languages' );
@@ -84,9 +96,9 @@ if ( ! class_exists( 'All_In_One_Content_Restriction' ) ) {
 
 			require_once self::$base_dir . '/includes/classes/class-strings.php';
 
-			if ( isset( $_REQUEST['page'] ) && 'all-in-one-content-restriction' === $_REQUEST['page'] && ! class_exists( 'Hide_Admin_Notices' ) ) {
-				require_once self::$base_dir . '/includes/libs/hide-admin-notices/hide-admin-notices.php';
-			}
+			// if ( isset( $_REQUEST['page'] ) && 'all-in-one-content-restriction' === $_REQUEST['page'] && ! class_exists( 'Hide_Admin_Notices' ) ) {
+			// 	require_once self::$base_dir . '/includes/libs/hide-admin-notices/hide-admin-notices.php';
+			// }
 		}
 
 		public function get_data() {
@@ -94,10 +106,10 @@ if ( ! class_exists( 'All_In_One_Content_Restriction' ) ) {
 
 			return get_file_data(
 				$file_path,
-				array(
+				[
 					'Version'   => 'Version',
 					'AuthorURI' => 'Author URI',
-				)
+				]
 			);
 		}
 
