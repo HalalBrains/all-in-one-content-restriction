@@ -6,7 +6,7 @@
  * Author: HeyMehedi
  * Author URI: https://profiles.wordpress.org/heymehedi/
  * Version: 1.7.0
- * Tested up to: 6.3
+ * Tested up to: 6.6
  * Requires PHP: 7.4
  * License: GPLv2 or later
  * Text Domain: all-in-one-content-restriction
