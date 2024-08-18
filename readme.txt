@@ -2,7 +2,7 @@
 Contributors: HeyMehedi
 Tags: permission
 Requires at least: 5.6
-Tested up to: 6.3
+Tested up to: 6.6
 Requires PHP: 7.4
 Stable tag: 1.7
 License: GPLv3 or Any Later Version
